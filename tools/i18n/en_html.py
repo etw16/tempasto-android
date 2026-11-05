@@ -1,8 +1,8 @@
 # HTML-Texte (vor dem ersten <script>): (alt, neu) – alt muss in der Quelle vorkommen
 P=[
 ('<div class="sp-de">Die Zeit und der Teig.</div>','<div class="sp-de">Time and dough.</div>'),
-('<p class="st-satz" id="stSatz">Wir essen <span id="stAm">am</span> <a class="st-ed" href="#" role="button" data-sheet="whenSheet" id="stWhen">Donnerstag um 19 Uhr</a><br> <a class="st-ed" href="#" role="button" data-sheet="pzSheet" id="stPz">6 Pizzen</a>. Der Teig geht <a class="st-ed" href="#" role="button" data-sheet="gehSheet" id="stGeh">48 Stunden</a>.</p>',
- '<p class="st-satz" id="stSatz">We’re eating <span id="stAm">on</span> <a class="st-ed" href="#" role="button" data-sheet="whenSheet" id="stWhen">Thursday at 19:00</a><br> <a class="st-ed" href="#" role="button" data-sheet="pzSheet" id="stPz">6 pizzas</a>. The dough rises for <a class="st-ed" href="#" role="button" data-sheet="gehSheet" id="stGeh">48 hours</a>.</p>'),
+('<p class="st-satz" id="stSatz">Wir essen <span id="stAm">am</span> <a class="st-ed" href="#" role="button" data-sheet="whenSheet" id="stWhen">Donnerstag um 19 Uhr</a><br> <a class="st-ed" href="#" role="button" data-sheet="pzSheet" id="stPz">6 Pizzen</a>. Der Teig geht<br> <a class="st-ed" href="#" role="button" data-sheet="gehSheet" id="stGeh">48 Stunden</a>.</p>',
+ '<p class="st-satz" id="stSatz">We’re eating <span id="stAm">on</span> <a class="st-ed" href="#" role="button" data-sheet="whenSheet" id="stWhen">Thursday at 19:00</a><br> <a class="st-ed" href="#" role="button" data-sheet="pzSheet" id="stPz">6 pizzas</a>. The dough<br> rises for <a class="st-ed" href="#" role="button" data-sheet="gehSheet" id="stGeh">48 hours</a>.</p>'),
 ('<span class="vh">Ganzen Zeitplan ansehen:</span>','<span class="vh">View the full schedule:</span>'),
 ('ganzer Zeitplan <em>›</em>','full schedule <em>›</em>'),
 ('<b id="spT">Plan starten</b>','<b id="spT">Start plan</b>'),

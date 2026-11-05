@@ -31,6 +31,6 @@ P=[
 ("${bsTxt(o)} pro Pizza</small>","${bsTxt(o)} per pizza</small>",1),
 ("hrTxt=bk.getMinutes()?tm(bk)+' Uhr':bk.getHours()+' Uhr';","hrTxt=tm(bk);",1),
 ("hr=B.getMinutes()?tm(B)+' Uhr':B.getHours()+' Uhr';","hr=tm(B);",1),
-("$('stAm').textContent=dd===0||dd===1?'':'am';","$('stAm').textContent=dd===0||dd===1?'':'on';",1),
+("$('stAm').textContent=dd===0||dd===1?'':dd>=7&&dd<14?'am nächsten':'am';","$('stAm').textContent=dd===0||dd===1?'':dd>=7&&dd<14?'next':'on';",1),
 ("MON=['1.','2.','3.','4.','5.','6.','7.','8.','9.','10.','11.','12.'];","MON=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];",1),
 ]
