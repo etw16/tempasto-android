@@ -1,7 +1,7 @@
 # Erzeugt die englische Version: python3 i18n/build_en.py tempasto.html tempasto-en.html
 import sys,os,re
 D=os.path.dirname(os.path.abspath(__file__));sys.path.insert(0,D)
-import scan,en_code,en_html
+import scan,en_code,en_html,en_us
 src=open(sys.argv[1],encoding='utf-8').read()
 warn=[]
 # 1 Code
@@ -41,6 +41,8 @@ for a,b in en_html.P:
     if a not in html:warn.append(f'HTML fehlt: {a[:70]}');continue
     html=html.replace(a,b)
 src=html+rest
+src,_nd=en_us.apply(src)
+warn.append(f'US-Datum umgestellt: {_nd}x')
 open(sys.argv[2],'w',encoding='utf-8').write(src)
 # Reste
 G=re.compile(r'[äöüÄÖÜß]|\b(und|der|die|das|nicht|mit|Teig|wenn|noch|Uhr|Pizzen|Kühlschrank|Backen|Erledigt|Später|Weiter|Zurück|Schritt)\b')

@@ -94,7 +94,7 @@ Tempasto gibt es (noch) nicht im Play Store. Die fertige APK liegt unter **[Rele
 
 Updates werden über die installierte Version gespielt, die Daten bleiben erhalten.
 
-**Umstieg von der alten Impasto-App:** Die App heißt jetzt `de.tempasto.app` und wird neben der alten installiert. In der alten App unter *Mehr → Daten sichern* eine Sicherung machen, in Tempasto unter *Mehr → Sicherung laden* einspielen, dann die alte App löschen.
+**Umstieg von der alten Impasto-App:** Die App heißt jetzt `de.tempasto.app` und wird neben der alten installiert. Plan, eigene Pizzen und Vorlagen legst du in Tempasto neu an, danach kann die alte App weg.
 
 ## Technik
 
@@ -133,7 +133,7 @@ cd android && ./gradlew assembleRelease
 
 ## Datenschutz
 
-Tempasto sammelt keine Daten und sendet nichts an den Entwickler. Planung, Pizzen und Einstellungen liegen nur auf deinem Gerät. Eine Sicherung kannst du unter *Mehr → Daten sichern* selbst erstellen.
+Tempasto sammelt keine Daten und sendet nichts an den Entwickler. Planung, Pizzen und Einstellungen liegen nur auf deinem Gerät.
 
 ## Lizenz
 

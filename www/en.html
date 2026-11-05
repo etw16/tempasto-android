@@ -1258,7 +1258,7 @@ body.has-mini #v-rezept:not([hidden]){min-height:calc(100dvh - var(--navh,80px) 
  #v-rezept>#liveBody{margin-bottom:auto!important}
  .cook{grid-template-rows:auto auto!important;align-content:center}
  .cook>.ck-top{position:absolute;top:0;left:0;right:0}
- .cook>.ck-body{padding-top:24px}
+ .cook>.ck-body{padding-top:24px;height:min(560px,62dvh);min-height:0}
  .cook>.ck-foot{padding-top:28px!important}
 }
 .top.amore svg{width:12px;height:12px;flex:0 0 auto}
@@ -1619,7 +1619,7 @@ body.has-mini #v-pizzen .card>svg{width:clamp(72px,calc(100dvh - 650px - var(--s
 
 /* Splash v132: Zusammengleiten sichtbar */
 .splash.qb .sp-it .w.x,.splash.qb .sp-q .sp-de,.splash.qb .sp-it .lt.dr{opacity:0!important;transition:opacity 1.3s ease!important}
-.splash.glide .sp-it .lt[data-to]{transition:transform 1.5s cubic-bezier(.65,0,.35,1)!important;transition-delay:0s!important}
+.splash.glide .sp-it .lt[data-to]{transition:transform 1.1s cubic-bezier(.65,0,.35,1)!important;transition-delay:0s!important}
 .splash.fly .sp-it .lt[data-to]{transition:transform .7s cubic-bezier(.65,0,.35,1),opacity .35s ease!important;transition-delay:0s!important}
 .splash.lg .sp-it .lt[data-to]{transition:transform .7s cubic-bezier(.65,0,.35,1),opacity .35s ease!important;transition-delay:0s!important}
 
@@ -1724,7 +1724,7 @@ body.has-mini #v-pizzen .card>svg{width:clamp(64px,calc(100dvh - 690px - var(--s
 .nz .k{position:absolute;left:14px;top:10px;font:700 .62rem var(--f-body);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .nz .t{position:absolute;left:14px;right:8px;top:24px;text-align:left;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cook[data-st=alarm] .nz{box-shadow:0 4px 14px rgba(0,0,0,.25)}
-.nzo{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:24px max(18px,env(safe-area-inset-left,0px)) calc(24px + var(--navh,0px)) max(18px,env(safe-area-inset-right,0px))}
+.nzo{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:max(24px,calc(env(safe-area-inset-top,0px) + 12px)) max(18px,env(safe-area-inset-left,0px)) calc(24px + var(--navh,0px)) max(18px,env(safe-area-inset-right,0px))}
 .nzo[hidden]{display:none}
 .nz-dim{position:absolute;inset:0;background:rgba(30,24,18,.4)}
 .nz-card{position:relative;width:min(100%,400px);max-height:min(78dvh,640px);overflow-y:auto;background:#FFFDF6;border-radius:6px;box-shadow:0 22px 50px rgba(40,25,10,.35);padding:24px 22px 22px;color:#2B2622;text-align:left}
@@ -1796,6 +1796,33 @@ body.has-mini #v-pizzen .card>svg{width:clamp(64px,calc(100dvh - 690px - var(--s
 body:has(#cook:not([hidden])) .toast{bottom:auto!important}
 @keyframes toastIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.toast{animation:none}}
+/* Spendenzettel */
+.nz-sup{display:grid;gap:4px;margin-top:12px}
+.nz-card.sup>.nz-sig{display:none}
+.nz-never{display:none;padding-top:0!important;font-weight:500!important;font-size:.82rem!important}.nz-card.auto .nz-never{display:block}
+.nz-sup .cta{min-height:52px}
+.nz-later{border:0;background:none;padding:10px;font:600 .9rem var(--f-body);color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+/* Schmale Handys (unter 360 px): nichts darf seitlich überlaufen */
+@media (max-width:359px){
+ #ckCnt.ck-tl{flex:0 1 auto!important;min-width:0;padding:0 10px;gap:6px}
+ #ckCnt.ck-tl .pb{display:none}
+ .ck-end{padding-inline:10px!important}
+ .tk-ft1{flex-wrap:wrap;gap:8px}
+ .tk-shareall{padding:8px 14px}
+}
+/* Hinweis im Terminfenster */
+.when-tip{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:8px 0 2px;padding:10px 12px;border-radius:12px;background:#F3EAD9;font-size:.86rem;line-height:1.35;color:#5E5548}
+.when-tip button{border:0;background:none;padding:4px 0;font:700 .86rem var(--f-body);color:var(--accent);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+/* Feinschliff aus dem Usertest */
+.ck-sheet .ck-sh-in{padding-bottom:calc(var(--navh,80px) + 16px)!important}
+#v-pizzen .filt{overflow-y:hidden}
+.day[aria-disabled=true] .sub,.day[aria-disabled=true] .wd,.day[aria-disabled=true] .dn{color:#8C857A!important}
+.nz-x{width:44px!important;height:44px!important;top:4px!important;right:4px!important}
+.lang-sw{padding:5px}.lang-sw b,.lang-sw span{min-width:38px;height:32px}
+.st-ed{padding-block:4px}
+.pk-r .bt{white-space:nowrap;flex:0 0 auto}
+#v-storia .ptitle{font-size:clamp(1.45rem,7.2vw,2rem)!important;white-space:nowrap}
+#v-storia .topline{min-width:0}
 /* Startknopf mit Countdown */
 #startBtn .sp-pill{height:auto!important;min-height:56px;padding-block:8px!important}
 .sp-pill .spl{display:grid;gap:1px;line-height:1.1;text-align:left}
@@ -1962,12 +1989,11 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
 
   <section class="view" id="v-storia" hidden>
     <header class="band red">
-      <div class="topline"><button class="iconbtn" data-back="mehr" aria-label="Back">←</button><h2 class="bandh ptitle">Story<i>.</i></h2></div>
+      <div class="topline"><button class="iconbtn" data-back="mehr" aria-label="Back">←</button><h2 class="bandh ptitle">Why Tempasto<i>?</i></h2></div>
     </header>
     <div class="pad sub-in"><div class="story">
-<p class="st-k">Why Tempasto?</p>
 <p>Naples, Spaccanapoli, just before eight. The alley is so narrow the washing lines almost touch. A scooter rattles past, a nonna calls down from a balcony. And then you smell it: wood smoke, charred crust, sweet tomatoes. There’s a queue outside a door with no sign.</p>
-<p>Inside, a man works without looking up. He presses the dough flat with his fingers, stretches it over the backs of his hands and slides it into the embers. Ninety seconds later the best pizza of your life is in front of you. You ask him for the secret. He shrugs: <i>“Il tempo e l’impasto.”</i> Time and dough. From the balcony you hear the nonna again. He grins: you should ask less and eat more.</p>
+<p>Inside, a man works without looking up. He presses the dough flat with his fingers, stretches it over the backs of his hands and slides it into the embers. Ninety seconds later there’s a pizza in front of you that you won’t forget. You ask him for the secret. He shrugs: <i>“Il tempo e l’impasto.”</i> Time and dough. From the balcony you hear the nonna again. He grins: you should ask less and eat more.</p>
 <p>His secret is in the name: <b>Tempasto</b>, from <i>tempo</i> and <i>impasto</i>. Nobody can give you the time, but you don’t have to keep it in your head. Tempasto works backwards and lets you know when the dough needs you.</p>
 <p>And because your first dough still raises questions, Nonna is there. She knows when the water is too warm, when you’ve kneaded enough and when to leave the dough alone.</p>
 <p>The rest is up to you, with your hands. <i>Fatto a mano</i> means “made by hand”; in Naples a rolling pin never touches the dough. Tempasto plans, Nonna helps, you make the pizza.</p>
@@ -1997,7 +2023,7 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
         <button class="mli" id="storyRow"><span>Why Tempasto?</span><b></b><em>›</em></button>
         <button class="mli" data-sheet="supSheet" id="supRow"><span>Support Tempasto</span><b class="sup-h">♥</b><em>›</em></button>
       </div>
-      <div class="mlinks"><button class="implink" id="bkSave">Backup</button><button class="implink" id="bkLoad">Restore</button><button class="implink" id="impOpen">Legal notice</button></div><input type="file" id="bkFile" accept="application/json,.json" hidden>
+      <div class="mlinks"><button class="implink" id="bkSave" hidden>Backup</button><button class="implink" id="bkLoad" hidden>Restore</button><button class="implink" id="impOpen">Legal notice</button></div><input type="file" id="bkFile" accept="application/json,.json" hidden>
       <div class="sig"><span class="logo sm" role="img" aria-label="Tempasto">Tempast<svg class="pz-o" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.6" fill="#D9A963"/><circle cx="12" cy="12" r="10.6" fill="#E8BE7C"/><circle cx="12" cy="12" r="8.2" fill="#C2281B"/><circle cx="12" cy="12" r="8.2" fill="none" stroke="#9E1E14" stroke-width=".6"/><ellipse cx="9" cy="9.4" rx="2.3" ry="2" fill="#FFF8EA"/><ellipse cx="15" cy="14.2" rx="2.1" ry="1.9" fill="#FFF8EA"/><circle cx="14.6" cy="8.2" r="1.4" fill="#FFF8EA"/><circle cx="9.2" cy="15.4" r="1.2" fill="#FFF8EA"/><ellipse cx="11.6" cy="12.2" rx="2.1" ry="1" transform="rotate(-35 11.6 12.2)" fill="#3E8A47"/><ellipse cx="16.6" cy="10.8" rx="1.5" ry=".75" transform="rotate(50 16.6 10.8)" fill="#3E8A47"/><circle cx="3.4" cy="9" r=".75" fill="#3B2A1F" opacity=".55"/><circle cx="19.6" cy="17" r=".65" fill="#3B2A1F" opacity=".55"/><circle cx="17" cy="3.6" r=".55" fill="#3B2A1F" opacity=".55"/></svg><i>.</i></span><span class="brand-sub script">fatto a mano</span></div>
       <p hidden id="adjSum"></p>
     </div>
@@ -2009,7 +2035,7 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
     </header>
     <div class="pad">
     <details class="box" id="h-check">
-      <summary><span>Wrong yeast amount? Dough check<small>When will my dough be ripe, and what now?</small></span></summary>
+      <summary><span>Is my dough ripe?<small>If the yeast amount is off or the plan has shifted</small></span></summary>
       <div class="in">
         <div><label class="fl" for="ckKnead">Finished kneading at</label><input type="datetime-local" id="ckKnead"></div>
         <div><label class="fl" for="ckYeast" id="ckYL">Fresh yeast in the dough (g)</label><input type="number" id="ckYeast" step="0.5" min="0.5" inputmode="decimal"></div>
@@ -2022,7 +2048,7 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
       <div class="in"><ul class="tips">
         <li><b>Chill it right away</b> and divide it; single balls cool down faster.</li>
         <li><b>Fridge</b> to the coldest setting, boxes at the back and bottom, not stacked.</li>
-        <li><b>Freeze as an emergency brake:</b> balls one by one in oiled bags. On baking day into the fridge 6–8 h ahead, then 2–3 h at room temperature.</li>
+        <li><b>Freeze as an emergency brake:</b> balls one by one in oiled bags. Move them to the fridge the day before (12–24 h), then 2–3 h at room temperature.</li>
         <li><b>Warm up for only 1–2 h</b> instead of 3–5 h.</li>
         <li><b>Over-proofed dough:</b> stretch carefully on a floured counter, not over your fists.</li>
       </ul></div>
@@ -2030,7 +2056,7 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
     <details class="box" id="h-prob">
       <summary><span>What went wrong?<small>Dough tears, flat rim, pale base …</small></span></summary>
       <div class="in"><ul class="tips prob">
-        <li><b>Dough tears when stretching</b>Usually it’s still too cold. Leave the balls at room temperature for 20–30 minutes longer. Don’t pull, press from the centre outwards.</li>
+        <li><b>Dough tears when stretching</b>Usually it’s still too cold. Leave the balls at room temperature for 20–30 minutes longer. Don’t pull, press from the center outwards.</li>
         <li><b>Dough keeps shrinking back</b>The gluten is still tense. Let it rest covered for 15–20 minutes, then it works.</li>
         <li><b>Balls spread out and stick</b>They’re over-proofed or too warm. Keep them cooler, use more semola when stretching and bake quickly. See also “Rescue the dough”.</li>
         <li><b>Rim stays flat</b>The air was pressed out of the rim while shaping. Leave a finger’s width of rim untouched and push the air from the middle outwards. A stone that’s too cool also holds the rim back.</li>
@@ -2042,7 +2068,7 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
       </ul></div>
     </details>
     <details class="box" id="h-bed">
-      <summary><span>Using the app<small>Moving, cancelling, number, reminders</small></span></summary>
+      <summary><span>Using the app<small>Moving, canceling, number, reminders</small></span></summary>
       <div class="hb-in">
         <p><b>Running late or done early?</b> Tap “Running late?” in bake mode. The whole plan and all reminders move with it.</p>
         <p><b>Cancel the dough</b> with “End” at the top. You then have 10 seconds to undo it.</p>
@@ -2060,7 +2086,7 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
           <li>Stir in salt and torn basil, <b>oil at the end.</b></li>
           <li>Too watery? Pour off some juice first or reduce it briefly.</li>
         </ul>
-        <svg class="fig" viewBox="0 0 300 120" style="max-width:340px" role="img" aria-label="Tomato tin with origin code, canning code and DOP seal">
+        <svg class="fig" viewBox="0 0 300 120" style="max-width:340px" role="img" aria-label="Tomato can with origin code, canning code and DOP seal">
           <rect x="30" y="18" width="90" height="88" class="s-steel"/><ellipse cx="75" cy="106" rx="45" ry="9" class="s-steel"/>
           <rect x="30" y="34" width="90" height="56" class="s-tom"/><circle cx="75" cy="62" r="17" class="s-mozz"/>
           <text x="75" y="66" text-anchor="middle" font-size="9" font-weight="800" style="fill:var(--accent)">D.O.P.</text>
@@ -2072,7 +2098,7 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
           <text x="166" y="43" font-size="11" class="s-muted">good: 190 to 250</text>
           <text x="166" y="66" font-size="11" font-weight="700" class="s-ink">D.O.P. seal</text>
         </svg>
-        <p class="small muted">The tin should say “100 % Italian tomatoes”. “Made in Italy” only tells you where it was canned. Good DOP brands include Solania and Strianese.</p>
+        <p class="small muted">The can should say “100 % Italian tomatoes”. “Made in Italy” only tells you where it was canned. Good DOP brands include Solania and Strianese.</p>
       </div>
     </details>
   
@@ -2201,6 +2227,7 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
     <div class="sh-hd"><h2>When are you eating?</h2><button class="sh-x" data-close aria-label="Close">✕</button></div>
     <div class="sh-in">
       <div class="days" id="days" role="group" aria-label="Baking day"></div>
+      <div class="when-tip" id="whenTip" hidden></div>
       <div class="slots" id="slots" role="group" aria-label="Time of day"></div>
       <input type="time" id="bTime" step="900" aria-label="Custom time" hidden>
       <p class="small muted" id="whenHint"></p>
@@ -2254,8 +2281,8 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
   <div class="sh-pan" role="dialog" aria-modal="true" aria-label="Rise">
     <div class="sh-hd"><h2>How long should the dough rise?</h2><button class="sh-x" data-close aria-label="Close">✕</button></div>
     <div class="sh-in">
-      <div class="opts" id="hOpts"><button class="opt" data-h="24"><svg width="52" height="32" viewBox="0 0 56 36" aria-hidden="true"><path d="M14 34c0-12 6-18 14-18s14 6 14 18z" class="s-dough"/></svg><b>24 h</b><span>mild</span></button><button class="opt" data-h="48"><svg width="52" height="32" viewBox="0 0 56 36" aria-hidden="true"><path d="M9 34c0-15 8-23 19-23s19 8 19 23z" class="s-dough"/></svg><b>48 h</b><span>balanced</span></button><button class="opt" data-h="72"><svg width="52" height="32" viewBox="0 0 56 36" aria-hidden="true"><path d="M3 34c0-18 11-28 25-28s25 10 25 28z" class="s-dough"/></svg><b>72 h</b><span>full-flavoured</span></button></div>
-      <p class="small muted">Longer means more flavour and easier to digest. The app adjusts the yeast automatically.</p>
+      <div class="opts" id="hOpts"><button class="opt" data-h="24"><svg width="52" height="32" viewBox="0 0 56 36" aria-hidden="true"><path d="M14 34c0-12 6-18 14-18s14 6 14 18z" class="s-dough"/></svg><b>24 h</b><span>mild</span></button><button class="opt" data-h="48"><svg width="52" height="32" viewBox="0 0 56 36" aria-hidden="true"><path d="M9 34c0-15 8-23 19-23s19 8 19 23z" class="s-dough"/></svg><b>48 h</b><span>balanced</span></button><button class="opt" data-h="72"><svg width="52" height="32" viewBox="0 0 56 36" aria-hidden="true"><path d="M3 34c0-18 11-28 25-28s25 10 25 28z" class="s-dough"/></svg><b>72 h</b><span>full-flavored</span></button></div>
+      <p class="small muted">Longer means more flavor and easier to digest. The app adjusts the yeast automatically.</p>
       <button class="cta" data-close>Apply</button>
     </div>
   </div>
@@ -2272,7 +2299,7 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
 <!-- KOCHMODUS -->
 <div class="nzo" id="nzo" hidden><div class="nz-dim" id="nzDim"></div><div class="nz-card" id="nzCard" role="dialog" aria-modal="true" aria-label="Nonna’s note"><button class="nz-x" id="nzX" aria-label="Close">✕</button><span class="nz-from" id="nzFrom"></span><h3 class="nz-h" id="nzH"></h3><div class="nz-b" id="nzB"></div><div class="nz-sig">– Nonna</div><div class="nz-tools" id="nzTools"></div><button class="cta nz-ok" id="nzOk" hidden>Grazie, Nonna!</button></div></div>
 <div class="cook" id="cook" role="region" aria-label="Bake mode" hidden>
-  <div class="ck-top"><div class="ck-bar"><button class="x" id="ckClose" aria-label="Minimise bake mode"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="ck-prev" id="ckPrev" hidden aria-label="Step back">←</button><button class="cnt ck-tl" id="ckCnt" aria-label="View schedule"></button><span class="ck-rt"><button class="ck-end" id="ckEnd">End</button></span></div></div>
+  <div class="ck-top"><div class="ck-bar"><button class="x" id="ckClose" aria-label="Minimize bake mode"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="ck-prev" id="ckPrev" hidden aria-label="Step back">←</button><button class="cnt ck-tl" id="ckCnt" aria-label="View schedule"></button><span class="ck-rt"><button class="ck-end" id="ckEnd">End</button></span></div></div>
   <div class="ck-body" id="ckBody"><div class="ck-in" id="ckIn"></div></div>
   <div class="ck-foot" id="ckFoot"><div class="nz-wrap" id="nzWrap" hidden><button class="nz" id="nz" aria-label="Open Nonna’s tip"><span class="k">Nonna’s tip</span><span class="t" id="nzT"></span></button></div><div class="ck-row"><button class="ck-how" id="ckInfo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h6M8 11h6"/></svg>How to</button><button class="cta" id="ckNext">Done</button></div><div class="ck-sec"><button id="ckBack">← Back</button><button id="ckShift" hidden>Running late?</button><button id="ckOven" hidden>Oven &amp; toppings</button></div></div>
   <div class="ck-sheet" id="ckSheet" hidden><div class="ck-sh-in"><div class="ck-sh-hd"><div><span class="ck-sh-k" id="ckShK">How to</span><b id="ckShT"></b></div><button class="x" id="ckShX" aria-label="Close">✕</button></div><div id="ckShB"></div><div class="ck-tools"><button class="ck-tool ck-voice" id="ckVoice" aria-label="Read aloud" aria-pressed="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="vw" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="vx" d="M17 9l5 6M22 9l-5 6"/></svg><span>Read aloud</span></button><button class="ck-tool ck-mic" id="ckMic" aria-label="Voice command Next" aria-pressed="false" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span>Voice command “Next”</span></button></div></div></div>
@@ -2341,12 +2368,12 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
   </svg>
 </template>
 <template id="fig-shape">
-  <svg class="fig" viewBox="0 0 300 140" role="img" aria-label="Press the dough from the centre outwards, leave the rim">
+  <svg class="fig" viewBox="0 0 300 140" role="img" aria-label="Press the dough from the center outwards, leave the rim">
     <circle cx="150" cy="70" r="64" class="s-crust"/><circle cx="150" cy="70" r="50" class="s-dough"/>
     <g class="st-acc" stroke-width="3" stroke-linecap="round" fill="none"><path d="M150 70h32M174 64l8 6-8 6M150 70h-32M126 64l-8 6 8 6M150 70v-30M144 46l6-8 6 8M150 70v30M144 94l6 8 6-8"/></g>
     <path d="M206 70h48" class="st-muted" stroke-width="1.5"/>
     <text x="258" y="62" font-size="11" font-weight="700" class="s-ink">Rim</text><text x="258" y="76" font-size="10" class="s-muted">1–2 cm</text><text x="258" y="89" font-size="10" class="s-muted">untouched</text>
-    <text x="4" y="66" font-size="11" font-weight="700" class="s-ink">from the</text><text x="4" y="80" font-size="11" font-weight="700" class="s-ink">centre out</text>
+    <text x="4" y="66" font-size="11" font-weight="700" class="s-ink">from the</text><text x="4" y="80" font-size="11" font-weight="700" class="s-ink">center out</text>
   </svg>
 </template>
 
@@ -2366,7 +2393,20 @@ const KEY='tempasto-v1';
 const SUPPORT_URL=''; // Link zum Unterstützen (PayPal.me, Ko-fi …). Leer = ausgeblendet.
 const DEF={n:6,w:300,h:48,hy:65,k:5,yt:'f',bake:null,view:'rezept',ckKnead:null,ckYeast:null,cook:null};
 let S=Object.assign({},DEF);
+// Gespeicherten oder geladenen Zustand prüfen und bereinigen: falsche Typen fallen auf Standardwerte zurück, Namen werden entschärft
+function normS(X){const cn=t=>String(t||'').replace(/[<>&"`]/g,'').replace(/\s+/g,' ').trim().slice(0,28),num=(v,a,b,d)=>{v=+v;return isFinite(v)&&v>=a&&v<=b?v:d;},obj=v=>v&&typeof v==='object'&&!Array.isArray(v)?v:{},dt=v=>v&&!isNaN(new Date(v))?v:null;
+  const R=Object.assign({},DEF,obj(X));
+  R.n=Math.round(num(R.n,1,18,6));R.w=[250,280,300].includes(+R.w)?+R.w:300;R.h=[24,48,72].includes(+R.h)?+R.h:48;R.hy=num(R.hy,58,70,65);R.k=num(R.k,2,9,5);R.yt=R.yt==='t'?'t':'f';R.bake=dt(R.bake);
+  R.pz=Object.fromEntries(Object.entries(obj(R.pz)).map(([k,v])=>[cn(k),Math.round(num(v,0,18,0))]).filter(([k,v])=>k&&v>0));
+  R.own=(Array.isArray(R.own)?R.own:[]).filter(o=>o&&typeof o==='object').map(o=>({id:/^own[a-z0-9]{1,16}$/i.test(String(o.id))?String(o.id):'',n:cn(o.n)||'Your own pizza',rossa:!!o.rossa,ing:(Array.isArray(o.ing)?o.ing:[]).filter(x=>Array.isArray(x)&&x[0]).slice(0,20).map(x=>[cn(x[0]),num(x[1],0,999,30),cn(x[2]||'g')])})).filter(o=>o.id);
+  R.tpl=(Array.isArray(R.tpl)?R.tpl:[]).filter(t=>t&&typeof t==='object').map(t=>Object.assign({},t,{name:cn(t.name)||'Vorlage',wd:Math.round(num(t.wd,0,6,5)),hh:Math.round(num(t.hh,0,23,19)),mm:Math.round(num(t.mm,0,59,0)),n:Math.round(num(t.n,1,18,6)),h:[24,48,72].includes(+t.h)?+t.h:48,pz:obj(t.pz)})).slice(0,20);
+  R.shop=obj(R.shop);R.pantry=obj(R.pantry);if(R.mixOwn&&!Array.isArray(R.mixOwn))R.mixOwn=[];if(Array.isArray(R.mixOwn))R.mixOwn=R.mixOwn.slice(0,3).map(x=>({n:cn(x&&x.n),p:num(x&&x.p,0,100,0)}));
+  if(R.cook&&!(typeof R.cook==='object'&&dt(R.cook.start)&&R.cook.snap&&typeof R.cook.snap==='object'))R.cook=null;
+  if(R.cook){R.cook.done=obj(R.cook.done);R.cook.alerted=obj(R.cook.alerted);R.cook.ack=obj(R.cook.ack);R.cook.oven=obj(R.cook.oven);}
+  if(typeof R.view!=='string')R.view='rezept';
+  return R;}
 try{let r=localStorage.getItem(KEY)||localStorage.getItem('impasto-v4');if(!r){const o=localStorage.getItem('impasto-v3');if(o){const p=JSON.parse(o);['n','w','h','hy','k','bake'].forEach(k=>{if(p[k]!=null)S[k]=p[k];});}}else Object.assign(S,JSON.parse(r));}catch(e){}
+try{S=normS(S);}catch(e){S=Object.assign({},DEF);}
 if(![24,48,72].includes(S.h))S.h=48;
 {const mg=pz=>{if(!pz)return;[['funghi2','funghi'],['contadina','ortolana']].forEach(([a,b])=>{if(pz[a]){pz[b]=(pz[b]||0)+pz[a];delete pz[a];}});};mg(S.pz);(S.tpl||[]).forEach(t=>mg(t.pz));}
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}if(window.TEMPASTO_NATIVE)TEMPASTO_NATIVE.plan(notifEvents);};
@@ -2377,9 +2417,9 @@ function notifEvents(){const ev=[],now=Date.now()+30000;
   return ev;}
 
 const SALT=2.8, OIL=0, ROOM=21, MIX={cuoco:1000/2300,nuvola:1000/2300,sem:300/2300};
-const MIXES={tp:{n:'Tempasto mix',d:'Caputo Cuoco, Nuvola and Semola 1,000 : 1,000 : 300',f:[{k:'cuoco',n:'Caputo Cuoco',p:1000/2300,c:'#D3302A',sub:'or wheat flour Tipo 00'},{k:'nuvola',n:'Caputo Nuvola',p:1000/2300,c:'#E58FA8',sub:'or wheat flour Tipo 0'},{k:'semola',n:'Caputo Semola',p:300/2300,c:'#E2B227',sub:'or durum wheat semolina'}]},
+const MIXES={tp:{n:'Tempasto mix',d:'Caputo Cuoco, Nuvola and Semola 1,000 : 1,000 : 300',f:[{k:'cuoco',n:'Caputo Cuoco',p:1000/2300,c:'#D3302A',sub:'or wheat flour Tipo 00'},{k:'nuvola',n:'Caputo Nuvola',p:1000/2300,c:'#E58FA8',sub:'or wheat flour Tipo 0'},{k:'semola',n:'Caputo Semola',p:300/2300,c:'#E2B227',sub:'or fine durum semolina'}]},
   kl:{n:'Classic',d:'100 % wheat flour Tipo 00',f:[{k:'f00',n:'Wheat flour Tipo 00',p:1,c:'#D3302A',sub:'e.g. Caputo Pizzeria'}]},
-  vk:{n:'With wholemeal',d:'80 % Tipo 00, 20 % wholemeal wheat flour',f:[{k:'f00',n:'Wheat flour Tipo 00',p:.8,c:'#D3302A',sub:'e.g. Caputo Pizzeria'},{k:'fvk',n:'Wholemeal wheat flour',p:.2,c:'#9B6B3E',sub:'finely ground'}]}};
+  vk:{n:'With whole wheat',d:'80 % Tipo 00, 20 % whole wheat wheat flour',f:[{k:'f00',n:'Wheat flour Tipo 00',p:.8,c:'#D3302A',sub:'e.g. Caputo Pizzeria'},{k:'fvk',n:'Whole wheat wheat flour',p:.2,c:'#9B6B3E',sub:'finely ground'}]}};
 function flours(p){const m=(p&&p.mix)||'tp';if(m==='own'){const L=((p&&p.mixOwn)||[]).filter(x=>x&&x.n&&+x.p>0);const sum=L.reduce((a,x)=>a+ +x.p,0);if(L.length&&sum>0)return L.map((x,i)=>({k:/semola|hartweizen/i.test(x.n)?'semola':'fo'+i,n:x.n,p:x.p/sum,c:['#D3302A','#E58FA8','#E2B227'][i],sub:''}));}return (MIXES[m]||MIXES.tp).f;}
 const H=3600e3, M=60e3, act=T=>Math.pow(2,(T-21)/6), YC=5.6, YP=1.3;
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
@@ -2396,7 +2436,7 @@ function schedule(p,opt){
   const fridgeIn=new Date(+T0+(rest+rtb)*H);
   let portion=new Date(+fridgeIn+Bf*H), shifted=0;
   if(!opt.noShift&&isNight(portion)){
-    const [na,nb]=nightW();let st=atHour(portion,na,0);if(st>portion)st=atHour(portion,na,-1);const c=[st,new Date(+st+((nb-na+24)%24)*H)];
+    const [na,nb]=nightW();let st=atHour(portion,na,0);if(st>portion)st=atHour(portion,na,-1);const c=[new Date(+st-15*M),new Date(+st+((nb-na+24)%24)*H)];
     let best=null;
     c.forEach(x=>{const bf=(x-fridgeIn)/H;if(bf>=3&&F-bf>=6){const d=Math.abs(x-portion);if(!best||d<best.d)best={x,d,bf};}});
     if(best){shifted=(best.x-portion)/H;portion=best.x;Bf=best.bf;}
@@ -2411,6 +2451,12 @@ function readyHours(p,yPct,ov){
   for(let h=6;h<=150;h+=0.25){if(schedule(Object.assign({},base,{h,bake:new Date(+k0+h*H)}),{noShift:true,accl:ov.accl}).eh>=need)return h;}
   return 150;
 }
+// Wann ist der Teig reif? Gärung entlang des echten Plans ab dem Kneten aufsummieren.
+function readyAlong(p,target,yPct,ov){ov=ov||{};const need=Math.pow(YC/yPct,1/YP),hh=Math.max(4,target),k0=new Date('2026-01-05T12:00');
+  const pp=Object.assign({},p,{h:hh,bake:new Date(+k0+hh*H)},ov.k!=null?{k:ov.k}:{}),sc=schedule(pp,{noShift:true,accl:ov.accl}),R0=pp.room||21,K=pp.k,mid=(R0+K)/2;
+  const kg=pp.n*pp.w/1000,rest=0.5,cool=Math.min(sc.Bf,clamp(1.5+0.8*kg,2,6)),wA=Math.min(1.5,sc.A);
+  const ph=[[rest+sc.rtb,act(R0)],[cool,act(mid)],[sc.Bf-cool+sc.Bb,act(K)],[wA,act(mid)],[sc.A-wA,act(R0)],[999,act(R0)]];
+  let e=0,t=0;for(const [d,r] of ph){if(d<=0)continue;if(e+d*r>=need)return t+(need-e)/r;e+=d*r;t+=d;}return t;}
 const PFS={poolish:{n:'Poolish',share:.3,hy:1,y:.001,h:16,lo:12,hi:20,w:'lukewarm',where:'somewhere cool, 18–20 °C'},biga:{n:'Biga',share:.4,hy:.5,y:.005,h:18,lo:14,hi:22,w:'cold',where:'cool, at 16–18 °C'}};
 function recipe(p,yPct){
   const total=p.n*p.w*(1+(p.wz||0)/100), F=total/(1+p.hy/100+SALT/100+OIL/100+yPct/100);
@@ -2418,12 +2464,15 @@ function recipe(p,yPct){
   const R={total,F,fl,cuoco:F*MIX.cuoco,nuvola:F*MIX.nuvola,sem:F*MIX.sem,water:F*p.hy/100,wA:F*p.hy/100*0.9,wY:F*p.hy/100*0.1,yeast:F*yPct/100,salt:F*SALT/100,oil:F*OIL/100};
   R.mfl=fl;R.yMain=R.yeast;
   const q=PFS[p.pf];if(q){const pF=F*q.share;R.pf={k:p.pf,n:q.n,w:q.w,where:q.where,F:pF,W:pF*q.hy,Y:pF*q.y,fl:fl.map(f=>({n:f.n,c:f.c,g:f.g*q.share}))};
-    R.mfl=fl.map(f=>Object.assign({},f,{g:f.g*(1-q.share)}));R.yMain=R.yeast*(1-q.share);R.yeast=R.yMain+R.pf.Y;R.wA=R.water-R.pf.W-R.wY;}
+    R.mfl=fl.map(f=>Object.assign({},f,{g:f.g*(1-q.share)}));R.yMain=R.yeast*(1-q.share)*(p.pf==='biga'?.25:.5);R.yeast=R.yMain+R.pf.Y;R.wA=R.water-R.pf.W-R.wY;}
   return R;
 }
 function bakeDur(p){const o=ovenP();return Math.max(10,Math.ceil(p.n*(o.bs+60)/60/5)*5)*M;}
 function planOf(p){const p2=Object.assign({},p,{bake:new Date(+new Date(p.bake)-bakeDur(p)).toISOString()});const sc=schedule(p2),y=yeastPct(sc.eh);
-  const q=PFS[p.pf];if(q){let best=q.h;for(const d of [0,.5,-.5,1,-1,1.5,-1.5,2,-2,2.5,-2.5,3,-3,3.5,-3.5,4,-4,4.5,-4.5,5,-5,5.5,-5.5,6,-6]){const hh=q.h+d;if(hh<q.lo||hh>q.hi)continue;if(!isNight(new Date(+sc.start-hh*H))){best=hh;break;}}sc.mixAt=sc.start;sc.pfH=best;sc.start=new Date(+sc.start-best*H);}
+  const q=PFS[p.pf];if(q){let best=q.h;for(const d of [0,.5,-.5,1,-1,1.5,-1.5,2,-2,2.5,-2.5,3,-3,3.5,-3.5,4,-4,4.5,-4.5,5,-5,5.5,-5.5,6,-6]){const hh=q.h+d;if(hh<q.lo||hh>q.hi)continue;if(!isNight(new Date(+sc.start-hh*H))){best=hh;break;}}
+    // Termin knapp: Vorteig kürzer reifen lassen, solange es reicht (nur beim Planen, nicht im laufenden Teig)
+    if(!S.cook&&+sc.start-best*H<Date.now()){const av=Math.floor((+sc.start-Date.now())/H*2)/2;if(av>=q.lo)best=av;}
+    sc.mixAt=sc.start;sc.pfH=best;sc.start=new Date(+sc.start-best*H);}
   return {p,sc,y,R:recipe(p,y)};}
 const YDRY=3, DIA={250:28,280:30,300:32};
 const OVENS={gas:{n:'Gas pizza oven',k:'Gas',t:'450–480 °C',bs:90,pre:45,ut:'pizza stone'},holz:{n:'Wood-fired oven',k:'Wood',t:'450–480 °C',bs:90,pre:60,ut:'pizza stone'},elek:{n:'Electric pizza oven',k:'Electric',t:'400–450 °C',bs:120,pre:45,ut:'pizza stone'},home:{n:'Home oven with stone or steel',k:'Stone',t:'250–300 °C',bs:360,pre:60,ut:'stone/steel, highest setting'},blech:{n:'Home oven with tray',k:'Tray',t:'250–280 °C',bs:540,pre:30,ut:'tray, highest setting'}};
@@ -2437,6 +2486,8 @@ function yAmt(R){return ytNow()==='t'?R.yeast/YDRY:R.yeast;}
 function yAmtM(R){return ytNow()==='t'?R.yMain/YDRY:R.yMain;}
 function yAmtP(R){return R.pf?(ytNow()==='t'?R.pf.Y/YDRY:R.pf.Y):0;}
 const yg=v=>nf(v,v<1?2:1);
+// Kleine Hefemenge ohne Feinwaage: ganze Gramm in so viel Wasser lösen, dass genau das Hefewasser die richtige Menge enthält
+function yTrick(y,w){if(!(y>0)||y>=3||Math.abs(y-Math.round(y))<0.05)return null;const G=Math.max(1,Math.ceil(y-0.05)),D=Math.round(w*G/y/5)*5;return {G,D,w:Math.round(w)};}
 function cookBegun(){return !!(S.cook&&S.cook.done&&Object.keys(S.cook.done).length);}
 function yName(){return ytNow()==='t'?'Dry yeast':'Fresh yeast';}
 // laufender Teig, ggf. mit verschobenem Backtermin
@@ -2444,25 +2495,28 @@ function cookP(){
   const P2=planOf(S.cook.snap), sh=S.cook.shift||0; if(!sh)return P2;
   const sc=Object.assign({},P2.sc), d=sh*H;
   sc.B=new Date(+sc.B+d); sc.accl=new Date(+sc.accl+d);
+  // Noch nicht angesetzt: der ganze Plan wandert mit, auch das Portionieren
+  if(!(S.cook.done&&S.cook.done.mix)){sc.portion=new Date(+sc.portion+d);if(sc.mixAt)sc.mixAt=new Date(+sc.mixAt+d);}
   const lim=+sc.accl-3*H; if(+sc.portion>lim)sc.portion=new Date(lim);
   return Object.assign({},P2,{sc,p:Object.assign({},P2.p,{bake:isoLocal(sc.B)})});
 }
 
-const nf=(v,d=0)=>v.toLocaleString('en-GB',{minimumFractionDigits:d,maximumFractionDigits:d});
+const nf=(v,d=0)=>v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});
 const g=v=>v<10?nf(v,1):nf(Math.round(v));
 /* Einheiten: Anzeige in oz/in und °F, umgerechnet direkt im Text */
 const TPDEC=window.TP_LANG==='en'?'.':',',TPTHO=window.TP_LANG==='en'?',':'.';
 const tpNum=t=>parseFloat(String(t).split(TPTHO).join('').replace(TPDEC,'.'));
-const tpFmt=(v,d)=>{const x=Math.round(v*Math.pow(10,d))/Math.pow(10,d);return x.toLocaleString(window.TP_LANG==='en'?'en-US':'en-GB',{maximumFractionDigits:d});};
+const tpFmt=(v,d)=>{const x=Math.round(v*Math.pow(10,d))/Math.pow(10,d);return x.toLocaleString(window.TP_LANG==='en'?'en-US':'en-US',{maximumFractionDigits:d});};
 const NUMRE='(\\d{1,3}(?:['+TPTHO+']\\d{3})+(?:['+TPDEC+']\\d+)?|\\d+(?:['+TPDEC+']\\d+)?)';
 const RE_W=new RegExp(NUMRE+'(\\s?[–-]\u2060?\\s?'+NUMRE+')?\\s?(kg|g|ml|cm)(?![A-Za-zÄÖÜäöüß])','g');
 const RE_T=new RegExp('(-?'+NUMRE+')(\\s?[–-]\u2060?\\s?'+NUMRE+')?\\s?°\\s?C?(?![A-Za-zF])','g');
 function tpU(t){if(typeof t!=='string')return t;const W=S.uw==='oz',F=S.utemp==='f';if(!W&&!F)return t;
  if(W)t=t.replace(RE_W,(m,a,r,b,u)=>{const f=u==='kg'?2.20462:u==='g'?1/28.3495:u==='ml'?1/29.5735:1/2.54,nu=u==='kg'?'lb':u==='g'?'oz':u==='ml'?'fl oz':'in';
-   const c=v=>{const x=tpNum(v)*f;return tpFmt(x,u==='cm'?(x<2?1:0):x<1?2:x<100?1:0);};return c(a)+(b?'–'+c(b):'')+' '+nu;});
- if(F)t=t.replace(RE_T,(m,a,x1,r,b)=>{const c=v=>tpFmt(tpNum(v)*9/5+32,0);return c(a)+(b?'–'+c(b):'')+(/°\s?C/.test(m)?' °F':'°F');});
+   const c=v=>{const x=tpNum(v)*f;return tpFmt(x,u==='cm'?(x<2?1:0):x<1?2:x<100?1:0);};const sm=u==='g'&&!b&&!tpNoG&&tpNum(a)<10?` (${a} ${window.TP_LANG==='en'?'grams':'Gramm'})`:'';return c(a)+(b?'–'+c(b):'')+' '+nu+sm;});
+ if(F)t=t.replace(RE_T,(m,a,x1,r,b)=>{const c=v=>{const x=tpNum(v)*9/5+32;return tpFmt(x>=200?Math.round(x/25)*25:x,0);};return c(a)+(b?'–'+c(b):'')+(/°\s?C/.test(m)?' °F':'°F');});
  return t;}
-function tpUnode(n){if(!n||n.nodeType!==3)return;const p=n.parentElement;if(!p||p.closest('script,style,textarea'))return;const v=n.nodeValue,w=tpU(v);if(w!==v)n.nodeValue=w;}
+let tpNoG=false;
+function tpUnode(n){if(!n||n.nodeType!==3)return;const p=n.parentElement;if(!p||p.closest('script,style,textarea'))return;const v=n.nodeValue;tpNoG=!!p.closest('.q,.kr-n,.chip,.hw-need b,.ck-li b');const w=tpU(v);tpNoG=false;if(w!==v)n.nodeValue=w;}
 function tpUnitsAll(){if(S.uw!=='oz'&&S.utemp!=='f')return;const tw=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while(n=tw.nextNode())tpUnode(n);
  document.querySelectorAll('.kr-n+.kr-u').forEach(u=>{const m=u.textContent.trim();if(/^(g|kg|ml|°C)$/.test(m)){const b=u.previousElementSibling,r=tpU(b.textContent.trim()+' '+m);const k=r.lastIndexOf(' ');if(r!==b.textContent.trim()+' '+m){b.textContent=r.slice(0,k);u.textContent=r.slice(k+1);}}});}
 new MutationObserver(ms=>{if(S.uw!=='oz'&&S.utemp!=='f')return;let el=false;for(const m of ms){if(m.type==='characterData')tpUnode(m.target);else m.addedNodes.forEach(x=>{if(x.nodeType===3)tpUnode(x);else if(x.nodeType===1){el=true;const tw=document.createTreeWalker(x,NodeFilter.SHOW_TEXT);let n;while(n=tw.nextNode())tpUnode(n);}});}
@@ -2470,17 +2524,17 @@ new MutationObserver(ms=>{if(S.uw!=='oz'&&S.utemp!=='f')return;let el=false;for(
 }).observe(document.documentElement,{subtree:true,childList:true,characterData:true});
 const DAY=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], DAYL=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 const pad=n=>String(n).padStart(2,'0');
-const tm=d=>pad(d.getHours())+':'+pad(d.getMinutes());
+const tm=d=>{const h=d.getHours();return (h%12||12)+':'+pad(d.getMinutes())+' '+(h<12?'AM':'PM');};
 const dt=d=>DAY[d.getDay()]+' '+d.getDate()+'.'+(d.getMonth()+1)+'.';
 function tnDay(d){const r=rel(d);return r==='Today'?'today':r==='Tomorrow'?'tomorrow':DAY[d.getDay()];}
-function tnCd(ms){const m=Math.round(ms/6e4);return m<60?`in ${m} min`:m<48*60?`in ${Math.round(m/60)} h`:`in ${Math.round(m/1440)} days`;}
+function tnCd(ms){const m=Math.round(ms/6e4);if(m<60)return `in ${m} min`;if(m<24*60)return `in ${Math.round(m/60)} h`;const d=Math.floor(m/1440),h=Math.round(m%1440/60);return `in ${d} ${d>1?'days':'day'}${h?' '+h+' h':''}`;}
 function rel(d){const a=new Date();a.setHours(0,0,0,0);const b=new Date(d);b.setHours(0,0,0,0);const x=Math.round((b-a)/864e5);return x===0?'Today':x===1?'Tomorrow':x===-1?'Yesterday':DAYL[d.getDay()];}
 const at=d=>{const r=rel(d);return `${r==='Today'?'today':r==='Tomorrow'?'tomorrow':r==='Yesterday'?'yesterday':DAY[d.getDay()]} ${tm(d)}`;};
 function dur(h){const t=Math.round(h*60),hh=Math.floor(t/60),mm=t%60;return (hh?hh+' h':'')+(mm?(hh?' ':'')+mm+' min':'')||'0 min';}
-function cdLong(ms){const m=Math.max(0,Math.ceil(ms/M)),d=Math.floor(m/1440),h=Math.floor(m%1440/60),mi=m%60;return d?`${d} T ${h} h`:h?`${h} h ${mi} min`:`${mi} min`;}
+function cdLong(ms){const m=Math.max(0,Math.ceil(ms/M)),d=Math.floor(m/1440),h=Math.floor(m%1440/60),mi=m%60;return d?`${d} ${d>1?'days':'day'} ${h} h`:h?`${h} h ${mi} min`:`${mi} min`;}
 function cdShort(ms){const s=Math.max(0,Math.ceil(ms/1000));if(s>=86400){const d=Math.floor(s/86400),hh=Math.floor(s%86400/3600);return `${d} d ${hh} h`;}const h=Math.floor(s/3600),m=Math.floor(s%3600/60),x=s%60;return h?`${h}:${pad(m)}:${pad(x)}`:`${pad(m)}:${pad(x)}`;}
 const isoDate=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
-const isoLocal=d=>isoDate(d)+'T'+tm(d);
+const isoLocal=d=>isoDate(d)+'T'+pad(d.getHours())+':'+pad(d.getMinutes());
 function defaultBake(h){const d=new Date(Date.now()+(h+3)*H);const x=new Date(d);x.setHours(19,0,0,0);if(x<d)x.setDate(x.getDate()+1);return isoLocal(x);}
 if(!S.bake)S.bake=defaultBake(S.h);
 const tpl=id=>$(id).innerHTML;
@@ -2493,10 +2547,10 @@ function buildSteps(P){
     acts:[{t:`Start the ${pf.n}`,l:'Preferment',a:pf.n,u:pf.where,li:[...pf.fl.map(f=>[f.n,`${g(f.g)} g`]),[`Water, ${pf.w}`,`${g(pf.W)} g`],[yName(),`${yg(yAmtP(R))} g`]],
       d:pf.k==='biga'?'Dissolve the yeast in the water, then mix with the flour just until crumbly. Don’t knead. Cover.':'Dissolve the yeast in the water, stir in the flour until smooth. Cover.'}]});
   out.push({id:'mix',t:'Mix the dough',...(pf?{abs:sc.mixAt,min:PFS[pf.k].lo*60}:{gap:0}),wait:pf?`${pf.n} ripening`:undefined,
-    acts:[{t:'Mix the dough',l:kmNow()==='h'?'By hand':'Machine',a:kmNow()==='h'?'2–3 Min':'Speed 1',u:kmNow()==='h'?'with a spoon':'2–3 minutes',li:[...(pf?[[pf.n,`${g(pf.F+pf.W)} g`]]:[]),...R.mfl.map(f=>[f.n,`${g(f.g)} g`]),['Water, cold',`${g(R.wA)} g`]],
+    acts:[{t:'Mix the dough',l:kmNow()==='h'?'By hand':'Mixer',a:kmNow()==='h'?'2–3 Min':'Speed 1',u:kmNow()==='h'?'with a spoon':'2–3 minutes',li:[...(pf?[[pf.n,`${g(pf.F+pf.W)} g`]]:[]),...R.mfl.map(f=>[f.n,`${g(f.g)} g`]),['Water, cold',`${g(R.wA)} g`]],
       d:pf?`${pf.k==='biga'?'Tear the '+pf.n+' into pieces and dissolve':'Dissolve the '+pf.n} in the water, add the flour, mix, cover. Keep back ${g(R.wY)} g of water for the yeast.`:`Mix flour and water, cover. Keep back ${g(R.wY)} g of water for the yeast.`}]});
-  out.push({id:'knead',t:'Knead',gap:30,wait:'Autolyse running',
-    acts:[{t:'Knead',l:kmNow()==='h'?'By hand':'Machine',a:kmNow()==='h'?'10–15 Min':'Speed 1',u:kmNow()==='h'?'kneten':'about 10 minutes',li:[[`Yeast in ${g(R.wY)} g water`,`${yg(yAmtM(R))} g`],['then salt',`${g(R.salt)} g`]],d:''}]});
+  out.push({id:'knead',t:'Knead',gap:30,wait:pf?'Dough rests, covered':'Autolyse running',
+    acts:[{t:'Knead',l:kmNow()==='h'?'By hand':'Mixer',a:kmNow()==='h'?'10–15 Min':'Speed 1',u:kmNow()==='h'?'kneten':'about 10 minutes',li:[[`Yeast in ${g(R.wY)} g water`,`${yg(yAmtM(R))} g`],['then salt',`${g(R.salt)} g`]],d:''}]});
   if(sc.rtb){
     out.push({id:'fold',t:'Fold',gap:30,wait:'Dough rests, covered',acts:[{t:'Fold',d:'Fold to the middle, turn over, leave covered.'}]});
     out.push({id:'fridge',t:'Off to the fridge',gap:60,wait:'Bulk ferment at room temperature',acts:[{t:'Into the fridge',d:'In one piece into the oiled box, lid on.'}]});
@@ -2504,7 +2558,7 @@ function buildSteps(P){
   out.push({id:'portion',t:'Divide',abs:sc.portion,min:180,wait:'Bulk ferment in the fridge',cold:true,acts:[{t:'Divide',a:`${p.n} × ${p.w} g`,u:'Dough balls',d:'Divide cold, shape into tight balls, back into the fridge in boxes.'}]});
   out.push({id:'out',t:'Out of the fridge',abs:sc.accl,min:60,wait:'Dough balls in the fridge',cold:true,acts:[{t:'Out of the fridge',a:dur(sc.A),u:'warm up',d:'Leave the boxes closed.'}]});
   out.push({id:'oven',t:'Oven on',abs:new Date(+sc.B-ovenP().pre*M),min:20,wait:'Let the dough balls warm up',acts:[{t:'Oven on',a:ovenP().t.replace(' °C','°'),u:ovenP().ut,d:'Semola on the counter and peel, toppings ready.'}]});
-  out.push({id:'bake',t:'Bake',abs:sc.B,min:ovenP().pre,wait:'Oven heating up',acts:[{t:'Bake',a:bsTxt(),u:'per pizza',d:'Do the poke test. Never roll: press from the centre outwards.'}]});
+  out.push({id:'bake',t:'Bake',abs:sc.B,min:ovenP().pre,wait:'Oven heating up',acts:[{t:'Bake',a:bsTxt(),u:'per pizza',d:'Do the poke test. Never roll: press from the center outwards. Use “Oven & toppings” to start each pizza’s timer.'}]});
   return out;
 }
 // Fälligkeiten berechnen
@@ -2556,14 +2610,14 @@ const SHIFTS=[-3,-1,0,1,2,3,6,12,24];
 function renderShift(){
   if(!S.cook)return;const base=planOf(S.cook.snap), now=Date.now(), cur=S.cook.shift||0, dn=S.cook.done, out=!!dn.out, pre=!dn.mix;
   const ok=v=>{if(v===0)return true;const B=new Date(+base.sc.B+v*H),hr=B.getHours();if(hr<11||hr>=23)return false;
-    if(pre)return +base.sc.start+v*H>now-5*M;if(out)return v>=-1&&v<=2&&+B>now+30*M;return +base.sc.accl+v*H>now+10*M;};
+    if(pre)return +base.sc.start+v*H>now-5*M;if(out)return v>=-1&&v<=2&&+B>now+30*M;if(v>Math.max(6,S.cook.snap.h*.35))return false;return +base.sc.accl+v*H>now+10*M;};
   const E=new Date(S.cook.snap.bake);
   const tile=v=>{const B=new Date(+E+v*H);return `<button class="shift-o" data-sh="${v}" aria-pressed="${v===cur}"${ok(v)?'':' disabled'}><b>${v===0?'as planned':(v>0?'+':'−')+Math.abs(v)+' h'}</b><span>Dinner ${DAY[B.getDay()]} ${tm(B)}</span></button>`;};
   let h='<div class="sh-k">Eat later</div><div class="shift-l">'+[0,1,2,3,6,12,24].map(tile).join('')+'</div>';
   if(pre){const late=Math.max(0,+new Date(S.cook.start)-(+base.sc.start+cur*H));h+='<div class="sh-k">Start later, same dinner time</div><div class="shift-l">'+[0.5,1,2,3].map(v=>`<button class="shift-o" data-late="${v}" aria-pressed="${Math.abs(late-v*H)<60000}"><b>+${v<1?'30 min':v+' h'}</b><span>Start ${tm(new Date(+base.sc.start+cur*H+v*H))}</span></button>`).join('')+'</div>';}
   h+='<div class="sh-k">Eat earlier</div><div class="shift-l">'+[-1,-3].map(tile).join('')+'</div>';
   $('shiftL').innerHTML=h;
-  $('shiftTxt').textContent=pre?'“Eat later” moves everything. “Start later” keeps dinner where it is, so the dough gets a little less time: do the poke test before baking.':out?'The dough balls are already out. At room temperature they can take 1–2 hours more at most, otherwise they over-proof. Do the poke test first.':'The rest of the plan and all reminders move with it. The dough stays in the fridge a little shorter or longer. Up to 3 h earlier or 24 h later works fine.';
+  $('shiftTxt').textContent=pre?'“Eat later” moves everything. “Start later” keeps dinner where it is, so the dough gets a little less time: do the poke test before baking.':out?'The dough balls are already out. At room temperature they can take 1–2 hours more at most, otherwise they over-proof. Do the poke test first.':'The rest of the plan and all reminders move with it; the dough stays in the fridge a little shorter or longer. Grayed-out options are too early or too late in the day, or too much for the dough.';
 }
 function setLate(v){if(!S.cook||cookBegun())return;const base=planOf(S.cook.snap),cur=S.cook.shift||0;S.cook.start=new Date(+base.sc.start+cur*H+v*H).toISOString();delete S.cook.alerted.mix;if(S.cook.ack)delete S.cook.ack.mix;if(S.cook.snz)delete S.cook.snz.mix;save();render();renderShift();if(cookOpen)renderCook();toast('Mix the dough at '+tm(new Date(S.cook.start))+', dinner stays');}
 function setShift(v){
@@ -2581,7 +2635,7 @@ function fitSatz(){const e=$('stSatz');if(!e||!e.offsetParent)return;const W=e.p
  e.style.fontSize=best.toFixed(1)+'px';}
 addEventListener('resize',()=>requestAnimationFrame(fitSatz));
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>fitSatz());
-function setView(v){setTimeout(fitSatz,0);if(v!=='rezept'&&cookOpen)closeCook(true);const pv=prevV;setTimeout(abNextUI,0);setTimeout(()=>dropDot(v),30);prevV=v;setTimeout(()=>glideBrand(v,pv),0);if(v!=='hilfe')lastView=v;S.view=v;const tab=v==='ablauf'?'rezept':['consigli','anleitung','impressum','storia','hilfe'].includes(v)?'mehr':v;document.querySelectorAll('.nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===tab));VIEWS.forEach(x=>$('v-'+x).hidden=x!==v);window.scrollTo(0,0);if(v==='pizzen')setTimeout(()=>{try{railUpd();clampTops();}catch(e){}},30);if(v==='ablauf')setTimeout(fitPlan,20);save();if(v==='rezept'&&S.cook&&!cookOpen&&booted)openCook();}
+function setView(v){setTimeout(fitSatz,0);{const t=document.querySelector('.toast');if(t&&!t.querySelector('.t-undo'))t.hidden=true;}if(v==='hilfe')try{renderSauce();}catch(e){}if(v!=='rezept'&&cookOpen)closeCook(true);const pv=prevV;setTimeout(abNextUI,0);setTimeout(()=>dropDot(v),30);prevV=v;setTimeout(()=>glideBrand(v,pv),0);if(v!=='hilfe')lastView=v;S.view=v;const tab=v==='ablauf'?'rezept':['consigli','anleitung','impressum','storia','hilfe'].includes(v)?'mehr':v;document.querySelectorAll('.nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===tab));VIEWS.forEach(x=>$('v-'+x).hidden=x!==v);window.scrollTo(0,0);if(v==='pizzen')setTimeout(()=>{try{railUpd();clampTops();}catch(e){}},30);if(v==='ablauf')setTimeout(fitPlan,20);save();if(v==='rezept'&&S.cook&&!cookOpen&&booted)openCook();}
 function slicesSVG(N,done,cur,size,R,r,top){
   const c=size/2;let h=`<svg viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle cx="${c}" cy="${c}" r="${R+4}" fill="${top?'#1F1C19':'rgba(0,0,0,.25)'}"/>`;
   const gap=N>1?0.035:0;
@@ -2606,6 +2660,7 @@ function autoPick(){
   for(let i=0;i<10;i++){const x=withTime(new Date(+t0+i*864e5),19,0);if(feasible(x))return x;}
   return new Date(Date.now()+(S.h+2)*H);
 }
+$('whenTip')&&($('whenTip').onclick=e=>{const b=e.target.closest('[data-alt-h]');if(!b)return;S.h=+b.dataset.altH;save();render();toast(`Rise ${S.h} h`);});
 function renderWhen(){
   let b=new Date(S.bake);
   if(!S.cook&&!feasible(b)){b=autoPick();S.bake=isoLocal(b);}
@@ -2616,12 +2671,16 @@ function renderWhen(){
     const ok=SLOTS.filter(([,h])=>feasible(withTime(d,h,0)));
     const any=ok.length||lateFeasible(d);
     const sel=isoDate(d)===isoDate(b);
-    const sub=!any?'too early':ok.length===SLOTS.length?(i===0?'today':i===1?'tomorrow':['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]):ok.length?`from ${ok[0][1]}:00`:'late evening';
+    const sub=!any?'too early':ok.length===SLOTS.length?(i===0?'today':i===1?'tomorrow':['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]):ok.length?`from ${ok[0][1]%12||12} ${ok[0][1]<12?'AM':'PM'}`:'late evening';
     html+=`<button class="day" data-t="${+d}" aria-pressed="${sel}"${any?'':' aria-disabled="true"'}><span class="wd">${DAY[d.getDay()]}</span><span class="dn">${d.getDate()}</span><span class="sub">${sub}</span></button>`;
   }
   $('days').innerHTML=html;
+  // Gesperrte Tage erklären und eine kürzere Gehzeit anbieten
+  {const blocked=[];for(let i=0;i<8;i++){const d=new Date(+t0+i*864e5);d.setHours(12);if(!(SLOTS.some(([,h])=>feasible(withTime(d,h,0)))||lateFeasible(d)))blocked.push(d);}
+   let alt=null;if(blocked.length&&!S.cook){const h0=S.h;for(const h of [48,24].filter(x=>x<h0)){S.h=h;const n=blocked.filter(d=>SLOTS.some(([,hh])=>feasible(withTime(d,hh,0)))).length;S.h=h0;if(n){alt=h;break;}}}
+   const el=$('whenTip');el.hidden=!alt;if(alt){const dn=blocked.slice(-2).map(d=>DAYL[d.getDay()]).join(' and ');el.innerHTML=`<span>${S.h} h rise is no longer enough for ${dn}.</span><button data-alt-h="${alt}">Switch to ${alt} h</button>`;}}
   const hm=b.getHours()*60+b.getMinutes(), match=SLOTS.find(([,h])=>h*60===hm);
-  $('slots').innerHTML=SLOTS.map(([n,h])=>{const ok=feasible(withTime(b,h,0));return `<button class="slot" data-h="${h}" aria-pressed="${!!match&&match[1]===h}"${ok?'':' disabled'}><b>${n}</b><span>${h}:00</span></button>`;}).join('')
+  $('slots').innerHTML=SLOTS.map(([n,h])=>{const ok=feasible(withTime(b,h,0));return `<button class="slot" data-h="${h}" aria-pressed="${!!match&&match[1]===h}"${ok?'':' disabled'}><b>${n}</b><span>${h%12||12}:00 ${h<12?'AM':'PM'}</span></button>`;}).join('')
     +`<button class="slot other" data-h="x" aria-pressed="${!match}"><b>Other time</b><span>${match?'pick a time':tm(b)}</span></button>`;
   const sel=$('days').querySelector('[aria-pressed=true]');
   if(sel&&!renderWhen.scrolled){renderWhen.scrolled=1;sel.scrollIntoView({block:'nearest',inline:'center'});}
@@ -2632,10 +2691,10 @@ function render(){
   const {sc,R}=P;
   $('nOut').innerHTML=`${S.n}<small>dough balls of ${S.w} g</small>`;
   const bk=new Date(S.bake), rd=rel(bk), hrTxt=tm(bk);
-  $('icWhen').innerHTML=`${DAY[bk.getDay()]} ${bk.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][bk.getMonth()]} · ${tm(bk)} <em>›</em>`;
-  $('icPz').innerHTML=`${S.n} ${S.n>1?'pizzas':'pizza'} <em>›</em>`;{const DL=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],r0=rel(bk),dw=r0==='Today'||r0==='Tomorrow'?r0:DL[bk.getDay()];$('stSum').textContent=`${dw}, ${hrTxt} · ${S.n} dough balls · ${S.h} h`;$('plWhen').textContent=`${DAY[bk.getDay()]} ${bk.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][bk.getMonth()]} · ${tm(bk)}`;$('plPz').textContent=`${S.n}`;$('plGeh').textContent=`${S.h} h`;}$('icGeh').innerHTML=`${S.h} h rise <em>›</em>`;
+  $('icWhen').innerHTML=`${DAY[bk.getDay()]} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][bk.getMonth()]} ${bk.getDate()} · ${tm(bk)} <em>›</em>`;
+  $('icPz').innerHTML=`${S.n} ${S.n>1?'pizzas':'pizza'} <em>›</em>`;{const DL=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],r0=rel(bk),dw=r0==='Today'||r0==='Tomorrow'?r0:DL[bk.getDay()];$('stSum').textContent=`${dw}, ${hrTxt} · ${S.n} dough balls · ${S.h} h`;$('plWhen').textContent=`${DAY[bk.getDay()]} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][bk.getMonth()]} ${bk.getDate()} · ${tm(bk)}`;$('plPz').textContent=`${S.n}`;$('plGeh').textContent=`${S.h} h`;}$('icGeh').innerHTML=`${S.h} h rise <em>›</em>`;
   $('whenHint').textContent=`Baking starts at ${tm(sc.B)} so all ${S.n} pizzas are ready. For a ${S.h} h rise you mix the dough ${(r=>r==='Today'?'today':r==='Tomorrow'?'tomorrow':'on '+DAYL[sc.start.getDay()])(rel(sc.start))} at ${tm(sc.start)}.`;
-  document.querySelectorAll('.today').forEach(e=>{const d=new Date();e.textContent=`${DAY[d.getDay()]} ${d.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]}`;});
+  document.querySelectorAll('.today').forEach(e=>{const d=new Date();e.textContent=`${DAY[d.getDay()]} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]} ${d.getDate()}`;});
   document.querySelectorAll('#hOpts .opt').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.h===S.h));
   chips('wOpts',[250,280,300],'w',v=>v+' g');$('wDia').textContent=`approx. Ø ${DIA[S.w]||30} cm`;
   $('ytOpts').innerHTML=[['f','Fresh'],['t','Dry']].map(([v,l])=>`<button class="chip" data-yt="${v}" aria-pressed="${(S.yt||'f')===v}">${l}</button>`).join('');
@@ -2654,15 +2713,15 @@ function render(){
    $('otOpts').innerHTML=OT.map(([t])=>`<button class="chip" data-ot="${t}" aria-pressed="${cur===t}">${t}°</button>`).join('');
    $('otOpts').onclick=e=>{const b=e.target.closest('[data-ot]');if(!b)return;const t=+b.dataset.ot;S.otx=S.otx||{};S.otx[ov]=t;S.bsx=S.bsx||{};S.bsx[ov]=(OT.find(x=>x[0]===t)||[0,90])[1];render();};}
   S.room=S.room||21;chips('roOpts',[18,21,24,27],'room',v=>v+' °C');
-  {const km=S.km||'m';$('kmOpts').innerHTML=[['m','Machine'],['h','By hand']].map(([k,l])=>`<button class="chip" data-km="${k}" aria-pressed="${km===k}">${l}</button>`).join('');$('kmOpts').onclick=e=>{const b=e.target.closest('[data-km]');if(!b)return;S.km=b.dataset.km;render();};}
+  {const km=S.km||'m';$('kmOpts').innerHTML=[['m','Mixer'],['h','By hand']].map(([k,l])=>`<button class="chip" data-km="${k}" aria-pressed="${km===k}">${l}</button>`).join('');$('kmOpts').onclick=e=>{const b=e.target.closest('[data-km]');if(!b)return;S.km=b.dataset.km;render();};}
   {const ov=S.oven||'gas',BSO={gas:[60,75,90,120],holz:[60,75,90,120],elek:[90,120,150,180],home:[300,360,480],blech:[420,540,660]}[ov]||[90],cur=ovenP().bs,f=v=>v>=180?Math.round(v/60)+' min':v+' s';$('bsOpts').innerHTML=BSO.map(v=>`<button class="chip" data-bs="${v}" aria-pressed="${cur===v}">${f(v)}</button>`).join('');$('bsOpts').onclick=e=>{const b=e.target.closest('[data-bs]');if(!b)return;S.bsx=S.bsx||{};S.bsx[ov]=+b.dataset.bs;render();};}
   if(S.cook&&S.cook.pre&&!cookBegun())Object.assign(S.cook.snap,{pf:S.pf||'none',mix:S.mix||'tp',mixOwn:S.mixOwn,w:S.w,hy:S.hy,k:S.k,yt:S.yt||'f',wz:S.wz||0,km:S.km||'m',room:S.room||21});
   {const cn=$('cookNote');if(cn){if(S.cook){const q=S.cook.snap;cn.hidden=false;cn.textContent=S.cook.pre&&!cookBegun()?'The plan is already running. Changes apply until you mix the dough.':`Applies to your next dough. The current one stays at ${q.n} × ${q.w} g.`;}else cn.hidden=true;}}
   chips('kOpts',[4,5,6,7],'k',v=>v+' °C');
   {const uc=(el,key,opts)=>{$(el).innerHTML=opts.map(([v,l])=>`<button class="chip" data-u="${v}" aria-pressed="${(S[key]||opts[0][0])===v}">${l}</button>`).join('');$(el).onclick=e=>{const b=e.target.closest('[data-u]');if(!b)return;S[key]=b.dataset.u;save();render();tpUnitsAll();};};
    uc('uwOpts','uw',[['g','g, cm'],['oz','oz, in']]);uc('utOpts','utemp',[['c','°C'],['f','°F']]);}
-  S.wz=S.wz||0;chips('wzOpts',[0,3,5],'wz',v=>v?'+'+v+' %':'ohne');
-  {const NI=[['22','22–7'],['23','23–8'],['0','0–9'],['off','off']],cur=S.night==null?'22':String(S.night);$('niOpts').innerHTML=NI.map(([k,l])=>`<button class="chip" data-ni="${k}" aria-pressed="${cur===k}">${l}</button>`).join('');$('niOpts').onclick=e=>{const b=e.target.closest('[data-ni]');if(!b)return;S.night=b.dataset.ni;render();};}
+  S.wz=S.wz||0;chips('wzOpts',[0,3,5],'wz',v=>v?'+'+v+' %':'none');
+  {const NI=[['22','10–7'],['23','11–8'],['0','12–9'],['off','off']],cur=S.night==null?'22':String(S.night);$('niOpts').innerHTML=NI.map(([k,l])=>`<button class="chip" data-ni="${k}" aria-pressed="${cur===k}">${l}</button>`).join('');$('niOpts').onclick=e=>{const b=e.target.closest('[data-ni]');if(!b)return;S.night=b.dataset.ni;render();};}
   {const ok=S.oven||'gas',oc=ovenP();$('ovCurT').textContent=OVENS[ok].n;$('ovSub').textContent=`${oc.t} · ${bsTxt(oc)}`;
   $('ovOpts').innerHTML=Object.entries(OVENS).map(([k,o])=>`<button class="of-o" data-ov="${k}" aria-pressed="${ok===k}"><i aria-hidden="true"></i><span><b>${o.n}</b><small>${o.t} · ${bsTxt(o)} per pizza</small></span></button>`).join('');}
   $('adjSum').textContent=`Current: ${S.w} g per dough ball · ${S.hy} % water · fridge ${S.k} °C`;
@@ -2673,7 +2732,7 @@ function render(){
   $('waterHint').textContent=+wc>Date.now()?`Put the water in the fridge by ${tm(wc)}.`:'Cutting it close for cold water: add a few ice cubes and the dough temperature will be right.';
   const al=[], now=new Date();
   if(sc.start<now-30*M)al.push(`<div class="alert bad"><b>Too late</b><span>Pick a shorter rise or a later time.</span></div>`);
-  else if(isNight(sc.start)){const nw=nightW();al.push(`<button class="al-card" data-al-open="recSheet"><span class="al-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span><span class="al-t"><b>Mixing at ${tm(sc.start)} falls in your night rest</b><span>${nw[0]}:00–${nw[1]}:00, set under Recipe &amp; oven <em>›</em></span></span></button>`);}
+  else if(isNight(sc.start)||isNight(sc.accl)){const nw=nightW(),nl=isNight(sc.start)?'Mixing':'Take out',nt=isNight(sc.start)?sc.start:sc.accl;al.push(`<button class="al-card" data-al-open="recSheet"><span class="al-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span><span class="al-t"><b>${nl} at ${tm(nt)} falls in your night rest</b><span>${nw[0]%12||12} ${nw[0]<12?'AM':'PM'}–${nw[1]%12||12} ${nw[1]<12?'AM':'PM'}, set under Recipe &amp; oven <em>›</em></span></span></button>`);}
   if(R.total>5000)al.push(`<div class="alert"><b>${nf(R.total/1000,1)} kg dough</b><span>Knead in two batches.</span></div>`);
   $('alerts').innerHTML=al.join('');setTimeout(fitSatz,0);
   $('alerts').onclick=e=>{const b=e.target.closest('[data-al-open]');if(!b)return;const id=b.dataset.alOpen;$(id).hidden=false;document.body.classList.add('lock');if(id==='whenSheet'){renderWhen.scrolled=0;renderWhen();}};
@@ -2692,7 +2751,7 @@ function renderLive(){
   const p=on?c.P.p:{n:S.n,h:S.h}, sc=on?c.P.sc:P.sc, B=new Date(on?c.P.p.bake:S.bake);
   // Einladung
   const MON=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
-  $('invDate').textContent=`${DAY[B.getDay()].toUpperCase()} ${B.getDate()} ${MON[B.getMonth()]}`;
+  $('invDate').textContent=`${DAY[B.getDay()].toUpperCase()} ${MON[B.getMonth()]} ${B.getDate()}`;
   $('invTime').textContent=tm(B);
   const cols=[];PIZZAS.forEach(z=>{for(let i=0;i<(S.pz[z.id]||0);i++)cols.push(z.dot);});
   let dh='';for(let i=0;i<p.n;i++)dh+=miniPz(cols[i]||'#8F1D13');
@@ -2705,7 +2764,7 @@ function renderLive(){
   // Satz
   const dShort=d=>(rel(d)==='Today'?'today':DAY[d.getDay()])+' '+tm(d);
   {const DL=DAYL,dd=Math.round((new Date(B).setHours(0,0,0,0)-new Date().setHours(0,0,0,0))/864e5),hr=tm(B);
-   const day=dd===0?'today':dd===1?'tomorrow':dd>1&&dd<14?DL[B.getDay()]:`${B.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][B.getMonth()]}`;
+   const day=dd===0?'today':dd===1?'tomorrow':dd>1&&dd<14?DL[B.getDay()]:`${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][B.getMonth()]} ${B.getDate()}`;
    $('stAm').textContent=dd===0||dd===1?'':dd>=7&&dd<14?'next':'on';$('stAm').hidden=dd===0||dd===1;
    $('stWhen').textContent=`${day} at ${hr}`;$('stPz').textContent=`${p.n} ${p.n===1?'pizza':'pizzas'}`;$('stGeh').textContent=`${p.h} hours`;
    $('stSatz').classList.toggle('run',on);fitSatz();}
@@ -2735,20 +2794,21 @@ function renderAblauf(){try{abNextUI();}catch(e){}
   // Teigschritte zusammenfassen
   const DOUGH=['mix'], rows=[];
   tl.forEach(x=>{
-    const gapH=(x.due-x.from)/H;
-    if(x.s.wait&&gapH>=0.9&&!x.doneAt)rows.push({pause:1,pf:x.s.id==='mix',cold:x.s.cold,txt:`${gapH>=3?Math.round(gapH)+' h':dur(gapH)} ${x.s.cold?'cold':'room temperature'}`,d:x.from});
+    // Die Ruhe nach dem Rausnehmen läuft bis zum Backen, nicht nur bis „Ofen an“
+    const bk=tl.find(t=>t.s.id==='bake'),gapH=((x.s.id==='oven'&&bk?bk.due:x.due)-x.from)/H;
+    if(x.s.wait&&gapH>=0.9&&!x.doneAt&&!(x.s.id==='bake'&&tl.some(t=>t.s.id==='oven')))rows.push({pause:1,pf:x.s.id==='mix',cold:x.s.cold,txt:`${gapH>=3?Math.round(gapH)+' h':dur(gapH)} ${x.s.cold?'cold':'room temperature'}`,d:x.from});
     if(x.s.ovenAt)rows.push({t:'Oven on',d:x.s.ovenAt,done:!!x.doneAt,cur:false,id:'oven'});
     rows.push({t:x.s.id==='fridge'&&!/^Off /.test(x.s.t)?'Fold, into the fridge':SHORT[x.s.id]||x.s.t,d:x.doneAt||x.due,done:!!x.doneAt,cur:x.cur,hl:x.s.id==='bake',id:x.s.id});
     if(x.s.id==='portion')rows.push({t:'Fridge',d:new Date(+(x.doneAt||x.due)+15*M),done:!!x.doneAt,cur:false,id:'portion2'});
   });
   const DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],GIO=['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'],MONL=['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
   const NAME={'Fridge':'Off to the fridge','BAKE':'Bake'};
-  {let after=false;rows.forEach((r,i)=>{if(r.id==='portion')after=true;if(r.pause){for(let j=i-1;j>=0;j--)if(!rows[j].pause&&rows[j].t!=='Fridge'){rows[j].wait={cold:r.cold,txt:r.txt,ph:r.pf?'ripens':after?'Ball proof':'Bulk ferment'};break;}}});}
+  {let after=false;rows.forEach((r,i)=>{if(r.id==='portion')after=true;if(r.pause){for(let j=i-1;j>=0;j--)if(!rows[j].pause&&rows[j].t!=='Fridge'){rows[j].wait={cold:r.cold,txt:r.txt,ph:r.pf?'ripens':after?'Final proof':'Bulk ferment'};break;}}});}
   let html='',curDay='';const MS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   rows.forEach(r=>{
     if(r.t==='Fridge')return;
     const key=isoDate(r.d);
-    if(!r.pause&&key!==curDay){if(curDay)html+='</div>';curDay=key;const rl=rel(r.d),wd=r.d.getDay();html+=`<div class="pd pk-d"><div class="pk-it">${DAYS[wd]}<small>${r.d.getDate()} ${MS[r.d.getMonth()]}${['Today','Tomorrow'].includes(rl)?' · '+rl.toLowerCase():''}</small></div>`;}
+    if(!r.pause&&key!==curDay){if(curDay)html+='</div>';curDay=key;const rl=rel(r.d),wd=r.d.getDay();html+=`<div class="pd pk-d"><div class="pk-it">${DAYS[wd]}<small>${MS[r.d.getMonth()]} ${r.d.getDate()}${['Today','Tomorrow'].includes(rl)?' · '+rl.toLowerCase():''}</small></div>`;}
     if(r.pause)return;
     const w='';
     const hrs=r.wait?r.wait.txt.replace(/ (cold|room temperature)$/,''):'';
@@ -2844,7 +2904,9 @@ function setCook(st,x,c,now){nzUpd(st,x);setTimeout(()=>{glossify($('ckD'));glos
   if(st==='fin'){
     cen.innerHTML=`<span class="kr-pz">${pizzaSVG(PIZZAS[0])}</span>`;
     $('ckT').textContent='Buon appetito!';const lw=t=>t.replace(/^(Today|Tomorrow|Yesterday)/,m=>m.toLowerCase());$('ckD').innerHTML=`Your dough ran from ${lw(at(new Date(Math.min(+new Date(S.cook.start),...c.tl.map(t=>t.doneAt?+new Date(t.doneAt):Infinity)))))} to ${lw(at(c.tl[c.tl.length-1].doneAt))}.`+(SUPPORT_URL?`<br><button class="sup-link" data-sheet-open="supSheet">Enjoyed it? Support Tempasto ♥</button>`:'');
-    btn.className='cta';btn.textContent='Plan a new dough';btn.dataset.act='finish';arc.style.strokeDashoffset=0;return;
+    btn.className='cta';btn.textContent='Plan a new dough';btn.dataset.act='finish';arc.style.strokeDashoffset=0;
+    if(!S.cook.counted){S.cook.counted=1;S.bakes=(S.bakes||0)+1;save();}
+    return;
   }
   const A=actsOf(x.s), i=Math.min(subIdx(x.s.id),A.length-1), a=A[i], nx=c.tl[idx+1];
   if(st==='act'){
@@ -2855,9 +2917,9 @@ function setCook(st,x,c,now){nzUpd(st,x);setTimeout(()=>{glossify($('ckD'));glos
     btn.className='cta';btn.innerHTML=ICON.check+'Done';btn.dataset.act='done';say(`${a.t}. ${a.a?a.a+' '+(a.u||'')+'. ':''}${a.li?a.li.map(r=>r[0]+' '+r[1]).join('. ')+'. ':''}${a.d||''}${(()=>{const hw=howOf(x.s,c.P);return hw.crit&&i===A.length-1?' Ready when: '+hw.crit.join(', ')+'.':''})()}`);arc.style.strokeDashoffset=0;
   }else if(st==='alarm'){
     cen.innerHTML=`<span class="kr-bell">${ICON.bell}</span>`;
-    $('ckT').textContent=A[0].t;{const late=now-effDue(x);$('ckD').textContent=late>15*M?`Due ${cdLong(late)} ago. No problem.`:'Your turn now.';}
+    $('ckT').textContent=A[0].t;{const late=now-effDue(x);$('ckD').textContent=late<=15*M?'Your turn now.':late<=45*M?`${cdLong(late)} behind. No problem.`:['pf','mix'].includes(x.s.id)&&late>60*M?`${cdLong(late)} behind. The dough now has less time. “Running late?” moves the plan.`:late<=3*H?`${cdLong(late)} behind. Best to do it right now.`:`${cdLong(late)} behind. The dough has kept rising, do the poke test before baking.`;}
     btn.className='cta';btn.textContent='Let’s go';btn.dataset.act='ack';say('Pronto! Now: '+A[0].t);
-    info.hidden=false;$('ckPrev').hidden=true;back.hidden=false;back.textContent='10 minutes later';back.dataset.act='snooze';$('ckShift').hidden=!!S.cook.done.bake||x.s.id==='bake';return;
+    info.hidden=false;$('ckPrev').hidden=true;back.hidden=false;back.textContent='Remind me in 10 min';back.dataset.act='snooze';$('ckShift').hidden=!!S.cook.done.bake||x.s.id==='bake';return;
   }else{
     const d=effDue(x);
     if(x===c.tl[0]&&S.cook.pre){const r=rel(d),rr=r==='Today'?'today':r==='Tomorrow'?'tomorrow':DAY[d.getDay()],wc=new Date(+d-2*H);
@@ -2928,27 +2990,28 @@ function cookBack(){
 function howOf(s,P2){
   const {p,sc,R}=P2, part=Math.round(R.wY/3);
   const F={cuoco:'#D3302A',nuvola:'#E58FA8',semola:'#E2B227'};
+  const pfY=t=>{const tk=R.pf&&yTrick(yAmtP(R),R.pf.W);return tk?`Dissolve the yeast in the ${t} water. If your scale only weighs whole grams: dissolve ${tk.G} g yeast in <b>${tk.D} g</b> water, use <b>${tk.w} g</b> of it and pour away the rest.`:`Dissolve the yeast in the ${t} water.`;};
   const H={
     pf:R.pf?{need:[...R.pf.fl.map(f=>[f.n,`${g(f.g)} g`,f.c]),[`Water, ${R.pf.w}`,`${g(R.pf.W)} g`],[yName(),`${yg(yAmtP(R))} g`]],
-      how:R.pf.k==='biga'?['Dissolve the yeast in the cold water.','Flour into a bowl, add the yeast water.','Mix briefly with your fingers until everything is moist and crumbly. Don’t knead.',`Cover and leave to ripen for ${dur(sc.pfH)} ${R.pf.where}.`]
-        :['Dissolve the yeast in the lukewarm water.','Stir in the flour until you have a smooth, thick batter.',`Cover and leave to ripen for ${dur(sc.pfH)} ${R.pf.where}.`],
+      how:R.pf.k==='biga'?[pfY('kalten'),'Flour into a bowl, add the yeast water.','Mix briefly with your fingers until everything is moist and crumbly. Don’t knead.',`Cover and leave to ripen for ${dur(sc.pfH)} ${R.pf.where}.`]
+        :[pfY('lauwarmen'),'Stir in the flour until you have a smooth, thick batter.',`Cover and leave to ripen for ${dur(sc.pfH)} ${R.pf.where}.`],
       crit:R.pf.k==='biga'?['crumbly, no dry flour','covered']:['stirred smooth','covered'],
-      tip:R.pf.k==='biga'?'The biga should stay crumbly. Later it smells slightly of yoghurt, that’s exactly right.':'The poolish is ripe when it’s full of bubbles and just starting to sink in the middle.'}:{how:[]},
+      tip:R.pf.k==='biga'?'The biga should stay crumbly. Later it smells slightly of yogurt, that’s exactly right.':'The poolish is ripe when it’s full of bubbles and just starting to sink in the middle.'}:{how:[]},
     mix:R.pf?{need:[[R.pf.n,`${g(R.pf.F+R.pf.W)} g`],['Water, cold',`${g(R.wA+R.wY)} g`],...R.mfl.map(f=>[f.n,`${g(f.g)} g`,f.c]),[yName(),`${yg(yAmtM(R))} g`],['Salt',`${g(R.salt)} g`]],
       how:[`${R.pf.n} into the mixer bowl${R.pf.k==='biga'?', torn into pieces':''}.`,`Add <b>${g(R.wA)} g</b> cold water and stir briefly. You’ll need the remaining <b>${g(R.wY)} g</b> later for the yeast.`,R.mfl.length>1?'Add all the flours.':'Add the flour.','2–3 minutes on speed 1, until no dry flour is left. No longer.','Cover the mixer bowl and rest for 30 minutes.'],
       crit:['no dry flour left','mixer bowl covered'],tip:`The ${R.pf.n} already brings yeast. That’s why the main dough only gets a little more.`}:
     {need:[['Water, cold',`${g(R.water)} g`],...R.fl.map(f=>[f.n,`${g(f.g)} g`,f.c]),[yName(),`${nf(yAmt(R),1)} g`],['Salt',`${g(R.salt)} g`]],
       how:[R.fl.length>1?'All the flours into the mixer bowl.':'The flour into the mixer bowl.',`Add <b>${g(R.wA)} g</b> cold water. You’ll need the remaining <b>${g(R.wY)} g</b> later for the yeast.`,'2–3 minutes on speed 1, until no dry flour is left. No longer.','Cover the mixer bowl and rest for 30 minutes.'],
       crit:['no dry flour left','mixer bowl covered'],tip:'Put the water in the fridge 2 hours ahead. Cold water keeps the dough below 25 °C while kneading.'},
-    knead:{how:[...(yAmtM(R)<3?[`Tiny amount of yeast: if your scale only weighs whole grams, dissolve 1 g of yeast in 100 g of water and use <b>${g(yAmtM(R)*100)} g</b> of it.`]:[]),`Dissolve the yeast in <b>${g(R.wY)} g</b> cold water.`,`Add the yeast water in 3 portions of <b>${part} g</b>, the next only once the last is absorbed.`,'Knead until the dough comes away from the mixer bowl (3–4 min).',`Sprinkle in <b>${g(R.salt)} g</b> salt, knead for 3 minutes.`,'Windowpane test: stretch the dough thin. If it tears, knead a minute more at a time, 4 minutes at most.','Check the dough temperature. 23–25 °C is good.'],
+    knead:{how:[...((tk=>tk?[`Dissolve the yeast in <b>${g(R.wY)} g</b> cold water. If your scale only weighs whole grams: dissolve ${tk.G} g yeast in <b>${tk.D} g</b> cold water, use <b>${tk.w} g</b> of it and pour away the rest.`]:[`Dissolve the yeast in <b>${g(R.wY)} g</b> cold water.`])(yTrick(yAmtM(R),R.wY))),`Add the yeast water in 3 portions of <b>${part} g</b>, the next only once the last is absorbed.`,'Knead until the dough comes away from the mixer bowl (3–4 min).',`Sprinkle in <b>${g(R.salt)} g</b> salt, knead for 3 minutes.`,'Windowpane test: stretch the dough thin. If it tears, knead a minute more at a time, 4 minutes at most.','Check the dough temperature. 23–25 °C is good.'],
       fig:['fig-knead','Rough, smooth, windowpane test'],crit:['comes away cleanly from the mixer bowl','windowpane test passes','dough at 23–25 °C'],tip:'Salt only once the dough comes away from the mixer bowl. Too early and it slows the gluten, the dough stays rough.'},
     fold:{how:['Dough onto the counter.','Fold from four sides to the middle.','Turn it over, smooth side up, leave covered.'],crit:['surface tight and smooth'],tip:'Still rough? Fold a second time after 15 minutes.'},
     fridge:{how:[...(sc.rtb?[]:['Fold the dough from four sides to the middle, turn over.']),'In one piece into the oiled box, lid on.','Back and bottom of the fridge, that’s where it’s most evenly cold.'],
       fig:['fig-fridge','Back, bottom'],crit:['box oiled, lid on','sits at the back, bottom'],tip:'Mark the fill level with a strip of tape. Later you’ll see how much it has risen.'},
     portion:{need:[['Dough balls',`${p.n} × ${p.w} g`]],how:['Cold dough out of the box onto the counter.',`Use the scale to divide into <b>${p.n} pieces of ${p.w} g</b>.`,'Shape each piece into a tight ball, seam down.','Into boxes with a little oil or semola, lid on, back into the fridge.'],crit:[`${p.n} balls of ${p.w} g`,'skin slightly taut','no open seam underneath'],tip:'Don’t stack the boxes, or the middle ones cool more slowly.'},
-    out:{how:['Take the boxes out of the fridge, keep the lids on.',`Leave at room temperature for about <b>${dur(sc.A)}</b>.`],fig:['fig-rise','This is how they should look'],tip:'Cold dough tears when you stretch it. Only at room temperature does it shape well.'},
-    oven:(()=>{const o=ovenP(),k=S.oven||'gas',pz=['gas','holz','elek'].includes(k);return {how:[pz?`Heat the ${o.n.toLowerCase()} to ${o.t}, about ${o.pre} minutes.`:`Oven on the highest setting, heat the ${o.ut.split(',')[0]} with it, about ${o.pre} minutes.`,'Dust the counter and the peel with semola.','Put toppings and sauce within reach.'],crit:['oven at full heat','semola on counter and peel'],tip:pz?'Measure on the stone with an infrared thermometer, not in the air.':'Put the tray or stone on the top shelf, that’s where it’s hottest.'};})(),
-    bake:{how:['Poke test: press in gently. If the dent springs back slowly, the dough is ready.','Loosen the dough ball with a dough scraper, top side down onto the semola.','Never roll: press from the centre outwards, leave the rim alone.',`Top, slide in, bake for about ${bsTxt()}.${S.oven==='home'?'':' Turn the flame or heat down while baking.'}`],fig:['fig-fp','Poke test'],fig2:['fig-shape','From the centre outwards'],crit:['rim risen, dark spots','base browned underneath'],tip:'Go easy on the toppings. Too much sauce makes the middle soggy.'}
+    out:{how:['Take the boxes out of the fridge, keep the lids on.',`Leave at room temperature for about <b>${dur(sc.A)}</b>.`,...(bakeDur(p)>60*M?[`With this many pizzas, take half of the boxes out about <b>${dur(Math.round(bakeDur(p)/H*2)/4)}</b> later.`]:[])],fig:['fig-rise','This is how they should look'],tip:'Cold dough tears when you stretch it. Only at room temperature does it shape well.'},
+    oven:(()=>{const o=ovenP(),k=S.oven||'gas',pz=['gas','holz','elek'].includes(k);return {how:[pz?`Heat the ${o.n.toLowerCase()} to ${o.t}, about ${o.pre} minutes.`:`Oven on the highest setting, heat the ${o.ut.split(',')[0]} with it, about ${o.pre} minutes.`,'Dust the counter and the peel with semola.','Put toppings and sauce within reach.'],crit:['oven is on and heating','semola on counter and peel'],tip:pz?'Measure on the stone with an infrared thermometer, not in the air.':k==='blech'?'Put the tray on the lowest rack, that way the base gets crisp.':'Put the stone on the top rack, that’s where it’s hottest.'};})(),
+    bake:{how:['Poke test: press in gently. If the dent springs back slowly, the dough is ready.','Loosen the dough ball with a dough scraper, top side down onto the semola.','Never roll: press from the center outwards, leave the rim alone.',`Top, slide in, bake for about ${bsTxt()}.${(S.oven||'gas')==='gas'?' Turn the flame down a little while baking.':''}`],fig:['fig-fp','Poke test'],fig2:['fig-shape','From the center outwards'],crit:['rim risen, dark spots','base browned underneath'],tip:'Go easy on the toppings. Too much sauce makes the middle soggy.'}
   };
   const r=H[s.id]||{how:[]};if(kmNow()==='h'){['how','crit'].forEach(k=>{if(r[k])r[k]=r[k].map(HAND);});if(r.tip)r.tip=HAND(r.tip);}
   return r;
@@ -2962,7 +3025,7 @@ function celebrate(fn){
 }
 const INTRO=[
  {h:'You say when you want to eat.',p:'Tempasto tells you when to do what: from mixing the dough to the oven.',i:null},
- {h:'When are you baking?',p:'Pick a day and time. The app works backwards to when you mix the dough.',i:'<svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="8" y="12" width="48" height="44" rx="8" fill="#fff" stroke="#1E1C1A" stroke-width="3"/><path d="M8 24h48" stroke="#1E1C1A" stroke-width="3"/><path d="M20 6v10M44 6v10" stroke="#1E1C1A" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="40" r="9" fill="#C2281B"/><path d="M32 35v5l3 2" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>'},
+ {h:'When are you eating?',p:'Pick a day and time. The app works backwards to when you mix the dough.',i:'<svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="8" y="12" width="48" height="44" rx="8" fill="#fff" stroke="#1E1C1A" stroke-width="3"/><path d="M8 24h48" stroke="#1E1C1A" stroke-width="3"/><path d="M20 6v10M44 6v10" stroke="#1E1C1A" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="40" r="9" fill="#C2281B"/><path d="M32 35v5l3 2" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>'},
  {h:'Choose pizzas',p:'Pick your toppings. The shopping list writes itself.',i:null},
  {h:'How do you knead?',p:'This sets the steps in bake mode. You can change it under More → Recipe & oven.',km:1,i:'<svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M14 40c0-10 8-16 18-16s18 6 18 16v6H14z" fill="#fff" stroke="#1E1C1A" stroke-width="3"/><path d="M22 30c4-4 16-4 20 0" stroke="#C2281B" stroke-width="3" stroke-linecap="round"/></svg>'},
  {h:'Which oven?',p:'This sets temperature, baking time and heating up. You can change it under More → Recipe.',oven:1,i:'<svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M6 50c0-17 12-30 26-30s26 13 26 30z" fill="#fff" stroke="#1E1C1A" stroke-width="3"/><path d="M20 50c0-8 5-14 12-14s12 6 12 14" stroke="#C2281B" stroke-width="3"/><path d="M4 50h56" stroke="#1E1C1A" stroke-width="3" stroke-linecap="round"/></svg>'},
@@ -2975,11 +3038,11 @@ function endIntro(){$('intro').hidden=true;document.body.classList.remove('lock'
 const REC=[
  {cat:'Dough mixer',name:'Famag Grilletta',ic:'mix',tip:'Spiral mixer with a fixed bowl. Kneads slowly and cool, just right for high hydration and long rises.'},
  {cat:'Pizza oven',name:'',ic:'oven',tip:'For Neapolitan pizza the stone needs 450–480 °C. Gas is easier to control than wood.'},
- {cat:'Pizza peel',name:'',ic:'peel',tip:'A perforated aluminium peel for launching: excess semola falls through and the pizza slides better.'},
+ {cat:'Pizza peel',name:'',ic:'peel',tip:'A perforated aluminum peel for launching: excess semola falls through and the pizza slides better.'},
  {cat:'Turning peel',name:'',ic:'turn',tip:'Small round peel for turning in the oven. A quarter turn every 20–30 seconds so the rim browns evenly.'},
  {cat:'Pizza stamp',name:'',ic:'stamp',tip:''},
  {cat:'Black Bake Plate',name:'',ic:'plate',tip:''},
- {cat:'Flour',name:'Caputo Cuoco, Nuvola, Semola',ic:'flour',tip:'Cuoco for the long rise, Nuvola for airy rims, semola for elasticity and dusting.'},
+ {cat:'Flour',name:'Caputo Cuoco, Nuvola, Semola',ic:'flour',tip:'Cuoco for the long rise, Nuvola for airy rims, semola for bite and dusting.'},
  {cat:'Cheese',name:'Fior di Latte',ic:'cheese',tip:'Tear into pieces the day before and drain in a sieve in the fridge, so the pizza won’t get watery.'},
  {cat:'Tomatoes',name:'San Marzano tomatoes, DOP',ic:'tomato',tip:'Just a little salt, don’t cook it. Pass through a food mill, don’t blend.',help:'h-sosse'}];
 const RICON={mix:'<path d="M5 20h14M7 20V9h10v11M9 9V5h6v4"/><path d="M12 12v4"/>',oven:'<path d="M3 18c0-6 4-11 9-11s9 5 9 11z"/><path d="M8 18c0-3 2-5 4-5s4 2 4 5M3 18h18"/>',peel:'<rect x="5" y="3" width="14" height="11" rx="2"/><path d="M12 14v7"/><circle cx="9" cy="7" r=".6"/><circle cx="12" cy="8.5" r=".6"/><circle cx="15" cy="7" r=".6"/>',turn:'<circle cx="12" cy="8" r="5"/><path d="M12 13v8"/>',stamp:'<path d="M9 3h6v6l3 3H6l3-3z"/><path d="M5 15h14v3H5z"/>',plate:'<rect x="3" y="8" width="18" height="8" rx="2"/><path d="M7 12h10"/>',flour:'<path d="M7 7l1-3h8l1 3"/><path d="M6 7h12l-1 13H7z"/><path d="M10 12h4"/>',cheese:'<path d="M4 15c0-4 3.5-8 8-8s8 4 8 7c0 3-3 4-8 4s-8-.5-8-3z"/>',tomato:'<circle cx="12" cy="13" r="7"/><path d="M12 6V3M9 5l3 1 3-1"/>'};
@@ -2987,7 +3050,7 @@ function renderRec(){
   $("recList").innerHTML=REC.filter(r=>r.name||r.tip).map(r=>`<article class="rec"><span class="rec-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${RICON[r.ic]}</svg></span><div class="rec-t"><span class="rec-k">${r.cat}</span>${r.name?`<b>${r.name}</b>`:''}${r.tip?`<p>${r.tip}</p>`:''}<div class="rec-a">${r.url?`<a class="rec-go" href="${r.url}" target="_blank" rel="noopener">View →</a>`:''}${r.help?`<button class="rec-help" data-help="${r.help}">Recipe in the app</button>`:''}</div></div></article>`).join('');
 }
 let OT=null, otIv=null;
-const POST=/Rocket|Prosciutto|Burrata|Mortadella|Pistachios|Honey|Strawberries|Powdered sugar|Nutella|Hazelnuts|Truffle/;
+const POST=/Arugula|Prosciutto|Burrata|Mortadella|Pistachios|Honey|Strawberries|Powdered sugar|Nutella|Hazelnuts|Truffle/;
 function belagOf(p,split){const L=[],A=[];if(p.rossa)L.push('75 g tomato sauce');p.ing.forEach(([n,v,u])=>(split&&POST.test(n)?A:L).push(`${u==='g'?v+' g':u==='pinch'?'some':v+' '+u} ${shortName(n)}`));if(p.love)L.push('lots of amore');if(split&&A.length)return L.join(' · ')+'<br><b>After baking:</b> '+A.join(' · ');return L.join(' · ');}
 async function menuCanvas(){
   try{await document.fonts.ready;}catch(e){}
@@ -3052,7 +3115,7 @@ function drawOT(){
   if(!el)return; el.hidden=false; el.className='ots'; el.innerHTML=rows;
 }
 function spk(t){return t.replace(/(\d),(\d{3})/g,'$1$2').replace(/(\d)\s?g\b/g,'$1 grams').replace(/°C/g,' degrees').replace(/\bmin\b/g,'minutes').replace(/×/g,' times ').replace(/(\d)\s?s\b/g,'$1 seconds').replace(/–/g,' to ').replace(/·/g,', ');}
-function say(t){if(!S.voice)return;try{if(!('speechSynthesis' in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(spk(t));u.lang='en-GB';u.rate=1;speechSynthesis.speak(u);}catch(e){}}
+function say(t){if(!S.voice)return;try{if(!('speechSynthesis' in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(spk(t));u.lang='en-US';u.rate=1;speechSynthesis.speak(u);}catch(e){}}
 function voiceUI(){const b=$('ckVoice');if(b){b.setAttribute('aria-pressed',!!S.voice);b.classList.toggle('on',!!S.voice);}}
 function openInfo(){
   const c=cookPlan(); const x=c&&c.tl.find(y=>y.cur); if(!x)return;
@@ -3071,7 +3134,7 @@ function openEnd(){
   $('ckShK').textContent='Dough';$('ckShT').textContent='Cancel the dough?';
   $('ckShB').innerHTML=`<p class="hw-p">The plan and all reminders will stop. Your pizzas, the shopping list and your settings stay.</p><div class="hw-btns"><button class="cta" id="endYes">Yes, cancel</button><button class="btn ghost" id="endNo">Keep going</button></div>`;
   $('ckSheet').classList.remove('info');$('ckSheet').hidden=false;
-  $('endYes').onclick=()=>{const bk=S.cook;S.cook=null;save();$('ckSheet').hidden=true;closeCook();setView('rezept');undoToast('Dough cancelled',()=>{S.cook=bk;save();render();setView('rezept');});};
+  $('endYes').onclick=()=>{const bk=S.cook;S.cook=null;save();$('ckSheet').hidden=true;closeCook();setView('rezept');undoToast('Dough canceled',()=>{S.cook=bk;save();render();setView('rezept');});};
   $('endNo').onclick=()=>$('ckSheet').hidden=true;
 }
 
@@ -3082,30 +3145,32 @@ function renderCheck(){
   const kStr=S.ckKnead||isoLocal(kneadDone||sc.T0), yG=S.ckYeast!=null?S.ckYeast:(ytNow()==='t'?Math.round(yAmt(R)*10)/10:Math.round(R.yeast*2)/2);$('ckYL').textContent=yName()+' in the dough (g)';yEl.step=ytNow()==='t'?'0.1':'0.5';
   if(document.activeElement!==kEl)kEl.value=kStr;
   if(document.activeElement!==yEl)yEl.value=yG;
-  const knead=new Date(kStr), B=new Date(base.p.bake), target=(B-knead)/H, yp=(ytNow()==='t'?yG*YDRY:yG)/R.F*100, rh=readyHours(base.p,yp), ready=new Date(+knead+rh*H), diff=target-rh;
+  const knead=new Date(kStr), B=new Date(base.p.bake), target=(B-knead)/H, yp=(ytNow()==='t'?yG*YDRY:yG)/R.F*100, rh=readyAlong(base.p,target,yp), ready=new Date(+knead+rh*H), diff=target-rh;
   $('ckH').textContent=at(ready);
   $('ckSub').textContent=`the dough will be about ripe (after ${Math.round(rh)} h). Planned: ${at(B)}.`;
   let h='';
   if(target<=0)h=`<div class="alert"><span>The baking time is before the kneading time.</span></div>`;
   else if(Math.abs(diff)<=Math.max(3,target*.12))h=`<div class="alert good"><b>All good</b><span>Carry on with the plan and do the poke test before baking.</span></div>`;
   else if(diff>0){
-    const colder=Math.max(2,base.p.k-2), rC=readyHours(base.p,yp,{k:colder}), rCA=readyHours(base.p,yp,{k:colder,accl:1.5}), fz=new Date(+knead+rh*.75*H);
-    h=`<div class="alert bad"><b>Too much yeast</b><span>Ripe about ${Math.round(diff)} h too early.</span></div><ol class="acts"><li><b>Bake earlier:</b> ${at(ready)}.</li><li><b>Fridge to ${colder} °C</b> and divide the dough right away: ripe after about ${Math.round(rC)} h, with only 1–2 h warming up after about ${Math.round(rCA)} h.</li>${target-rCA>4?`<li><b>Freeze</b> by ${at(fz)} at the latest. On baking day move to the fridge 6–8 h ahead, then 2–3 h at room temperature.</li>`:''}</ol>`;
-  }else h=`<div class="alert"><b>Too little yeast</b><span>Ripe about ${Math.round(-diff)} h later. Bake later, or take the dough balls out of the fridge 5–6 h ahead instead of ${dur(acclFor(target))}.</span></div>`;
+    const colder=Math.max(2,base.p.k-2), rC=readyAlong(base.p,target,yp,{k:colder}), rCA=readyAlong(base.p,target,yp,{k:colder,accl:1.5}), fz=new Date(+knead+rh*.75*H);
+    h=`<div class="alert bad"><b>Too much yeast</b><span>Ripe about ${Math.round(diff)} h too early.</span></div><ol class="acts"><li><b>Bake earlier:</b> ${at(ready)}.</li><li><b>Fridge to ${colder} °C</b> and divide the dough right away: ripe after about ${Math.round(rC)} h, with only 1–2 h warming up after about ${Math.round(rCA)} h.</li>${target-rCA>4?`<li><b>Freeze</b> by ${at(fz)} at the latest. Move to the fridge the day before (12–24 h), then 2–3 h at room temperature.</li>`:''}</ol>`;
+  }else{let aN=null;for(let a=acclFor(target)+.5;a<=10;a+=.5){if(readyAlong(base.p,target,yp,{accl:a})<=target){aN=a;break;}}
+    h=aN?`<div class="alert"><b>Too little yeast</b><span>Ripe about ${Math.round(-diff)} h later. Take the dough balls out of the fridge about ${dur(aN)} instead of ${dur(Math.round(acclFor(target)*4)/4)} before baking, or eat later.</span></div>`
+      :`<div class="alert"><b>Zu wenig Hefe</b><span>Etwa ${Math.round(-diff)} h später reif. Am besten später essen, frühestens ${at(ready)}. Vor dem Backen die Fingerprobe machen.</span></div>`;}
   $('ckOut').innerHTML=h;
 }
 const PIZZAS=[
- {id:'marg',dot:'#C2281B',veg:1,n:'Margherita',by:'for Laurenz & Julius',love:1,d:'The classic: tomato, fior di latte, basil.',tag:'Classic',rossa:1,ing:[['Fior di Latte',90,'g'],['Basil',4,'leaves'],['Parmigiano',5,'g']],top:[['#FFF8EA',6,9],['#3E8A47',4,4,1]]},
+ {id:'marg',dot:'#C2281B',veg:1,n:'Margherita',love:1,d:'The classic: tomato, fior di latte, basil.',tag:'Classic',rossa:1,ing:[['Fior di Latte',90,'g'],['Basil',4,'leaves'],['Parmigiano',5,'g']],top:[['#FFF8EA',6,9],['#3E8A47',4,4,1]]},
  {id:'salame',dot:'#9E2A1E',veg:0,n:'Salame Classico',d:'The classic salami pizza: tomato, fior di latte and plenty of mild salami.',tag:'Classic',rossa:1,ing:[['Fior di Latte',90,'g'],['Salami, mild',45,'g']],top:[['#FFF8EA',5,8],['#9E2A1E',9,6.5]]},
  {id:'mari',dot:'#D9542F',veg:1,n:'Marinara',d:'No cheese: tomato, garlic, oregano and good olive oil.',tag:'Vegan',rossa:1,ing:[['Garlic',1,'clove'],['Oregano, dried',1,'pinch'],['Olive oil',5,'g']],top:[['#F2E6C9',8,3],['#6B7F3A',16,1.4]]},
- {id:'diav',dot:'#8E1F17',veg:0,n:'Diavola',d:'Tomato, spicy salami, fior di latte, a hint of chili oil.',tag:'Spicy',rossa:1,ing:[['Fior di Latte',90,'g'],['Salame piccante',40,'g'],['Chili oil',1,'TL']],top:[['#FFF8EA',5,8],['#8E1F17',8,6.5]]},
- {id:'nduja',dot:'#B33A1E',veg:0,n:'Nduja e Miele',d:'Tomato, spicy nduja and honey. Sweet, hot, creamy.',tag:'Spicy',rossa:1,ing:[['Fior di Latte',80,'g'],['Nduja',25,'g'],['Honey',1,'TL'],['Basil',3,'leaves']],top:[['#FFF8EA',5,8],['#B33A1E',7,5],['#E8B23A',7,2],['#3E8A47',3,4,1]]},
- {id:'crudo',dot:'#E9A3A0',veg:0,n:'Crudo e Rucola',d:'Tomato and fior di latte, after baking prosciutto crudo, rocket, parmigiano.',tag:'Classic',rossa:1,ing:[['Fior di Latte',80,'g'],['Prosciutto crudo',40,'g'],['Rocket',10,'g'],['Parmigiano',10,'g']],top:[['#FFF8EA',4,8],['#E9A3A0',6,9],['#5E8C3A',12,3,1],['#F4E6B8',6,2]]},
+ {id:'diav',dot:'#8E1F17',veg:0,n:'Diavola',d:'Tomato, spicy salami, fior di latte, a hint of chili oil.',tag:'Spicy',rossa:1,ing:[['Fior di Latte',90,'g'],['Salame piccante',40,'g'],['Chili oil',1,'tsp']],top:[['#FFF8EA',5,8],['#8E1F17',8,6.5]]},
+ {id:'nduja',dot:'#B33A1E',veg:0,n:'Nduja e Miele',d:'Tomato, spicy nduja and honey. Sweet, hot, creamy.',tag:'Spicy',rossa:1,ing:[['Fior di Latte',80,'g'],['Nduja',25,'g'],['Honey',1,'tsp'],['Basil',3,'leaves']],top:[['#FFF8EA',5,8],['#B33A1E',7,5],['#E8B23A',7,2],['#3E8A47',3,4,1]]},
+ {id:'crudo',dot:'#E9A3A0',veg:0,n:'Crudo e Rucola',d:'Tomato and fior di latte, after baking prosciutto crudo, arugula, parmigiano.',tag:'Classic',rossa:1,ing:[['Fior di Latte',80,'g'],['Prosciutto crudo',40,'g'],['Arugula',10,'g'],['Parmigiano',10,'g']],top:[['#FFF8EA',4,8],['#E9A3A0',6,9],['#5E8C3A',12,3,1],['#F4E6B8',6,2]]},
  {id:'mort',dot:'#F2B8B5',veg:0,n:'Mortadella e Pistacchio',d:'Tomato, after baking mortadella, burrata and chopped pistachios.',tag:'Fine',rossa:1,ing:[['Fior di Latte',60,'g'],['Mortadella',60,'g'],['Burrata',50,'g'],['Pistachios, chopped',15,'g']],top:[['#F2B8B5',6,9],['#FFFDF6',2,10],['#7FA650',18,1.6]]},
  {id:'patate',dot:'#F1D48A',veg:1,n:'Patate e Rosmarino',d:'Tomato, wafer-thin potatoes, rosemary and pecorino.',tag:'Hearty',rossa:1,ing:[['Fior di Latte',70,'g'],['Potatoes, waxy',80,'g'],['Rosemary',1,'sprig'],['Pecorino',10,'g']],top:[['#F1D48A',10,7],['#4F7A3A',12,1.6,1]]},
- {id:'salsi',dot:'#B57A5C',veg:0,n:'Salsiccia e Friarielli',d:'Tomato, salsiccia and bitter broccoli rabe. Naples’ favourite.',tag:'Hearty',rossa:1,ing:[['Fior di Latte',80,'g'],['Salsiccia',60,'g'],['Friarielli or broccoli',60,'g']],top:[['#FFF8EA',4,7],['#B57A5C',8,6],['#3E6B2E',8,6,1]]},
+ {id:'salsi',dot:'#B57A5C',veg:0,n:'Salsiccia e Friarielli',d:'Tomato, salsiccia and bitter broccoli rabe. Naples’ favorite.',tag:'Hearty',rossa:1,ing:[['Fior di Latte',80,'g'],['Salsiccia',60,'g'],['Friarielli or broccoli',60,'g']],top:[['#FFF8EA',4,7],['#B57A5C',8,6],['#3E6B2E',8,6,1]]},
  {id:'funghi',dot:'#C9AE8C',veg:1,n:'Funghi',d:'Tomato, fior di latte, plenty of mushrooms, garlic and parmigiano. If you like, add a dab of truffle cream after baking.',tag:'Vegetarian',rossa:1,ing:[['Fior di Latte',80,'g'],['Mushrooms',90,'g'],['Garlic',1,'clove'],['Parmigiano',10,'g']],top:[['#FFF8EA',4,7],['#C9AE8C',9,6],['#4A3A2C',7,2.5]]},
- {id:'burrata',dot:'#E04A36',veg:1,n:'Burrata e Pomodorini',d:'Tomato, cherry tomatoes, rocket and a burrata after baking.',tag:'Fresh',rossa:1,ing:[['Fior di Latte',50,'g'],['Cherry tomatoes',70,'g'],['Burrata',60,'g'],['Rocket',10,'g']],top:[['#F05A49',7,6],['#FFFDF6',1,15],['#5E8C3A',10,3,1]]},
+ {id:'burrata',dot:'#E04A36',veg:1,n:'Burrata e Pomodorini',d:'Tomato, cherry tomatoes, arugula and a burrata after baking.',tag:'Fresh',rossa:1,ing:[['Fior di Latte',50,'g'],['Cherry tomatoes',70,'g'],['Burrata',60,'g'],['Arugula',10,'g']],top:[['#F05A49',7,6],['#FFFDF6',1,15],['#5E8C3A',10,3,1]]},
  {id:'quattro',dot:'#E7C27A',veg:1,n:'Quattro Formaggi',d:'Tomato, fior di latte, gorgonzola, provola and parmigiano.',tag:'Cheese',rossa:1,ing:[['Fior di Latte',50,'g'],['Gorgonzola',25,'g'],['Provola',30,'g'],['Parmigiano',10,'g']],top:[['#FFF8EA',5,7],['#D9D3A8',5,5],['#E7C27A',5,5]]},
  {id:'broccoli',dot:'#3E6B2E',veg:1,n:'Broccoli e Ricotta',d:'Tomato, broccoli florets, dollops of ricotta, lemon zest and a little chili.',tag:'Vegetarian',rossa:1,ing:[['Fior di Latte',60,'g'],['Broccoli',80,'g'],['Ricotta',50,'g'],['Organic lemon',0.25,'pcs'],['Chili flakes',1,'pinch']],top:[['#FFF8EA',3,7],['#3E6B2E',10,5.5],['#FFFDF6',6,5]]},
  {id:'ortolana',dot:'#7FA650',veg:1,n:'Ortolana',d:'Vegetable garden: tomato, zucchini, bell pepper, eggplant and fior di latte.',tag:'Vegetarian',rossa:1,ing:[['Fior di Latte',70,'g'],['Zucchini',50,'g'],['Bell pepper, yellow',40,'g'],['Eggplant',40,'g']],top:[['#FFF8EA',4,7],['#7FA650',8,5],['#E2B227',6,4.5],['#4A2D4F',6,5]]},
@@ -3134,7 +3199,7 @@ const TOPI=(()=>{
  const sugar=c('<circle cx="5" cy="6" r="1.2" fill="#D8D2C6"/><circle cx="10" cy="5" r="1.2" fill="#D8D2C6"/><circle cx="8" cy="9.5" r="1.2" fill="#D8D2C6"/><circle cx="11.5" cy="10.5" r="1" fill="#D8D2C6"/><circle cx="4.5" cy="11" r="1" fill="#D8D2C6"/>');
  const T={'Fior di Latte':cheese,'Burrata':cheese,'Provola':cheese,'Ricotta':cheese,'Gorgonzola':c('<path d="M3 9.5c0-3 2.2-5.5 5-5.5s5 2.5 5 5.2c0 2-1.6 3-5 3s-5-.7-5-2.7z" fill="#F4EFDF" stroke="#D2C9AE"/><circle cx="6.5" cy="8" r=".9" fill="#5E7A7A"/><circle cx="9.6" cy="9.6" r=".8" fill="#5E7A7A"/>'),
   'Parmigiano':hard,'Pecorino':hard,'Salami':sal('#B33A2B'),'Salame':sal('#8E1F17'),'Salsiccia':sal('#8A4A32'),'Nduja':drop('#A3241A'),
-  'Prosciutto':ham('#E39A8E'),'Mortadella':ham('#F2B8B5'),'Basil':leaf('#3E8A47'),'Rocket':leaf('#5B8F3A'),'Parsley':leaf('#4E9A47'),'Rosemary':leaf('#4F7A3A'),'Oregano':leaf('#6E8A4A'),'Friarielli':leaf('#3E6A35'),
+  'Prosciutto':ham('#E39A8E'),'Mortadella':ham('#F2B8B5'),'Basil':leaf('#3E8A47'),'Arugula':leaf('#5B8F3A'),'Parsley':leaf('#4E9A47'),'Rosemary':leaf('#4F7A3A'),'Oregano':leaf('#6E8A4A'),'Friarielli':leaf('#3E6A35'),
   'Chili flakes':chili,'Chili oil':chili,'Mushrooms':mush,'Truffle cream':drop('#4A3628'),'Broccoli':broc,'Red':onion,'Zucchini':dot('#7FA65A'),'Eggplant':pep('#5B2E5E'),'Cherry tomatoes':dot('#D9372A',4.6),
   'Potatoes':slices,'Garlic':garlic,'Bell pepper, red':pep('#D3302A'),'Bell pepper, yellow':pep('#E9B92A'),'Nutella':drop('#5A3A28'),'Strawberries':pep('#D9372A'),'Pistachios':nut('#8BAA4A'),'Hazelnuts':nut('#A9784A'),'Honey':drop('#E2A531'),'Powdered sugar':sugar,'Organic lemon':dot('#F2D24A'),'Tomato':dot('#C2281B',5.4)};
  return n=>T[n]||T[n.split(/[ ,]/)[0]]||dot('#CFC6B4',4);
@@ -3187,7 +3252,7 @@ function pizzaSVG(p){
     h+=leaf?`<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="${(s*1.3).toFixed(1)}" ry="${(s*0.55).toFixed(1)}" transform="rotate(${rot} ${x.toFixed(1)} ${y.toFixed(1)})" fill="${c}"/>`:`<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="${(s*(0.85+r()*0.3)).toFixed(1)}" ry="${(s*(0.75+r()*0.3)).toFixed(1)}" transform="rotate(${rot} ${x.toFixed(1)} ${y.toFixed(1)})" fill="${c}"/>`;}});
   return h+'</svg>';
 }
-if(S.n>20)S.n=20;if(!S.pz)S.pz={};if(!S.own)S.own=[]; if(!S.shop)S.shop={}; if(!S.pantry)S.pantry={};
+if(S.n>18)S.n=18;if(!S.pz)S.pz={};if(!S.own)S.own=[]; if(!S.shop)S.shop={}; if(!S.pantry)S.pantry={};
 const pzTotal=()=>PIZZAS.reduce((a,p)=>a+(S.pz[p.id]||0),0);
 function nNow(){return S.cook&&S.cook.snap?S.cook.snap.n:S.n;}
 function sauceFor(){const chosen=pzTotal();const rossa=chosen?PIZZAS.reduce((a,p)=>a+(p.rossa?(S.pz[p.id]||0):0),0):nNow();return {rossa,tom:rossa*75,chosen};}
@@ -3198,17 +3263,17 @@ function fmtQ(v,u){
   if(u==='leaves')return nf(Math.round(v))+' leaves';
   if(u==='clove')return nf(Math.ceil(v))+(Math.ceil(v)>1?' cloves':' clove');
   if(u==='sprig')return nf(Math.ceil(v))+(Math.ceil(v)>1?' sprigs':' sprig');
-  if(u==='TL')return nf(Math.ceil(v))+' tsp';
+  if(u==='tsp')return nf(Math.ceil(v))+' tsp';
   return nf(v)+' '+u;
 }
 function shopData(){const D=shopDataAll(),f=a=>a.filter(x=>!S.pantry[x.k]);return {dough:f(D.dough),sauce:f(D.sauce),top:f(D.top),sf:D.sf,pan:[...D.dough,...D.sauce,...D.top].filter(x=>S.pantry[x.k])};}
-const AISLE=n=>/yeast$|^Fresh yeast|Fior di Latte|Burrata|Ricotta|Gorgonzola|Provola|Parmigiano|Pecorino|Salami|Salame|Salsiccia|Nduja|Prosciutto|Mortadella/.test(n)&&!/Dry yeast/.test(n)?'cold':/Basil|Mushrooms|Rocket|Cherry tomatoes|Zucchini|Bell pepper|Eggplant|Broccoli|onion|Onion|Potatoes|Garlic|Parsley|Rosemary|lemon|Lemon|Strawberries|Friarielli/.test(n)?'fresh':'dry';
-const FRESH=/Fior di Latte|Burrata|Ricotta|Basil|Rocket|Mushrooms|Strawberries|Cherry tomatoes|Friarielli/;
+const AISLE=n=>/yeast$|^Fresh yeast|Fior di Latte|Burrata|Ricotta|Gorgonzola|Provola|Parmigiano|Pecorino|Salami|Salame|Salsiccia|Nduja|Prosciutto|Mortadella/.test(n)&&!/Dry yeast/.test(n)?'cold':/Basil|Mushrooms|Arugula|Cherry tomatoes|Zucchini|Bell pepper|Eggplant|Broccoli|onion|Onion|Potatoes|Garlic|Parsley|Rosemary|lemon|Lemon|Strawberries|Friarielli/.test(n)?'fresh':'dry';
+const FRESH=/Fior di Latte|Burrata|Ricotta|Basil|Arugula|Mushrooms|Strawberries|Cherry tomatoes|Friarielli/;
 function shopDataAll(){
   const P0=S.cook?cookP():P, R=P0.R, sf=sauceFor(), dust=150, kg=v=>`${Math.ceil(v/1000)} × 1 kg`;
   const yd=ytNow()==='t', ya=yAmt(R);
   const dough=[
-    ...R.fl.map(f=>({k:f.k,n:f.n,q:g(f.g+(f.k==='semola'?dust:0))+' g',g:'',s:[f.sub,f.k==='semola'?`${dust} g of it for dusting`:''].filter(Boolean).join(' · ')})),
+    ...R.fl.map(f=>({k:f.k,n:f.n,q:g(f.g+(f.k==='semola'?dust:0))+' g',g:'',s:[f.sub,f.k==='semola'?`${dust}\u00a0g of it for dusting`:''].filter(Boolean).join(' · ')})),
     ...(R.fl.some(f=>f.k==='semola')?[]:[{k:'semola',n:'Semola',q:g(dust)+' g',g:'',s:'Durum semolina for dusting'}]),
     yd?{k:'hefe',n:'Dry yeast',q:nf(ya,1)+' g',g:'',s:'1 sachet is plenty'}:{k:'hefe',n:'Fresh yeast',q:nf(ya,1)+' g',g:'',s:'1 cube is plenty, freeze the rest'},
     {k:'salz',n:'Fine sea salt',q:g(R.salt+sf.tom/100)+' g',g:'',s:sf.tom?`${g(sf.tom/100)} g of it for the sauce`:''},
@@ -3224,12 +3289,12 @@ function shopDataAll(){
   {const extra=agg['Olive oil|g']?agg['Olive oil|g'].v:0;delete agg['Olive oil|g'];const oil=pzTotal()*3+extra;if(oil>0)dough.push({k:'oel',n:'Olive oil',q:`${nf(Math.max(5,Math.round(oil/0.91/5)*5))} ml`,g:'',s:'for drizzling'});}
   const top=Object.values(agg).sort((a,b)=>a.n.localeCompare(b.n,'de')).map(x=>{return {k:'t-'+x.n,n:x.n,q:fmtQ(x.v,x.u),g:'',s:''};});
   // Laden-Bereich und Frisch-Datum
-  const B=new Date(P0.p.bake), V=new Date(+B-864e5), rl=rel(V), when=['Today','Tomorrow'].includes(rl)?rl.toLowerCase():`${DAY[V.getDay()]} ${V.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][V.getMonth()]}`;
+  const B=new Date(P0.p.bake), V=new Date(+B-864e5), rl=rel(V), when=['Today','Tomorrow'].includes(rl)?rl.toLowerCase():`${DAY[V.getDay()]} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][V.getMonth()]} ${V.getDate()}`;
   [...dough,...sauce,...top].forEach(x=>{x.a=AISLE(x.n);if(FRESH.test(x.n))x.fr=1;});
   freshWhen=+V<Date.now()?'today':when;
   return {dough,sauce,top,sf};
 }
-const TV={'Fior di Latte':['#FFF8EA',5,7],'Provola':['#F3E3C0',5,7],'Ricotta':['#FFFDF6',6,5],'Gorgonzola':['#E9E4C9',5,5],'Burrata':['#FFFDF6',1,14],'Parmigiano':['#F4E6B8',8,2],'Pecorino':['#F4E6B8',8,2],'Salami, mild':['#9E2A1E',8,6],'Salame piccante':['#8E1F17',8,6],'Salsiccia':['#B57A5C',8,5],'Nduja':['#B33A1E',7,4],'Prosciutto crudo':['#E9A3A0',6,8],'Mortadella':['#F2B8B5',6,9],'Basil':['#3E8A47',4,4,1],'Rocket':['#5E8C3A',12,3,1],'Parsley':['#5E8C3A',14,1.3],'Oregano, dried':['#6B7F3A',16,1.2],'Rosemary':['#4F7A3A',12,1.6,1],'Friarielli or broccoli':['#3E6B2E',8,6,1],'Mushrooms':['#D9C4A0',9,5.5],'Truffle cream':['#4A3A2C',7,2.5],'Broccoli':['#3E6B2E',9,5],'Red onion':['#9B5C8F',10,2.2],'Zucchini':['#7FA650',8,5],'Eggplant':['#4A2D4F',6,5],'Bell pepper, red':['#E04A36',6,4.5],'Bell pepper, yellow':['#E2B227',6,4.5],'Cherry tomatoes':['#F05A49',7,5],'Potatoes, waxy':['#F1D48A',10,7],'Garlic':['#F2E6C9',8,2.5],'Chili flakes':['#C2281B',12,1.1],'Chili oil':['#D9542F',6,2],'Honey':['#E8B23A',7,2],'Pistachios, chopped':['#7FA650',18,1.6],'Hazelnuts, chopped':['#C9A06A',14,1.5],'Strawberries':['#E04A36',6,5],'Powdered sugar':['#FFFDF6',22,.9],'Organic lemon':['#F2D24A',10,1.2]};
+const TV={'Fior di Latte':['#FFF8EA',5,7],'Provola':['#F3E3C0',5,7],'Ricotta':['#FFFDF6',6,5],'Gorgonzola':['#E9E4C9',5,5],'Burrata':['#FFFDF6',1,14],'Parmigiano':['#F4E6B8',8,2],'Pecorino':['#F4E6B8',8,2],'Salami, mild':['#9E2A1E',8,6],'Salame piccante':['#8E1F17',8,6],'Salsiccia':['#B57A5C',8,5],'Nduja':['#B33A1E',7,4],'Prosciutto crudo':['#E9A3A0',6,8],'Mortadella':['#F2B8B5',6,9],'Basil':['#3E8A47',4,4,1],'Arugula':['#5E8C3A',12,3,1],'Parsley':['#5E8C3A',14,1.3],'Oregano, dried':['#6B7F3A',16,1.2],'Rosemary':['#4F7A3A',12,1.6,1],'Friarielli or broccoli':['#3E6B2E',8,6,1],'Mushrooms':['#D9C4A0',9,5.5],'Truffle cream':['#4A3A2C',7,2.5],'Broccoli':['#3E6B2E',9,5],'Red onion':['#9B5C8F',10,2.2],'Zucchini':['#7FA650',8,5],'Eggplant':['#4A2D4F',6,5],'Bell pepper, red':['#E04A36',6,4.5],'Bell pepper, yellow':['#E2B227',6,4.5],'Cherry tomatoes':['#F05A49',7,5],'Potatoes, waxy':['#F1D48A',10,7],'Garlic':['#F2E6C9',8,2.5],'Chili flakes':['#C2281B',12,1.1],'Chili oil':['#D9542F',6,2],'Honey':['#E8B23A',7,2],'Pistachios, chopped':['#7FA650',18,1.6],'Hazelnuts, chopped':['#C9A06A',14,1.5],'Strawberries':['#E04A36',6,5],'Powdered sugar':['#FFFDF6',22,.9],'Organic lemon':['#F2D24A',10,1.2]};
 const MEAT=/Salami|Salame|Salsiccia|Nduja|Prosciutto|Mortadella/;
 function ownCatalog(){const m=new Map();PIZZAS.filter(p=>!p.own).forEach(p=>p.ing.forEach(([n,v,u])=>{if(!m.has(n)&&n!=='Nutella')m.set(n,[n,v,u]);}));return [...m.values()];}
 function toPizza(o){return {id:o.id,own:1,dot:(TV[o.ing[0]&&o.ing[0][0]]||['#C2281B'])[0],veg:o.ing.some(x=>MEAT.test(x[0]))?0:1,n:o.n,d:'Your own creation.',tag:'Custom',rossa:o.rossa?1:0,base:o.rossa?null:'#F3E7CC',ing:o.ing,top:o.ing.map(([n])=>TV[n]).filter(Boolean)};}
@@ -3239,6 +3304,7 @@ function openOwn(){ownSel=new Set();ownFree=[];if($('ownFree'))$('ownFree').valu
 let ownFree=[];function drawOwn(){const cat=ownCatalog().concat(ownFree);$('ownChips').innerHTML=cat.map(([n])=>`<button class="oc${ownSel.has(n)?' on':''}" data-oc="${n}">${TOPI(n)}${n.startsWith('Bell pepper')?n.replace(',',''):shortName(n)}</button>`).join('');
   const tmp=toPizza({id:'preview',n:'',rossa:$('ownSauce').checked,ing:cat.filter(x=>ownSel.has(x[0]))});$('ownPrev').innerHTML=pizzaSVG(tmp);
   const nm=!!$('ownName').value.trim();$('ownSave').disabled=!(nm&&ownSel.size);$('ownHint').textContent=nm&&ownSel.size?'':!nm&&!ownSel.size?'Still need a name and at least one topping.':!nm?'Still need a name for your pizza.':'Pick at least one topping.';}
+const escH=t=>String(t==null?'':t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const cleanName=t=>String(t||'').replace(/[<>&"`]/g,'').replace(/\s+/g,' ').trim().slice(0,28);
 function saveOwn(){const cat=ownCatalog().concat(ownFree),n=cleanName($('ownName').value);if(!n||!ownSel.size)return;S.own=S.own||[];const o={id:'own'+Date.now().toString(36),n,rossa:$('ownSauce').checked,ing:cat.filter(x=>ownSel.has(x[0]))};S.own.push(o);syncOwn();if(pzTotal()<S.n)S.pz[o.id]=1;save();$('ownSheet').hidden=true;document.body.classList.remove('lock');S.pzf='alle';renderShop();toast(`${n} is on the menu`);setTimeout(()=>{const c=document.querySelector(`.card[data-id="${o.id}"]`);c&&c.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});},60);}
 const FILTERS=[['alle','All'],['klassiker','Classic'],['scharf','Spicy'],['veg','Veggie'],['dessert','Dessert']];
@@ -3285,7 +3351,7 @@ function renderShop(){
 function renderSauce(){
   const sf=sauceFor(),tom=sf.tom||S.n*75,c=Math.ceil(tom/400);
   $('sauceSum').textContent=`for ${sf.rossa||S.n} pizzas`;
-  $('sauce').innerHTML=[['San Marzano tomatoes, DOP',`${g(tom)} g`,`${c} can${c>1?'s':''} of 400 g`],['Fine sea salt',`${g(tom/100)} g`,''],['Basil','a few leaves','']].map(([a,b,s])=>`<li><span>${a}${s?`<small>${s}</small>`:''}</span><b>${b}</b></li>`).join('');
+  $('sauce').innerHTML=[['San Marzano tomatoes, DOP',`${g(tom)} g`,`${c} can${c>1?'s':''} of 400 g`],['Fine sea salt',`${g(tom/100)} g`,''],['Olive oil','1 tbsp',''],['Basil','a few leaves','']].map(([a,b,s])=>`<li><span>${a}${s?`<small>${s}</small>`:''}</span><b>${b}</b></li>`).join('');
 }
 function shopText(){
   const D=shopData(), o=a=>a.filter(x=>!S.shop[x.k]), some=[...D.dough,...D.sauce,...D.top].some(x=>S.shop[x.k]);
@@ -3299,7 +3365,7 @@ function copyList(){
   try{navigator.clipboard.writeText(t).then(()=>toast('Shopping list copied'),fb);}catch(e){fb();}
 }
 function undoToast(m,fn){let el=document.querySelector('.toast');if(!el){el=document.createElement('div');el.className='toast';el.setAttribute('role','status');document.body.appendChild(el);}el.innerHTML=`<span>${m}</span><button class="t-undo">Undo</button>`;el.hidden=false;el.querySelector('.t-undo').onclick=()=>{el.hidden=true;fn();};clearTimeout(tt);tt=setTimeout(()=>el.hidden=true,10000);}
-const GLOSS={'Poolish':'A liquid preferment of equal parts flour and water with very little yeast. It ripens the day before and brings more flavour and an open crumb.','Biga':'A stiff preferment with about half as much water as flour. It stays crumbly, ripens cool the day before and gives the dough strength and a slightly nutty flavour.','Night rest':'During this window Tempasto plans no tasks for you. If dividing the dough falls in the night, the app moves it to the evening before or the morning after, and the time in the fridge adjusts. If even mixing the dough would fall in the night, you’ll see a note and can move dinner. It isn’t a do-not-disturb mode: since no step is due at night, no reminder comes either.','Autolyse':'Flour and water rest for 30 minutes without yeast and salt. The flour soaks up the water, and the dough is smoother and easier to knead later.','Bulk ferment':'The dough rises in one piece, before it’s divided into balls.','Ball proof':'The single dough balls keep rising after dividing, usually in the fridge.','Dough balls':'The weighed balls of dough, each one becomes a pizza.','Dough ball':'A weighed ball of dough that becomes one pizza.','Proof':'How far the dough has risen. 100 % means ready to bake. You can check it with the poke test.','warm up':'The dough balls come out of the fridge and get warm and soft at room temperature, so they shape well.','Windowpane test':'Stretch a piece of dough thin between your fingers. If it gets almost see-through without tearing, it’s kneaded enough.','Poke test':'Press a finger lightly into the dough ball. If the dent springs back slowly, it’s ripe. If it springs back at once: wait a bit longer.','shape into a tight ball':'Drag the dough ball towards you on the counter with both hands, turning it, until the surface is tight.','Semola':'Coarsely ground durum wheat. In the dough for bite, on the counter and the peel so nothing sticks.'};
+const GLOSS={'Poolish':'A liquid preferment of equal parts flour and water with very little yeast. It ripens the day before and brings more flavor and an open crumb.','Biga':'A stiff preferment with about half as much water as flour. It stays crumbly, ripens cool the day before and gives the dough strength and a slightly nutty flavor.','Night rest':'During this window Tempasto plans no tasks for you. If dividing the dough falls in the night, the app moves it to the evening before or the morning after, and the time in the fridge adjusts. If even mixing the dough would fall in the night, you’ll see a note and can move dinner. It isn’t a do-not-disturb mode: since no step is due at night, no reminder comes either.','Autolyse':'Flour and water rest for 30 minutes without yeast and salt. The flour soaks up the water, and the dough is smoother and easier to knead later.','Bulk ferment':'The dough rises in one piece, before it’s divided into balls.','Final proof':'The single dough balls keep rising after dividing, usually in the fridge.','Dough balls':'The weighed balls of dough, each one becomes a pizza.','Dough ball':'A weighed ball of dough that becomes one pizza.','Proof':'How far the dough has risen. 100 % means ready to bake. You can check it with the poke test.','warm up':'The dough balls come out of the fridge and get warm and soft at room temperature, so they shape well.','Windowpane test':'Stretch a piece of dough thin between your fingers. If it gets almost see-through without tearing, it’s kneaded enough.','Poke test':'Press a finger lightly into the dough ball. If the dent springs back slowly, it’s ripe. If it springs back at once: wait a bit longer. If it stays: bake right away.','shape into a tight ball':'Drag the dough ball towards you on the counter with both hands, turning it, until the surface is tight.','Semola':'Finely milled durum wheat (semola rimacinata). In the dough for bite, on the counter and the peel so nothing sticks.'};
 const GLRE=new RegExp('(^|[^A-Za-zÄÖÜäöüß])('+Object.keys(GLOSS).sort((a,b)=>b.length-a.length).join('|')+')(?![A-Za-zÄÖÜäöüß])','i');
 function glossify(el){if(!el)return;const seen=new Set(),w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement.closest('.gl,button,b.kr-n,svg,script,style')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});const L=[];let n;while(n=w.nextNode())L.push(n);
   L.forEach(t=>{const m=t.nodeValue.match(GLRE);if(!m||seen.has(m[2]))return;seen.add(m[2]);const i=m.index+m[1].length,a=t.splitText(i);a.nodeValue=a.nodeValue.slice(m[2].length);const b=document.createElement('button');b.className='gl';b.dataset.gl=m[2];b.textContent=m[2];t.after(b);});}
@@ -3308,21 +3374,21 @@ let tt;function toast(m){let el=document.querySelector('.toast');if(!el){el=docu
 
 /* ---------- Ereignisse ---------- */
 $('minus').onclick=()=>{S.n=Math.max(1,S.n-1);render();};
-$('plus').onclick=()=>{if(S.n>=20){toast('20 dough balls at most');return;}S.n=Math.min(20,S.n+1);render();};
+$('plus').onclick=()=>{if(S.n>=18){toast('18 dough balls at most');return;}S.n=Math.min(18,S.n+1);render();};
 $('hOpts').onclick=e=>{const b=e.target.closest('.opt');if(!b)return;const b0=S.bake;S.h=+b.dataset.h;render();if(S.bake!==b0)toast(`Moved dinner to ${at(new Date(S.bake))} so ${S.h} h fit`);};
 $('days').onclick=e=>{const b=e.target.closest('.day');if(!b)return;if(b.getAttribute('aria-disabled')==='true'){toast(`Too tight for a ${S.h} h rise. Pick a shorter rise.`);return;}const d=new Date(+b.dataset.t);const cur=new Date(S.bake);
   let x=withTime(d,cur.getHours(),cur.getMinutes());
   if(!feasible(x)){const sl=SLOTS.find(([,h])=>feasible(withTime(d,h,0)));if(sl)x=withTime(d,sl[1],0);else{const lt=lateFeasible(d);if(lt)x=lt;}}
   S.bake=isoLocal(x);render();};
 $('slots').onclick=e=>{const b=e.target.closest('.slot');if(!b||b.disabled)return;
-  if(b.dataset.h==='x'){const el=$('bTime');el.hidden=false;el.value=tm(new Date(S.bake));try{el.showPicker&&el.showPicker();}catch(_){}el.focus();return;}
+  if(b.dataset.h==='x'){const el=$('bTime');el.hidden=false;{const d=new Date(S.bake);el.value=pad(d.getHours())+':'+pad(d.getMinutes());}try{el.showPicker&&el.showPicker();}catch(_){}el.focus();return;}
   S.bake=isoLocal(withTime(new Date(S.bake),+b.dataset.h,0));$('bTime').hidden=true;render();};
 $('bTime').onchange=()=>{const v=$('bTime').value;if(!v)return;const [h,m]=v.split(':').map(Number);const x=withTime(new Date(S.bake),h,m);if(!feasible(x)){toast('That early, the rise isn’t long enough');return;}S.bake=isoLocal(x);render();};
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{const v=b.dataset.v;if(v==='kochen'){setView('ablauf');}else setView(v);});
 function planText(){const c=cookPlan(),P0=c?c.P:P,R=P0.R,p=P0.p,B=new Date(p.bake),DL=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  const L=[`Pizza dough for ${p.n} × ${p.w} g, ${p.h} h rise`,`Dinner: ${DL[B.getDay()]}, ${B.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][B.getMonth()]}, ${tm(B)}`,'','Ingredients',
+  const L=[`Pizza dough for ${p.n} × ${p.w} g, ${p.h} h rise`,`Dinner: ${DL[B.getDay()]}, ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][B.getMonth()]} ${B.getDate()}, ${tm(B)}`,'','Ingredients',
     ...R.fl.map(f=>`${f.n} ${g(f.g)} g`),`Water, cold ${g(R.water)} g`,`${yName()} ${nf(yAmt(R),1)} g`,`Salt ${g(R.salt)} g`,'','Schedule'];
-  (window.__shareRows||[]).forEach(r=>L.push(`${DAY[r.d.getDay()]} ${r.d.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][r.d.getMonth()]} ${tm(r.d)}  ${r.t}`));
+  (window.__shareRows||[]).forEach(r=>L.push(`${DAY[r.d.getDay()]} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][r.d.getMonth()]} ${r.d.getDate()} ${tm(r.d)}  ${r.t}`));
   L.push('','Planned with Tempasto');return L.join('\n');}
 async function sharePlan(){const t=tpU(planText());
   if(window.TEMPASTO_NATIVE&&TEMPASTO_NATIVE.shareText&&await TEMPASTO_NATIVE.shareText(t))return;
@@ -3339,7 +3405,8 @@ $('pzRail').addEventListener('scroll',()=>{clearTimeout(railUpd.t);railUpd.t=set
 $('pzFilter').onclick=e=>{const b=e.target.closest('[data-f]');if(!b)return;S.pzf=b.dataset.f;renderShop();save();$('pzRail').scrollLeft=0;};
 $('pzMenu').onclick=openMenu;
 /* Nonnas Zettel */
-const NZ_TEASE={pf:'Time is the best ingredient.',mix:'Nice cold water.',knead:'Smooth first, then done.',fold:'Fold gently, done.',fridge:'Fold gently, done.',portion:'Cold dough divides more easily.',out:'Keep the lid on.',oven:'Let it get really hot.',bake:'Never roll it!'};
+const NZ_TEASE={pf:'Time is the best ingredient.',mix:'Nice cold water.',knead:'Knead until smooth.',fold:'Fold gently, then rest.',fridge:'Back and bottom is coldest.',portion:'Cold dough divides more easily.',out:'Keep the lid on.',oven:'Let it get really hot.',bake:'Never roll it!'};
+const NZ_SUP={sup:1,from:'One more note',title:'Pizza sospesa',html:'<ul class="nz-lines"><li>In Naples you sometimes pay</li><li>for one pizza more than you eat.</li><li>The pizza sospesa waits</li><li>for whoever comes next.</li><li>Tempasto costs you nothing.</li><li>If you enjoyed it,</li><li>leave a bag of Caputo behind.</li></ul><div class="nz-sig">– Nonna</div><div class="nz-sup"><button class="cta" data-nz-don>Buy a bag of Caputo</button><button class="nz-later" data-nz-close>Maybe later</button><button class="nz-later nz-never" data-nz-never>Don’t show again</button></div>'};
 const NZ_HI={greet:1,from:'A note for you',title:'Ciao, I’m Nonna!',html:'<ul class="nz-lines"><li>I live above the pizzeria.</li><li>At every step I tuck a note</li><li>behind the button for you.</li><li>Tap it when you’re unsure.</li></ul>'};
 let nzKey='',nzOpenNow=false;
 {const t=document.querySelector('#ckSheet .ck-tools');if(t)$('nzTools').appendChild(t);}
@@ -3347,13 +3414,13 @@ function nzUpd(st,x){const w=$('nzWrap');if(!w)return;const show=!!x&&st!=='fin'
   if(!show){w.hidden=true;nzKey='';return;}w.hidden=false;
   const txt=NZ_TEASE[x.s.id]||'Tap me.',t=$('nzT');if(t.textContent===txt)return;
   if(!nzKey){t.textContent=txt;nzKey=x.s.id;return;}nzKey=x.s.id;
-  t.animate([{opacity:1},{opacity:0}],{duration:180}).onfinish=()=>{t.textContent=txt;t.animate([{opacity:0},{opacity:1}],{duration:260});};}
+  t.getAnimations().forEach(a=>a.cancel());t.animate([{opacity:1},{opacity:0}],{duration:180}).onfinish=()=>{t.textContent=NZ_TEASE[nzKey]||'Tap me.';t.animate([{opacity:0},{opacity:1}],{duration:260});};}
 function nzFrom(){const n=$('nz'),w=$('nzWrap');if(!n||w.hidden||!cookOpen)return null;const a=n.getBoundingClientRect(),b=$('nzCard').getBoundingClientRect();if(!a.width)return null;
   return `translate(${(a.left+a.width/2)-(b.left+b.width/2)}px,${(a.top+a.height/2)-(b.top+b.height/2)}px) scale(${(a.width/b.width).toFixed(3)}) rotate(-4deg)`;}
 function nzOpen(c){const o=$('nzo'),card=$('nzCard'),red=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  $('nzFrom').textContent=c.from;$('nzH').textContent=c.title;$('nzB').innerHTML=c.html;{const tw=document.createTreeWalker($('nzB'),NodeFilter.SHOW_TEXT);let n;while(n=tw.nextNode())n.nodeValue=n.nodeValue.replace(/(\d)–(\d)/g,'$1–\u2060$2').replace(/(\d) (?=(g|kg|oz|lb|°C|°F|min|h|s|cm|in|ml|Minuten|minutes|Stunden|hours)\b|°)/g,'$1\u00a0');}glossify($('nzB'));$('nzOk').hidden=!c.greet;$('nzTools').hidden=!!c.greet||!cookOpen;
+  $('nzFrom').textContent=c.from;$('nzH').textContent=c.title;$('nzB').innerHTML=c.html;{const tw=document.createTreeWalker($('nzB'),NodeFilter.SHOW_TEXT);let n;while(n=tw.nextNode())n.nodeValue=n.nodeValue.replace(/(\d)–(\d)/g,'$1–\u2060$2').replace(/(\d) (?=(g|kg|oz|lb|°C|°F|min|h|s|cm|in|ml|Minuten|minutes|Stunden|hours)\b|°)/g,'$1\u00a0');}glossify($('nzB'));$('nzOk').hidden=!c.greet;$('nzCard').classList.toggle('sup',!!c.sup);$('nzCard').classList.toggle('auto',!!c.auto);$('nzTools').hidden=!!c.greet||!!c.sup||!cookOpen;
   o.hidden=false;card.classList.remove('show');card.scrollTop=0;nzOpenNow=true;document.body.classList.add('lock');
-  const f=c.greet?null:nzFrom();if(f)$('nzWrap').style.visibility='hidden';
+  const f=c.greet||c.sup?null:nzFrom();if(f)$('nzWrap').style.visibility='hidden';
   card.style.setProperty('--rot','-1.5deg');const fr=c.greet?[{transform:'translate(-50px,-110vh) rotate(16deg)'},{transform:'translate(36px,-50vh) rotate(-12deg)',offset:.4},{transform:'translate(-14px,-8vh) rotate(6deg)',offset:.75},{transform:'rotate(-1.5deg)'}]
     :f?[{transform:f},{transform:'translateY(-24px) scale(1.03) rotate(-6deg)',offset:.6},{transform:'rotate(-1.5deg)'}]:[{transform:'scale(.92) rotate(-4deg)',opacity:0},{transform:'rotate(-1.5deg)',opacity:1}];
   const a=card.animate(fr,{duration:red?1:(c.greet?1300:760),easing:c.greet?'ease-out':'cubic-bezier(.3,.7,.3,1)',fill:'forwards'});
@@ -3361,12 +3428,18 @@ function nzOpen(c){const o=$('nzo'),card=$('nzCard'),red=matchMedia('(prefers-re
 function nzClose(){if(!nzOpenNow)return;nzOpenNow=false;const o=$('nzo'),card=$('nzCard');card.classList.remove('show');card.getAnimations().forEach(x=>x.cancel());o.hidden=true;$('nzWrap').style.visibility='';if(!cookOpen)document.body.classList.remove('lock');}
 $('nz').onclick=openInfo;$('nzX').onclick=nzClose;$('nzOk').onclick=nzClose;$('nzDim').onclick=nzClose;
 $('nzMeet').onclick=()=>nzOpen(NZ_HI);
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nzOpenNow)nzClose();});
+$('nzB').addEventListener('click',e=>{if(e.target.closest('[data-nz-close]')){nzClose();return;}
+ if(e.target.closest('[data-nz-never]')){S.supNever=1;save();nzClose();toast('Nonna won’t ask again. You’ll still find her under More.');return;}
+ if(e.target.closest('[data-nz-don]')){S.supNext=(S.bakes||0)+8;S.supUntil=Date.now()+180*864e5;save();if(SUPPORT_URL){try{window.open(SUPPORT_URL,'_blank','noopener');}catch(_){} }else toast('Donation link coming soon');nzClose();}});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-sheet="supSheet"],[data-sheet-open="supSheet"]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();const ps=b.closest('.sheet');if(ps)ps.hidden=true;nzOpen(NZ_SUP);},true);
+document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(nzOpenNow){nzClose();return;}if(!$('intro').hidden){$('introSkip').click();}});
+// Fenster: Fokus hinein und beim Schließen zurück zum Auslöser
+{const back=new WeakMap();document.querySelectorAll('.sheet').forEach(sh=>new MutationObserver(()=>{if(!sh.hidden){back.set(sh,document.activeElement);const f=sh.querySelector('.sh-x,button,input,[tabindex]');if(f)setTimeout(()=>{try{f.focus({preventScroll:true});}catch(_){}},30);}else{const b=back.get(sh);if(b&&b.focus&&document.contains(b))try{b.focus({preventScroll:true});}catch(_){}}}).observe(sh,{attributes:true,attributeFilter:['hidden']}));}
 $('hyR').addEventListener('input',e=>{S.hy=+e.target.value;$('hyV').textContent=S.hy+'\u202f%';render();});
 var IC_SNOW='<svg class="ic-t" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 3.5l3 2.5 3-2.5M9 20.5l3-2.5 3 2.5"/></svg>', IC_HOUSE='<svg class="ic-t" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5.5h4V20"/></svg>';
 function pillUpd(){const t=$('spT'),i=$('spIn');if(!t||!i||!P||!P.sc)return;const ms=+P.sc.start-Date.now(),now=ms<=60000;
   t.textContent=now?'Mix the dough':'Start plan';
-  if(now)i.textContent='now';else{const m=Math.round(ms/60000),d=Math.floor(m/1440),h=Math.floor(m%1440/60),mm=m%60;i.textContent=(P.R.pf?'Preferment in ':'Dough in ')+(d?`${d} T ${h} h`:h?`${h} h ${mm} min`:`${mm} min`);}
+  if(now)i.textContent='now';else{const m=Math.round(ms/60000),d=Math.floor(m/1440),h=Math.floor(m%1440/60),mm=m%60;i.textContent=(P.R.pf?'Preferment in ':'Dough in ')+(d?`${d} ${d>1?'days':'day'} ${h} h`:h?`${h} h ${mm} min`:`${mm} min`);}
   $('startBtn').classList.toggle('now',now);}
 $('proSw').onchange=e=>{S.pro=e.target.checked?1:0;save();$('proGrp').hidden=!S.pro;};
 new MutationObserver(()=>{if(!$('recSheet').hidden){$('proSw').checked=!!S.pro;$('proGrp').hidden=!S.pro;}}).observe($('recSheet'),{attributes:true,attributeFilter:['hidden']});
@@ -3419,7 +3492,7 @@ $('calAdd').onclick=async()=>{const R=window.__calRows||[];if(!R.length)return;
   try{const fl=new File([blob],name,{type:'text/calendar'});if(navigator.canShare&&navigator.canShare({files:[fl]})){await navigator.share({files:[fl]});return;}}catch(e){if(e&&e.name==='AbortError')return;}
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();toast('Calendar file saved');};
 $('bkLoad').onclick=()=>$('bkFile').click();
-$('bkFile').onchange=async e=>{const file=e.target.files[0];e.target.value='';if(!file)return;try{const o=JSON.parse(await file.text());if(!['tempasto','impasto'].includes(o.app)||!o.S)throw 0;S=Object.assign({},DEF,o.S);syncOwn();save();render();setView('mehr');toast('Backup from '+new Date(o.saved).toLocaleDateString('en-GB')+' loaded');}catch(_){toast('That’s not a Tempasto backup');}};
+$('bkFile').onchange=async e=>{const file=e.target.files[0];e.target.value='';if(!file)return;const old=S;let o;try{o=JSON.parse(await file.text());if(!['tempasto','impasto'].includes(o.app)||!o.S||typeof o.S!=='object'||!isFinite(+o.S.n)||!isFinite(+o.S.h))throw 0;S=normS(o.S);syncOwn();render();}catch(_){S=old;try{syncOwn();render();}catch(__){}toast('That’s not a Tempasto backup');return;}save();setView('mehr');toast('Backup'+(isNaN(new Date(o.saved))?'':' from '+new Date(o.saved).toLocaleDateString('en-US'))+' loaded');};
 $('guideOpen').onclick=()=>setView('anleitung');$('shiftOpen').onclick=()=>{renderShift();$('shiftSheet').hidden=false;document.body.classList.add('lock');};$('shiftL').onclick=e=>{const b=e.target.closest('.shift-o');if(!b||b.disabled)return;if(b.dataset.late)setLate(+b.dataset.late);else setShift(+b.dataset.sh);};$('langSw').onclick=()=>tpLangGo(window.TP_LANG==='de'?'en':'de');
 $('impOpen').onclick=()=>setView('impressum');
 document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>setView(b.dataset.back));
@@ -3479,9 +3552,9 @@ $('ckEnd').onclick=openEnd;
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;let rec=null,recOn=false;
 if(SR&&!window.TEMPASTO_NATIVE)$('ckMic').hidden=false;
 function micUI(){$('ckMic').classList.toggle('on',recOn);$('ckMic').setAttribute('aria-pressed',recOn);}
-function micStart(){if(!SR)return;try{rec=new SR();rec.lang='en-GB';rec.continuous=true;rec.interimResults=false;
+function micStart(){if(!SR)return;try{rec=new SR();rec.lang='en-US';rec.continuous=true;rec.interimResults=false;
   rec.onresult=e=>{const t=[...e.results].slice(e.resultIndex).map(r=>r[0].transcript).join(' ').toLowerCase();
-    if(/\b(next|done|finished|go|okay|ok)\b/.test(t)){const a=$('ckNext').dataset.act;if(cookOpen&&['done','ack','early'].includes(a)){toast('“Next” recognised');cookNext();}}
+    if(/\b(next|done|finished|go|okay|ok)\b/.test(t)){const a=$('ckNext').dataset.act;if(cookOpen&&['done','ack','early'].includes(a)){toast('“Next” recognized');cookNext();}}
     else if(/\bback\b/.test(t)&&cookOpen&&!$('ckPrev').hidden)$('ckPrev').click();};
   rec.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'){recOn=false;micUI();toast('Microphone isn’t allowed here');}};
   rec.onend=()=>{if(recOn&&cookOpen){try{rec.start();}catch(_){}}};
@@ -3526,8 +3599,8 @@ if(SUPPORT_URL){$('supGo').href=SUPPORT_URL;}else{$('supGo').removeAttribute('hr
 function tplNext(t){const now=new Date();for(let i=0;i<15;i++){const d=new Date(+now+i*864e5);if(d.getDay()!==t.wd)continue;const x=withTime(d,t.hh,t.mm);if(feasible(x))return x;}return null;}
 function renderTpl(){const L=S.tpl||[];
   $('tplSum').textContent=L.length?`${L.length}`:'';
-  $('tplL').innerHTML=L.length?L.map((t,i)=>{const nx=tplNext(t);return `<div class="tpl-r"><button class="tpl-go" data-tpl="${i}"><b>${t.name}</b><span>${DAYL[t.wd]} ${String(t.hh).padStart(2,'0')}:${String(t.mm).padStart(2,'0')} · ${t.n} pizzas · ${t.h} h</span><small>${nx?'next date: '+at(nx):'no matching date in 2 weeks'}</small></button><button class="tpl-x" data-tdel="${i}" aria-label="Delete template">✕</button></div>`;}).join(''):'<p class="small muted">No templates yet. Set up a plan, enter a name, save.</p>';
-  const b=new Date(S.bake);$('tplHint').textContent=`Saved: ${DAYL[b.getDay()]} ${tm(b)} · ${S.n} dough balls · ${S.h} h · pizzas and recipe.`;}
+  $('tplL').innerHTML=L.length?L.map((t,i)=>{const nx=tplNext(t);return `<div class="tpl-r"><button class="tpl-go" data-tpl="${i}"><b>${escH(t.name)}</b><span>${DAYL[t.wd]} ${t.hh%12||12}:${String(t.mm).padStart(2,'0')} ${t.hh<12?'AM':'PM'} · ${t.n} pizzas · ${t.h} h</span><small>${nx?'next date: '+at(nx):'no matching date in 2 weeks'}</small></button><button class="tpl-x" data-tdel="${i}" aria-label="Delete template">✕</button></div>`;}).join(''):'<p class="small muted">No templates yet. Set up a plan, enter a name, save.</p>';
+  const b=new Date(S.bake);$('tplHint').textContent=`This will save: ${DAYL[b.getDay()]} ${tm(b)} · ${S.n} dough balls · ${S.h} h · pizzas and recipe.`;}
 $('tplAdd').onclick=()=>{const n=cleanName($('tplName').value);if(!n){$('tplName').focus();return;}const b=new Date(S.bake);S.tpl=S.tpl||[];S.tpl.push({name:n,wd:b.getDay(),hh:b.getHours(),mm:b.getMinutes(),n:S.n,h:S.h,pz:{...S.pz},rec:{mix:S.mix,mixOwn:S.mixOwn,otx:S.otx,bsx:S.bsx,w:S.w,hy:S.hy,k:S.k,yt:S.yt,wz:S.wz,km:S.km,room:S.room,oven:S.oven}});$('tplName').value='';save();renderTpl();toast(`Template “${n}” saved`);};
 $('tplL').addEventListener('click',e=>{const d=e.target.closest('[data-tdel]');if(d){S.tpl.splice(+d.dataset.tdel,1);save();renderTpl();return;}
   const g=e.target.closest('[data-tpl]');if(!g)return;const t=S.tpl[+g.dataset.tpl];S.n=t.n;S.h=t.h;S.pz={...t.pz};if(t.rec)Object.entries(t.rec).forEach(([k,v])=>{if(v!=null)S[k]=v;});const nx=tplNext(t);if(nx)S.bake=isoLocal(nx);
@@ -3588,9 +3661,9 @@ renderTpl();
     const tr=ls.map((l,i)=>{l.style.setProperty('--i',i);const a=l.getBoundingClientRect();
       return `translate(${(dx.get(l)||0)+bx-(a.left+a.width/2)}px,${by-(a.top+a.height/2)}px) scale(.15)`;});
     tg.classList.add('lo1');sp.classList.add('up','fly','lg');void sp.offsetWidth;
-    requestAnimationFrame(()=>ls.forEach((l,i)=>{if(tr[i])l.style.transform=tr[i];}));},4000);
-  T(()=>tg.classList.add('lo2'),4900);
-  T(()=>{sp.classList.add('go');document.body.classList.add('sp-land');T(fin,800);},5800);
+    requestAnimationFrame(()=>ls.forEach((l,i)=>{if(tr[i])l.style.transform=tr[i];}));},3100);
+  T(()=>tg.classList.add('lo2'),4000);
+  T(()=>{sp.classList.add('go');document.body.classList.add('sp-land');T(fin,800);},4900);
   }else{
   T(()=>tg.classList.add('lo1','ls'),60);
   T(()=>{sp.classList.add('go');document.body.classList.add('sp-land');T(fin,700);},700);
@@ -3609,8 +3682,17 @@ window.TEMPASTO_APP={notifEvents,openCook(){if(S.cook&&!cookOpen)openCook();},
   if(['hilfe','consigli','anleitung','impressum','storia'].includes(v)){setView('mehr');return true;}
   if(v!=='rezept'){setView('rezept');return true;}
   return false;}};
-})();
 setTimeout(()=>{try{tpUnitsAll();}catch(e){}},60);
+// Spendenzettel: zuerst beim 5. Öffnen, danach unregelmäßig alle 6 bis 12 Starts; 'Nicht mehr anzeigen' stoppt das (nicht sofort, erst ein paar Sekunden nach der Startanimation)
+{let ns=false;try{if(!window.tpLeaving&&!sessionStorage.getItem('tpSess')){sessionStorage.setItem('tpSess','1');ns=true;}}catch(e){}
+ if(ns){S.opens=(S.opens||0)+1;save();
+  if(S.supAt==null)S.supAt=5;
+  if(S.opens>=S.supAt&&!S.supNever&&(SUPPORT_URL||!S.supTest)&&Date.now()>(S.supUntil||0)){
+   const go=()=>{if(document.getElementById('splash')){setTimeout(go,500);return;}
+    setTimeout(()=>{if(nzOpenNow||cookOpen||(S.view&&S.view!=='rezept')||document.querySelector('.sheet:not([hidden])')||!$('intro').hidden)return;
+     S.supAt=S.opens+6+Math.floor(Math.random()*7);S.supTest=1;save();nzOpen(Object.assign({auto:1},NZ_SUP));},4000);};
+   setTimeout(go,300);}}}
+})();
 </script>
 
 </body></html>

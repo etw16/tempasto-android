@@ -73,9 +73,9 @@
 #e9e7cb	', dinner stays'
 #64aa54	'too early'
 #6d1507	'Mar'
-#4c1a8d	`from ${ok[0][1]}:00`
+#4c1a8d	`from ${ok[0][1]%12||12} ${ok[0][1]<12?'AM':'PM'}`
 #d6b471	'late evening'
-#36d1cd	`<button class="slot" data-h="${h}" aria-pressed="${!!match&&match[1]===h}"${ok?'':' disabled'}><b>${n}</b><span>${h}:00</span></button>`
+#36d1cd	`<button class="slot" data-h="${h}" aria-pressed="${!!match&&match[1]===h}"${ok?'':' disabled'}><b>${n}</b><span>${h%12||12}:00 ${h<12?'AM':'PM'}</span></button>`
 #63e847	`<button class="slot other" data-h="x" aria-pressed="${!match}"><b>Other time</b><span>${match?'pick a time':tm(b)}</span></button>`
 #fa025e	`${S.n}<small>dough balls of ${S.w} g</small>`
 #72393a	''
@@ -112,7 +112,7 @@
 #63edf6	'Fold, into the fridge'
 #1333a6	'Fridge'
 #c7f8f3	'MARCH'
-#dc3668	'Ball proof'
+#dc3668	'Final proof'
 #352291	'Mar'
 #f44950	`<em class="${r.wait.cold?'cold':'warm'}">${r.wait.cold?IC_SNOW:IC_HOUSE} ${hrs}</em>`
 #4128f0	`<div class="pk-r${r.done?' done':''}${r.cur?' cur':''}${r.hl?' hl':''}"><span class="bn">${r.t==='Take out'?(sub?'Take out':'Out of the fridge'):r.t==='Fold, into the fridge'?'Fold':(NAME[r.t]||r.t)} ${sub}</span><i></i><span class="bt">${tm(r.d)}</span></div>`
@@ -134,9 +134,9 @@
 #e6756b	`<b>Ready when:</b> `
 #c0bec5	'Done'
 #7dead3	`${a.t}. ${a.a?a.a+' '+(a.u||'')+'. ':''}${a.li?a.li.map(r=>r[0]+' '+r[1]).join('. ')+'. ':''}${a.d||''}${(()=>{const hw=howOf(x.s,c.P);return hw.crit&&i===A.length-1?' Ready when: '+hw.crit.join(', ')+'.':''})()}`
-#9627fc	`Due ${cdLong(late)} ago. No problem.`
+#9627fc	`${cdLong(late)} behind. No problem.`
 #b1f9ca	'Your turn now.'
-#5cee37	'10 minutes later'
+#5cee37	'Remind me in 10 min'
 #713253	`<span class="kr-l">Start</span><b class="kr-n">${tm(d)}</b><span class="kr-u">${rr}</span>`
 #1dafbd	`<span class="kr-l">Starts in</span><b class="kr-n" id="krCd"></b><span class="kr-u">at ${tm(d)}</span>`
 #846615	'Plan running'
@@ -400,7 +400,7 @@
 #066c34	'Read aloud is on.'
 #419fda	`<div class="tpl-r"><button class="tpl-go" data-tpl="${i}"><b>${t.name}</b><span>${DAYL[t.wd]} ${String(t.hh).padStart(2,'0')}:${String(t.mm).padStart(2,'0')} · ${t.n} pizzas · ${t.h} h</span><small>${nx?'next date: '+at(nx):'no matching date in 2 weeks'}</small></button><button class="tpl-x" data-tdel="${i}" aria-label="Delete template">✕</button></div>`
 #1910da	'<p class="small muted">No templates yet. Set up a plan, enter a name, save.</p>'
-#483e63	`Saved: ${DAYL[b.getDay()]} ${tm(b)} · ${S.n} dough balls · ${S.h} h · pizzas and recipe.`
+#483e63	`This will save: ${DAYL[b.getDay()]} ${tm(b)} · ${S.n} dough balls · ${S.h} h · pizzas and recipe.`
 #991d99	`Template “${n}” saved`
 #97fe60	`${t.name} applied, please pick a date`
 #372b2d	'Tempasto mix'
@@ -415,7 +415,7 @@
 #5bb28c	'by hand'
 #92eb64	'Dry yeast'
 #ceae82	'Fresh yeast'
-#c6ba53	'en-GB'
+#c6ba53	'en-US'
 #2e8ed8	'Sun'
 #be092d	'Mon'
 #1611a3	'Tue'
@@ -438,7 +438,7 @@
 #bca854	`Start the ${pf.n}`
 #8a9c0f	`${pf.n} ripening`
 #d8d5ad	'By hand'
-#20dffb	'Machine'
+#20dffb	'Mixer'
 #d09187	'Speed 1'
 #20bed8	'Fold'
 #0681fa	'Fold to the middle, turn over, leave covered.'
@@ -595,8 +595,8 @@
 #1a58b5	'Ingredients'
 #f716dc	'Schedule'
 #0ca1d7	`${DAY[r.d.getDay()]} ${r.d.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][r.d.getMonth()]} ${tm(r.d)}  ${r.t}`
-#5c2357	'Smooth first, then done.'
-#d3df16	'Fold gently, done.'
+#5c2357	'Knead until smooth.'
+#d3df16	'Fold gently, then rest.'
 #b991f2	'Cold dough divides more easily.'
 #d3362d	'Keep the lid on.'
 #644d81	'Never roll it!'
@@ -626,3 +626,46 @@
 #d70ca9	`${DAY[B.getDay()].toUpperCase()} ${B.getDate()} ${MON[B.getMonth()]}`
 #135236	`<button class="al-card" data-al-open="recSheet"><span class="al-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span><span class="al-t"><b>Mixing at ${tm(sc.start)} falls in your night rest</b><span>${nw[0]}:00–${nw[1]}:00, set under Recipe &amp; oven <em>›</em></span></span></button>`
 #625490	`<div class="tk-emptyart"><span class="ebox" aria-hidden="true"><span class="ebox-w"><span class="ebox-b"><span class="ebox-base"><i class="st"></i><i class="cr" style="left:28%;top:62%"></i><i class="cr" style="left:64%;top:30%"></i><i class="cr" style="left:56%;top:72%"></i></span><span class="ebox-lid"></span></span></span></span><b>The box is still empty</b><span>Choose your pizzas and the toppings go on the list by themselves.</span><button data-go="pizzen">Choose pizzas</button></div>`
+#2534f4	'One more note'
+#f7ea8b	'<ul class="nz-lines"><li>In Naples you sometimes pay</li><li>for one pizza more than you eat.</li><li>The pizza sospesa waits</li><li>for whoever comes next.</li><li>Tempasto costs you nothing.</li><li>If you enjoyed it,</li><li>leave a bag of Caputo behind.</li></ul><div class="nz-sig">– Nonna</div><div class="nz-sup"><button class="cta" data-nz-don>Buy a bag of Caputo</button><button class="nz-later" data-nz-close>Maybe later</button><button class="nz-later nz-never" data-nz-never>Don’t show again</button></div>'
+#ea4c16	'Nonna won’t ask again. You’ll still find her under More.'
+#06b6c0	'The rest of the plan and all reminders move with it; the dough stays in the fridge a little shorter or longer. Grayed-out options are too early or too late in the day, or too much for the dough.'
+#192f19	`<span>${S.h} h rise is no longer enough for ${dn}.</span><button data-alt-h="${alt}">Switch to ${alt} h</button>`
+#f3a428	`<button class="al-card" data-al-open="recSheet"><span class="al-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span><span class="al-t"><b>${nl} at ${tm(nt)} falls in your night rest</b><span>${nw[0]%12||12} ${nw[0]<12?'AM':'PM'}–${nw[1]%12||12} ${nw[1]<12?'AM':'PM'}, set under Recipe &amp; oven <em>›</em></span></span></button>`
+#d37f42	`Dissolve the yeast in the ${t} water. If your scale only weighs whole grams: dissolve ${tk.G} g yeast in <b>${tk.D} g</b> water, use <b>${tk.w} g</b> of it and pour away the rest.`
+#4742c7	`Dissolve the yeast in <b>${g(R.wY)} g</b> cold water. If your scale only weighs whole grams: dissolve ${tk.G} g yeast in <b>${tk.D} g</b> cold water, use <b>${tk.w} g</b> of it and pour away the rest.`
+#ddd535	`With this many pizzas, take half of the boxes out about <b>${dur(Math.round(bakeDur(p)/H*2)/4)}</b> later.`
+#f4e26c	`Top, slide in, bake for about ${bsTxt()}.${(S.oven||'gas')==='gas'?' Turn the flame down a little while baking.':''}`
+#f0ebfe	`<div class="alert bad"><b>Too much yeast</b><span>Ripe about ${Math.round(diff)} h too early.</span></div><ol class="acts"><li><b>Bake earlier:</b> ${at(ready)}.</li><li><b>Fridge to ${colder} °C</b> and divide the dough right away: ripe after about ${Math.round(rC)} h, with only 1–2 h warming up after about ${Math.round(rCA)} h.</li>${target-rCA>4?`<li><b>Freeze</b> by ${at(fz)} at the latest. Move to the fridge the day before (12–24 h), then 2–3 h at room temperature.</li>`:''}</ol>`
+#e0b425	`<div class="alert"><b>Too little yeast</b><span>Ripe about ${Math.round(-diff)} h later. Take the dough balls out of the fridge about ${dur(aN)} instead of ${dur(Math.round(acclFor(target)*4)/4)} before baking, or eat later.</span></div>`
+#d5d637	`<div class="tpl-r"><button class="tpl-go" data-tpl="${i}"><b>${escH(t.name)}</b><span>${DAYL[t.wd]} ${t.hh%12||12}:${String(t.mm).padStart(2,'0')} ${t.hh<12?'AM':'PM'} · ${t.n} pizzas · ${t.h} h</span><small>${nx?'next date: '+at(nx):'no matching date in 2 weeks'}</small></button><button class="tpl-x" data-tdel="${i}" aria-label="Delete template">✕</button></div>`
+'oder feiner Hartweizengrieß'	'or fine durum semolina'
+`in ${d} ${d>1?'Tagen':'Tag'}${h?' '+h+' h':''}`	`in ${d} ${d>1?'days':'day'}${h?' '+h+' h':''}`
+`${d} ${d>1?'Tage':'Tag'} ${h} h`	`${d} ${d>1?'days':'day'} ${h} h`
+`Gehzeit ${S.h} h`	`Rise ${S.h} h`
+' und '	' and '
+`Seit ${cdLong(late)} fällig. Der Teig hat jetzt weniger Zeit. Mit „Später dran?“ verschiebst du den Plan.`	`${cdLong(late)} behind. The dough now has less time. “Running late?” moves the plan.`
+`Seit ${cdLong(late)} fällig. Am besten jetzt gleich.`	`${cdLong(late)} behind. Best to do it right now.`
+`Seit ${cdLong(late)} fällig. Der Teig ist weitergegangen, mach vor dem Backen die Fingerprobe.`	`${cdLong(late)} behind. The dough has kept rising, do the poke test before baking.`
+`Hefe im ${t} Wasser auflösen.`	`Dissolve the yeast in the ${t} water.`
+`${R.pf.k==='biga'?'Die':'Der'} ${R.pf.n} bringt schon Hefe mit. Deshalb kommt in den Hauptteig nur noch wenig dazu.`	`The ${R.pf.n} already brings yeast. That’s why the main dough only gets a little more.`
+'Ofen ist an und heizt'	'oven is on and heating'
+'Das Blech auf die unterste Schiene schieben, dann wird der Boden knusprig.'	'Put the tray on the lowest rack, that way the base gets crisp.'
+'Den Stein ganz oben einschieben, dort ist es am heißesten.'	'Put the stone on the top rack, that’s where it’s hottest.'
+'Wann wird gegessen?'	'When are you eating?'
+'Cuoco für die lange Gare, Nuvola für luftige Ränder, Semola für Biss und zum Bestreuen.'	'Cuoco for the long rise, Nuvola for airy rims, semola for bite and dusting.'
+`davon ${dust}\u00a0g zum Bestreuen`	`${dust}\u00a0g of it for dusting`
+'Mit dem Finger leicht in den Teigling drücken. Kommt die Delle langsam zurück, ist er reif. Springt sie sofort zurück: noch warten. Bleibt sie stehen: sofort backen.'	'Press a finger lightly into the dough ball. If the dent springs back slowly, it’s ripe. If it springs back at once: wait a bit longer. If it stays: bake right away.'
+'Fein gemahlener Hartweizen (Semola rimacinata). Im Teig für Biss, auf der Fläche und dem Schieber, damit nichts klebt.'	'Finely milled durum wheat (semola rimacinata). In the dough for bite, on the counter and the peel so nothing sticks.'
+'Maximal 18 Teiglinge'	'18 dough balls at most'
+'Hinten unten ist’s am kältesten.'	'Back and bottom is coldest.'
+'Sicherung'	'Backup'
+' vom '	' from '
+' geladen'	' loaded'
+'Ansetzen'	'Mixing'
+'Olivenöl'	'Olive oil'
+'1 EL'	'1 tbsp'
+'TL'	'tsp'
+'ohne'	'none'
+'Fingerprobe machen. Nicht ausrollen, von innen nach außen drücken. Unter „Ofen & Belag“ startest du für jede Pizza den Timer.'	'Do the poke test. Never roll: press from the center outwards. Use “Oven & toppings” to start each pizza’s timer.'
+`${d} ${d>1?'Tagen':'Tag'} ${h} h`	`${d} ${d>1?'days':'day'} ${h} h`
