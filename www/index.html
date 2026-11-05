@@ -12,10 +12,25 @@
 @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format('woff2')}
 @font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/ibm-plex-mono-latin-600-normal.woff2) format('woff2')}
 html,body{background:#F3F4EF}</style>
+<script>window.TEMPASTO_PAGES={de:'index.html',en:'en.html'};</script>
 <script src="capacitor.js"></script>
 <script src="bridge.js"></script>
 </head><body>
 
+<script>
+window.TP_LANG='de';
+(function(){var L=window.TP_LANG,P=window.TEMPASTO_PAGES,p=null;
+ function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
+ if(L==='de'&&!P)ls('tpHome',location.href);
+ function url(w){if(P)return P[w];if(w==='en')return new URL('en.html',location.href).href;return ls('tpHome');}
+ window.tpLangGo=function(w){ls('tempasto-lang',w);if(w===L)return;var u=url(w);if(u)location.replace(u);};
+ p=ls('tempasto-lang');var want=p||((navigator.language||'de').slice(0,2).toLowerCase()==='de'?'de':'en');
+ if(want===L)return;
+ if(P){if(P[want])location.replace(P[want]);return;}
+ if(want==='en'){try{var x=new XMLHttpRequest();x.open('HEAD','en.html',false);x.send();if(x.status===200)location.replace('en.html');}catch(e){}}
+ else{var h=ls('tpHome');if(h&&h!==location.href)location.replace(h);}
+})();
+</script>
 <meta name="theme-color" content="#F3F4EF">
 <style>
 /* Layout: schmale Rezeptkarten-Spalte mit Tab-Leiste unten (Daumenzone). Kochmodus als Vollbild-Ebene: oben Status/Countdown, Mitte Schritt, unten große Knöpfe. */
@@ -1093,6 +1108,7 @@ body.has-mini #v-mehr .mtile{min-height:46px}
 .cook.tight .ck-in{gap:8px!important;padding-top:6px}
 .cook.tighter .kr{width:120px!important}
 .cook.tighter .ck-title{font-size:1.5rem}
+.cook.tightest .kr{width:96px!important}.cook.tightest #ckIn .ck-li div{padding:3px 0;font-size:.92rem}.cook.tightest .ck-in{gap:6px!important;padding-top:2px}
 
 .ck-bar .x,.ck-prev{width:40px!important;height:40px!important;min-height:40px!important}
 .ck-end{padding-inline:12px!important;flex:0 0 auto}
@@ -1111,7 +1127,11 @@ body.has-mini #v-mehr .mtile{min-height:46px}
 .splash .brand{justify-items:center;margin:0}
 .splash.go{background-color:transparent}
 .splash.out{opacity:0;pointer-events:none}
-body:has(#splash) #v-rezept .ptop .brand{opacity:0}
+
+#v-rezept .ptop .brand:has(.sp-tg){position:relative;z-index:150}
+#v-rezept .ptop .brand:has(.sp-tg)>:not(.logo){opacity:0}
+#v-rezept .ptop .brand:has(.sp-tg.lo1)>:not(.logo){opacity:1;transition:opacity 1.3s ease .25s}
+#v-rezept .ptop .brand:has(.sp-tg.lo1.ls)>:not(.logo){transition:opacity .45s ease}
 /* Wischen: kurze Bewegung */
 body[data-swipe=l] .wrap>section.view:not([hidden]){animation:swl .25s ease-out}
 body[data-swipe=r] .wrap>section.view:not([hidden]){animation:swr .25s ease-out}
@@ -1120,6 +1140,18 @@ body[data-swipe=r] .wrap>section.view:not([hidden]){animation:swr .25s ease-out}
 
 .intro-ov{justify-content:center;gap:8px;max-width:340px}
 #recSheet .mrow-ov{flex-wrap:wrap}
+#recSheet .of-row{flex-wrap:wrap;row-gap:8px}
+#recSheet .of-row .of-cur{margin-left:auto}
+.of-cur{display:inline-flex;align-items:center;gap:8px;min-height:36px;padding:5px 12px 5px 14px;border:1.5px solid var(--line);border-radius:99px;background:var(--surface,#fff);font:600 .84rem var(--f-body);color:var(--ink);cursor:pointer;white-space:nowrap}
+.of-cur em{font-style:normal;font-size:1.1rem;line-height:1;color:var(--muted);transition:transform .2s ease}
+.of-cur.open em{transform:rotate(90deg)}
+.of-pick{width:100%;display:grid;gap:2px;border-top:1px solid var(--line);padding-top:6px}
+.of-pick[hidden]{display:none}
+.of-o{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;padding:6px 4px;border:0;background:none;text-align:left;font:inherit;color:var(--ink);cursor:pointer;border-radius:10px}
+.of-o i{flex:0 0 auto;width:18px;height:18px;border-radius:50%;border:2px solid #CFC6B2;background:var(--bg)}
+.of-o[aria-pressed=true] i{border-color:var(--accent);background:radial-gradient(circle,var(--accent) 0 4.5px,var(--bg) 5px)}
+.of-o span{display:grid;gap:1px}.of-o b{font-weight:600;font-size:.95rem}.of-o small{font-size:.76rem;color:var(--muted)}
+.of-o:active{background:var(--accent-soft)}
 #recSheet .mrow-ov .chips{margin-left:0;width:100%;flex-wrap:wrap}
 
 .tpl-l{display:grid;gap:8px}
@@ -1393,6 +1425,10 @@ details.box>summary::after{color:var(--muted)!important}
 .st-r.late .mono{color:var(--accent);font-weight:600}
 .st-r.done b,.st-r.done .mono{color:var(--muted)}
 .st-steps:active .st-list{opacity:.6}
+.st-all{display:flex;align-items:center;gap:12px;margin-top:var(--stg,14px);font:600 .84rem/1.3 var(--f-mono);color:var(--accent)}
+.st-all::before{content:"";flex:0 0 auto;width:4px;height:4px;margin:0 6px 0 6px;border-radius:50%;background:#CFC6B2;box-shadow:0 -7px 0 #CFC6B2,0 7px 0 #CFC6B2}
+.st-all em{font-style:normal}
+.st-steps:active .st-all{opacity:.6}
 #stMore.st-steps{font:inherit!important;color:var(--ink)!important;text-decoration:none!important}
 /* Pizza mit Start-Knopf: unten bündig an der Menüleiste, rechts am Rand */
 #v-rezept>#planBody{margin:0!important;padding:0!important;display:block}
@@ -1576,11 +1612,234 @@ body.has-mini #v-pizzen .card>svg{width:clamp(72px,calc(100dvh - 650px - var(--s
 .splash.lg .sp-in .pz-o{transition:opacity .3s ease,transform .9s cubic-bezier(.22,1,.36,1)!important}
 .splash.lg .sp-in .logo i{transition:opacity .3s ease .45s!important}
 .splash.lg .sp-in .sp-fm{transition:opacity .5s ease .35s!important}
-.splash{transition:background-color .5s ease .15s,opacity .3s ease!important}
+.splash.go .sp-in .sp-fm{opacity:0!important;transition:opacity .2s ease!important}
+.splash{transition:background-color .4s ease .3s,opacity .3s ease!important}
 .splash .sp-in{transition:transform .7s cubic-bezier(.65,0,.35,1)!important}
+
+
+/* Splash v132: Zusammengleiten sichtbar */
+.splash.qb .sp-it .w.x,.splash.qb .sp-q .sp-de,.splash.qb .sp-it .lt.dr{opacity:0!important;transition:opacity 1.3s ease!important}
+.splash.glide .sp-it .lt[data-to]{transition:transform 1.5s cubic-bezier(.65,0,.35,1)!important;transition-delay:0s!important}
+.splash.fly .sp-it .lt[data-to]{transition:transform .7s cubic-bezier(.65,0,.35,1),opacity .35s ease!important;transition-delay:0s!important}
+.splash.lg .sp-it .lt[data-to]{transition:transform .7s cubic-bezier(.65,0,.35,1),opacity .35s ease!important;transition-delay:0s!important}
+
+/* Zeitplan: Ruhephasen mit Symbol */
+.pk-g{display:block;margin:-2px 0 4px;font:500 var(--fs-s,.82rem)/1.3 var(--f-body);color:var(--muted)}
+.pk-g em{font-style:normal;font-weight:700}
+
+/* Splash v136: rote Schrift wird zur Tomatensoße */
+.splash.up .sp-in{transition:none!important}
+.splash .sp-in .pz-o .sauce{transform:scale(0);transform-box:fill-box;transform-origin:center}
+.splash.up.fly .sp-it .lt[data-to]{transition:transform 1.15s cubic-bezier(.6,0,.35,1) calc(var(--i,0) * 22ms),opacity .3s ease calc(var(--i,0) * 22ms + .9s)!important}
+.splash.up.lg .sp-it .lt[data-to]{opacity:0}
+.splash.up.lg .sp-in .ch{transition:opacity 1.3s ease .25s!important}
+.splash.up.lg .sp-in .logo .pz-o{transform:translateY(.05em) scale(1);transition:opacity .5s ease .2s,transform .6s ease .2s!important;animation:spToss .95s cubic-bezier(.3,.6,.3,1) 1s both}
+@keyframes spToss{0%{transform:translateY(.05em) rotate(0) scale(1)}14%{transform:translateY(.13em) rotate(0) scale(1.1,.86)}48%{transform:translateY(-.5em) rotate(220deg) scale(1.2)}80%{transform:translateY(.05em) rotate(360deg) scale(1)}90%{transform:translateY(.1em) rotate(360deg) scale(1.07,.9)}100%{transform:translateY(.05em) rotate(360deg) scale(1)}}
+.splash.up.lg .sp-in .pz-o .sauce{transform:scale(1);transition:transform .5s cubic-bezier(.3,1.35,.5,1) .9s}
+.splash.up.lg .sp-in .logo i{transition:opacity .4s ease 1.3s!important}
+.splash.up .sp-in .sp-fm{display:none}
+.splash.up{transition:background-color .5s ease .1s,opacity .3s ease!important}
+.splash:not(.up).lg .sp-in .pz-o .sauce,.splash.out .sp-in .pz-o .sauce{transform:scale(1)}
+
+/* Splash: deutsche Zeile zusammen mit der italienischen */
+.splash.q .sp-q .sp-de{transition:opacity .7s ease .1s}
+
+/* Splash-Logo exakt wie das Kopf-Logo */
+.splash .sp-in .logo{line-height:1.05!important}
+.logo .lch{display:inline}
+
+/* Splash v140: echtes Logo liegt oben, nur Buchstaben und Pizza werden animiert */
+.splash .sp-in{display:none!important}
+.logo.sp-tg{position:relative;z-index:150}
+.logo.lo0 .lch,.logo.lo0 .pz-o,.logo.lo0>i{opacity:0}
+.logo.lo1 .lch{opacity:1;transition:opacity 1.3s ease .25s}
+.logo.lo1 .pz-o{opacity:1;transition:opacity .5s ease .2s}
+.logo.lo1.ls .lch,.logo.lo1.ls .pz-o,.logo.lo1.ls>i{opacity:1;transition:opacity .45s ease}
+.logo.sp-tg .pz-o .sauce{transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform .5s cubic-bezier(.3,1.35,.5,1)}
+.logo.sp-tg.lo2 .pz-o .sauce,.logo.sp-tg.ls .pz-o .sauce{transform:scale(1)}
+.logo.sp-tg.ls .pz-o .sauce{transition:none}
+.logo.lo2 .pz-o{animation:spToss .95s cubic-bezier(.3,.6,.3,1) both}
+.logo.lo2>i{opacity:1;transition:opacity .4s ease .45s}
+#intro.sp-wait{opacity:0;pointer-events:none}
+#intro.sp-in2{animation:spIntro .45s ease both}
+@keyframes spIntro{from{opacity:0}to{opacity:1}}
+
+/* Zeitplan: Ruhe in derselben Zeile, Symbole als Grafik */
+.ic-t{width:1.05em;height:1.05em;vertical-align:-.17em;display:inline-block}
+.pk-r .bn{white-space:normal!important;min-width:0;flex:0 1 auto}
+.pk-r{gap:6px!important}.pk-r .bn{font-size:.97rem!important}.pk-r i{min-width:4px!important}
+.pk-w2{font:500 .72rem var(--f-body);color:var(--muted);white-space:nowrap;display:inline-block}.pk-ar{font-weight:600;color:#B5AE9F;margin-right:1px}
+.pk-w2 em{font-style:normal;font-weight:700}.pk-w2 em.cold{color:#2F5F8C}.pk-w2 em.warm{color:#9A5B0C}
+.pk-leg span{display:inline-flex;align-items:center;gap:5px}
+.pk-leg .ic-t{vertical-align:0}
+
+/* Pizzen: eine Karte pro Bild, Pfeile links und rechts daneben */
+#v-pizzen .rail{gap:10px!important;margin-inline:clamp(26px,8vw,44px)!important;padding-inline:5px!important;scroll-padding-inline:5px!important}
+#v-pizzen .rail>.card{flex:0 0 100%!important;max-width:none;scroll-snap-align:start}
+#v-pizzen .railwrap{position:relative}
+#v-pizzen .railbtn{display:none!important;place-items:center;top:50%!important;width:clamp(46px,13vw,56px)!important;height:clamp(46px,13vw,56px)!important;font-size:1.7rem!important;line-height:1}
+#v-pizzen .railbtn.prev{left:5px!important}#v-pizzen .railbtn.next{right:5px!important}
+#v-pizzen .railbtn:disabled{opacity:.3!important;pointer-events:none}
+#v-pizzen .raildots{display:flex!important;padding:8px 0 4px!important}
+#v-pizzen .railwrap{flex:0 0 auto!important}
+#v-pizzen .filt{gap:5px!important;justify-content:flex-start!important}
+#v-pizzen .filt>:first-child{margin-left:auto}#v-pizzen .filt>:last-child{margin-right:auto}
+#v-pizzen .filt .chip{padding-inline:10px!important;font-size:clamp(.74rem,3.4vw,.86rem)!important}
+@media (max-width:345px){#v-pizzen .filt{gap:4px!important;padding-inline:10px!important}#v-pizzen .filt .chip{padding-inline:8px!important;font-size:.74rem!important}}
+#v-pizzen .card>svg{width:clamp(80px,calc(100dvh - 585px - var(--sat) - var(--sab)),200px)!important}
+body.has-mini #v-pizzen .card>svg{width:clamp(64px,calc(100dvh - 690px - var(--sat) - var(--sab)),210px)!important}
+
+/* Backmodus: Knöpfe unten immer an derselben Stelle */
+.ck-foot .ck-row{align-items:stretch!important}
+.ck-foot .cta,.ck-foot .cta.soft,.ck-foot .ck-how{height:60px!important;min-height:0!important;box-sizing:border-box}
+.ck-foot .cta{font-size:1.25rem!important}
+.ck-foot #ckInfo[hidden]{display:flex!important;visibility:hidden}
+.ck-foot .ck-sec{height:44px!important;min-height:44px!important;align-items:center;overflow:hidden}
+.ck-foot .ck-sec button{height:44px;min-height:44px!important;padding-block:0!important}
+.ck-foot:has(#ckOven:not([hidden])){padding-bottom:12px!important}
+
+/* Backmodus: Zeitplan-Knopf mit Fortschrittsbalken */
+#ckCnt.ck-tl{flex:0 0 auto!important;width:auto!important;margin-right:auto;display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border:1.5px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);font:600 .9rem var(--f-body);cursor:pointer}
+#ckCnt.ck-tl::after{content:none!important}
+#ckCnt .pb{display:inline-flex;gap:2px}
+#ckCnt .pb i{width:7px;height:5px;border-radius:2px;background:#D9D1BF}
+#ckCnt .pb i.d{background:var(--ink)}
+#ckCnt .pb i.c{background:var(--accent);width:12px}
+.cook[data-st=alarm] #ckCnt.ck-tl{border-color:rgba(255,255,255,.6);color:#fff}
+.cook[data-st=alarm] #ckCnt .pb i{background:rgba(255,255,255,.35)}.cook[data-st=alarm] #ckCnt .pb i.d,.cook[data-st=alarm] #ckCnt .pb i.c{background:#fff}
+
+/* Nonnas Zettel */
+.ck-foot{position:relative}
+.cook>.ck-body{padding-bottom:46px!important}
+.ck-foot .ck-row{position:relative;z-index:2}
+#ckInfo{display:none!important}
+.ck-foot .ck-row{grid-template-columns:1fr!important}
+.nz-wrap{position:absolute;z-index:1;right:34px;top:-46px;width:170px;height:104px;transform-origin:50% 100%;animation:nzBreeze 5s ease-in-out infinite}
+.nz-wrap[hidden]{display:none}
+@keyframes nzBreeze{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(-2.2deg)}}
+.nz{position:absolute;inset:0;border:0;padding:0;cursor:pointer;background:#FFFDF6;border-radius:3px 3px 0 0;box-shadow:0 4px 12px rgba(60,40,20,.2);color:var(--accent);font-family:Georgia,'Times New Roman',serif;font-style:italic;transition:transform .2s ease}
+.nz:active{transform:translateY(-6px)}
+.nz::before{content:"";position:absolute;left:0;right:0;top:46px;bottom:0;background:repeating-linear-gradient(transparent 0 15px,#E8DCC4 15px 16px)}
+.nz::after{content:"";position:absolute;right:14px;top:6px;width:28px;height:22px;border-radius:50%;background:radial-gradient(ellipse at 40% 40%,rgba(194,40,27,.18),rgba(194,40,27,.06) 60%,transparent 72%)}
+.nz .k{position:absolute;left:14px;top:10px;font:700 .62rem var(--f-body);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.nz .t{position:absolute;left:14px;right:8px;top:24px;text-align:left;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cook[data-st=alarm] .nz{box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.nzo{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:24px max(18px,env(safe-area-inset-left,0px)) calc(24px + var(--navh,0px)) max(18px,env(safe-area-inset-right,0px))}
+.nzo[hidden]{display:none}
+.nz-dim{position:absolute;inset:0;background:rgba(30,24,18,.4)}
+.nz-card{position:relative;width:min(100%,400px);max-height:min(78dvh,640px);overflow-y:auto;background:#FFFDF6;border-radius:6px;box-shadow:0 22px 50px rgba(40,25,10,.35);padding:24px 22px 22px;color:#2B2622;text-align:left}
+.nz-x{position:absolute;top:8px;right:8px;width:44px;height:44px;border:0;border-radius:50%;background:transparent;font:600 1.1rem var(--f-body);color:var(--muted);cursor:pointer}
+.nz-from{display:block;font:700 .7rem var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.nz-h{margin:0 0 10px;font:italic 400 1.7rem/1.2 Georgia,'Times New Roman',serif;color:var(--accent)}
+.nz-b .hw-sec{margin:0 0 12px}
+.nz-b .hw-k{display:block;font:700 .68rem var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.nz-b .hw-how,.nz-lines{margin:0;padding-left:20px;font:italic 1.05rem/1.9 Georgia,'Times New Roman',serif;background:repeating-linear-gradient(transparent 0 calc(1lh - 1px),#E8DCC4 calc(1lh - 1px) 1lh)}
+.nz-lines{list-style:none;padding-left:0}
+.nz-b .hw-how li span{font:inherit}
+.nz-b .hw-tip,.nz-b .hw-note{background:transparent!important;border:0!important;padding:0!important;margin:10px 0 0;font:italic 1.02rem/1.45 Georgia,'Times New Roman',serif;color:#2B2622}
+.nz-b .hw-tip svg{display:none}
+.nz-b .hw-tip b{display:block;font:700 .68rem var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-style:normal}
+.nz-b .hw-fig{margin:8px 0;opacity:.9}
+.nz-b .hw-need{background:transparent!important;border:0!important;border-radius:0;padding:0;box-shadow:none!important}
+.nz-b .hw-need div{padding:6px 0;border-bottom:1px dashed #E8DCC4!important}
+.nz-b .hw-how{list-style:decimal;padding-left:22px}
+.nz-b .hw-how li{display:list-item;padding:0;margin:0;font-size:inherit!important;line-height:inherit!important}
+.nz-b .hw-how b{font:italic 700 1em/1 Georgia,'Times New Roman',serif;color:var(--accent);white-space:nowrap}
+.nz-b .hw-need div{align-items:baseline}
+.nz-b .hw-need b{font-size:.95rem}
+.nz-b .hw-how li>span{padding:0}
+.nz-b .hw-how li *{line-height:1;vertical-align:baseline;padding-top:0;padding-bottom:0;margin-top:0;margin-bottom:0}
+.nz-b .hw-tip{display:block}
+.nz-b .hw-how li::before{content:none!important}
+.nz-b .hw-how li::after{content:none!important}
+.nz-b .hw-how li::marker{color:var(--accent);font-style:normal;font-weight:700}
+.nz-card .hw-how li,.nz-lines li{clip-path:none}
+.nz-card:not(.show) .nz-b,.nz-card:not(.show) .nz-sig,.nz-card:not(.show) .nz-tools,.nz-card:not(.show) .nz-ok{opacity:0}
+.nz-card.show .nz-b{opacity:1;transition:opacity .45s ease}
+.nz-sig{margin-top:8px;text-align:right;font:italic 1.3rem Georgia,'Times New Roman',serif;color:var(--accent);opacity:1;transition:opacity .5s ease .3s}
+.nz-tools{margin-top:12px;transition:opacity .4s ease .4s}.nz-tools[hidden]{display:none}
+.nz-ok{width:100%;margin-top:14px;min-height:52px;transition:opacity .4s ease .5s}
+.st-nonna{display:block;margin:6px 0 10px;border:0;background:none;padding:10px 0;font:italic 1.15rem Georgia,'Times New Roman',serif;color:var(--accent);text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.nz-wrap{animation:none;transform:rotate(-4deg)}}
+
+/* Sprache */
+#v-mehr .band .topline{display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.lang-sw{display:inline-flex;align-items:center;gap:2px;padding:3px;border:0;border-radius:99px;background:rgba(0,0,0,.06);font:700 .74rem var(--f-body);letter-spacing:.06em;cursor:pointer;margin-bottom:2px}
+.lang-sw b,.lang-sw span{display:grid;place-items:center;min-width:34px;height:28px;border-radius:99px}
+.lang-sw b{background:var(--accent);color:#fff}
+.lang-sw span{color:var(--muted);font-weight:600}
+/* Hinweiskarte auf Start */
+.al-card{display:flex;gap:10px;align-items:center;width:100%;margin-top:12px;padding:8px 12px 8px 8px;border:0;border-radius:14px;background:#F3EAD9;color:var(--ink);text-align:left;font:inherit;cursor:pointer}
+.al-ic{flex:0 0 auto;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff;color:#8A6A2E}
+.al-ic svg{width:17px;height:17px}
+.al-t{display:grid;gap:3px;min-width:0}
+.al-t b{font:700 .86rem/1.25 var(--f-body)}
+.al-t>span{font-size:.78rem;line-height:1.3;color:#6A5E4C}.al-t em{font-style:normal;color:var(--accent);font-weight:700}
+.al-a{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:4px}
+.al-a button{border:0;background:none;padding:2px 0;font:700 .86rem var(--f-body);color:var(--accent);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+/* Leerer Pizzakarton im Einkauf */
+.tk-emptyart .ebox{display:grid;place-items:end center;width:130px;height:132px;perspective:520px;margin-bottom:6px}
+.ebox-w{display:block;transform-origin:50% 100%;animation:eboxWob 3.2s ease-in-out infinite}
+.ebox-b{position:relative;display:block;width:92px;height:92px;transform-style:preserve-3d;transform:rotateX(38deg)}
+.ebox-base{position:absolute;inset:0;border-radius:5px;background:#C99A62;box-shadow:0 10px 16px rgba(70,45,15,.25),inset 0 0 0 5px #B0824E}
+.ebox-base::before{content:"";position:absolute;inset:10px;border-radius:2px;background:linear-gradient(#EAD3AB,#E0C394)}
+.ebox-base .st{position:absolute;left:30%;top:36%;width:42%;height:30%;border-radius:50%;background:radial-gradient(ellipse,rgba(160,110,40,.24),rgba(160,110,40,0) 70%)}
+.ebox-base .cr{position:absolute;width:4px;height:3px;border-radius:50%;background:#C79A5C}
+.ebox-lid{position:absolute;inset:0;border-radius:5px;transform-origin:50% 0;transform:rotateX(-158deg);background:linear-gradient(#C49A64,#D6B07C);box-shadow:inset 0 0 0 5px #C99A62}
+@keyframes eboxWob{0%,100%{transform:rotate(0)}50%{transform:rotate(-2deg)}}
+@media (prefers-reduced-motion:reduce){.ebox-w{animation:none}}
+/* Startknopf mit Countdown */
+#startBtn .sp-pill{height:auto!important;min-height:56px;padding-block:8px!important}
+.sp-pill .spl{display:grid;gap:1px;line-height:1.1;text-align:left}
+.sp-pill .spl small{font:600 .72rem/1.2 var(--f-body);opacity:.85;white-space:nowrap}
+#startBtn.now .sp-pill{animation:spPulse 1.8s ease-in-out infinite}
+@keyframes spPulse{0%,100%{box-shadow:0 4px 12px rgba(178,31,20,.3),0 0 0 0 rgba(194,40,27,.45)}50%{box-shadow:0 4px 12px rgba(178,31,20,.3),0 0 0 10px rgba(194,40,27,0)}}
+@media (prefers-reduced-motion:reduce){#startBtn.now .sp-pill{animation:none}}
+
+/* Hydration als Schieberegler */
+.hy-s{display:flex;align-items:center;gap:10px;flex:1;justify-content:flex-end;min-width:0}
+.hy-s input{flex:1;max-width:190px;min-width:0;height:44px;margin:0;accent-color:var(--accent);cursor:pointer}
+.hy-s b{font:600 .95rem var(--f-mono);min-width:44px;text-align:right}
+
+/* Rezept: Expertenmodus */
+#hyOpts{flex-wrap:nowrap!important;justify-content:stretch!important;gap:5px!important;width:100%}
+#hyOpts .chip{flex:1 1 0;min-width:0;padding-inline:0!important;justify-content:center}
+.rec-pro{flex-wrap:wrap;margin:14px 2px 4px;row-gap:2px}
+.rec-pro small{flex-basis:100%;padding-left:50px;font-weight:500;font-size:.8rem;color:var(--muted)}
+#proGrp{margin-top:10px;display:grid;gap:14px}#proGrp[hidden]{display:none}#proGrp .mgrp-h{margin:4px 4px -6px}
+
+@media (min-width:350px){.mlinks{flex-wrap:nowrap!important;gap:6px!important;justify-content:center!important}.mlinks .implink{white-space:nowrap;padding-inline:6px!important}}
+
+/* Zeitplan-Legende */
+.pk-leg{display:flex!important;flex-wrap:wrap;justify-content:center!important;font:500 var(--fs-s,.82rem) var(--f-body)!important;color:var(--muted)!important;gap:4px 16px!important}.pk-leg span{white-space:nowrap}
+.pk-leg .cold{color:#2F5F8C!important}.pk-leg .warm{color:#9A5B0C!important}
+
+/* Menü teilen: Auswahl */
+.mn-in{display:flex;flex-direction:column;gap:12px}
+.mn-lead{margin:0;color:var(--muted);font-size:var(--fs-s,.88rem)}
+.mn-q{display:flex;gap:8px;flex-wrap:wrap}
+.mn-qb{height:36px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--paper,#fff);font:600 .85rem var(--f-body);color:var(--ink);cursor:pointer}
+.mn-qb[hidden]{display:none}
+.mn-l{display:grid;gap:6px;max-height:min(52dvh,440px);overflow-y:auto;margin:0 -4px;padding:2px 4px}
+.mn-r{display:flex;align-items:center;gap:12px;min-height:52px;padding:8px 12px;border:0;border-radius:12px;background:var(--paper,#fff);text-align:left;cursor:pointer;color:var(--ink);font:inherit}
+.mn-r>i{flex:0 0 22px;height:22px;border-radius:6px;border:2px solid #CFC6B2;display:grid;place-items:center;background:#fff}
+.mn-r.on>i{background:var(--accent);border-color:var(--accent)}
+.mn-r.on>i::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:translateY(-1px) rotate(45deg)}
+.mn-r>span{flex:1;display:grid;gap:1px;min-width:0}
+.mn-r b{font:700 1rem/1.25 var(--f-body)}
+.mn-r small{font-size:.8rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mn-r:not(.on) b{color:var(--muted)}
+.mn-r em{font:600 .8rem var(--f-mono);font-style:normal;color:var(--muted)}
+#mnGo:disabled{opacity:.5}
+
+/* Pizzakarten gleich hoch, Zähler unten bündig */
+#v-pizzen .rail{align-items:stretch!important;align-self:flex-start!important}
+#v-pizzen .card .pzst{margin-top:auto!important}
+#v-pizzen .card.own-add{margin-top:0!important}
+#v-pizzen .card .pzst::before{content:none}
 </style>
 
-<div class="splash" id="splash" aria-hidden="true"><div class="sp-q"><div class="sp-it"><span class="w x">Il</span> <span class="w"><span class="lt" data-to="0">t</span><span class="lt" data-to="1">e</span><span class="lt" data-to="2">m</span><span class="lt" data-to="3">p</span><span class="lt dr">o</span></span> <span class="w x">e</span> <span class="w x">l’</span><span class="w"><span class="lt dr">i</span><span class="lt dr">m</span><span class="lt dr">p</span><span class="lt" data-to="4">a</span><span class="lt" data-to="5">s</span><span class="lt" data-to="6">t</span><span class="lt" data-to="pz">o</span></span><span class="w x">.</span></div><div class="sp-de">Die Zeit und der Teig.</div></div><div class="sp-in"><div class="brand"><span class="logo" role="img" aria-label="Tempasto"><span class="ch">T</span><span class="ch">e</span><span class="ch">m</span><span class="ch">p</span><span class="ch">a</span><span class="ch">s</span><span class="ch">t</span><svg class="pz-o" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.6" fill="#D9A963"/><circle cx="12" cy="12" r="10.6" fill="#E8BE7C"/><circle cx="12" cy="12" r="8.2" fill="#C2281B"/><circle cx="12" cy="12" r="8.2" fill="none" stroke="#9E1E14" stroke-width=".6"/><ellipse cx="9" cy="9.4" rx="2.3" ry="2" fill="#FFF8EA"/><ellipse cx="15" cy="14.2" rx="2.1" ry="1.9" fill="#FFF8EA"/><circle cx="14.6" cy="8.2" r="1.4" fill="#FFF8EA"/><circle cx="9.2" cy="15.4" r="1.2" fill="#FFF8EA"/><ellipse cx="11.6" cy="12.2" rx="2.1" ry="1" transform="rotate(-35 11.6 12.2)" fill="#3E8A47"/><ellipse cx="16.6" cy="10.8" rx="1.5" ry=".75" transform="rotate(50 16.6 10.8)" fill="#3E8A47"/><circle cx="3.4" cy="9" r=".75" fill="#3B2A1F" opacity=".55"/><circle cx="19.6" cy="17" r=".65" fill="#3B2A1F" opacity=".55"/><circle cx="17" cy="3.6" r=".55" fill="#3B2A1F" opacity=".55"/></svg><i>.</i></span><span class="brand-sub script sp-fm">fatto a mano</span></div></div></div>
+<div class="splash" id="splash" aria-hidden="true"><div class="sp-q"><div class="sp-it"><span class="w x">Il</span> <span class="w"><span class="lt" data-to="0">t</span><span class="lt" data-to="1">e</span><span class="lt" data-to="2">m</span><span class="lt" data-to="3">p</span><span class="lt dr">o</span></span> <span class="w x">e</span> <span class="w x">l’</span><span class="w"><span class="lt dr">i</span><span class="lt dr">m</span><span class="lt dr">p</span><span class="lt" data-to="4">a</span><span class="lt" data-to="5">s</span><span class="lt" data-to="6">t</span><span class="lt" data-to="pz">o</span></span><span class="w x">.</span></div><div class="sp-de">Die Zeit und der Teig.</div></div><div class="sp-in"><div class="brand"><span class="logo" role="img" aria-label="Tempasto"><span class="ch">T</span><span class="ch">e</span><span class="ch">m</span><span class="ch">p</span><span class="ch">a</span><span class="ch">s</span><span class="ch">t</span><svg class="pz-o" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.6" fill="#D9A963"/><circle cx="12" cy="12" r="10.6" fill="#E8BE7C"/><g class="sauce"><circle cx="12" cy="12" r="8.2" fill="#C2281B"/><circle cx="12" cy="12" r="8.2" fill="none" stroke="#9E1E14" stroke-width=".6"/></g><ellipse cx="9" cy="9.4" rx="2.3" ry="2" fill="#FFF8EA"/><ellipse cx="15" cy="14.2" rx="2.1" ry="1.9" fill="#FFF8EA"/><circle cx="14.6" cy="8.2" r="1.4" fill="#FFF8EA"/><circle cx="9.2" cy="15.4" r="1.2" fill="#FFF8EA"/><ellipse cx="11.6" cy="12.2" rx="2.1" ry="1" transform="rotate(-35 11.6 12.2)" fill="#3E8A47"/><ellipse cx="16.6" cy="10.8" rx="1.5" ry=".75" transform="rotate(50 16.6 10.8)" fill="#3E8A47"/><circle cx="3.4" cy="9" r=".75" fill="#3B2A1F" opacity=".55"/><circle cx="19.6" cy="17" r=".65" fill="#3B2A1F" opacity=".55"/><circle cx="17" cy="3.6" r=".55" fill="#3B2A1F" opacity=".55"/></svg><i>.</i></span><span class="brand-sub script sp-fm">fatto a mano</span></div></div></div>
 <div class="wrap">
   <!-- PLANEN -->
   <section class="view" id="v-rezept">
@@ -1589,11 +1848,11 @@ body.has-mini #v-pizzen .card>svg{width:clamp(72px,calc(100dvh - 650px - var(--s
       <p class="st-satz" id="stSatz">Wir essen <span id="stAm">am</span> <a class="st-ed" href="#" role="button" data-sheet="whenSheet" id="stWhen">Donnerstag um 19 Uhr</a><br> <a class="st-ed" href="#" role="button" data-sheet="pzSheet" id="stPz">6 Pizzen</a>. Der Teig geht <a class="st-ed" href="#" role="button" data-sheet="gehSheet" id="stGeh">48 Stunden</a>.</p>
       <div id="alerts"></div>
       <span class="st-gap"></span>
-      <button class="st-steps" id="stMore"><span class="vh">Ganzen Zeitplan ansehen:</span><span class="st-list" id="tline"></span></button>
+      <button class="st-steps" id="stMore"><span class="vh">Ganzen Zeitplan ansehen:</span><span class="st-list" id="tline"></span><span class="st-all" aria-hidden="true">ganzer Zeitplan <em>›</em></span></button>
       <span class="st-gap last"></span>
     </div>
     <div class="pad" id="planBody">
-      <button class="st-pizza" id="startBtn"><span class="sp-cut" aria-hidden="true"><svg class="sp-svg" viewBox="0 0 300 300" aria-hidden="true"><circle cx="150" cy="150" r="140" fill="#E2B676"/><circle cx="150" cy="150" r="114.8" fill="#B31F14"/><circle cx="93.0" cy="264.0" r="5.3" fill="#3B2A1F" opacity=".65"/><circle cx="267.9" cy="207.7" r="4.5" fill="#3B2A1F" opacity=".65"/><circle cx="272.4" cy="196.7" r="3.6" fill="#3B2A1F" opacity=".65"/><circle cx="34.2" cy="201.3" r="3.8" fill="#3B2A1F" opacity=".65"/><circle cx="30.7" cy="211.3" r="3.8" fill="#3B2A1F" opacity=".65"/><circle cx="172.1" cy="280.3" r="6.2" fill="#3B2A1F" opacity=".65"/><circle cx="35.1" cy="89.5" r="6.2" fill="#3B2A1F" opacity=".65"/><circle cx="278.7" cy="188.8" r="4.3" fill="#3B2A1F" opacity=".65"/><circle cx="228.4" cy="250.1" r="4.4" fill="#3B2A1F" opacity=".65"/><circle cx="201.6" cy="33.1" r="5.1" fill="#3B2A1F" opacity=".65"/><circle cx="66.7" cy="50.7" r="5.0" fill="#3B2A1F" opacity=".65"/><circle cx="266.9" cy="198.7" r="4.1" fill="#3B2A1F" opacity=".65"/><ellipse cx="126.7" cy="100.2" rx="18.2" ry="15.4" fill="#FFF8EA"/><ellipse cx="124.8" cy="209.1" rx="18.2" ry="15.4" fill="#FFF8EA"/><ellipse cx="106.0" cy="163.3" rx="18.2" ry="15.4" fill="#FFF8EA"/><ellipse cx="169.3" cy="82.5" rx="18.2" ry="15.4" fill="#FFF8EA"/><ellipse cx="152.4" cy="213.6" rx="18.2" ry="15.4" fill="#FFF8EA"/><ellipse cx="72.4" cy="137.6" rx="18.2" ry="15.4" fill="#FFF8EA"/><ellipse cx="144.2" cy="105.3" rx="18.2" ry="15.4" fill="#FFF8EA"/><ellipse cx="176.3" cy="146.7" rx="12.6" ry="5.6" transform="rotate(75 176.3 146.7)" fill="#3E8A47"/><ellipse cx="151.3" cy="120.0" rx="12.6" ry="5.6" transform="rotate(88 151.3 120.0)" fill="#3E8A47"/><ellipse cx="211.0" cy="165.3" rx="12.6" ry="5.6" transform="rotate(138 211.0 165.3)" fill="#3E8A47"/><ellipse cx="85.4" cy="118.1" rx="12.6" ry="5.6" transform="rotate(56 85.4 118.1)" fill="#3E8A47"/></svg></span><span class="sp-pill" aria-hidden="true">Plan starten <svg viewBox="0 0 12 12" width="13" height="13"><path d="M2.5 1.5v9l8-4.5z" fill="currentColor"/></svg></span><span class="vh"><span id="igT">Plan starten</span> <span id="startTxt"></span></span></button>
+      <button class="st-pizza" id="startBtn"><span class="sp-cut" aria-hidden="true"><svg class="sp-svg" viewBox="0 0 300 300" aria-hidden="true"><circle cx="150" cy="150" r="140" fill="#E2B676"/><circle cx="150" cy="150" r="114.8" fill="#B31F14"/><circle cx="93.0" cy="264.0" r="5.3" fill="#3B2A1F" opacity=".65"/><circle cx="267.9" cy="207.7" r="4.5" fill="#3B2A1F" opacity=".65"/><circle cx="272.4" cy="196.7" r="3.6" fill="#3B2A1F" opacity=".65"/><circle cx="34.2" cy="201.3" r="3.8" fill="#3B2A1F" opacity=".65"/><circle cx="30.7" cy="211.3" r="3.8" fill="#3B2A1F" opacity=".65"/><circle cx="172.1" cy="280.3" r="6.2" fill="#3B2A1F" opacity=".65"/><circle cx="35.1" cy="89.5" r="6.2" fill="#3B2A1F" opacity=".65"/><circle cx="278.7" cy="188.8" r="4.3" fill="#3B2A1F" opacity=".65"/><circle cx="228.4" cy="250.1" r="4.4" fill="#3B2A1F" opacity=".65"/><circle cx="201.6" cy="33.1" r="5.1" fill="#3B2A1F" opacity=".65"/><circle cx="66.7" cy="50.7" r="5.0" fill="#3B2A1F" opacity=".65"/><circle cx="266.9" cy="198.7" r="4.1" fill="#3B2A1F" opacity=".65"/><ellipse cx="126.7" cy="100.2" rx="18.2" ry="15.4" fill="#FFF8EA"/><ellipse cx="124.8" cy="209.1" rx="18.2" ry="15.4" fill="#FFF8EA"/><ellipse cx="106.0" cy="163.3" rx="18.2" ry="15.4" fill="#FFF8EA"/><ellipse cx="169.3" cy="82.5" rx="18.2" ry="15.4" fill="#FFF8EA"/><ellipse cx="152.4" cy="213.6" rx="18.2" ry="15.4" fill="#FFF8EA"/><ellipse cx="72.4" cy="137.6" rx="18.2" ry="15.4" fill="#FFF8EA"/><ellipse cx="144.2" cy="105.3" rx="18.2" ry="15.4" fill="#FFF8EA"/><ellipse cx="176.3" cy="146.7" rx="12.6" ry="5.6" transform="rotate(75 176.3 146.7)" fill="#3E8A47"/><ellipse cx="151.3" cy="120.0" rx="12.6" ry="5.6" transform="rotate(88 151.3 120.0)" fill="#3E8A47"/><ellipse cx="211.0" cy="165.3" rx="12.6" ry="5.6" transform="rotate(138 211.0 165.3)" fill="#3E8A47"/><ellipse cx="85.4" cy="118.1" rx="12.6" ry="5.6" transform="rotate(56 85.4 118.1)" fill="#3E8A47"/></svg></span><span class="sp-pill" aria-hidden="true"><span class="spl"><b id="spT">Plan starten</b><small id="spIn"></small></span><svg viewBox="0 0 12 12" width="13" height="13"><path d="M2.5 1.5v9l8-4.5z" fill="currentColor"/></svg></span><span class="vh"><span id="igT">Plan starten</span> <span id="startTxt"></span></span></button>
     </div>
     <div class="pad" id="liveBody" hidden>
       <div class="tiles">
@@ -1672,7 +1931,7 @@ body.has-mini #v-pizzen .card>svg{width:clamp(72px,calc(100dvh - 650px - var(--s
     <header class="band red">
       <div class="topline"><button class="iconbtn" data-back="mehr" aria-label="Zurück">←</button><h2 class="bandh ptitle">Anleitung<i>.</i></h2></div>
     </header>
-    <div class="pad sub-in"><p class="g-lead">Du sagst, wann gebacken wird. Tempasto sagt dir, wann du was tun musst.</p><div class="g-sec"><span class="g-n">1</span><div><b>Pizzaabend planen</b><ul><li>Auf <b>Start</b> steht dein Plan in einem Satz: wann ihr esst, wie viele Pizzen und wie lange der Teig geht. Tipp auf ein rot unterstrichenes Wort, um es zu ändern.</li><li>Die App rechnet rückwärts aus, wann du den Teig ansetzen musst. Ein Tipp auf die drei Schritte darunter zeigt den ganzen Zeitplan. Den kannst du teilen oder in den Kalender eintragen.</li></ul></div></div><div class="g-sec"><span class="g-n">2</span><div><b>Pizzen auswählen</b><ul><li>Unter <b>Pizzen</b> wischst du durch die Karte und tippst auf <b>+</b>. Mehr Pizzen als Teiglinge gehen nicht.</li><li>Mit <b>+ Eigene Pizza</b> am Ende stellst du deinen eigenen Belag zusammen.</li><li><b>Menü teilen</b> macht aus deiner Auswahl ein Bild für WhatsApp.</li></ul></div></div><div class="g-sec"><span class="g-n">3</span><div><b>Einkaufen</b><ul><li>Unter <b>Einkauf</b> steht alles für Teig, Soße und Belag, aufgeteilt in „jetzt“ und „frisch kaufen“.</li><li>Abgehaktes wandert in den Korb. <b>Kopieren</b> und <b>WhatsApp</b> schicken nur, was noch fehlt.</li><li>Lange auf eine Zeile drücken heißt „hab ich immer da“, dann fliegt sie von der Liste.</li></ul></div></div><div class="g-sec"><span class="g-n">4</span><div><b>Plan starten</b><ul><li>Tipp auf <b>Start</b> auf der Pizza. Du siehst, was du bereitlegen solltest, dann schaltet <b>Plan starten</b> die Erinnerungen ein: ans Wasser, ans Teigansetzen und an jeden weiteren Schritt. Ohne Start gibt es keine Erinnerung.</li><li>Der Backmodus führt dich Schritt für Schritt durch. Ist der Kreis rot, bist du dran. Läuft er ab, wartest du.</li><li>Bist du spät dran, verschiebt <b>Später dran?</b> den ganzen Plan. <b>Beenden</b> bricht den Teig ab, das kannst du 10 Sekunden lang rückgängig machen.</li><li>Unterstrichene Wörter wie Autolyse kannst du antippen. Unter <b>So geht’s</b> gibt es jeden Handgriff im Detail und die Schalter für Vorlesen und Sprachbefehl.</li></ul></div></div><div class="g-sec"><span class="g-n">5</span><div><b>Backen</b><ul><li><b>Ofen &amp; Belag</b> öffnet im letzten Schritt deine Pizzaliste mit dem Belag pro Pizza, auch was erst nach dem Backen drauf kommt.</li><li>Tipp eine Pizza an, wenn sie in den Ofen geht. Der Timer meldet sich zum Drehen und zum Rausholen.</li></ul></div></div><div class="g-sec"><span class="g-n">6</span><div><b>Einstellungen</b><ul><li>Unter <b>Mehr → Rezept &amp; Ofen</b> stellst du Teigling-Gewicht, Hefe, Wasser, Kühlung, Raumtemperatur, Kneten mit Maschine oder von Hand, Zuschlag, Nachtruhe, Ofen und Backzeit ein.</li><li><b>Vorlagen</b> merken sich Termin, Pizzen und Rezept, etwa für die Freitagspizza.</li></ul></div></div><button class="btn ghost" id="introOpen">Kurze Einführung ansehen</button></div>
+    <div class="pad sub-in"><p class="g-lead">Du sagst, wann gegessen wird. Tempasto sagt dir, wann du was tun musst.</p><div class="g-sec"><span class="g-n">1</span><div><b>Planen</b><ul><li>Auf <b>Start</b> steht dein Plan als Satz. Tipp auf ein rot unterstrichenes Wort, um es zu ändern.</li><li>Darunter siehst du die wichtigsten Schritte. Ein Tipp darauf zeigt den ganzen Zeitplan.</li></ul></div></div><div class="g-sec"><span class="g-n">2</span><div><b>Pizzen und Einkauf</b><ul><li>Unter <b>Pizzen</b> legst du mit <b>+</b> fest, was gebacken wird. Eigene Pizzen findest du am Ende der Karte.</li><li>Die Einkaufsliste schreibt sich selbst. Lange drücken heißt „hab ich immer da“.</li></ul></div></div><div class="g-sec"><span class="g-n">3</span><div><b>Backen</b><ul><li><b>Plan starten</b> schaltet die Erinnerungen ein. Der Backmodus führt dich dann Schritt für Schritt.</li><li>Hinter <b>Erledigt</b> steckt Nonnas Zettel. Sie erklärt jeden Schritt ausführlich.</li><li>Läuft etwas anders, verschiebt <b>Später dran?</b> den ganzen Plan.</li></ul></div></div><div class="g-sec"><span class="g-n">4</span><div><b>Einstellungen</b><ul><li>Ofen, Teigling, Hefe und Kneten stellst du unter <b>Mehr → Rezept &amp; Ofen</b> ein. Vorteig, Mehl, Temperaturen und Einheiten gibt es im Expertenmodus.</li></ul></div></div><button class="btn ghost" id="introOpen">Kurze Einführung ansehen</button></div>
   </section>
 
   <section class="view" id="v-impressum" hidden>
@@ -1700,9 +1959,12 @@ body.has-mini #v-pizzen .card>svg{width:clamp(72px,calc(100dvh - 650px - var(--s
     <div class="pad sub-in"><div class="story">
 <p class="st-k">Warum Tempasto?</p>
 <p>Neapel, Spaccanapoli, kurz vor acht. Die Gasse ist so eng, dass sich die Wäscheleinen fast berühren. Ein Roller knattert vorbei, von einem Balkon ruft eine Nonna nach unten. Und dann riechst du es: Holzrauch, angekohlter Rand, süße Tomaten. Vor einer Tür ohne Schild steht eine Schlange.</p>
-<p>Drinnen arbeitet einer, der nicht aufschaut. Er drückt den Teig mit den Fingerspitzen flach, zieht ihn über die Handrücken und schiebt ihn in die Glut. Neunzig Sekunden später liegt vor dir die beste Pizza deines Lebens. Du fragst nach dem Geheimnis. Er zuckt mit den Schultern: <i>„Il tempo e l’impasto.“</i> Die Zeit und der Teig.</p>
-<p>Daher der Name: <b>Tempasto</b>, aus <i>tempo</i> und <i>impasto</i>. Die Zeit kann dir keiner abnehmen. Aber du musst sie nicht im Kopf behalten. Tempasto rechnet rückwärts, sagt dir, wann du kneten, falten und portionieren musst, und meldet sich, wenn der Teig dich braucht.</p>
-<p>Den Rest machst du. <span class="script">Fatto a mano.</span></p>
+<p>Drinnen arbeitet einer, der nicht aufschaut. Er drückt den Teig mit den Fingern flach, zieht ihn über die Handrücken und schiebt ihn in die Glut. Neunzig Sekunden später liegt vor dir die beste Pizza deines Lebens. Du fragst nach dem Geheimnis. Er zuckt mit den Schultern: <i>„Il tempo e l’impasto.“</i> Die Zeit und der Teig. Vom Balkon hörst du wieder die Nonna. Er grinst: Du sollst weniger fragen und mehr essen.</p>
+<p>Sein Geheimnis steckt im Namen: <b>Tempasto</b>, aus <i>tempo</i> und <i>impasto</i>. Die Zeit kann dir keiner abnehmen, aber du musst sie nicht im Kopf behalten. Tempasto rechnet rückwärts und meldet sich, wenn der Teig dich braucht.</p>
+<p>Und weil man beim ersten Teig trotzdem Fragen hat, ist Nonna dabei. Sie weiß, wann das Wasser zu warm ist, wann du den Teig genug geknetet hast und wann du ihn in Ruhe lassen sollst.</p>
+<p>Den Rest machst du, mit den Händen. <i>Fatto a mano</i> heißt „von Hand gemacht“, ein Nudelholz kommt in Neapel nicht an den Teig. Tempasto plant, Nonna hilft, die Pizza machst du.</p>
+<p><span class="script">Fatto a mano.</span></p>
+<button class="st-nonna" id="nzMeet">Nonna kennenlernen</button>
 <button class="st-sup" data-sheet="supSheet">Tempasto unterstützen <span aria-hidden="true">♥</span></button>
 </div></div>
   </section>
@@ -1710,7 +1972,7 @@ body.has-mini #v-pizzen .card>svg{width:clamp(72px,calc(100dvh - 650px - var(--s
   <!-- MEHR -->
   <section class="view" id="v-mehr" hidden>
     <header class="band red">
-      <h2 class="bandh ptitle">Mehr<i>.</i></h2>
+      <div class="topline"><h2 class="bandh ptitle">Mehr<i>.</i></h2><button class="lang-sw" id="langSw" aria-label="Sprache: Deutsch. Auf Englisch umstellen"><b>DE</b><span>EN</span></button></div>
     </header>
     <div class="pad mehr-in">
       <div class="mgrp-h">Hilfe</div>
@@ -1723,6 +1985,7 @@ body.has-mini #v-pizzen .card>svg{width:clamp(72px,calc(100dvh - 650px - var(--s
       <div class="mgrp-h">Über Tempasto</div>
       <div class="mlist">
         <button class="mli" id="introRow"><span>Einführung ansehen</span><b></b><em>›</em></button>
+        <button class="mli" id="splashRow"><span>Startanimation ansehen</span><b></b><em>›</em></button>
         <button class="mli" id="storyRow"><span>Warum Tempasto?</span><b></b><em>›</em></button>
         <button class="mli" data-sheet="supSheet" id="supRow"><span>Tempasto unterstützen</span><b class="sup-h">♥</b><em>›</em></button>
       </div>
@@ -1828,19 +2091,37 @@ body.has-mini #v-pizzen .card>svg{width:clamp(72px,calc(100dvh - 650px - var(--s
     <div class="sh-in">
       <p class="mnote" id="cookNote" hidden></p>
       <div class="mgrp">
-        <div class="mrow mrow-ov"><span class="lbl2">Mehl</span><div class="chips" id="mxOpts"></div></div>
-        <div class="mix-own" id="mixOwn" hidden></div>
+        <div class="mrow of-row"><span class="lbl2">Ofen<small id="ovSub"></small></span><button class="of-cur" id="ovCur" aria-expanded="false"><span id="ovCurT"></span><em aria-hidden="true">›</em></button><div class="of-pick" id="ovOpts" hidden></div></div>
         <div class="mrow"><span class="lbl2">Teigling<small id="wDia"></small></span><div class="chips" id="wOpts"></div></div>
         <div class="mrow"><span class="lbl2">Hefe</span><div class="chips" id="ytOpts"></div></div>
-        <div class="mrow"><span class="lbl2">Wasser</span><div class="chips" id="hyOpts"></div></div>
+        <div class="mrow"><span class="lbl2">Hydration<small>Wasser aufs Mehl</small></span><div class="hy-s"><input type="range" id="hyR" min="58" max="70" step="1" aria-label="Hydration in Prozent"><b id="hyV"></b></div></div>
+        <div class="mrow"><span class="lbl2">Kneten</span><div class="chips" id="kmOpts"></div></div>
+        <div class="mrow"><span class="lbl2"><button class="gl" data-gl="Nachtruhe">Nachtruhe</button><small>keine Handgriffe</small></span><div class="chips" id="niOpts"></div></div>
+      </div>
+      <label class="own-sw rec-pro"><input type="checkbox" id="proSw"><span></span>Expertenmodus<small>Vorteig, Mehl, Temperaturen, Ofen, Einheiten</small></label>
+      <div class="pro-grp" id="proGrp" hidden>
+        <div class="mgrp-h">Teig</div>
+        <div class="mgrp">
+        <div class="mrow"><span class="lbl2">Vorteig<small>am Vortag ansetzen</small></span><div class="chips" id="pfOpts"></div></div>
+        <div class="mrow mrow-ov"><span class="lbl2">Mehl</span><div class="chips" id="mxOpts"></div></div>
+        <div class="mix-own" id="mixOwn" hidden></div>
+        <div class="mrow"><span class="lbl2">Zuschlag<small>für Schüssel und Hände</small></span><div class="chips" id="wzOpts"></div></div>
+        </div>
+        <div class="mgrp-h">Temperaturen</div>
+        <div class="mgrp">
         <div class="mrow"><span class="lbl2">Kühlung</span><div class="chips" id="kOpts"></div></div>
         <div class="mrow"><span class="lbl2">Raum<small>Küche</small></span><div class="chips" id="roOpts"></div></div>
-        <div class="mrow"><span class="lbl2">Kneten</span><div class="chips" id="kmOpts"></div></div>
-        <div class="mrow"><span class="lbl2">Zuschlag<small>für Schüssel und Hände</small></span><div class="chips" id="wzOpts"></div></div>
-        <div class="mrow"><span class="lbl2">Nachtruhe<small>keine Handgriffe</small></span><div class="chips" id="niOpts"></div></div>
-        <div class="mrow mrow-ov"><span class="lbl2">Ofen</span><div class="chips" id="ovOpts"></div></div>
+        </div>
+        <div class="mgrp-h">Ofen</div>
+        <div class="mgrp">
         <div class="mrow"><span class="lbl2">Hitze</span><div class="chips" id="otOpts"></div></div>
         <div class="mrow"><span class="lbl2">Backzeit<small>pro Pizza</small></span><div class="chips" id="bsOpts"></div></div>
+        </div>
+        <div class="mgrp-h">Einheiten</div>
+        <div class="mgrp">
+        <div class="mrow"><span class="lbl2">Gewicht</span><div class="chips" id="uwOpts"></div></div>
+        <div class="mrow"><span class="lbl2">Temperatur</span><div class="chips" id="utOpts"></div></div>
+        </div>
       </div>
       <p class="mfoot" id="recFoot"></p>
       <button class="cta" data-close>Übernehmen</button></div>
@@ -1869,11 +2150,23 @@ body.has-mini #v-pizzen .card>svg{width:clamp(72px,calc(100dvh - 650px - var(--s
     </div>
   </div>
 </div>
+<div class="sheet" id="menuSheet" hidden>
+  <div class="sh-bg" data-close></div>
+  <div class="sh-pan" role="dialog" aria-modal="true" aria-label="Menü teilen">
+    <div class="sh-hd"><h2>Was kommt auf die Karte?</h2><button class="sh-x" data-close aria-label="Schließen">✕</button></div>
+    <div class="sh-in mn-in">
+      <p class="mn-lead">Deine Gäste sehen nur, was du anhakst.</p>
+      <div class="mn-q"><button class="mn-qb" id="mnPlan">Nur geplante</button><button class="mn-qb" id="mnAll">Alle</button><button class="mn-qb" id="mnNone">Keine</button></div>
+      <div class="mn-l" id="mnL"></div>
+      <button class="cta" id="mnGo">Menü teilen</button>
+    </div>
+  </div>
+</div>
 <div class="sheet" id="goSheet" hidden>
   <div class="sh-bg" data-close></div>
   <div class="sh-pan" role="dialog" aria-modal="true" aria-label="Bevor es losgeht">
     <div class="sh-hd"><h2>Bevor es losgeht</h2><button class="sh-x" data-close aria-label="Schließen">✕</button></div>
-    <div class="sh-in"><ul class="go-l" id="goL"></ul><p class="st-hint" id="stHint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>Erinnerungen gibt es erst, wenn du startest.</p><button class="cta" id="goStart">Plan starten</button><button class="go-later" data-close>Später</button></div>
+    <div class="sh-in"><ul class="go-l" id="goL"></ul><p class="st-hint" id="stHint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>Erinnerungen gibt es erst, wenn du startest. Diese Liste kommt nur beim ersten Mal, danach findest du sie unter Mehr → Ausrüstung.</p><button class="cta" id="goStart">Plan starten</button><button class="go-later" data-close>Später</button></div>
   </div>
 </div>
 <div class="sheet" id="glSheet" hidden>
@@ -1969,10 +2262,11 @@ body.has-mini #v-pizzen .card>svg{width:clamp(72px,calc(100dvh - 650px - var(--s
 
 
 <!-- KOCHMODUS -->
+<div class="nzo" id="nzo" hidden><div class="nz-dim" id="nzDim"></div><div class="nz-card" id="nzCard" role="dialog" aria-modal="true" aria-label="Nonnas Zettel"><button class="nz-x" id="nzX" aria-label="Schließen">✕</button><span class="nz-from" id="nzFrom"></span><h3 class="nz-h" id="nzH"></h3><div class="nz-b" id="nzB"></div><div class="nz-sig">– Nonna</div><div class="nz-tools" id="nzTools"></div><button class="cta nz-ok" id="nzOk" hidden>Grazie, Nonna!</button></div></div>
 <div class="cook" id="cook" role="region" aria-label="Backmodus" hidden>
-  <div class="ck-top"><div class="ck-bar"><button class="x" id="ckClose" aria-label="Backmodus einklappen"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="ck-prev" id="ckPrev" hidden aria-label="Schritt zurück">←</button><span class="cnt" id="ckCnt"></span><span class="ck-rt"><button class="ck-end" id="ckEnd">Beenden</button></span></div></div>
+  <div class="ck-top"><div class="ck-bar"><button class="x" id="ckClose" aria-label="Backmodus einklappen"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><button class="ck-prev" id="ckPrev" hidden aria-label="Schritt zurück">←</button><button class="cnt ck-tl" id="ckCnt" aria-label="Zeitplan ansehen"></button><span class="ck-rt"><button class="ck-end" id="ckEnd">Beenden</button></span></div></div>
   <div class="ck-body" id="ckBody"><div class="ck-in" id="ckIn"></div></div>
-  <div class="ck-foot" id="ckFoot"><div class="ck-row"><button class="ck-how" id="ckInfo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h6M8 11h6"/></svg>So geht’s</button><button class="cta" id="ckNext">Erledigt</button></div><div class="ck-sec"><button id="ckBack">← Zurück</button><button id="ckShift" hidden>Später dran?</button><button id="ckOven" hidden>Ofen &amp; Belag</button></div></div>
+  <div class="ck-foot" id="ckFoot"><div class="nz-wrap" id="nzWrap" hidden><button class="nz" id="nz" aria-label="Nonnas Tipp öffnen"><span class="k">Nonnas Tipp</span><span class="t" id="nzT"></span></button></div><div class="ck-row"><button class="ck-how" id="ckInfo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h6M8 11h6"/></svg>So geht’s</button><button class="cta" id="ckNext">Erledigt</button></div><div class="ck-sec"><button id="ckBack">← Zurück</button><button id="ckShift" hidden>Später dran?</button><button id="ckOven" hidden>Ofen &amp; Belag</button></div></div>
   <div class="ck-sheet" id="ckSheet" hidden><div class="ck-sh-in"><div class="ck-sh-hd"><div><span class="ck-sh-k" id="ckShK">So geht’s</span><b id="ckShT"></b></div><button class="x" id="ckShX" aria-label="Schließen">✕</button></div><div id="ckShB"></div><div class="ck-tools"><button class="ck-tool ck-voice" id="ckVoice" aria-label="Vorlesen" aria-pressed="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path class="vw" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/><path class="vx" d="M17 9l5 6M22 9l-5 6"/></svg><span>Vorlesen</span></button><button class="ck-tool ck-mic" id="ckMic" aria-label="Sprachbefehl Weiter" aria-pressed="false" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span>Sprachbefehl „Weiter“</span></button></div></div></div>
 </div>
 
@@ -2070,7 +2364,7 @@ if(![24,48,72].includes(S.h))S.h=48;
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}if(window.TEMPASTO_NATIVE)TEMPASTO_NATIVE.plan(notifEvents);};
 // Erinnerungen für die Android-App: alle anstehenden Schritte mit Uhrzeit
 function notifEvents(){const ev=[],now=Date.now()+30000;
-  if(S.cook){const c=cookPlan();if(!c)return ev;if(S.cook.pre&&!S.cook.done.mix){const st=+new Date(S.cook.start),wc=st-2*H;if(wc>now)ev.push({at:wc,title:'Wasser kalt stellen',body:`${g(c.P.R.water)} g Wasser in den Kühlschrank. Um ${tm(new Date(st))} Uhr setzt du den Teig an.`});}c.tl.forEach(x=>{if(x.doneAt||!x.s.wait)return;if(x.s.ovenAt&&+x.s.ovenAt>now)ev.push({at:+x.s.ovenAt,title:'Ofen anheizen',body:`${ovenP().ut} auf ${ovenP().t}. In ${ovenP().pre} Minuten wird gebacken.`});const d=effDue(x);if(+d>now)ev.push({at:+d,title:x.s.t,body:'Jetzt dran. Tippe, um den Backmodus zu öffnen.',sid:x.s.id});});}
+  if(S.cook){const c=cookPlan();if(!c)return ev;if(!S.cook.done.mix&&(S.cook.pre||c.P.R.pf)){const mx=c.tl.find(t=>t.s.id==='mix'),st=+(mx?mx.due:new Date(S.cook.start)),wc=st-2*H;if(wc>now)ev.push({at:wc,title:'Wasser kalt stellen',body:`${g(c.P.R.water)} g Wasser in den Kühlschrank. Um ${tm(new Date(st))} Uhr setzt du den Teig an.`});}c.tl.forEach(x=>{if(x.doneAt||!x.s.wait)return;if(x.s.ovenAt&&+x.s.ovenAt>now)ev.push({at:+x.s.ovenAt,title:'Ofen anheizen',body:`${ovenP().ut} auf ${ovenP().t}. In ${ovenP().pre} Minuten wird gebacken.`});const d=effDue(x);if(+d>now)ev.push({at:+d,title:x.s.t,body:'Jetzt dran. Tippe, um den Backmodus zu öffnen.',sid:x.s.id});});}
   // Vor dem Start keine Erinnerungen: erst wenn der Teig läuft
   return ev;}
 
@@ -2109,21 +2403,33 @@ function readyHours(p,yPct,ov){
   for(let h=6;h<=150;h+=0.25){if(schedule(Object.assign({},base,{h,bake:new Date(+k0+h*H)}),{noShift:true,accl:ov.accl}).eh>=need)return h;}
   return 150;
 }
+const PFS={poolish:{n:'Poolish',share:.3,hy:1,y:.001,h:16,lo:12,hi:20,w:'lauwarm',where:'an einem kühlen Ort, 18–20 °C'},biga:{n:'Biga',share:.4,hy:.5,y:.005,h:18,lo:14,hi:22,w:'kalt',where:'kühl, bei 16–18 °C'}};
 function recipe(p,yPct){
   const total=p.n*p.w*(1+(p.wz||0)/100), F=total/(1+p.hy/100+SALT/100+OIL/100+yPct/100);
   const fl=flours(p).map(f=>Object.assign({},f,{g:F*f.p}));
-  return {total,F,fl,cuoco:F*MIX.cuoco,nuvola:F*MIX.nuvola,sem:F*MIX.sem,water:F*p.hy/100,wA:F*p.hy/100*0.9,wY:F*p.hy/100*0.1,yeast:F*yPct/100,salt:F*SALT/100,oil:F*OIL/100};
+  const R={total,F,fl,cuoco:F*MIX.cuoco,nuvola:F*MIX.nuvola,sem:F*MIX.sem,water:F*p.hy/100,wA:F*p.hy/100*0.9,wY:F*p.hy/100*0.1,yeast:F*yPct/100,salt:F*SALT/100,oil:F*OIL/100};
+  R.mfl=fl;R.yMain=R.yeast;
+  const q=PFS[p.pf];if(q){const pF=F*q.share;R.pf={k:p.pf,n:q.n,w:q.w,where:q.where,F:pF,W:pF*q.hy,Y:pF*q.y,fl:fl.map(f=>({n:f.n,c:f.c,g:f.g*q.share}))};
+    R.mfl=fl.map(f=>Object.assign({},f,{g:f.g*(1-q.share)}));R.yMain=R.yeast*(1-q.share);R.yeast=R.yMain+R.pf.Y;R.wA=R.water-R.pf.W-R.wY;}
+  return R;
 }
 function bakeDur(p){const o=ovenP();return Math.max(10,Math.ceil(p.n*(o.bs+60)/60/5)*5)*M;}
-function planOf(p){const p2=Object.assign({},p,{bake:new Date(+new Date(p.bake)-bakeDur(p)).toISOString()});const sc=schedule(p2),y=yeastPct(sc.eh);return {p,sc,y,R:recipe(p,y)};}
+function planOf(p){const p2=Object.assign({},p,{bake:new Date(+new Date(p.bake)-bakeDur(p)).toISOString()});const sc=schedule(p2),y=yeastPct(sc.eh);
+  const q=PFS[p.pf];if(q){let best=q.h;for(const d of [0,.5,-.5,1,-1,1.5,-1.5,2,-2,2.5,-2.5,3,-3,3.5,-3.5,4,-4,4.5,-4.5,5,-5,5.5,-5.5,6,-6]){const hh=q.h+d;if(hh<q.lo||hh>q.hi)continue;if(!isNight(new Date(+sc.start-hh*H))){best=hh;break;}}sc.mixAt=sc.start;sc.pfH=best;sc.start=new Date(+sc.start-best*H);}
+  return {p,sc,y,R:recipe(p,y)};}
 const YDRY=3, DIA={250:28,280:30,300:32};
 const OVENS={gas:{n:'Gas-Pizzaofen',k:'Gas',t:'450–480 °C',bs:90,pre:45,ut:'Pizzastein'},holz:{n:'Holz-Pizzaofen',k:'Holz',t:'450–480 °C',bs:90,pre:60,ut:'Pizzastein'},elek:{n:'Elektro-Pizzaofen',k:'Elektro',t:'400–450 °C',bs:120,pre:45,ut:'Pizzastein'},home:{n:'Backofen mit Stein oder Stahl',k:'Stein',t:'250–300 °C',bs:360,pre:60,ut:'Stein/Stahl, höchste Stufe'},blech:{n:'Backofen mit Blech',k:'Blech',t:'250–280 °C',bs:540,pre:30,ut:'Blech, höchste Stufe'}};
 function ovenP(){const k=S.oven||'gas',o=OVENS[k]||OVENS.gas,b=(S.bsx||{})[k],t=(S.otx||{})[k];return Object.assign({},o,b?{bs:b}:{},t?{t:t+' °C'}:{});}
 const kmNow=()=>(S.cook&&S.cook.snap&&S.cook.snap.km)||S.km||'m';
 const HAND=t=>kmNow()==='h'?String(t).replace(/vom Kessel/g,'von der Schüssel').replace(/im Kessel|in den Kessel/g,'in die Schüssel').replace(/Kessel/g,'Schüssel').replace(/auf Stufe 1/g,'mit dem Löffel').replace(/Stufe 1/g,'von Hand').replace(/\(3–4 min\)/g,'(8–10 min)').replace(/löst sich glatt von der Schüssel/g,'klebt kaum noch an den Händen'):t;
+function ovPick(on){$('ovOpts').hidden=!on;$('ovCur').setAttribute('aria-expanded',on);$('ovCur').classList.toggle('open',on);}
 function bsTxt(o){o=o||ovenP();return o.bs>=180?`${Math.round(o.bs/60)} min`:`${o.bs} s`;}
 function ytNow(){return (S.cook&&S.cook.snap&&S.cook.snap.yt)||S.yt||'f';}
 function yAmt(R){return ytNow()==='t'?R.yeast/YDRY:R.yeast;}
+function yAmtM(R){return ytNow()==='t'?R.yMain/YDRY:R.yMain;}
+function yAmtP(R){return R.pf?(ytNow()==='t'?R.pf.Y/YDRY:R.pf.Y):0;}
+const yg=v=>nf(v,v<1?2:1);
+function cookBegun(){return !!(S.cook&&S.cook.done&&Object.keys(S.cook.done).length);}
 function yName(){return ytNow()==='t'?'Trockenhefe':'Frischhefe';}
 // laufender Teig, ggf. mit verschobenem Backtermin
 function cookP(){
@@ -2136,6 +2442,24 @@ function cookP(){
 
 const nf=(v,d=0)=>v.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d});
 const g=v=>v<10?nf(v,1):nf(Math.round(v));
+/* Einheiten: Anzeige in oz/in und °F, umgerechnet direkt im Text */
+const TPDEC=window.TP_LANG==='en'?'.':',',TPTHO=window.TP_LANG==='en'?',':'.';
+const tpNum=t=>parseFloat(String(t).split(TPTHO).join('').replace(TPDEC,'.'));
+const tpFmt=(v,d)=>{const x=Math.round(v*Math.pow(10,d))/Math.pow(10,d);return x.toLocaleString(window.TP_LANG==='en'?'en-US':'de-DE',{maximumFractionDigits:d});};
+const NUMRE='(\\d{1,3}(?:['+TPTHO+']\\d{3})+(?:['+TPDEC+']\\d+)?|\\d+(?:['+TPDEC+']\\d+)?)';
+const RE_W=new RegExp(NUMRE+'(\\s?[–-]\u2060?\\s?'+NUMRE+')?\\s?(kg|g|ml|cm)(?![A-Za-zÄÖÜäöüß])','g');
+const RE_T=new RegExp('(-?'+NUMRE+')(\\s?[–-]\u2060?\\s?'+NUMRE+')?\\s?°\\s?C?(?![A-Za-zF])','g');
+function tpU(t){if(typeof t!=='string')return t;const W=S.uw==='oz',F=S.utemp==='f';if(!W&&!F)return t;
+ if(W)t=t.replace(RE_W,(m,a,r,b,u)=>{const f=u==='kg'?2.20462:u==='g'?1/28.3495:u==='ml'?1/29.5735:1/2.54,nu=u==='kg'?'lb':u==='g'?'oz':u==='ml'?'fl oz':'in';
+   const c=v=>{const x=tpNum(v)*f;return tpFmt(x,u==='cm'?(x<2?1:0):x<1?2:x<100?1:0);};return c(a)+(b?'–'+c(b):'')+' '+nu;});
+ if(F)t=t.replace(RE_T,(m,a,x1,r,b)=>{const c=v=>tpFmt(tpNum(v)*9/5+32,0);return c(a)+(b?'–'+c(b):'')+(/°\s?C/.test(m)?' °F':'°F');});
+ return t;}
+function tpUnode(n){if(!n||n.nodeType!==3)return;const p=n.parentElement;if(!p||p.closest('script,style,textarea'))return;const v=n.nodeValue,w=tpU(v);if(w!==v)n.nodeValue=w;}
+function tpUnitsAll(){if(S.uw!=='oz'&&S.utemp!=='f')return;const tw=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while(n=tw.nextNode())tpUnode(n);
+ document.querySelectorAll('.kr-n+.kr-u').forEach(u=>{const m=u.textContent.trim();if(/^(g|kg|ml|°C)$/.test(m)){const b=u.previousElementSibling,r=tpU(b.textContent.trim()+' '+m);const k=r.lastIndexOf(' ');if(r!==b.textContent.trim()+' '+m){b.textContent=r.slice(0,k);u.textContent=r.slice(k+1);}}});}
+new MutationObserver(ms=>{if(S.uw!=='oz'&&S.utemp!=='f')return;let el=false;for(const m of ms){if(m.type==='characterData')tpUnode(m.target);else m.addedNodes.forEach(x=>{if(x.nodeType===3)tpUnode(x);else if(x.nodeType===1){el=true;const tw=document.createTreeWalker(x,NodeFilter.SHOW_TEXT);let n;while(n=tw.nextNode())tpUnode(n);}});}
+ if(el)document.querySelectorAll('.kr-n+.kr-u').forEach(u=>{const m=u.textContent.trim();if(/^(g|kg|ml|°C)$/.test(m)){const b=u.previousElementSibling,r=tpU(b.textContent.trim()+' '+m);const k=r.lastIndexOf(' ');if(r!==b.textContent.trim()+' '+m){b.textContent=r.slice(0,k);u.textContent=r.slice(k+1);}}});
+}).observe(document.documentElement,{subtree:true,childList:true,characterData:true});
 const DAY=['So','Mo','Di','Mi','Do','Fr','Sa'], DAYL=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
 const pad=n=>String(n).padStart(2,'0');
 const tm=d=>pad(d.getHours())+':'+pad(d.getMinutes());
@@ -2156,19 +2480,23 @@ const tpl=id=>$(id).innerHTML;
 /* ---------- Schritte ---------- */
 // rel: gap Minuten nach dem vorigen Schritt. abs: fester Zeitpunkt (frühestens min Minuten nach dem vorigen).
 function buildSteps(P){
-  const {p,sc,R}=P, out=[];
-  out.push({id:'mix',t:'Teig ansetzen',gap:0,
-    acts:[{t:'Teig ansetzen',l:kmNow()==='h'?'Von Hand':'Maschine',a:kmNow()==='h'?'2–3 Min':'Stufe 1',u:kmNow()==='h'?'mit dem Löffel':'2–3 Minuten',li:[...R.fl.map(f=>[f.n,`${g(f.g)} g`]),['Wasser, kalt',`${g(R.wA)} g`]],d:`Mehl und Wasser mischen, abdecken. ${g(R.wY)} g Wasser für die Hefe zurückbehalten.`}]});
+  const {p,sc,R}=P, out=[], pf=R.pf;
+  if(pf)out.push({id:'pf',t:`${pf.n} ansetzen`,gap:0,
+    acts:[{t:`${pf.n} ansetzen`,l:'Vorteig',a:pf.n,u:pf.where,li:[...pf.fl.map(f=>[f.n,`${g(f.g)} g`]),[`Wasser, ${pf.w}`,`${g(pf.W)} g`],[yName(),`${yg(yAmtP(R))} g`]],
+      d:pf.k==='biga'?'Hefe im Wasser auflösen, mit dem Mehl nur kurz krümelig mischen. Nicht kneten. Abdecken.':'Hefe im Wasser auflösen, Mehl einrühren, bis es glatt ist. Abdecken.'}]});
+  out.push({id:'mix',t:'Teig ansetzen',...(pf?{abs:sc.mixAt,min:PFS[pf.k].lo*60}:{gap:0}),wait:pf?`${pf.n} reift`:undefined,
+    acts:[{t:'Teig ansetzen',l:kmNow()==='h'?'Von Hand':'Maschine',a:kmNow()==='h'?'2–3 Min':'Stufe 1',u:kmNow()==='h'?'mit dem Löffel':'2–3 Minuten',li:[...(pf?[[pf.n,`${g(pf.F+pf.W)} g`]]:[]),...R.mfl.map(f=>[f.n,`${g(f.g)} g`]),['Wasser, kalt',`${g(R.wA)} g`]],
+      d:pf?`${pf.n} ${pf.k==='biga'?'in Stücke zupfen und ':''}im Wasser lösen, Mehl dazu, mischen, abdecken. ${g(R.wY)} g Wasser für die Hefe zurückbehalten.`:`Mehl und Wasser mischen, abdecken. ${g(R.wY)} g Wasser für die Hefe zurückbehalten.`}]});
   out.push({id:'knead',t:'Kneten',gap:30,wait:'Autolyse läuft',
-    acts:[{t:'Kneten',l:kmNow()==='h'?'Von Hand':'Maschine',a:kmNow()==='h'?'10–15 Min':'Stufe 1',u:kmNow()==='h'?'kneten':'ca. 10 Minuten',li:[[`Hefe in ${g(R.wY)} g Wasser`,`${nf(yAmt(R),1)} g`],['dann Salz',`${g(R.salt)} g`]],d:''}]});
+    acts:[{t:'Kneten',l:kmNow()==='h'?'Von Hand':'Maschine',a:kmNow()==='h'?'10–15 Min':'Stufe 1',u:kmNow()==='h'?'kneten':'ca. 10 Minuten',li:[[`Hefe in ${g(R.wY)} g Wasser`,`${yg(yAmtM(R))} g`],['dann Salz',`${g(R.salt)} g`]],d:''}]});
   if(sc.rtb){
-    out.push({id:'fold',t:'Falten',gap:30,wait:'Teig ruht abgedeckt',acts:[{t:'Falten',d:'Von vier Seiten zur Mitte falten, umdrehen, abgedeckt stehen lassen.'}]});
-    out.push({id:'fridge',t:'Ab in den Kühlschrank',gap:60,wait:'Stockgare bei Raumtemperatur',acts:[{t:'Ab in den Kühlschrank',d:'Am Stück in die geölte Box mit Deckel, hinten unten.'}]});
-  }else out.push({id:'fridge',t:'Falten und ab in den Kühlschrank',gap:30,wait:'Teig ruht abgedeckt',acts:[{t:'Falten und kühlen',d:'Von vier Seiten zur Mitte falten, in die geölte Box mit Deckel, hinten unten in den Kühlschrank.'}]});
-  out.push({id:'portion',t:'Portionieren',abs:sc.portion,min:180,wait:'Stockgare im Kühlschrank',cold:true,acts:[{t:'Portionieren',a:`${p.n} × ${p.w} g`,u:'Teiglinge',d:'Kalt teilen, straff rund schleifen, in Boxen zurück in den Kühlschrank.'}]});
-  out.push({id:'out',t:'Aus dem Kühlschrank',abs:sc.accl,min:60,wait:'Teiglinge im Kühlschrank',cold:true,acts:[{t:'Aus dem Kühlschrank',a:dur(sc.A),u:'akklimatisieren',d:'Boxen geschlossen bei Raumtemperatur stehen lassen.'}]});
-  out.push({id:'oven',t:'Ofen an',abs:new Date(+sc.B-ovenP().pre*M),min:20,wait:'Teiglinge akklimatisieren',acts:[{t:'Ofen anheizen',a:ovenP().t.replace(' °C','°'),u:ovenP().ut,d:'Arbeitsfläche und Schieber mit Semola bestreuen, Belag bereitstellen.'}]});
-  out.push({id:'bake',t:'Backen',abs:sc.B,min:ovenP().pre,wait:'Ofen heizt auf',acts:[{t:'Backen',a:bsTxt(),u:'pro Pizza',d:'Vorher Fingerprobe. Nie ausrollen, von innen nach außen drücken.'}]});
+    out.push({id:'fold',t:'Falten',gap:30,wait:'Teig ruht abgedeckt',acts:[{t:'Falten',d:'Zur Mitte falten, umdrehen, abgedeckt stehen lassen.'}]});
+    out.push({id:'fridge',t:'Ab in den Kühlschrank',gap:60,wait:'Stockgare bei Raumtemperatur',acts:[{t:'In den Kühlschrank',d:'Am Stück in die geölte Box, Deckel drauf.'}]});
+  }else out.push({id:'fridge',t:'Falten und ab in den Kühlschrank',gap:30,wait:'Teig ruht abgedeckt',acts:[{t:'Falten',d:'Zur Mitte falten, in die geölte Box, ab in den Kühlschrank.'}]});
+  out.push({id:'portion',t:'Portionieren',abs:sc.portion,min:180,wait:'Stockgare im Kühlschrank',cold:true,acts:[{t:'Portionieren',a:`${p.n} × ${p.w} g`,u:'Teiglinge',d:'Kalt teilen, rund schleifen, in Boxen zurück in den Kühlschrank.'}]});
+  out.push({id:'out',t:'Aus dem Kühlschrank',abs:sc.accl,min:60,wait:'Teiglinge im Kühlschrank',cold:true,acts:[{t:'Aus dem Kühlschrank',a:dur(sc.A),u:'akklimatisieren',d:'Boxen geschlossen stehen lassen.'}]});
+  out.push({id:'oven',t:'Ofen an',abs:new Date(+sc.B-ovenP().pre*M),min:20,wait:'Teiglinge akklimatisieren',acts:[{t:'Ofen an',a:ovenP().t.replace(' °C','°'),u:ovenP().ut,d:'Semola auf Fläche und Schieber, Belag bereitstellen.'}]});
+  out.push({id:'bake',t:'Backen',abs:sc.B,min:ovenP().pre,wait:'Ofen heizt auf',acts:[{t:'Backen',a:bsTxt(),u:'pro Pizza',d:'Fingerprobe machen. Nicht ausrollen, von innen nach außen drücken.'}]});
   return out;
 }
 // Fälligkeiten berechnen
@@ -2229,14 +2557,23 @@ function renderShift(){
   $('shiftL').innerHTML=h;
   $('shiftTxt').textContent=pre?'„Später essen“ verschiebt alles. „Später ansetzen“ lässt den Termin stehen, der Teig hat dann etwas weniger Zeit: vor dem Backen die Fingerprobe machen.':out?'Die Teiglinge sind schon draußen. Bei Raumtemperatur gehen höchstens 1–2 Stunden mehr, sonst übergaren sie. Vorher die Fingerprobe machen.':'Der restliche Plan und alle Erinnerungen verschieben sich mit. Der Teig bleibt kürzer oder länger im Kühlschrank. Bis 3 h früher oder 24 h später klappt das gut.';
 }
-function setLate(v){if(!S.cook||S.cook.done.mix)return;const base=planOf(S.cook.snap),cur=S.cook.shift||0;S.cook.start=new Date(+base.sc.start+cur*H+v*H).toISOString();delete S.cook.alerted.mix;if(S.cook.ack)delete S.cook.ack.mix;if(S.cook.snz)delete S.cook.snz.mix;save();render();renderShift();if(cookOpen)renderCook();toast('Teig ansetzen um '+tm(new Date(S.cook.start))+' Uhr, Essen bleibt');}
+function setLate(v){if(!S.cook||cookBegun())return;const base=planOf(S.cook.snap),cur=S.cook.shift||0;S.cook.start=new Date(+base.sc.start+cur*H+v*H).toISOString();delete S.cook.alerted.mix;if(S.cook.ack)delete S.cook.ack.mix;if(S.cook.snz)delete S.cook.snz.mix;save();render();renderShift();if(cookOpen)renderCook();toast('Teig ansetzen um '+tm(new Date(S.cook.start))+' Uhr, Essen bleibt');}
 function setShift(v){
   if(!S.cook)return;const old=S.cook.shift||0;S.cook.shift=v;
-  if(!S.cook.done.mix){S.cook.start=new Date(+new Date(S.cook.start)+(v-old)*H).toISOString();delete S.cook.alerted.mix;if(S.cook.ack)delete S.cook.ack.mix;if(S.cook.snz)delete S.cook.snz.mix;}
+  if(!cookBegun()){S.cook.start=new Date(+new Date(S.cook.start)+(v-old)*H).toISOString();delete S.cook.alerted.mix;if(S.cook.ack)delete S.cook.ack.mix;if(S.cook.snz)delete S.cook.snz.mix;}
   ['portion','out','oven','bake'].forEach(id=>{if(!S.cook.done[id]){delete S.cook.alerted[id];if(S.cook.ack)delete S.cook.ack[id];if(S.cook.snz)delete S.cook.snz[id];if(S.cook.early)delete S.cook.early[id];}});
   save();render();renderShift();if(cookOpen)renderCook();toast('Neuer Termin: '+at(new Date(+new Date(S.cook.snap.bake)+(S.cook.shift||0)*H)));
 }
-function setView(v){if(v!=='rezept'&&cookOpen)closeCook(true);const pv=prevV;setTimeout(abNextUI,0);setTimeout(()=>dropDot(v),30);prevV=v;setTimeout(()=>glideBrand(v,pv),0);if(v!=='hilfe')lastView=v;S.view=v;const tab=v==='ablauf'?'rezept':['consigli','anleitung','impressum','storia','hilfe'].includes(v)?'mehr':v;document.querySelectorAll('.nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===tab));VIEWS.forEach(x=>$('v-'+x).hidden=x!==v);window.scrollTo(0,0);if(v==='pizzen')setTimeout(()=>{try{railUpd();clampTops();}catch(e){}},30);if(v==='ablauf')setTimeout(fitPlan,20);save();if(v==='rezept'&&S.cook&&!cookOpen&&booted)openCook();}
+/* Satz auf Start: so groß wie möglich, höchstens 4 Zeilen, Termin in einer Zeile */
+function fitSatz(){const e=$('stSatz');if(!e||!e.offsetParent)return;const W=e.parentElement.clientWidth,H=window.innerHeight,w=$('stWhen');
+ let lo=20,hi=Math.min(46,W*.12,H<600?28:H<680?32:H<760?36:42),best=lo;e.style.maxWidth='none';
+ for(let i=0;i<9;i++){const m=(lo+hi)/2;e.style.fontSize=m+'px';const lines=Math.round(e.getBoundingClientRect().height/(m*1.3));
+  const R=e.parentElement.getBoundingClientRect().right-4,over=[...e.querySelectorAll('a,span')].some(x=>x.getBoundingClientRect().right>R),pl=document.querySelector('#startBtn .sp-pill'),sm=$('stMore'),low=pl&&sm&&pl.offsetParent&&sm.getBoundingClientRect().bottom>pl.getBoundingClientRect().top-10&&m>22;
+  if(lines<=4&&!over&&!low&&w.getClientRects().length===1){best=m;lo=m;}else hi=m;}
+ e.style.fontSize=best.toFixed(1)+'px';}
+addEventListener('resize',()=>requestAnimationFrame(fitSatz));
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>fitSatz());
+function setView(v){setTimeout(fitSatz,0);if(v!=='rezept'&&cookOpen)closeCook(true);const pv=prevV;setTimeout(abNextUI,0);setTimeout(()=>dropDot(v),30);prevV=v;setTimeout(()=>glideBrand(v,pv),0);if(v!=='hilfe')lastView=v;S.view=v;const tab=v==='ablauf'?'rezept':['consigli','anleitung','impressum','storia','hilfe'].includes(v)?'mehr':v;document.querySelectorAll('.nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===tab));VIEWS.forEach(x=>$('v-'+x).hidden=x!==v);window.scrollTo(0,0);if(v==='pizzen')setTimeout(()=>{try{railUpd();clampTops();}catch(e){}},30);if(v==='ablauf')setTimeout(fitPlan,20);save();if(v==='rezept'&&S.cook&&!cookOpen&&booted)openCook();}
 function slicesSVG(N,done,cur,size,R,r,top){
   const c=size/2;let h=`<svg viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle cx="${c}" cy="${c}" r="${R+4}" fill="${top?'#1F1C19':'rgba(0,0,0,.25)'}"/>`;
   const gap=N>1?0.035:0;
@@ -2283,7 +2620,7 @@ function renderWhen(){
 }
 function render(){
   renderWhen();
-  P=planOf({mix:S.mix||'tp',mixOwn:S.mixOwn,n:S.n,w:S.w,h:S.h,hy:S.hy,k:S.k,bake:S.bake,wz:S.wz||0,room:S.room||21});
+  P=planOf({pf:S.pf||'none',mix:S.mix||'tp',mixOwn:S.mixOwn,n:S.n,w:S.w,h:S.h,hy:S.hy,k:S.k,bake:S.bake,wz:S.wz||0,room:S.room||21});
   const {sc,R}=P;
   $('nOut').innerHTML=`${S.n}<small>Teiglinge à ${S.w} g</small>`;
   const bk=new Date(S.bake), rd=rel(bk), hrTxt=bk.getMinutes()?tm(bk)+' Uhr':bk.getHours()+' Uhr';
@@ -2294,27 +2631,32 @@ function render(){
   document.querySelectorAll('#hOpts .opt').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.h===S.h));
   chips('wOpts',[250,280,300],'w',v=>v+' g');$('wDia').textContent=`ca. Ø ${DIA[S.w]||30} cm`;
   $('ytOpts').innerHTML=[['f','Frisch'],['t','Trocken']].map(([v,l])=>`<button class="chip" data-yt="${v}" aria-pressed="${(S.yt||'f')===v}">${l}</button>`).join('');
-  $('ovOpts').onclick=e=>{const b=e.target.closest('[data-ov]');if(!b)return;S.oven=b.dataset.ov;save();render();};
+  $('ovOpts').onclick=e=>{const b=e.target.closest('[data-ov]');if(!b)return;S.oven=b.dataset.ov;save();render();ovPick(false);};
+  $('ovCur').onclick=()=>ovPick($('ovOpts').hidden);
   $('ytOpts').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;S.yt=b.dataset.yt;S.ckYeast=null;render();};
   if($('pzDia'))$('pzDia').textContent=`Teiglinge à ${S.w} g, das gibt Pizzen mit ca. ${DIA[S.w]||30} cm Durchmesser.`;
-  chips('hyOpts',[58,60,62,65,68,70],'hy',v=>v+' %');
+  {const PO=[['none','Ohne'],['poolish','Poolish'],['biga','Biga']],cur=S.pf||'none';$('pfOpts').innerHTML=PO.map(([k,l])=>`<button class="chip" data-pf="${k}" aria-pressed="${cur===k}">${l}</button>`).join('');$('pfOpts').onclick=e=>{const b=e.target.closest('[data-pf]');if(!b)return;S.pf=b.dataset.pf;render();};}
+  {const r=$('hyR');if(r&&document.activeElement!==r)r.value=S.hy;if($('hyV'))$('hyV').textContent=S.hy+'\u202f%';}
   {const mx=S.mix||'tp';$('mxOpts').innerHTML=[...Object.entries(MIXES).map(([k,m])=>[k,m.n]),['own','Eigene']].map(([k,l])=>`<button class="chip" data-mx="${k}" aria-pressed="${mx===k}">${l}</button>`).join('');
    $('mxOpts').onclick=e=>{const b=e.target.closest('[data-mx]');if(!b)return;S.mix=b.dataset.mx;if(S.mix==='own'&&!(S.mixOwn&&S.mixOwn.length))S.mixOwn=[{n:'Weizenmehl Tipo 00',p:80},{n:'Weizenmehl Tipo 0',p:20},{n:'',p:0}];render();};
    const mo=$('mixOwn');mo.hidden=mx!=='own';if(mx==='own'&&!mo.contains(document.activeElement)){const L=(S.mixOwn||[]).concat([{n:'',p:0},{n:'',p:0},{n:'',p:0}]).slice(0,3);mo.innerHTML=L.map((x,i)=>`<div class="mo-r"><input data-mon="${i}" value="${(x.n||'').replace(/"/g,'')}" placeholder="Mehl ${i+1}" maxlength="28"><input data-mop="${i}" type="number" inputmode="numeric" min="0" max="100" value="${+x.p||''}" placeholder="%"><span>%</span></div>`).join('')+`<p class="mo-h" id="moH"></p>`;}
    if(mx==='own'){const sum=(S.mixOwn||[]).reduce((a,x)=>a+(+x.p||0),0);$('moH').textContent=sum===100?'Zusammen 100 %.':`Zusammen ${sum} %. Die App rechnet es auf 100 % um.`;}
-   $('recFoot').textContent=`${mx==='own'?'Eigene Mischung':(MIXES[mx]||MIXES.tp).d} · 2,8 % Salz aufs Mehl. Kein Öl im Teig, wie in Neapel. Die Hefe rechnet die App aus, Trockenhefe mit einem Drittel der Frischhefe-Menge.`;}
+   $('recFoot').textContent=`${mx==='own'?'Eigene Mischung':(MIXES[mx]||MIXES.tp).d} · 2,8 % Salz aufs Mehl. Kein Öl im Teig, wie in Neapel. Die Hefe rechnet die App aus, Trockenhefe mit einem Drittel der Frischhefe-Menge.`+(P.R.pf?(P.R.pf.k==='biga'?' Biga: 40 % des Mehls mit 50 % Wasser, 14–22 h kühl reifen lassen.':' Poolish: 30 % des Mehls mit gleich viel Wasser, 12–20 h bei 18–20 °C reifen lassen.'):'');}
   {const ov=S.oven||'gas',OT={gas:[[400,120],[430,90],[450,75],[480,60]],holz:[[400,120],[430,90],[450,75],[480,60]],elek:[[380,150],[400,120],[430,100],[450,90]],home:[[250,420],[275,360],[300,300]],blech:[[230,600],[250,540],[280,480]]}[ov]||[],cur=(S.otx||{})[ov];
    $('otOpts').innerHTML=OT.map(([t])=>`<button class="chip" data-ot="${t}" aria-pressed="${cur===t}">${t}°</button>`).join('');
    $('otOpts').onclick=e=>{const b=e.target.closest('[data-ot]');if(!b)return;const t=+b.dataset.ot;S.otx=S.otx||{};S.otx[ov]=t;S.bsx=S.bsx||{};S.bsx[ov]=(OT.find(x=>x[0]===t)||[0,90])[1];render();};}
   S.room=S.room||21;chips('roOpts',[18,21,24,27],'room',v=>v+' °C');
   {const km=S.km||'m';$('kmOpts').innerHTML=[['m','Maschine'],['h','Von Hand']].map(([k,l])=>`<button class="chip" data-km="${k}" aria-pressed="${km===k}">${l}</button>`).join('');$('kmOpts').onclick=e=>{const b=e.target.closest('[data-km]');if(!b)return;S.km=b.dataset.km;render();};}
   {const ov=S.oven||'gas',BSO={gas:[60,75,90,120],holz:[60,75,90,120],elek:[90,120,150,180],home:[300,360,480],blech:[420,540,660]}[ov]||[90],cur=ovenP().bs,f=v=>v>=180?Math.round(v/60)+' min':v+' s';$('bsOpts').innerHTML=BSO.map(v=>`<button class="chip" data-bs="${v}" aria-pressed="${cur===v}">${f(v)}</button>`).join('');$('bsOpts').onclick=e=>{const b=e.target.closest('[data-bs]');if(!b)return;S.bsx=S.bsx||{};S.bsx[ov]=+b.dataset.bs;render();};}
-  if(S.cook&&S.cook.pre&&!S.cook.done.mix)Object.assign(S.cook.snap,{mix:S.mix||'tp',mixOwn:S.mixOwn,w:S.w,hy:S.hy,k:S.k,yt:S.yt||'f',wz:S.wz||0,km:S.km||'m',room:S.room||21});
-  {const cn=$('cookNote');if(cn){if(S.cook){const q=S.cook.snap;cn.hidden=false;cn.textContent=S.cook.pre&&!S.cook.done.mix?'Der Plan läuft schon. Änderungen gelten noch, bis du den Teig ansetzt.':`Gilt erst für den nächsten Teig. Der laufende bleibt bei ${q.n} × ${q.w} g.`;}else cn.hidden=true;}}
+  if(S.cook&&S.cook.pre&&!cookBegun())Object.assign(S.cook.snap,{pf:S.pf||'none',mix:S.mix||'tp',mixOwn:S.mixOwn,w:S.w,hy:S.hy,k:S.k,yt:S.yt||'f',wz:S.wz||0,km:S.km||'m',room:S.room||21});
+  {const cn=$('cookNote');if(cn){if(S.cook){const q=S.cook.snap;cn.hidden=false;cn.textContent=S.cook.pre&&!cookBegun()?'Der Plan läuft schon. Änderungen gelten noch, bis du den Teig ansetzt.':`Gilt erst für den nächsten Teig. Der laufende bleibt bei ${q.n} × ${q.w} g.`;}else cn.hidden=true;}}
   chips('kOpts',[4,5,6,7],'k',v=>v+' °C');
+  {const uc=(el,key,opts)=>{$(el).innerHTML=opts.map(([v,l])=>`<button class="chip" data-u="${v}" aria-pressed="${(S[key]||opts[0][0])===v}">${l}</button>`).join('');$(el).onclick=e=>{const b=e.target.closest('[data-u]');if(!b)return;S[key]=b.dataset.u;save();render();tpUnitsAll();};};
+   uc('uwOpts','uw',[['g','g, cm'],['oz','oz, in']]);uc('utOpts','utemp',[['c','°C'],['f','°F']]);}
   S.wz=S.wz||0;chips('wzOpts',[0,3,5],'wz',v=>v?'+'+v+' %':'ohne');
   {const NI=[['22','22–7'],['23','23–8'],['0','0–9'],['off','aus']],cur=S.night==null?'22':String(S.night);$('niOpts').innerHTML=NI.map(([k,l])=>`<button class="chip" data-ni="${k}" aria-pressed="${cur===k}">${l}</button>`).join('');$('niOpts').onclick=e=>{const b=e.target.closest('[data-ni]');if(!b)return;S.night=b.dataset.ni;render();};}
-  $('ovOpts').innerHTML=Object.entries(OVENS).map(([k,o])=>`<button class="chip" data-ov="${k}" aria-pressed="${(S.oven||'gas')===k}">${o.k}</button>`).join('');
+  {const ok=S.oven||'gas',oc=ovenP();$('ovCurT').textContent=OVENS[ok].n;$('ovSub').textContent=`${oc.t} · ${bsTxt(oc)}`;
+  $('ovOpts').innerHTML=Object.entries(OVENS).map(([k,o])=>`<button class="of-o" data-ov="${k}" aria-pressed="${ok===k}"><i aria-hidden="true"></i><span><b>${o.n}</b><small>${o.t} · ${bsTxt(o)} pro Pizza</small></span></button>`).join('');}
   $('adjSum').textContent=`Aktuell: ${S.w} g je Teigling · ${S.hy} % Wasser · Kühlschrank ${S.k} °C`;
   $('recSum').textContent=`${S.w} g · ${ovenP().k}`;
   $('startTxt').textContent=+sc.start-Date.now()>20*M?`${tnDay(sc.start)} ${tm(sc.start)} · ${tnCd(sc.start-new Date())}`:at(sc.start).replace(', ',' · ')+(sc.start>new Date()?' · '+tnCd(sc.start-new Date()):'');
@@ -2323,21 +2665,22 @@ function render(){
   $('waterHint').textContent=+wc>Date.now()?`Wasser bis ${tm(wc)} Uhr in den Kühlschrank stellen.`:'Für kaltes Wasser ist es knapp: ein paar Eiswürfel hinein, dann stimmt die Teigtemperatur.';
   const al=[], now=new Date();
   if(sc.start<now-30*M)al.push(`<div class="alert bad"><b>Zu spät</b><span>Kürzere Gehzeit oder späteren Termin wählen.</span></div>`);
-  else if(isNight(sc.start))al.push(`<div class="alert"><b>Nachts</b><span>Start fällt in die Nacht. Backzeit verschieben.</span></div>`);
+  else if(isNight(sc.start)){const nw=nightW();al.push(`<button class="al-card" data-al-open="recSheet"><span class="al-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span><span class="al-t"><b>Ansetzen um ${tm(sc.start)} fällt in deine Nachtruhe</b><span>${nw[0]}–${nw[1]} Uhr, eingestellt unter Rezept &amp; Ofen <em>›</em></span></span></button>`);}
   if(R.total>5000)al.push(`<div class="alert"><b>${nf(R.total/1000,1)} kg Teig</b><span>In zwei Durchgängen kneten.</span></div>`);
-  $('alerts').innerHTML=al.join('');
+  $('alerts').innerHTML=al.join('');setTimeout(fitSatz,0);
+  $('alerts').onclick=e=>{const b=e.target.closest('[data-al-open]');if(!b)return;const id=b.dataset.alOpen;$(id).hidden=false;document.body.classList.add('lock');if(id==='whenSheet'){renderWhen.scrolled=0;renderWhen();}};
   const running=!!S.cook;
   $('navDot').hidden=true;
   renderLive(); renderAblauf(); renderCheck(); renderSauce(); renderShop(); save();
 }
 
-function cookPlan(){if(!S.cook)return null;const P2=cookP();const st=buildSteps(P2);if(S.cook.pre&&st[0])st[0].wait='Teig ansetzen';return {P:P2,st,tl:timeline(st,new Date(S.cook.start),S.cook.done)};}
+function cookPlan(){if(!S.cook)return null;const P2=cookP();const st=buildSteps(P2);if(S.cook.pre&&st[0])st[0].wait=st[0].t;return {P:P2,st,tl:timeline(st,new Date(S.cook.start),S.cook.done)};}
 function doughSVG(fr){const sc=.5+.5*fr,w=70*sc,h=46*sc;return `<svg viewBox="0 0 120 120" aria-hidden="true"><rect x="12" y="58" width="96" height="52" rx="10" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.55)" stroke-width="2"/><ellipse cx="60" cy="${(104-h*.02).toFixed(1)}" rx="${w.toFixed(1)}" ry="6" fill="rgba(0,0,0,.18)"/><path d="M${(60-w).toFixed(1)} 104 C ${(60-w).toFixed(1)} ${(104-h*1.4).toFixed(1)}, ${(60+w).toFixed(1)} ${(104-h*1.4).toFixed(1)}, ${(60+w).toFixed(1)} 104 Z" fill="#F3E3C2"/><path d="M${(60-w*.55).toFixed(1)} ${(104-h*.62).toFixed(1)} q ${(w*.25).toFixed(1)} -${(h*.25).toFixed(1)} ${(w*.5).toFixed(1)} -${(h*.3).toFixed(1)}" stroke="#fff" stroke-opacity=".7" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="${(60+w*.3).toFixed(1)}" cy="${(104-h*.45).toFixed(1)}" r="2" fill="#E2CFA6"/><circle cx="${(60-w*.2).toFixed(1)}" cy="${(104-h*.3).toFixed(1)}" r="1.6" fill="#E2CFA6"/></svg>`;}
 function miniPz(c){return `<svg viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#E2B676"/><circle cx="11" cy="11" r="7.5" fill="${c}"/><circle cx="9" cy="9" r="1.8" fill="#FFF8EA"/><circle cx="13.5" cy="12.5" r="1.6" fill="#FFF8EA"/></svg>`;}
 function renderLive(){
   const c=cookPlan(), on=!!c, now=new Date();
   $('planBody').hidden=on;$('liveBody').hidden=!on;
-  {const pre=!on&&+P.sc.start-Date.now()>20*M;$('igT').textContent=pre?'Plan starten':'Teig ansetzen';$('startBtn').classList.toggle('pre',pre);$('stHint').hidden=on;}$('startBtn').hidden=on;
+  {const pre=!on&&+P.sc.start-Date.now()>20*M;$('igT').textContent=pre?'Plan starten':'Teig ansetzen';$('startBtn').classList.toggle('pre',pre);$('stHint').hidden=on;}$('startBtn').hidden=on;pillUpd();
   const p=on?c.P.p:{n:S.n,h:S.h}, sc=on?c.P.sc:P.sc, B=new Date(on?c.P.p.bake:S.bake);
   // Einladung
   const MON=['1.','2.','3.','4.','5.','6.','7.','8.','9.','10.','11.','12.'];
@@ -2357,19 +2700,19 @@ function renderLive(){
    const day=dd===0?'heute':dd===1?'morgen':dd>1&&dd<7?DL[B.getDay()]:`${B.getDate()}.${B.getMonth()+1}.`;
    $('stAm').textContent=dd===0||dd===1?'':'am';$('stAm').hidden=dd===0||dd===1;
    $('stWhen').textContent=`${day} um ${hr}`;$('stPz').textContent=`${p.n} ${p.n===1?'Pizza':'Pizzen'}`;$('stGeh').textContent=`${p.h} Stunden`;
-   $('stSatz').classList.toggle('run',on);}
+   $('stSatz').classList.toggle('run',on);fitSatz();}
   // Zeitleiste
   let nodes;
   if(on){
     const tl=c.tl, idx=tl.findIndex(x=>x.cur);
-    const pick=[['mix','Teig ansetzen'],['portion','Portionieren'],['bake','Backen']];
+    const pick=c.P.R.pf?[['pf',`${c.P.R.pf.n} ansetzen`],['mix','Teig ansetzen'],['bake','Backen']]:[['mix','Teig ansetzen'],['portion','Portionieren'],['bake','Backen']];
     let curSet=false;
     nodes=pick.map(([id,l])=>{const x=tl.find(y=>y.s.id===id),d=x.doneAt||x.due,ci=tl.indexOf(x);let st=x.doneAt?'done':'';if(!st&&!curSet&&idx>-1&&ci>=idx){st='cur';curSet=true;}return {l,d,st};});
     if(idx===-1){$('startTxt').textContent='alle Schritte erledigt';($('liveK')||{}).textContent='Fertig';($('liveT')||{}).textContent='Buon appetito!';($('liveW')||{}).textContent='Ansehen';}
     else{const cur=tl[idx];$('startTxt').textContent=`Teig läuft seit ${tm(new Date(S.cook.start))} Uhr`;($('liveK')||{}).textContent=`Als Nächstes · Schritt ${idx+1} von ${tl.length}`;($('liveT')||{}).textContent=cur.s.t;($('liveW')||{}).textContent=cur.due>now?`in ${cdLong(cur.due-now)}`:'Jetzt dran';}
     const tot=pzTotal(), D=shopData(), all=[...D.dough,...D.sauce,...D.top], got=all.filter(x=>S.shop[x.k]).length;
     $('tilePzV').textContent=`${tot}/${p.n}`;$('tileShopV').textContent=`${got}/${all.length}`;
-  }else nodes=[{l:'Teig ansetzen',d:sc.start,st:'cur'},{l:'Portionieren',d:sc.portion,st:''},{l:'Backen',d:sc.B,st:''}];
+  }else nodes=P.R.pf?[{l:`${P.R.pf.n} ansetzen`,d:sc.start,st:'cur'},{l:'Teig ansetzen',d:sc.mixAt,st:''},{l:'Backen',d:sc.B,st:''}]:[{l:'Teig ansetzen',d:sc.start,st:'cur'},{l:'Portionieren',d:sc.portion,st:''},{l:'Backen',d:sc.B,st:''}];
   const icons=['<svg width="30" height="20" viewBox="0 0 56 36" aria-hidden="true"><path d="M14 34c0-12 6-18 14-18s14 6 14 18z" class="s-dough"/></svg>','<svg width="36" height="24" viewBox="0 0 56 36" aria-hidden="true"><path d="M7 34c0-16 9-25 21-25s21 9 21 25z" class="s-dough"/></svg>','<svg width="26" height="26" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#E2B676"/><circle cx="11" cy="11" r="7.5" fill="#C2281B"/><circle cx="9" cy="9" r="1.8" fill="#FFF8EA"/><circle cx="13.5" cy="12.5" r="1.6" fill="#FFF8EA"/></svg>'];
   const doneN=nodes.filter(n=>n.st==='done').length, curI=nodes.findIndex(n=>n.st==='cur');
   const pw=curI<0?(doneN?66.8:0):Math.max(0,(curI)*33.4);
@@ -2383,19 +2726,16 @@ function renderAblauf(){try{abNextUI();}catch(e){}
   else{const st=buildSteps(P);tl=timeline(st,P.sc.start,{});tl.forEach(x=>x.cur=false);info=`Vorschau für ${S.n} Pizzen mit ${S.h} h Gehzeit. „Teig ansetzen“ öffnet den Backmodus.`;}
   // Teigschritte zusammenfassen
   const DOUGH=['mix'], rows=[];
-  const dg=tl.filter(x=>DOUGH.includes(x.s.id));
-  if(dg.length){const t0=dg[0].doneAt||dg[0].due, last=dg[dg.length-1], t1=new Date(+(last.doneAt||last.due)+5*M);
-    rows.push({t:'Teig ansetzen',d:t0,done:dg.every(x=>x.doneAt),cur:dg.some(x=>x.cur)});}
-  tl.filter(x=>!DOUGH.includes(x.s.id)).forEach(x=>{
+  tl.forEach(x=>{
     const gapH=(x.due-x.from)/H;
-    if(x.s.wait&&gapH>=0.9&&!x.doneAt)rows.push({pause:1,cold:x.s.cold,txt:`${gapH>=3?Math.round(gapH)+' h':dur(gapH)} ${x.s.cold?'kalt':'Raumtemperatur'}`,d:x.from});
+    if(x.s.wait&&gapH>=0.9&&!x.doneAt)rows.push({pause:1,pf:x.s.id==='mix',cold:x.s.cold,txt:`${gapH>=3?Math.round(gapH)+' h':dur(gapH)} ${x.s.cold?'kalt':'Raumtemperatur'}`,d:x.from});
     if(x.s.ovenAt)rows.push({t:'Ofen an',d:x.s.ovenAt,done:!!x.doneAt,cur:false,id:'oven'});
     rows.push({t:x.s.id==='fridge'&&!/^Ab /.test(x.s.t)?'Falten, in den Kühlschrank':SHORT[x.s.id]||x.s.t,d:x.doneAt||x.due,done:!!x.doneAt,cur:x.cur,hl:x.s.id==='bake',id:x.s.id});
     if(x.s.id==='portion')rows.push({t:'Kühlschrank',d:new Date(+(x.doneAt||x.due)+15*M),done:!!x.doneAt,cur:false,id:'portion2'});
   });
   const DAYS=['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'],GIO=['Domenica','Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato'],MONL=['JANUAR','FEBRUAR','MÄRZ','APRIL','MAI','JUNI','JULI','AUGUST','SEPTEMBER','OKTOBER','NOVEMBER','DEZEMBER'];
   const NAME={'Kühlschrank':'Ab in den Kühlschrank','BACKEN':'Backen'};
-  {let after=false;rows.forEach((r,i)=>{if(r.id==='portion')after=true;if(r.pause){for(let j=i-1;j>=0;j--)if(!rows[j].pause){rows[j].wait={cold:r.cold,txt:r.txt,ph:after?'Stückgare':'Stockgare'};break;}}});}
+  {let after=false;rows.forEach((r,i)=>{if(r.id==='portion')after=true;if(r.pause){for(let j=i-1;j>=0;j--)if(!rows[j].pause&&rows[j].t!=='Kühlschrank'){rows[j].wait={cold:r.cold,txt:r.txt,ph:r.pf?'reift':after?'Stückgare':'Stockgare'};break;}}});}
   let html='',curDay='';const MS=['Jan.','Feb.','März','Apr.','Mai','Juni','Juli','Aug.','Sep.','Okt.','Nov.','Dez.'];
   rows.forEach(r=>{
     if(r.t==='Kühlschrank')return;
@@ -2404,11 +2744,12 @@ function renderAblauf(){try{abNextUI();}catch(e){}
     if(r.pause)return;
     const w='';
     const hrs=r.wait?r.wait.txt.replace(/ (kalt|Raumtemperatur)$/,''):'';
-    const em=r.wait?`<em class="${r.wait.cold?'cold':'warm'}">${r.wait.cold?'❄':'◷'} ${hrs}</em>`:'', fr=r.wait&&(r.t==='Kühlschrank'||r.t==='Rausnehmen');
-    const sub=r.wait&&!fr?`<span class="pk-g">${r.wait.ph} für ${em}</span>`:'';
-    html+=`<div class="pk-r${r.done?' done':''}${r.cur?' cur':''}${r.hl?' hl':''}"><span class="bn">${r.t==='Rausnehmen'?'Aus dem Kühlschrank':(NAME[r.t]||r.t)}</span><i></i><span class="bt">${tm(r.d)}</span></div>`;
+    const em=r.wait?`<em class="${r.wait.cold?'cold':'warm'}">${r.wait.cold?IC_SNOW:IC_HOUSE} ${hrs}</em>`:'', fr=r.wait&&(r.t==='Kühlschrank'||r.t==='Rausnehmen');
+    const sub=r.wait?`<small class="pk-w2"><b class="pk-ar">→</b> ${r.wait.ph} ${em}</small>`:'';
+    html+=`<div class="pk-r${r.done?' done':''}${r.cur?' cur':''}${r.hl?' hl':''}"><span class="bn">${r.t==='Rausnehmen'?(sub?'Rausnehmen':'Aus dem Kühlschrank'):r.t==='Falten, in den Kühlschrank'?'Falten':(NAME[r.t]||r.t)} ${sub}</span><i></i><span class="bt">${tm(r.d)}</span></div>`;
   });
   if(curDay)html+='</div>';
+  if(rows.some(r=>r.wait))html+='<div class="pk-leg"><span class="cold">'+IC_SNOW+' Kühlschrank</span><span class="warm">'+IC_HOUSE+' Raumtemperatur</span></div>';
   const p0=c?c.P.p:{n:S.n,h:S.h,bake:S.bake}, B0=new Date(p0.bake);
   $('tlSub').textContent=`${p0.n} Pizzen · Teig ${p0.h} h · Backen ${DAY[B0.getDay()]} ${tm(B0)}`;
   const nAll=rows.filter(r=>!r.pause).length, nDone=rows.filter(r=>!r.pause&&r.done).length;
@@ -2430,10 +2771,10 @@ window.addEventListener('resize',()=>{setNavH();if(S.view==='ablauf')fitPlan();}
 let booted=false, cookOpen=false, view=null, wake=null, iv=null;
 function flourBurst(){const L=document.createElement('div');L.className='flour-lay';let h='';for(let i=0;i<46;i++){const x=40+Math.random()*20,y=78+Math.random()*10,dx=(Math.random()-.5)*120,dy=-(30+Math.random()*70),s2=2+Math.random()*6;h+=`<i style="left:${x}vw;top:${y}vh;width:${s2}px;height:${s2}px;--dx:${dx}vw;--dy:${dy}vh;animation-delay:${Math.random()*150}ms;opacity:${.5+Math.random()*.5}"></i>`;}L.innerHTML=h;document.body.appendChild(L);setTimeout(()=>L.remove(),1700);}
 function startCook(){
-  if(!S.cook){const pre=+P.sc.start-Date.now()>20*M;if(!pre)flourBurst();S.cook={start:(pre?new Date(P.sc.start):new Date()).toISOString(),pre:pre?1:0,snap:{mix:S.mix||'tp',mixOwn:S.mixOwn,n:S.n,w:S.w,h:S.h,hy:S.hy,k:S.k,bake:S.bake,yt:S.yt||'f',wz:S.wz||0,km:S.km||'m',room:S.room||21},done:{},subs:{},alerted:{}};save();}
+  if(!S.cook){const pre=+P.sc.start-Date.now()>20*M;if(!pre)flourBurst();S.cook={start:(pre?new Date(P.sc.start):new Date()).toISOString(),pre:pre?1:0,snap:{pf:S.pf||'none',mix:S.mix||'tp',mixOwn:S.mixOwn,n:S.n,w:S.w,h:S.h,hy:S.hy,k:S.k,bake:S.bake,yt:S.yt||'f',wz:S.wz||0,km:S.km||'m',room:S.room||21},done:{},subs:{},alerted:{}};save();}
   openCook();
 }
-function openCook(){cookOpen=true;if(S.view!=='rezept')setView('rezept');setTimeout(voiceUI,0);$('mini').hidden=true;document.body.classList.remove('has-mini');$('cook').hidden=false;document.body.classList.add('lock');view=null;renderCook();wakeOn();if(!iv)iv=setInterval(tickCook,1000);render();}
+function openCook(){cookOpen=true;if(!S.nonnaHi){S.nonnaHi=1;save();setTimeout(()=>{if(cookOpen)nzOpen(NZ_HI);},900);}if(S.view!=='rezept')setView('rezept');setTimeout(voiceUI,0);$('mini').hidden=true;document.body.classList.remove('has-mini');$('cook').hidden=false;document.body.classList.add('lock');view=null;renderCook();wakeOn();if(!iv)iv=setInterval(tickCook,1000);render();}
 function closeCook(keep){cookOpen=false;try{micStop();}catch(e){}$('ckSheet').hidden=true;renderMini();$('cook').hidden=true;document.body.classList.remove('lock');if(!keep)wakeOff();render();}
 async function wakeOn(){if(window.TEMPASTO_NATIVE){TEMPASTO_NATIVE.wake(true);return;}try{if('wakeLock' in navigator&&!wake){wake=await navigator.wakeLock.request('screen');wake.addEventListener&&wake.addEventListener('release',()=>{wake=null;});}}catch(e){wake=null;}}
 function wakeOff(){if(window.TEMPASTO_NATIVE){TEMPASTO_NATIVE.wake(false);return;}try{wake&&wake.release();}catch(e){}wake=null;}
@@ -2465,9 +2806,9 @@ function renderMini(){try{abNextUI();}catch(e){}
     if(st==='act'){b='Jetzt: '+nx;sm=`Schritt ${c.tl.indexOf(x)+1} von ${c.tl.length} · antippen`;}
     else if(st==='alarm'){b='Pause vorbei: '+A[0].t;sm='Antippen und loslegen';}
     else{frac=clamp(1-(d-now)/Math.max(1,d-x.from),0,1);
-      if(x.s.id==='mix'&&S.cook.pre){b=`Teig ansetzen ${tnDay(d)} ${tm(d)}`;sm=`Plan läuft · noch ${cdLong(d-now)}`;}
+      if(x===c.tl[0]&&S.cook.pre){b=`${x.s.t} ${tnDay(d)} ${tm(d)}`;sm=`Plan läuft · noch ${cdLong(d-now)}`;}
       else if(st==='wait'){b=`${x.s.wait||'Pause'} · noch ${cdLong(d-now)}`;sm=`Danach: ${A[0].t}`;}
-      else if(!(x.s.id==='mix'&&S.cook.pre)){const r=rel(d);b=`Wieder dran: ${r==='Heute'?'heute':r==='Morgen'?'morgen':r} ${tm(d)}`;sm=`${x.s.wait||'Pause'} · danach ${A[0].t}`;}}}
+      else if(!(x===c.tl[0]&&S.cook.pre)){const r=rel(d);b=`Wieder dran: ${r==='Heute'?'heute':r==='Morgen'?'morgen':r} ${tm(d)}`;sm=`${x.s.wait||'Pause'} · danach ${A[0].t}`;}}}
   $('miniB').textContent=b;$('miniS').textContent=sm;
   $('miniArc').style.strokeDashoffset=(94.25*(1-frac)).toFixed(1);
 }
@@ -2475,15 +2816,16 @@ function renderCook(){
   const c=cookPlan(); if(!c)return closeCook();
   S.cook.ack=S.cook.ack||{};S.cook.early=S.cook.early||{};S.cook.snz=S.cook.snz||{};
   const {tl}=c, idx=tl.findIndex(x=>x.cur), x=tl[idx];
-  $('ckCnt').innerHTML=x?`<span class="cnt-w">Schritt </span>${idx+1}/${tl.length}`:'Geschafft';
+  $('ckCnt').innerHTML=`<span class="pb" aria-hidden="true">${tl.map((_,j)=>`<i class="${!x||j<idx?'d':j===idx?'c':''}"></i>`).join('')}</span><span class="pl">${x?'Zeitplan':'Geschafft'}</span>`;$('ckCnt').setAttribute('aria-label',x?`Zeitplan ansehen, Schritt ${idx+1} von ${tl.length}`:'Zeitplan ansehen');
   $('ckIn').innerHTML=ringHTML()+`<div class="ck-txt"><h2 class="ck-title" id="ckT"></h2><div class="ck-li" id="ckLi"></div><p class="ck-d" id="ckD"></p><div class="ck-crit" id="ckCrit"></div><div class="ck-dots" id="ckDots"></div></div>`;
   $('ckIn').dataset.state='';
   tickCook(true);
 }
 function phaseOf(x,st,now){if(!x||st==='fin')return '';if(st==='long'||st==='wait'){if(x.s.id==='bake')return 'hot';if(!S.cook.done.knead)return '';return x.s.cold?'cold':'warm';}return x.s.id==='bake'||x.s.id==='oven'?'hot':'';}
-function fitCook(){const b=$('ckBody'),ck=$('cook');if(!b||!ck)return;ck.classList.remove('tight','tighter');
-  if(b.scrollHeight>b.clientHeight+2){ck.classList.add('tight');if(b.scrollHeight>b.clientHeight+2)ck.classList.add('tighter');}}
-function setCook(st,x,c,now){setTimeout(()=>{glossify($('ckD'));glossify($('ckT'));glossify($('ckCrit'));},0);
+function fitCook(){const b=$('ckBody'),ck=$('cook'),i=$('ckIn');if(!b||!ck)return;ck.classList.remove('tight','tighter','tightest');
+  const over=()=>b.scrollHeight>b.clientHeight+2||(i&&i.scrollHeight>i.clientHeight+2);
+  if(over()){ck.classList.add('tight');if(over()){ck.classList.add('tighter');if(over())ck.classList.add('tightest');}}}
+function setCook(st,x,c,now){nzUpd(st,x);setTimeout(()=>{glossify($('ckD'));glossify($('ckT'));glossify($('ckCrit'));},0);
   const ck=$('cook'), ring=$('kr'), cen=$('krC'), arc=$('krArc');arc.style.stroke='';arc.style.filter='';
   ck.dataset.st=st; ck.dataset.ph=phaseOf(x,st,now); ring.className='kr '+st;
   const btn=$('ckNext'), back=$('ckBack'), info=$('ckInfo');
@@ -2493,7 +2835,7 @@ function setCook(st,x,c,now){setTimeout(()=>{glossify($('ckD'));glossify($('ckT'
   $('ckEnd').hidden=st==='fin';
   if(st==='fin'){
     cen.innerHTML=`<span class="kr-pz">${pizzaSVG(PIZZAS[0])}</span>`;
-    $('ckT').textContent='Buon appetito!';const lw=t=>t.replace(/^(Heute|Morgen|Gestern)/,m=>m.toLowerCase());$('ckD').innerHTML=`Dein Teig lief von ${lw(at(new Date(S.cook.start)))} bis ${lw(at(c.tl[c.tl.length-1].doneAt))}.`+(SUPPORT_URL?`<br><button class="sup-link" data-sheet-open="supSheet">Hat’s geschmeckt? Tempasto unterstützen ♥</button>`:'');
+    $('ckT').textContent='Buon appetito!';const lw=t=>t.replace(/^(Heute|Morgen|Gestern)/,m=>m.toLowerCase());$('ckD').innerHTML=`Dein Teig lief von ${lw(at(new Date(Math.min(+new Date(S.cook.start),...c.tl.map(t=>t.doneAt?+new Date(t.doneAt):Infinity)))))} bis ${lw(at(c.tl[c.tl.length-1].doneAt))}.`+(SUPPORT_URL?`<br><button class="sup-link" data-sheet-open="supSheet">Hat’s geschmeckt? Tempasto unterstützen ♥</button>`:'');
     btn.className='cta';btn.textContent='Neuen Teig planen';btn.dataset.act='finish';arc.style.strokeDashoffset=0;return;
   }
   const A=actsOf(x.s), i=Math.min(subIdx(x.s.id),A.length-1), a=A[i], nx=c.tl[idx+1];
@@ -2505,28 +2847,28 @@ function setCook(st,x,c,now){setTimeout(()=>{glossify($('ckD'));glossify($('ckT'
     btn.className='cta';btn.innerHTML=ICON.check+'Erledigt';btn.dataset.act='done';say(`${a.t}. ${a.a?a.a+' '+(a.u||'')+'. ':''}${a.li?a.li.map(r=>r[0]+' '+r[1]).join('. ')+'. ':''}${a.d||''}${(()=>{const hw=howOf(x.s,c.P);return hw.crit&&i===A.length-1?' Fertig, wenn: '+hw.crit.join(', ')+'.':''})()}`);arc.style.strokeDashoffset=0;
   }else if(st==='alarm'){
     cen.innerHTML=`<span class="kr-bell">${ICON.bell}</span>`;
-    $('ckT').textContent='Jetzt: '+A[0].t;{const late=now-effDue(x);$('ckD').textContent=late>15*M?`Seit ${cdLong(late)} fällig. Kein Problem, einfach jetzt weitermachen.`:x.s.id==='mix'?`${tm(effDue(x))} · Es geht los`:`${tm(effDue(x))} · Pause vorbei`;}
+    $('ckT').textContent=A[0].t;{const late=now-effDue(x);$('ckD').textContent=late>15*M?`Seit ${cdLong(late)} fällig. Kein Problem.`:'Jetzt bist du dran.';}
     btn.className='cta';btn.textContent='Los geht’s';btn.dataset.act='ack';say('Pronto! Jetzt: '+A[0].t);
-    info.hidden=true;$('ckPrev').hidden=true;back.hidden=false;back.textContent='10 Minuten später';back.dataset.act='snooze';$('ckShift').hidden=!!S.cook.done.bake||x.s.id==='bake';return;
+    info.hidden=false;$('ckPrev').hidden=true;back.hidden=false;back.textContent='10 Minuten später';back.dataset.act='snooze';$('ckShift').hidden=!!S.cook.done.bake||x.s.id==='bake';return;
   }else{
     const d=effDue(x);
-    if(x.s.id==='mix'&&S.cook.pre){const r=rel(d),rr=r==='Heute'?'heute':r==='Morgen'?'morgen':DAY[d.getDay()],wc=new Date(+d-2*H);
+    if(x===c.tl[0]&&S.cook.pre){const r=rel(d),rr=r==='Heute'?'heute':r==='Morgen'?'morgen':DAY[d.getDay()],wc=new Date(+d-2*H);
       cen.innerHTML=st==='long'?`<span class="kr-l">Start</span><b class="kr-n">${tm(d)}</b><span class="kr-u">${rr}</span>`:`<span class="kr-l">Start in</span><b class="kr-n" id="krCd"></b><span class="kr-u">um ${tm(d)} Uhr</span>`;
       $('ckT').textContent='Plan läuft';
-      $('ckD').textContent=(wc>now?`Stell ${g(c.P.R.water)} g Wasser bis ${tm(wc)} Uhr in den Kühlschrank (davon ${g(c.P.R.wY)} g für die Hefe). `:`Das Wasser sollte jetzt im Kühlschrank sein. `)+(window.TEMPASTO_NATIVE?`Tempasto erinnert dich ${rr} um ${tm(d)} Uhr ans Teigansetzen.`:`Um ${tm(d)} Uhr setzt du den Teig an. Die App piept nur, wenn sie offen ist.`);
+      $('ckD').textContent=c.P.R.pf?`${x.s.t} ${rr} um ${tm(d)} Uhr.`:(wc>now?`Bis ${tm(wc)} Uhr ${g(c.P.R.water)} g Wasser kalt stellen. `:'')+`Teig ansetzen ${rr} um ${tm(d)} Uhr.`;
       btn.className='cta soft';btn.textContent='Jetzt anfangen';btn.dataset.act='early';$('ckShift').hidden=false;back.textContent='Zurück';back.dataset.act='back';return;}
     if(st==='long'){
       const r=rel(d);
       const kd=S.cook.done.knead;if(kd){const t0=+new Date(kd),B=+c.P.sc.B,fr=clamp((now-t0)/(B-t0),0,1),pc=Math.round(fr*100);
         cen.innerHTML=`<span class="kr-dough">${doughSVG(fr)}</span><b class="kr-n sm">${tm(d)}</b><span class="kr-u">${r==='Heute'?'heute':r==='Morgen'?'morgen':DAY[d.getDay()]}</span>`;}
       else cen.innerHTML=`<span class="kr-l">Wieder dran</span><b class="kr-n">${tm(d)}</b><span class="kr-u">${r==='Heute'?'heute':r==='Morgen'?'morgen':r}</span>`;
-      $('ckT').textContent=x.s.id==='bake'?'Ofen heizt auf':'Leg das Handy weg.';
-      const rr=r==='Heute'?'heute':r==='Morgen'?'morgen':r;$('ckD').textContent=window.TEMPASTO_NATIVE?`${x.s.wait||'Der Teig ruht'}. Danach: ${A[0].t}. Tempasto erinnert dich ${rr} um ${tm(d)} Uhr.`:`${x.s.wait||'Der Teig ruht'}. Danach: ${A[0].t}. Stell dir einen Wecker auf ${rr} ${tm(d)} Uhr. Die App piept nur, wenn sie offen ist.`;
-      if(x.s.ovenAt)$('ckD').textContent+=` Ofen an um ${tm(x.s.ovenAt)} Uhr.`;
+      $('ckT').textContent=x.s.id==='bake'?'Ofen heizt auf':'Teig ruht';
+      const rr=r==='Heute'?'heute':r==='Morgen'?'morgen':DAY[d.getDay()],wt=x.s.id==='bake'||!x.s.wait||/^Teig ruht/.test(x.s.wait)?'':x.s.wait+'. ';$('ckD').textContent=`${wt}Danach: ${A[0].t}, ${rr} ${tm(d)} Uhr.`;
+      if(x.s.ovenAt&&x.s.id==='bake')$('ckD').textContent=`Ofen an um ${tm(x.s.ovenAt)} Uhr. Danach: Backen.`;
     }else{
       cen.innerHTML=`<span class="kr-l">Pause</span><b class="kr-n" id="krCd"></b><span class="kr-u">bis ${tm(d)} Uhr</span>`;
-      $('ckT').textContent=x.s.wait||'Kurz warten';$('ckD').textContent=`Danach: ${A[0].t}. Es piept, wenn es so weit ist.`;
-      if(x.s.ovenAt&&now>=x.s.ovenAt){$('ckT').textContent='Ofen anheizen';$('ckD').textContent=`${ovenP().ut} auf ${ovenP().t}. Arbeitsfläche und Schieber mit Semola bestreuen. Danach: Backen.`;}
+      $('ckT').textContent=x.s.id==='bake'?'Ofen heizt auf':'Teig ruht';$('ckD').textContent=`${x.s.id==='bake'||!x.s.wait||/^Teig ruht/.test(x.s.wait)?'':x.s.wait+'. '}Danach: ${A[0].t} um ${tm(d)} Uhr.`;
+      if(x.s.ovenAt&&now>=x.s.ovenAt){$('ckT').textContent='Ofen heizt auf';$('ckD').textContent=`${ovenP().ut} auf ${ovenP().t}. Danach: Backen um ${tm(d)} Uhr.`;}
     }
     btn.className='cta soft';btn.textContent='Früher weiter';btn.dataset.act='early';
     $('ckShift').hidden=!!S.cook.done.bake;
@@ -2548,7 +2890,7 @@ function tickCook(full){
     const d=effDue(x), tot=Math.max(1,d-x.from), frac=clamp(1-(d-now)/tot,0,1);
     $('krArc').style.strokeDashoffset=(RC*(1-frac)).toFixed(1);
     const mx=(a,b)=>Math.round(a+(b-a)*frac), col=`rgb(${mx(110,242)},${mx(22,140)},${mx(14,40)})`;$('krArc').style.stroke=col;$('krArc').style.filter=frac>.6?`drop-shadow(0 0 ${Math.round((frac-.6)*20)}px ${col})`:'none';
-    if(st==='wait')$('krCd').textContent=cdShort(d-now);
+    if(st==='wait'){const el=$('krCd'),t=cdShort(d-now);el.textContent=t;el.classList.toggle('sm',t.length>=8);}
   }
 }
 function cookNext(){
@@ -2579,10 +2921,18 @@ function howOf(s,P2){
   const {p,sc,R}=P2, part=Math.round(R.wY/3);
   const F={cuoco:'#D3302A',nuvola:'#E58FA8',semola:'#E2B227'};
   const H={
-    mix:{need:[['Wasser, kalt',`${g(R.water)} g`],...R.fl.map(f=>[f.n,`${g(f.g)} g`,f.c]),[yName(),`${nf(yAmt(R),1)} g`],['Salz',`${g(R.salt)} g`]],
+    pf:R.pf?{need:[...R.pf.fl.map(f=>[f.n,`${g(f.g)} g`,f.c]),[`Wasser, ${R.pf.w}`,`${g(R.pf.W)} g`],[yName(),`${yg(yAmtP(R))} g`]],
+      how:R.pf.k==='biga'?['Hefe im kalten Wasser auflösen.','Mehl in eine Schüssel, Hefewasser dazu.','Nur kurz mit den Fingern mischen, bis alles feucht und krümelig ist. Nicht kneten.',`Abdecken und ${dur(sc.pfH)} ${R.pf.where} reifen lassen.`]
+        :['Hefe im lauwarmen Wasser auflösen.','Mehl einrühren, bis ein glatter, dicker Brei entsteht.',`Abdecken und ${dur(sc.pfH)} ${R.pf.where} reifen lassen.`],
+      crit:R.pf.k==='biga'?['krümelig, kein trockenes Mehl','abgedeckt']:['glatt gerührt','abgedeckt'],
+      tip:R.pf.k==='biga'?'Die Biga soll krümelig bleiben. Sie riecht später leicht nach Joghurt, das ist richtig so.':'Reif ist der Poolish, wenn er voller Blasen ist und in der Mitte gerade wieder leicht einsinkt.'}:{how:[]},
+    mix:R.pf?{need:[[R.pf.n,`${g(R.pf.F+R.pf.W)} g`],['Wasser, kalt',`${g(R.wA+R.wY)} g`],...R.mfl.map(f=>[f.n,`${g(f.g)} g`,f.c]),[yName(),`${yg(yAmtM(R))} g`],['Salz',`${g(R.salt)} g`]],
+      how:[`${R.pf.n} in den Kessel${R.pf.k==='biga'?', in Stücke gezupft':''}.`,`<b>${g(R.wA)} g</b> kaltes Wasser dazu und kurz verrühren. Die restlichen <b>${g(R.wY)} g</b> brauchst du später für die Hefe.`,R.mfl.length>1?'Alle Mehle dazu.':'Das Mehl dazu.','2–3 Minuten auf Stufe 1, bis kein trockenes Mehl mehr zu sehen ist. Nicht länger.','Kessel abdecken und 30 Minuten ruhen lassen.'],
+      crit:['kein trockenes Mehl mehr zu sehen','Kessel abgedeckt'],tip:`Der ${R.pf.n} bringt schon Hefe mit. Deshalb kommt in den Hauptteig nur noch wenig dazu.`}:
+    {need:[['Wasser, kalt',`${g(R.water)} g`],...R.fl.map(f=>[f.n,`${g(f.g)} g`,f.c]),[yName(),`${nf(yAmt(R),1)} g`],['Salz',`${g(R.salt)} g`]],
       how:[R.fl.length>1?'Alle Mehle in den Kessel.':'Das Mehl in den Kessel.',`<b>${g(R.wA)} g</b> kaltes Wasser dazu. Die restlichen <b>${g(R.wY)} g</b> brauchst du später für die Hefe.`,'2–3 Minuten auf Stufe 1, bis kein trockenes Mehl mehr zu sehen ist. Nicht länger.','Kessel abdecken und 30 Minuten ruhen lassen.'],
       crit:['kein trockenes Mehl mehr zu sehen','Kessel abgedeckt'],tip:'Stell das Wasser 2 Stunden vorher in den Kühlschrank. Kaltes Wasser hält den Teig beim Kneten unter 25 °C.'},
-    knead:{how:[...(yAmt(R)<3?[`Kleine Hefemenge: Wiegt deine Waage nur ganze Gramm, löse 1 g Hefe in 100 g Wasser und nimm davon <b>${g(yAmt(R)*100)} g</b>.`]:[]),`Hefe in <b>${g(R.wY)} g</b> kaltem Wasser auflösen.`,`Hefewasser in 3 Portionen à <b>${part} g</b> zugeben, die nächste erst, wenn die vorige aufgenommen ist.`,'Kneten, bis sich der Teig vom Kessel löst (3–4 min).',`<b>${g(R.salt)} g</b> Salz einstreuen, 3 Minuten kneten.`,'Fenstertest: Teig dünn ziehen. Reißt er, minutenweise nachkneten, höchstens 4 Minuten.','Teigtemperatur messen. Gut sind 23–25 °C.'],
+    knead:{how:[...(yAmtM(R)<3?[`Kleine Hefemenge: Wiegt deine Waage nur ganze Gramm, löse 1 g Hefe in 100 g Wasser und nimm davon <b>${g(yAmtM(R)*100)} g</b>.`]:[]),`Hefe in <b>${g(R.wY)} g</b> kaltem Wasser auflösen.`,`Hefewasser in 3 Portionen à <b>${part} g</b> zugeben, die nächste erst, wenn die vorige aufgenommen ist.`,'Kneten, bis sich der Teig vom Kessel löst (3–4 min).',`<b>${g(R.salt)} g</b> Salz einstreuen, 3 Minuten kneten.`,'Fenstertest: Teig dünn ziehen. Reißt er, minutenweise nachkneten, höchstens 4 Minuten.','Teigtemperatur messen. Gut sind 23–25 °C.'],
       fig:['fig-knead','Rau, glatt, Fenstertest'],crit:['löst sich glatt vom Kessel','Fenstertest klappt','Teig hat 23–25 °C'],tip:'Salz erst, wenn sich der Teig vom Kessel löst. Zu früh bremst es das Gluten, der Teig bleibt rau.'},
     fold:{how:['Teig auf die Arbeitsfläche.','Von vier Seiten zur Mitte falten.','Umdrehen, die glatte Seite nach oben, abgedeckt stehen lassen.'],crit:['Oberfläche straff und glatt'],tip:'Noch rau? Nach 15 Minuten ein zweites Mal falten.'},
     fridge:{how:[...(sc.rtb?[]:['Teig von vier Seiten zur Mitte falten, umdrehen.']),'Am Stück in die geölte Box, Deckel drauf.','Hinten unten in den Kühlschrank, dort ist es am gleichmäßigsten kalt.'],
@@ -2633,7 +2983,7 @@ const POST=/Rucola|Prosciutto|Burrata|Mortadella|Pistazien|Honig|Erdbeeren|Puder
 function belagOf(p,split){const L=[],A=[];if(p.rossa)L.push('75 g Tomatensoße');p.ing.forEach(([n,v,u])=>(split&&POST.test(n)?A:L).push(`${u==='g'?v+' g':u==='Prise'?'etwas':v+' '+u} ${shortName(n)}`));if(p.love)L.push('viel Amore');if(split&&A.length)return L.join(' · ')+'<br><b>Nach dem Backen:</b> '+A.join(' · ');return L.join(' · ');}
 async function menuCanvas(){
   try{await document.fonts.ready;}catch(e){}
-  const list=PIZZAS.filter(p=>!p.dessert).concat(PIZZAS.filter(p=>p.dessert)), W=1080, pad=90, rowH=128;
+  const ms=S.menuSel&&S.menuSel.length?new Set(S.menuSel):null, sel=PIZZAS.filter(p=>!ms||ms.has(p.id)), list=sel.filter(p=>!p.dessert).concat(sel.filter(p=>p.dessert)), W=1080, pad=90, rowH=128;
   const H=480+list.length*rowH+200, c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');
   const disp="'Bricolage Grotesque', Figtree, sans-serif", mono="'IBM Plex Mono', monospace", body="Figtree, sans-serif";
   x.fillStyle='#C2281B';x.fillRect(0,0,W,H);
@@ -2706,8 +3056,7 @@ function openInfo(){
   if(h.how.length)out+=`<div class="hw-sec"><span class="hw-k">Schritt für Schritt</span><ol class="hw-how">${h.how.map(t=>`<li><span>${t}</span></li>`).join('')}</ol></div>`;
   [h.fig,h.fig2].forEach(f=>{if(f)out+=`<figure class="hw-fig">${tpl(f[0])}</figure>`;});
   if(h.tip)out+=`<div class="hw-tip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V16h5.2v-.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg><p><b>Tipp</b>${h.tip}</p></div>`;
-  $('ckShK').textContent='So geht’s';$('ckShT').textContent=x.s.t;$('ckShB').innerHTML=out;glossify($('ckShB'));
-  $('ckSheet').classList.add('info');$('ckSheet').hidden=false;$('ckSheet').querySelector('.ck-sh-in').scrollTop=0;
+  nzOpen({from:'Nonnas Tipps',title:actsOf(x.s)[0].t,html:out});
 }
 function openEnd(){
   const c=cookPlan(), fin=c&&c.tl.every(y=>y.doneAt);
@@ -2887,16 +3236,16 @@ let ownFree=[];function drawOwn(){const cat=ownCatalog().concat(ownFree);$('ownC
   const nm=!!$('ownName').value.trim();$('ownSave').disabled=!(nm&&ownSel.size);$('ownHint').textContent=nm&&ownSel.size?'':!nm&&!ownSel.size?'Noch ein Name und mindestens eine Zutat.':!nm?'Noch ein Name für deine Pizza.':'Noch mindestens eine Zutat wählen.';}
 const cleanName=t=>String(t||'').replace(/[<>&"`]/g,'').replace(/\s+/g,' ').trim().slice(0,28);
 function saveOwn(){const cat=ownCatalog().concat(ownFree),n=cleanName($('ownName').value);if(!n||!ownSel.size)return;S.own=S.own||[];const o={id:'own'+Date.now().toString(36),n,rossa:$('ownSauce').checked,ing:cat.filter(x=>ownSel.has(x[0]))};S.own.push(o);syncOwn();if(pzTotal()<S.n)S.pz[o.id]=1;save();$('ownSheet').hidden=true;document.body.classList.remove('lock');S.pzf='alle';renderShop();toast(`${n} ist auf der Karte`);setTimeout(()=>{const c=document.querySelector(`.card[data-id="${o.id}"]`);c&&c.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});},60);}
-const FILTERS=[['alle','Alle'],['klassiker','Klassiker'],['scharf','Scharf'],['veg','Vegetarisch'],['dessert','Dessert']];
+const FILTERS=[['alle','Alle'],['klassiker','Klassik'],['scharf','Scharf'],['veg','Veggie'],['dessert','Dessert']];
 function pzMatch(p,f){return f==='alle'||(f==='klassiker'&&p.tag==='Klassiker')||(f==='scharf'&&p.tag==='Scharf')||(f==='veg'&&p.veg&&!p.dessert)||(f==='dessert'&&p.dessert);}
-let panEdit=false,shopDoneOpen=false,freshWhen='';const EMPTY_TOP=`<div class="tk-emptyart"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="26" fill="none" stroke="#D9CDB4" stroke-width="3" stroke-dasharray="6 6"/><circle cx="32" cy="32" r="17" fill="#F6EFE2"/><path d="M32 25v14M25 32h14" stroke="#C2281B" stroke-width="3" stroke-linecap="round"/></svg><b>Noch keine Pizzen gewählt</b><span>Der Belag kommt automatisch auf die Liste.</span><button data-go="pizzen">Pizzen auswählen</button></div>`;const openTops=new Set();
+let panEdit=false,shopDoneOpen=false,freshWhen='';const EMPTY_TOP=`<div class="tk-emptyart"><span class="ebox" aria-hidden="true"><span class="ebox-w"><span class="ebox-b"><span class="ebox-base"><i class="st"></i><i class="cr" style="left:28%;top:62%"></i><i class="cr" style="left:64%;top:30%"></i><i class="cr" style="left:56%;top:72%"></i></span><span class="ebox-lid"></span></span></span></span><b>Der Karton ist noch leer</b><span>Wähl deine Pizzen, dann kommt der Belag von selbst auf die Liste.</span><button data-go="pizzen">Pizzen auswählen</button></div>`;const openTops=new Set();
 function renderShop(){
   const D=shopData(), tot=pzTotal(), n=S.n;
   // Teiglinge-Leiste
   const cols=[];PIZZAS.forEach(p=>{for(let i=0;i<(S.pz[p.id]||0);i++)cols.push(p.dot);});
   let dots='';for(let i=0;i<Math.max(n,cols.length);i++){dots+=i<cols.length?`<i style="background:${cols[i]}"${i>=n?' class="over"':''}></i>`:'<i class="e"></i>';}
   $('pzDots').style.setProperty('--n',10);$('pzDots').innerHTML=dots;
-  $('pzReset').hidden=!tot;$('pzMenu').hidden=false;$('pzMenu').style.visibility=tot?'':'hidden';$('pzCount').textContent=tot>n?`${tot} gewählt · ${tot-n} mehr als Teiglinge`:tot===n?`Alle ${n} Teiglinge verplant`:`${tot} verplant · ${n-tot} frei`;if(S.cook)$('pzCount').textContent+=' · Teiglinge fest';
+  $('pzReset').hidden=!tot;$('pzMenu').hidden=false;$('pzMenu').style.visibility='';$('pzCount').textContent=tot>n?`${tot} gewählt · ${tot-n} mehr als Teiglinge`:tot===n?`Alle ${n} Teiglinge verplant`:`${tot} verplant · ${n-tot} frei`;if(S.cook)$('pzCount').textContent+=' · Teiglinge fest';
   const f=S.pzf||'alle';
   $('pzFilter').innerHTML=FILTERS.map(([k,l])=>`<button class="chip" data-f="${k}" aria-pressed="${f===k}">${l}</button>`).join('');
   const tagCls={Scharf:'hot',Dessert:'bianca',Vegan:'veg',Frisch:'veg',Vegetarisch:'veg'};
@@ -2940,12 +3289,12 @@ function shopText(){
   return [`🍕 ${some?'Noch zu besorgen':'Zutaten'} für ${n} ${n>1?'Pizzen':'Pizza'}`,'',...sec('Teig',o(D.dough)),...sec('Soße',o(D.sauce)),...sec('Belag',o(D.top))].join('\n').trim();
 }
 function copyList(){
-  const t=shopText();
+  const t=tpU(shopText());
   const fb=()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast('Einkaufsliste kopiert');}catch(e){toast('Kopieren nicht möglich');}ta.remove();};
   try{navigator.clipboard.writeText(t).then(()=>toast('Einkaufsliste kopiert'),fb);}catch(e){fb();}
 }
 function undoToast(m,fn){let el=document.querySelector('.toast');if(!el){el=document.createElement('div');el.className='toast';el.setAttribute('role','status');document.body.appendChild(el);}el.innerHTML=`<span>${m}</span><button class="t-undo">Rückgängig</button>`;el.hidden=false;el.querySelector('.t-undo').onclick=()=>{el.hidden=true;fn();};clearTimeout(tt);tt=setTimeout(()=>el.hidden=true,10000);}
-const GLOSS={'Autolyse':'Mehl und Wasser ruhen 30 Minuten ohne Hefe und Salz. Das Mehl saugt sich voll, der Teig wird später glatter und leichter zu kneten.','Stockgare':'Der Teig geht am Stück, also bevor er in einzelne Kugeln geteilt wird.','Stückgare':'Die einzelnen Teiglinge gehen nach dem Portionieren weiter, meist im Kühlschrank.','Teiglinge':'Die abgewogenen Teigkugeln, aus jeder wird eine Pizza.','Teigling':'Eine abgewogene Teigkugel, aus der eine Pizza wird.','Gare':'So weit ist der Teig gegangen. 100 % heißt: reif zum Backen. Prüfen kannst du das mit der Fingerprobe.','akklimatisieren':'Die Teiglinge kommen aus dem Kühlschrank und werden bei Raumtemperatur warm und weich, damit sie sich gut formen lassen.','Fenstertest':'Ein Stück Teig zwischen den Fingern dünn ziehen. Wird es fast durchsichtig, ohne zu reißen, ist genug geknetet.','Fingerprobe':'Mit dem Finger leicht in den Teigling drücken. Kommt die Delle langsam zurück, ist er reif. Springt sie sofort zurück: noch warten.','rund schleifen':'Den Teigling mit beiden Händen auf der Arbeitsfläche zu sich ziehen und drehen, bis die Oberfläche straff ist.','Semola':'Grob gemahlener Hartweizen. Im Teig für Biss, auf der Fläche und dem Schieber, damit nichts klebt.'};
+const GLOSS={'Poolish':'Flüssiger Vorteig aus gleich viel Mehl und Wasser mit sehr wenig Hefe. Er reift am Vortag und bringt mehr Aroma und eine lockere Krume.','Biga':'Fester Vorteig mit etwa halb so viel Wasser wie Mehl. Er bleibt krümelig, reift kühl am Vortag und gibt dem Teig Kraft und ein leicht nussiges Aroma.','Nachtruhe':'In diesem Zeitfenster plant Tempasto keine Handgriffe für dich. Fällt das Portionieren in die Nacht, legt die App es auf den Abend davor oder den Morgen danach, die Gehzeit im Kühlschrank passt sich an. Würde schon das Teigansetzen in die Nacht fallen, siehst du einen Hinweis und kannst die Essenszeit verschieben. Ein Nicht-stören-Modus ist es nicht: Weil nachts kein Schritt fällig ist, kommt auch keine Erinnerung.','Autolyse':'Mehl und Wasser ruhen 30 Minuten ohne Hefe und Salz. Das Mehl saugt sich voll, der Teig wird später glatter und leichter zu kneten.','Stockgare':'Der Teig geht am Stück, also bevor er in einzelne Kugeln geteilt wird.','Stückgare':'Die einzelnen Teiglinge gehen nach dem Portionieren weiter, meist im Kühlschrank.','Teiglinge':'Die abgewogenen Teigkugeln, aus jeder wird eine Pizza.','Teigling':'Eine abgewogene Teigkugel, aus der eine Pizza wird.','Gare':'So weit ist der Teig gegangen. 100 % heißt: reif zum Backen. Prüfen kannst du das mit der Fingerprobe.','akklimatisieren':'Die Teiglinge kommen aus dem Kühlschrank und werden bei Raumtemperatur warm und weich, damit sie sich gut formen lassen.','Fenstertest':'Ein Stück Teig zwischen den Fingern dünn ziehen. Wird es fast durchsichtig, ohne zu reißen, ist genug geknetet.','Fingerprobe':'Mit dem Finger leicht in den Teigling drücken. Kommt die Delle langsam zurück, ist er reif. Springt sie sofort zurück: noch warten.','rund schleifen':'Den Teigling mit beiden Händen auf der Arbeitsfläche zu sich ziehen und drehen, bis die Oberfläche straff ist.','Semola':'Grob gemahlener Hartweizen. Im Teig für Biss, auf der Fläche und dem Schieber, damit nichts klebt.'};
 const GLRE=new RegExp('(^|[^A-Za-zÄÖÜäöüß])('+Object.keys(GLOSS).sort((a,b)=>b.length-a.length).join('|')+')(?![A-Za-zÄÖÜäöüß])','');
 function glossify(el){if(!el)return;const seen=new Set(),w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement.closest('.gl,button,b.kr-n,svg,script,style')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});const L=[];let n;while(n=w.nextNode())L.push(n);
   L.forEach(t=>{const m=t.nodeValue.match(GLRE);if(!m||seen.has(m[2]))return;seen.add(m[2]);const i=m.index+m[1].length,a=t.splitText(i);a.nodeValue=a.nodeValue.slice(m[2].length);const b=document.createElement('button');b.className='gl';b.dataset.gl=m[2];b.textContent=m[2];t.after(b);});}
@@ -2970,20 +3319,67 @@ function planText(){const c=cookPlan(),P0=c?c.P:P,R=P0.R,p=P0.p,B=new Date(p.bak
     ...R.fl.map(f=>`${f.n} ${g(f.g)} g`),`Wasser, kalt ${g(R.water)} g`,`${yName()} ${nf(yAmt(R),1)} g`,`Salz ${g(R.salt)} g`,'','Ablauf'];
   (window.__shareRows||[]).forEach(r=>L.push(`${DAY[r.d.getDay()]} ${r.d.getDate()}.${r.d.getMonth()+1}. ${tm(r.d)}  ${r.t}`));
   L.push('','Geplant mit Tempasto');return L.join('\n');}
-async function sharePlan(){const t=planText();
+async function sharePlan(){const t=tpU(planText());
   if(window.TEMPASTO_NATIVE&&TEMPASTO_NATIVE.shareText&&await TEMPASTO_NATIVE.shareText(t))return;
   try{if(navigator.share){await navigator.share({text:t});return;}}catch(e){if(e&&e.name==='AbortError')return;}
   try{await navigator.clipboard.writeText(t);toast('Plan kopiert');}catch(e){toast('Kopieren hat nicht geklappt');}}
 $('planShare').onclick=sharePlan;
 $('copy').onclick=copyList;
-$('waShare').onclick=function(){this.href='https://wa.me/?text='+encodeURIComponent(shopText());};
+$('waShare').onclick=function(){this.href='https://wa.me/?text='+encodeURIComponent(tpU(shopText()));};
 
 function railUpd(){const r=$('pzRail'),cards=[...r.children];if(!cards.length)return;const w=cards[0].getBoundingClientRect().width+10;const i=Math.round(r.scrollLeft/w);$('railPrev').disabled=r.scrollLeft<8;$('railNext').disabled=r.scrollLeft+r.clientWidth>=r.scrollWidth-8;$('railDots').innerHTML=cards.length>1?cards.map((_,j)=>`<i class="${j===i?'on':''}"></i>`).join(''):'';}
 $('railPrev').onclick=()=>{const r=$('pzRail'),c=r.children[0];if(c)r.scrollBy({left:-(c.getBoundingClientRect().width+10),behavior:'smooth'});};
 $('railNext').onclick=()=>{const r=$('pzRail'),c=r.children[0];if(c)r.scrollBy({left:c.getBoundingClientRect().width+10,behavior:'smooth'});};
 $('pzRail').addEventListener('scroll',()=>{clearTimeout(railUpd.t);railUpd.t=setTimeout(railUpd,60);},{passive:true});
 $('pzFilter').onclick=e=>{const b=e.target.closest('[data-f]');if(!b)return;S.pzf=b.dataset.f;renderShop();save();$('pzRail').scrollLeft=0;};
-$('pzMenu').onclick=shareMenu;
+$('pzMenu').onclick=openMenu;
+/* Nonnas Zettel */
+const NZ_TEASE={pf:'Zeit ist die beste Zutat.',mix:'Wasser schön kalt.',knead:'Erst glatt, dann fertig.',fold:'Sanft falten, fertig.',fridge:'Sanft falten, fertig.',portion:'Kalt teilt sich’s leichter.',out:'Deckel drauf lassen.',oven:'Richtig heiß werden lassen.',bake:'Nie ausrollen!'};
+const NZ_HI={greet:1,from:'Ein Zettel für dich',title:'Ciao, ich bin Nonna!',html:'<ul class="nz-lines"><li>Ich wohne über der Pizzeria.</li><li>Bei jedem Schritt steck ich dir</li><li>einen Zettel hinter den Knopf.</li><li>Tipp drauf, wenn du unsicher bist.</li></ul>'};
+let nzKey='',nzOpenNow=false;
+{const t=document.querySelector('#ckSheet .ck-tools');if(t)$('nzTools').appendChild(t);}
+function nzUpd(st,x){const w=$('nzWrap');if(!w)return;const show=!!x&&st!=='fin';
+  if(!show){w.hidden=true;nzKey='';return;}w.hidden=false;
+  const txt=NZ_TEASE[x.s.id]||'Tipp drauf.',t=$('nzT');if(t.textContent===txt)return;
+  if(!nzKey){t.textContent=txt;nzKey=x.s.id;return;}nzKey=x.s.id;
+  t.animate([{opacity:1},{opacity:0}],{duration:180}).onfinish=()=>{t.textContent=txt;t.animate([{opacity:0},{opacity:1}],{duration:260});};}
+function nzFrom(){const n=$('nz'),w=$('nzWrap');if(!n||w.hidden||!cookOpen)return null;const a=n.getBoundingClientRect(),b=$('nzCard').getBoundingClientRect();if(!a.width)return null;
+  return `translate(${(a.left+a.width/2)-(b.left+b.width/2)}px,${(a.top+a.height/2)-(b.top+b.height/2)}px) scale(${(a.width/b.width).toFixed(3)}) rotate(-4deg)`;}
+function nzOpen(c){const o=$('nzo'),card=$('nzCard'),red=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  $('nzFrom').textContent=c.from;$('nzH').textContent=c.title;$('nzB').innerHTML=c.html;{const tw=document.createTreeWalker($('nzB'),NodeFilter.SHOW_TEXT);let n;while(n=tw.nextNode())n.nodeValue=n.nodeValue.replace(/(\d)–(\d)/g,'$1–\u2060$2').replace(/(\d) (?=(g|kg|oz|lb|°C|°F|min|h|s|cm|in|ml|Minuten|minutes|Stunden|hours)\b|°)/g,'$1\u00a0');}glossify($('nzB'));$('nzOk').hidden=!c.greet;$('nzTools').hidden=!!c.greet||!cookOpen;
+  o.hidden=false;card.classList.remove('show');card.scrollTop=0;nzOpenNow=true;document.body.classList.add('lock');
+  const f=c.greet?null:nzFrom();if(f)$('nzWrap').style.visibility='hidden';
+  card.style.setProperty('--rot','-1.5deg');const fr=c.greet?[{transform:'translate(-50px,-110vh) rotate(16deg)'},{transform:'translate(36px,-50vh) rotate(-12deg)',offset:.4},{transform:'translate(-14px,-8vh) rotate(6deg)',offset:.75},{transform:'rotate(-1.5deg)'}]
+    :f?[{transform:f},{transform:'translateY(-24px) scale(1.03) rotate(-6deg)',offset:.6},{transform:'rotate(-1.5deg)'}]:[{transform:'scale(.92) rotate(-4deg)',opacity:0},{transform:'rotate(-1.5deg)',opacity:1}];
+  const a=card.animate(fr,{duration:red?1:(c.greet?1300:760),easing:c.greet?'ease-out':'cubic-bezier(.3,.7,.3,1)',fill:'forwards'});
+  a.onfinish=()=>card.classList.add('show');}
+function nzClose(){if(!nzOpenNow)return;nzOpenNow=false;const o=$('nzo'),card=$('nzCard'),red=matchMedia('(prefers-reduced-motion: reduce)').matches;card.classList.remove('show');
+  const f=nzFrom(),cur=getComputedStyle(card).transform;
+  const a=card.animate([{transform:cur==='none'?'rotate(-1.5deg)':cur},f?{transform:f}:{transform:'scale(.92) rotate(-4deg)',opacity:0}],{duration:red?1:480,easing:'cubic-bezier(.5,0,.3,1)',fill:'forwards'});
+  a.onfinish=()=>{o.hidden=true;card.getAnimations().forEach(x=>x.cancel());$('nzWrap').style.visibility='';if(!cookOpen)document.body.classList.remove('lock');};}
+$('nz').onclick=openInfo;$('nzX').onclick=nzClose;$('nzOk').onclick=nzClose;$('nzDim').onclick=nzClose;
+$('nzMeet').onclick=()=>nzOpen(NZ_HI);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nzOpenNow)nzClose();});
+$('hyR').addEventListener('input',e=>{S.hy=+e.target.value;$('hyV').textContent=S.hy+'\u202f%';render();});
+var IC_SNOW='<svg class="ic-t" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7M9 3.5l3 2.5 3-2.5M9 20.5l3-2.5 3 2.5"/></svg>', IC_HOUSE='<svg class="ic-t" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-5.5h4V20"/></svg>';
+function pillUpd(){const t=$('spT'),i=$('spIn');if(!t||!i||!P||!P.sc)return;const ms=+P.sc.start-Date.now(),now=ms<=60000;
+  t.textContent=now?'Teig ansetzen':'Plan starten';
+  if(now)i.textContent='jetzt';else{const m=Math.round(ms/60000),d=Math.floor(m/1440),h=Math.floor(m%1440/60),mm=m%60;i.textContent=(P.R.pf?'Vorteig in ':'Teig in ')+(d?`${d} T ${h} h`:h?`${h} h ${mm} min`:`${mm} min`);}
+  $('startBtn').classList.toggle('now',now);}
+$('proSw').onchange=e=>{S.pro=e.target.checked?1:0;save();$('proGrp').hidden=!S.pro;};
+new MutationObserver(()=>{if(!$('recSheet').hidden){$('proSw').checked=!!S.pro;$('proGrp').hidden=!S.pro;}}).observe($('recSheet'),{attributes:true,attributeFilter:['hidden']});
+let mnSel=new Set();
+function openMenu(){const ids=PIZZAS.map(p=>p.id);let sel=(S.menuSel||[]).filter(i=>ids.includes(i));if(!sel.length){const pl=ids.filter(i=>(S.pz[i]||0)>0);sel=pl.length?pl:PIZZAS.filter(p=>!p.dessert).map(p=>p.id);}
+  mnSel=new Set(sel);drawMenu();$('menuSheet').hidden=false;document.body.classList.add('lock');}
+function drawMenu(){const top=p=>[...new Set([...(p.rossa?['Tomate']:[]),...p.ing.map(i=>shortName(i[0]))])].slice(0,4).join(' · ');
+  $('mnL').innerHTML=PIZZAS.map(p=>`<button class="mn-r${mnSel.has(p.id)?' on':''}" data-mn="${p.id}" aria-pressed="${mnSel.has(p.id)}"><i aria-hidden="true"></i><span><b>${p.n}</b><small>${top(p)}</small></span>${S.pz[p.id]?`<em>${S.pz[p.id]}×</em>`:''}</button>`).join('');
+  const n=mnSel.size;$('mnGo').disabled=!n;$('mnGo').textContent=n?`Menü mit ${n} ${n===1?'Pizza':'Pizzen'} teilen`:'Mindestens eine Pizza wählen';
+  $('mnPlan').hidden=!PIZZAS.some(p=>S.pz[p.id]);}
+$('mnL').addEventListener('click',e=>{const b=e.target.closest('[data-mn]');if(!b)return;const id=b.dataset.mn;mnSel.has(id)?mnSel.delete(id):mnSel.add(id);drawMenu();});
+$('mnAll').onclick=()=>{mnSel=new Set(PIZZAS.map(p=>p.id));drawMenu();};
+$('mnNone').onclick=()=>{mnSel=new Set();drawMenu();};
+$('mnPlan').onclick=()=>{mnSel=new Set(PIZZAS.filter(p=>S.pz[p.id]).map(p=>p.id));drawMenu();};
+$('mnGo').onclick=()=>{if(!mnSel.size)return;S.menuSel=PIZZAS.map(p=>p.id).filter(i=>mnSel.has(i));save();$('menuSheet').hidden=true;document.body.classList.remove('lock');shareMenu();};
 $('menuClose').onclick=()=>$('menuOv').hidden=true;
 $('pzReset').onclick=e=>{const r=e.currentTarget;if(r.dataset.sure){S.pz={};delete r.dataset.sure;r.textContent='Leeren';save();renderShop();renderSauce();toast('Alle Pizzen zurückgesetzt');}else{r.dataset.sure='1';r.textContent='Sicher?';setTimeout(()=>{if(r.dataset.sure){delete r.dataset.sure;r.textContent='Leeren';}},4000);}};
 $('v-pizzen').addEventListener('click',e=>{const mb=e.target.closest('[data-more]');if(mb){const cd=mb.closest('.card');cd.classList.add('allt');openTops.add(cd.dataset.id);clampTops();return;}if(e.target.closest('#ownAdd')){openOwn();return;}const od=e.target.closest('[data-owndel]');if(od){if(od.dataset.sure){S.own=(S.own||[]).filter(x=>x.id!==od.dataset.owndel);delete S.pz[od.dataset.owndel];syncOwn();save();renderShop();renderSauce();toast('Pizza gelöscht');}else{od.dataset.sure='1';od.textContent='Wirklich löschen?';}return;}const pb=e.target.closest('[data-pz]');if(!pb)return;const id=pb.dataset.pz;if(+pb.dataset.d>0&&pzTotal()>=S.n){toast(`Alle ${S.n} Teiglinge sind verplant`);try{navigator.vibrate&&navigator.vibrate([30,40,30]);}catch(_){}return;}S.pz[id]=Math.max(0,(S.pz[id]||0)+(+pb.dataset.d));if(!S.pz[id])delete S.pz[id];const cs=pb.closest('.card').querySelector(':scope>svg'),fr=cs?cs.getBoundingClientRect():null;const sl=$('pzRail').scrollLeft;renderShop();renderSauce();$('pzRail').scrollLeft=sl;save();if(+pb.dataset.d>0)flyToSlot(id,fr);});
@@ -2993,7 +3389,7 @@ function openHelp(id){setView('hilfe');const d=$(id);if(d){d.open=true;setTimeou
 document.addEventListener('click',e=>{const b=e.target.closest('[data-help]');if(b){e.preventDefault();e.stopPropagation();openHelp(b.dataset.help);}},true);
 document.addEventListener('click',e=>{if(e.target.closest('a.st-ed'))e.preventDefault();},true);
 document.querySelectorAll('[data-sheet]').forEach(b=>b.onclick=()=>{const ps=b.closest('.sheet');if(ps&&ps.id!==b.dataset.sheet){ps.hidden=true;$(b.dataset.sheet).dataset.back=ps.id;}else delete $(b.dataset.sheet).dataset.back;$(b.dataset.sheet).hidden=false;document.body.classList.add('lock');if(b.dataset.sheet==='whenSheet'){renderWhen.scrolled=0;renderWhen();}});
-document.querySelectorAll('.sheet [data-close]').forEach(b=>b.onclick=()=>{const sh=b.closest('.sheet');sh.hidden=true;if(sh.dataset.back){const bk=$(sh.dataset.back);delete sh.dataset.back;bk.hidden=false;return;}if(!cookOpen)document.body.classList.remove('lock');});
+document.querySelectorAll('.sheet [data-close]').forEach(b=>b.onclick=()=>{const sh=b.closest('.sheet');sh.hidden=true;if(sh.dataset.back){const bk=$(sh.dataset.back);delete sh.dataset.back;bk.hidden=false;return;}if(!cookOpen&&!document.querySelector('.sheet:not([hidden])'))document.body.classList.remove('lock');});
 function openSet(){setView('mehr');}
 function closeSet(){}
 document.querySelectorAll('[data-go-help]').forEach(b=>b.onclick=()=>{closeSet();const id=b.dataset.goHelp;if(id)openHelp(id);else setView('hilfe');});
@@ -3022,7 +3418,8 @@ $('calAdd').onclick=async()=>{const R=window.__calRows||[];if(!R.length)return;
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();toast('Kalenderdatei gespeichert');};
 $('bkLoad').onclick=()=>$('bkFile').click();
 $('bkFile').onchange=async e=>{const file=e.target.files[0];e.target.value='';if(!file)return;try{const o=JSON.parse(await file.text());if(!['tempasto','impasto'].includes(o.app)||!o.S)throw 0;S=Object.assign({},DEF,o.S);syncOwn();save();render();setView('mehr');toast('Sicherung vom '+new Date(o.saved).toLocaleDateString('de-DE')+' geladen');}catch(_){toast('Das ist keine Tempasto-Sicherung');}};
-$('guideOpen').onclick=()=>setView('anleitung');$('shiftOpen').onclick=()=>{renderShift();$('shiftSheet').hidden=false;document.body.classList.add('lock');};$('shiftL').onclick=e=>{const b=e.target.closest('.shift-o');if(!b||b.disabled)return;if(b.dataset.late)setLate(+b.dataset.late);else setShift(+b.dataset.sh);};$('impOpen').onclick=()=>setView('impressum');
+$('guideOpen').onclick=()=>setView('anleitung');$('shiftOpen').onclick=()=>{renderShift();$('shiftSheet').hidden=false;document.body.classList.add('lock');};$('shiftL').onclick=e=>{const b=e.target.closest('.shift-o');if(!b||b.disabled)return;if(b.dataset.late)setLate(+b.dataset.late);else setShift(+b.dataset.sh);};$('langSw').onclick=()=>tpLangGo(window.TP_LANG==='de'?'en':'de');
+$('impOpen').onclick=()=>setView('impressum');
 document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>setView(b.dataset.back));
 $('helpBack').onclick=()=>setView(lastView||'rezept');
 
@@ -3056,8 +3453,8 @@ function openGo(){const R=P.R,km=S.km||'m',ov=S.oven||'gas',ya=yAmt(R),L=[
   [['home','blech'].includes(ov)?(ov==='home'?'Pizzastein oder -stahl':'Backblech'):'Pizzaofen',ovenP().n],
   ['Schieber','und Semola zum Bestreuen']];
   $('goL').innerHTML=L.map(([a,b])=>`<li><b>${a}</b><span>${b}</span></li>`).join('');$('goSheet').hidden=false;document.body.classList.add('lock');}
-$('goStart').onclick=()=>{$('goSheet').hidden=true;document.body.classList.remove('lock');unlockAudio();startCook();};
-$('startBtn').onclick=()=>{unlockAudio();if(S.cook)openCook();else openGo();};
+$('goStart').onclick=()=>{S.goSeen=1;save();$('goSheet').hidden=true;document.body.classList.remove('lock');unlockAudio();startCook();};
+$('startBtn').onclick=()=>{unlockAudio();if(S.cook)openCook();else if(S.goSeen)startCook();else openGo();};
 $('abBtn').onclick=()=>{unlockAudio();if(S.cook)openCook();else startCook();};
 $('ckClose').onclick=closeCook;
 $('mini').onclick=()=>{unlockAudio();openCook();};
@@ -3074,7 +3471,7 @@ $('ckBack').onclick=cookBack;
 })();
 $('ckIn').addEventListener('click',e=>{const b=e.target.closest('[data-sheet-open]');if(b){$(b.dataset.sheetOpen).hidden=false;}});
 $('ckShift').onclick=()=>{renderShift();$('shiftSheet').hidden=false;};
-$('ckPrev').onclick=()=>{const bk=JSON.stringify(S.cook);$('ckBack').dataset.act='back';cookBack();undoToast('Schritt zurückgesetzt',()=>{S.cook=JSON.parse(bk);save();renderCook();render();});};
+$('ckPrev').onclick=()=>{$('ckBack').dataset.act='back';cookBack();};
 $('ckInfo').onclick=openInfo;
 $('ckEnd').onclick=openEnd;
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;let rec=null,recOn=false;
@@ -3086,7 +3483,7 @@ function micStart(){if(!SR)return;try{rec=new SR();rec.lang='de-DE';rec.continuo
     else if(/zurück/.test(t)&&cookOpen&&!$('ckPrev').hidden)$('ckPrev').click();};
   rec.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'){recOn=false;micUI();toast('Mikrofon ist hier nicht erlaubt');}};
   rec.onend=()=>{if(recOn&&cookOpen){try{rec.start();}catch(_){}}};
-  rec.start();recOn=true;micUI();toast('Sag „Weiter“, um abzuhaken');}catch(e){recOn=false;micUI();toast('Sprachbefehl geht in diesem Browser nicht');}}
+  rec.start();recOn=true;micUI();toast('Sag „Weiter“, um abzuhaken');}catch(e){recOn=false;micUI();toast('Sprachbefehl geht auf diesem Gerät nicht');}}
 function micStop(){recOn=false;micUI();try{rec&&rec.stop();}catch(e){}}
 $('ckMic').onclick=()=>{recOn?micStop():micStart();};
 $('ckVoice').onclick=()=>{S.voice=!S.voice;save();voiceUI();if(S.voice){unlockAudio();say('Vorlesen ist an.');renderCook();}else{try{speechSynthesis.cancel();}catch(e){}}};
@@ -3119,6 +3516,7 @@ if(!S.intro&&!S.cook)showIntro();
 
 // Unterstützen
 $('storyRow').onclick=()=>setView('storia');$('introRow').onclick=()=>$('introOpen').click();
+$('splashRow').onclick=()=>{try{sessionStorage.setItem('tpSplash','1');}catch(e){}S.view='rezept';save();location.reload();};
 if(SUPPORT_URL){$('supGo').href=SUPPORT_URL;}else{$('supGo').removeAttribute('href');$('supGo').classList.add('off');$('supGo').textContent='Spenden-Link folgt bald';$('supGo').setAttribute('aria-disabled','true');}
 
 
@@ -3157,24 +3555,43 @@ renderTpl();
 // fliegen zusammen und werden zu „Tempasto“; das o wird zur Pizza. Danach wandert das Logo in die Titelzeile.
 (function(){
   const sp=$('splash');if(!sp)return;
-  let done=false;const fin=()=>{if(done)return;done=true;sp.remove();document.body.classList.remove('splashing');spinLogo('rezept');};
+  let done=false;let fin=()=>{if(done)return;done=true;sp.remove();document.body.classList.remove('splashing','sp-land');};
   const red=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const tgt=document.querySelector('#v-rezept .ptop .logo');
-  if(red||!tgt||$('v-rezept').hidden||cookOpen){sp.classList.add('out');setTimeout(fin,300);return;}
+  const tg=document.querySelector('#v-rezept .ptop .logo');
+  if(red||!tg||$('v-rezept').hidden||cookOpen){sp.classList.add('out');setTimeout(fin,300);return;}
   sp.addEventListener('click',()=>{sp.classList.add('out');setTimeout(fin,250);});
   const T=(f,ms)=>setTimeout(()=>{if(!done)f();},ms);
+  let full=!S.splashSeen;try{if(sessionStorage.getItem('tpSplash')){full=true;sessionStorage.removeItem('tpSplash');}}catch(e){}
+  if(!S.splashSeen){S.splashSeen=1;save();}
+  // Das echte Logo liegt über dem Splash. Animiert werden nur seine Buchstaben und die Pizza.
+  [...tg.childNodes].forEach(n=>{if(n.nodeType===3&&n.textContent.trim()){const f=document.createDocumentFragment();[...n.textContent].forEach(ch=>{const x=document.createElement('span');x.className='lch';x.textContent=ch;f.appendChild(x);});n.replaceWith(f);}});
+  {const svg=tg.querySelector('.pz-o');if(svg&&!svg.querySelector('.sauce')){const cs=[...svg.querySelectorAll('circle')].filter(c=>c.getAttribute('r')==='8.2');if(cs.length){const g=document.createElementNS('http://www.w3.org/2000/svg','g');g.setAttribute('class','sauce');cs[0].before(g);cs.forEach(c=>g.appendChild(c));}}}
+  const intro=$('intro'), introOn=intro&&!intro.hidden;if(introOn)intro.classList.add('sp-wait');
+  tg.classList.add('sp-tg','lo0');
+  const fin0=fin;fin=()=>{if(done)return;fin0();tg.classList.remove('sp-tg','lo0','lo1','lo2','ls');if(introOn){intro.classList.remove('sp-wait');intro.classList.add('sp-in2');}};
+  if(full){
   T(()=>sp.classList.add('q'),80);
-  T(()=>sp.classList.add('qb'),1700);
-  T(()=>{const chs=sp.querySelectorAll('.sp-in .ch'), pzo=sp.querySelector('.sp-in .pz-o');
-    sp.querySelectorAll('.sp-it .lt[data-to]').forEach((l,i)=>{l.style.setProperty('--i',i);const to=l.dataset.to, t=to==='pz'?pzo:chs[+to];if(!t)return;
-      const a=l.getBoundingClientRect(), b=t.getBoundingClientRect(), sc=b.height/a.height;
-      l.style.transform=`translate(${(b.left+b.width/2)-(a.left+a.width/2)}px,${(b.top+b.height/2)-(a.top+a.height/2)}px) scale(${sc.toFixed(3)})`;});
-    sp.classList.add('fly');},1850);
-  T(()=>sp.classList.add('lg'),2550);
-  T(()=>{const box=sp.querySelector('.sp-in'), r=box.getBoundingClientRect(), a=sp.querySelector('.sp-in .logo').getBoundingClientRect(), b=tgt.getBoundingClientRect(), S0=1.7;
-    const cx=r.left+r.width/2, cy=r.top+r.height/2, ux=cx+((a.left+a.width/2)-cx)/S0, uy=cy+((a.top+a.height/2)-cy)/S0;
-    box.style.transform=`translate(${(b.left+b.width/2)-ux}px,${(b.top+b.height/2)-uy}px) scale(${(b.height/(a.height/S0)).toFixed(3)})`;
-    sp.classList.add('go');T(fin,740);},3450);
+  T(()=>sp.classList.add('qb'),2100);
+  const ls=[...sp.querySelectorAll('.sp-it .lt[data-to]')], dx=new Map();
+  // 1. „temp“ und „asto“ gleiten auf einer Linie zusammen
+  T(()=>{const L=ls.filter(l=>/^[0-3]$/.test(l.dataset.to)), R=ls.filter(l=>!/^[0-3]$/.test(l.dataset.to));
+    const r=x=>x.getBoundingClientRect(), wL=r(L[L.length-1]).right-r(L[0]).left, wR=r(R[R.length-1]).right-r(R[0]).left;
+    const x0=innerWidth/2-(wL+wR)/2, dL=x0-r(L[0]).left, dR=x0+wL-r(R[0]).left;
+    L.forEach(l=>dx.set(l,dL));R.forEach(l=>dx.set(l,dR));
+    sp.classList.add('glide');void sp.offsetWidth;
+    requestAnimationFrame(()=>ls.forEach(l=>{l.style.transform=`translateX(${dx.get(l)}px)`;}));},2100);
+  // 2. Oben blendet das Logo ein (Pizza noch ohne Soße), die rote Schrift fliegt hinein und wird zur Tomatensoße
+  T(()=>{const b=tg.querySelector('.pz-o').getBoundingClientRect(), bx=b.left+b.width/2, by=b.top+b.height/2;
+    const tr=ls.map((l,i)=>{l.style.setProperty('--i',i);const a=l.getBoundingClientRect();
+      return `translate(${(dx.get(l)||0)+bx-(a.left+a.width/2)}px,${by-(a.top+a.height/2)}px) scale(.15)`;});
+    tg.classList.add('lo1');sp.classList.add('up','fly','lg');void sp.offsetWidth;
+    requestAnimationFrame(()=>ls.forEach((l,i)=>{if(tr[i])l.style.transform=tr[i];}));},4000);
+  T(()=>tg.classList.add('lo2'),4900);
+  T(()=>{sp.classList.add('go');document.body.classList.add('sp-land');T(fin,800);},5800);
+  }else{
+  T(()=>tg.classList.add('lo1','ls'),60);
+  T(()=>{sp.classList.add('go');document.body.classList.add('sp-land');T(fin,700);},700);
+  }
 })();
 
 window.__tempasto={schedule,yeastPct,recipe,readyHours,buildSteps,timeline,planOf};
@@ -3190,6 +3607,7 @@ window.TEMPASTO_APP={notifEvents,openCook(){if(S.cook&&!cookOpen)openCook();},
   if(v!=='rezept'){setView('rezept');return true;}
   return false;}};
 })();
+setTimeout(()=>{try{tpUnitsAll();}catch(e){}},60);
 </script>
 
 </body></html>

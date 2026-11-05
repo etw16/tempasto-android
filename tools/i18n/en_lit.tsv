@@ -1,0 +1,628 @@
+# JS-Literale: Schlüssel (#hash oder 'Literal') TAB englisches Literal
+#4afc84	'Chill the water'
+#2ca3d3	`Put ${g(c.P.R.water)} g of water in the fridge. You’ll mix the dough at ${tm(new Date(st))}.`
+#4c39c0	'Heat the oven'
+#2b6bc2	`${ovenP().ut} to ${ovenP().t}. Baking starts in ${ovenP().pre} minutes.`
+#92770b	'Your turn. Tap to open bake mode.'
+#5db08b	'Caputo Cuoco, Nuvola and Semola 1,000 : 1,000 : 300'
+#32e365	'or wheat flour Tipo 00'
+#20ced8	'or wheat flour Tipo 0'
+#556e9b	'or durum wheat semolina'
+#0cf57c	'somewhere cool, 18–20 °C'
+#6f618a	'cold'
+#3b8f06	'cool, at 16–18 °C'
+#d224e8	'Gas pizza oven'
+#7d9efd	'Gas'
+#360151	'Wood-fired oven'
+#68594f	'Wood'
+#cd5246	'Electric pizza oven'
+#cb4489	'Electric'
+#d257da	'Home oven with stone or steel'
+#79f06a	'Stone'
+#617e51	'stone/steel, highest setting'
+#dfd156	'Home oven with tray'
+#5da16e	'Tray'
+#3a22c7	'tray, highest setting'
+#95a343	'from the bowl'
+#d8ba8e	'into the bowl'
+#6d01aa	'bowl'
+#21f5f6	'with a spoon'
+#12e6a1	'barely sticks to your hands'
+#952790	'today'
+#411140	'tomorrow'
+#806939	`${r==='Today'?'today':r==='Tomorrow'?'tomorrow':r==='Yesterday'?'yesterday':DAY[d.getDay()]} ${tm(d)}`
+#7a1899	'Preferment'
+#3d69df	`Water, ${pf.w}`
+#0081cb	'Dissolve the yeast in the water, then mix with the flour just until crumbly. Don’t knead. Cover.'
+#b8a65e	'Dissolve the yeast in the water, stir in the flour until smooth. Cover.'
+#189647	'Mix the dough'
+#e81512	'2–3 minutes'
+#d6e9ed	'Water, cold'
+#723030	`${pf.k==='biga'?'Tear the '+pf.n+' into pieces and dissolve':'Dissolve the '+pf.n} in the water, add the flour, mix, cover. Keep back ${g(R.wY)} g of water for the yeast.`
+#405647	`Mix flour and water, cover. Keep back ${g(R.wY)} g of water for the yeast.`
+#3c71dd	'Knead'
+#6f9b17	'Autolyse running'
+#5b71ca	'about 10 minutes'
+#ad843e	`Yeast in ${g(R.wY)} g water`
+#091122	'then salt'
+#a6bf54	'Dough rests, covered'
+#e7b3e2	'Off to the fridge'
+#8f85c5	'Bulk ferment at room temperature'
+#561a10	'Into the fridge'
+#7520c6	'In one piece into the oiled box, lid on.'
+#684989	'Fold and into the fridge'
+#5676b3	'Fold to the middle, into the oiled box, into the fridge.'
+#26b67c	'Bulk ferment in the fridge'
+#023728	'Dough balls'
+#1e6fb1	'Divide cold, shape into tight balls, back into the fridge in boxes.'
+#1c1e09	'Out of the fridge'
+#4801c4	'Dough balls in the fridge'
+#a9fbe3	'Oven on'
+#2e596e	'Let the dough balls warm up'
+#f90381	'Semola on the counter and peel, toppings ready.'
+#e3a280	'Bake'
+#f982f2	'Oven heating up'
+#17ec45	'Do the poke test. Never roll: press from the centre outwards.'
+#63c6fe	'<div class="sh-k">Eat later</div><div class="shift-l">'
+#d9972d	'<div class="sh-k">Start later, same dinner time</div><div class="shift-l">'
+#954b0e	'<div class="sh-k">Eat earlier</div><div class="shift-l">'
+#a2f508	'“Eat later” moves everything. “Start later” keeps dinner where it is, so the dough gets a little less time: do the poke test before baking.'
+#05e771	'The dough balls are already out. At room temperature they can take 1–2 hours more at most, otherwise they over-proof. Do the poke test first.'
+#eec6e4	'The rest of the plan and all reminders move with it. The dough stays in the fridge a little shorter or longer. Up to 3 h earlier or 24 h later works fine.'
+#d7fc54	'Mix the dough at '
+#e9e7cb	', dinner stays'
+#64aa54	'too early'
+#6d1507	'Mar'
+#4c1a8d	`from ${ok[0][1]}:00`
+#d6b471	'late evening'
+#36d1cd	`<button class="slot" data-h="${h}" aria-pressed="${!!match&&match[1]===h}"${ok?'':' disabled'}><b>${n}</b><span>${h}:00</span></button>`
+#63e847	`<button class="slot other" data-h="x" aria-pressed="${!match}"><b>Other time</b><span>${match?'pick a time':tm(b)}</span></button>`
+#fa025e	`${S.n}<small>dough balls of ${S.w} g</small>`
+#72393a	''
+#fd035e	`${S.n} ${S.n>1?'pizzas':'pizza'} <em>›</em>`
+#42c859	`${dw}, ${hrTxt} · ${S.n} dough balls · ${S.h} h`
+#626683	`${S.h} h rise <em>›</em>`
+#7fbafe	`Baking starts at ${tm(sc.B)} so all ${S.n} pizzas are ready. For a ${S.h} h rise you mix the dough ${(r=>r==='Today'?'today':r==='Tomorrow'?'tomorrow':'on '+DAYL[sc.start.getDay()])(rel(sc.start))} at ${tm(sc.start)}.`
+#7fd600	`${DAY[d.getDay()]} ${d.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]}`
+#60a40a	`Dough balls of ${S.w} g make pizzas about ${DIA[S.w]||30} cm across.`
+#a53b15	`<div class="mo-r"><input data-mon="${i}" value="${(x.n||'').replace(/"/g,'')}" placeholder="Flour ${i+1}" maxlength="28"><input data-mop="${i}" type="number" inputmode="numeric" min="0" max="100" value="${+x.p||''}" placeholder="%"><span>%</span></div>`
+#5aa467	`Total ${sum} %. The app scales it to 100 %.`
+#8dde80	`${mx==='own'?'Custom blend':(MIXES[mx]||MIXES.tp).d} · 2.8 % salt on the flour. No oil in the dough, as in Naples. The app works out the yeast; dry yeast is a third of the fresh amount.`
+#5f113d	' Biga: 40 % of the flour with 50 % water, ripened cool for 14–22 h.'
+#bcd450	' Poolish: 30 % of the flour with the same weight of water, ripened for 12–20 h at 18–20 °C.'
+#f7310b	'The plan is already running. Changes apply until you mix the dough.'
+#d3a40b	`Applies to your next dough. The current one stays at ${q.n} × ${q.w} g.`
+#4414ca	'off'
+#baaa52	`Current: ${S.w} g per dough ball · ${S.hy} % water · fridge ${S.k} °C`
+#8606dd	`Put the water in the fridge by ${tm(wc)}.`
+#4fa6e2	'Cutting it close for cold water: add a few ice cubes and the dough temperature will be right.'
+#d0bb93	`<div class="alert bad"><b>Too late</b><span>Pick a shorter rise or a later time.</span></div>`
+#ca7d7d	`<div class="alert"><b>At night</b><span>The start falls in the night. Move the baking time.</span></div>`
+#e7986c	`<div class="alert"><b>${nf(R.total/1000,1)} kg dough</b><span>Knead in two batches.</span></div>`
+#b307f0	'Start plan'
+#7c5b9f	`${p.n} ${p.n>1?'pizzas':'pizza'} · dough ${p.h} h`
+#2347b6	`${p.n} ${p.n===1?'pizza':'pizzas'}`
+#6639c9	`${p.h} hours`
+#731440	`Dough running since ${tm(new Date(S.cook.start))}`
+#a3f9b2	`Up next · step ${idx+1} of ${tl.length}`
+#55eeeb	`<span class="st-r ${n.st}${late?' late':''}"><i></i><span><b>${n.l}</b><span class="mono">${late&&!on?'now':dShort(n.d)}</span></span></span>`
+#81b4f0	`Your dough has been running since ${at(new Date(S.cook.start))}. Times adjust when you tick off steps earlier or later.`
+#cb7aff	`Preview for ${S.n} pizzas with a ${S.h} h rise. “Mix the dough” opens bake mode.`
+#11febb	`${gapH>=3?Math.round(gapH)+' h':dur(gapH)} ${x.s.cold?'cold':'room temperature'}`
+#63edf6	'Fold, into the fridge'
+#1333a6	'Fridge'
+#c7f8f3	'MARCH'
+#dc3668	'Ball proof'
+#352291	'Mar'
+#f44950	`<em class="${r.wait.cold?'cold':'warm'}">${r.wait.cold?IC_SNOW:IC_HOUSE} ${hrs}</em>`
+#4128f0	`<div class="pk-r${r.done?' done':''}${r.cur?' cur':''}${r.hl?' hl':''}"><span class="bn">${r.t==='Take out'?(sub?'Take out':'Out of the fridge'):r.t==='Fold, into the fridge'?'Fold':(NAME[r.t]||r.t)} ${sub}</span><i></i><span class="bt">${tm(r.d)}</span></div>`
+#ceebbd	' fridge</span><span class="warm">'
+#7a8c61	`${p0.n} pizzas · dough ${p0.h} h · bake ${DAY[B0.getDay()]} ${tm(B0)}`
+#63fe5f	'Dough ready'
+#5900ff	`Step ${c.tl.indexOf(x)+1} of ${c.tl.length} · tap`
+#ea2978	'Tap and get going'
+#bb7122	`Plan running · ${cdLong(d-now)} left`
+#a87601	`${x.s.wait||'Break'} · ${cdLong(d-now)} left`
+#a60eb7	`Back on: ${r==='Today'?'today':r==='Tomorrow'?'tomorrow':r} ${tm(d)}`
+#aa6964	`<span class="pb" aria-hidden="true">${tl.map((_,j)=>`<i class="${!x||j<idx?'d':j===idx?'c':''}"></i>`).join('')}</span><span class="pl">${x?'Schedule':'Done'}</span>`
+#ea4cbd	`View schedule, step ${idx+1} of ${tl.length}`
+#c28208	'View schedule'
+#40d5d1	'warm'
+#207656	`Your dough ran from ${lw(at(new Date(Math.min(+new Date(S.cook.start),...c.tl.map(t=>t.doneAt?+new Date(t.doneAt):Infinity)))))} to ${lw(at(c.tl[c.tl.length-1].doneAt))}.`
+#bed65a	`<br><button class="sup-link" data-sheet-open="supSheet">Enjoyed it? Support Tempasto ♥</button>`
+#8b95e8	'Plan a new dough'
+#e6756b	`<b>Ready when:</b> `
+#c0bec5	'Done'
+#7dead3	`${a.t}. ${a.a?a.a+' '+(a.u||'')+'. ':''}${a.li?a.li.map(r=>r[0]+' '+r[1]).join('. ')+'. ':''}${a.d||''}${(()=>{const hw=howOf(x.s,c.P);return hw.crit&&i===A.length-1?' Ready when: '+hw.crit.join(', ')+'.':''})()}`
+#9627fc	`Due ${cdLong(late)} ago. No problem.`
+#b1f9ca	'Your turn now.'
+#5cee37	'10 minutes later'
+#713253	`<span class="kr-l">Start</span><b class="kr-n">${tm(d)}</b><span class="kr-u">${rr}</span>`
+#1dafbd	`<span class="kr-l">Starts in</span><b class="kr-n" id="krCd"></b><span class="kr-u">at ${tm(d)}</span>`
+#846615	'Plan running'
+#7ba419	`${x.s.t} ${rr} at ${tm(d)}.`
+#e97362	`Chill ${g(c.P.R.water)} g of water by ${tm(wc)}. `
+#03c3b1	`Mix the dough ${rr} at ${tm(d)}.`
+#0313e0	'Back'
+#358755	`<span class="kr-dough">${doughSVG(fr)}</span><b class="kr-n sm">${tm(d)}</b><span class="kr-u">${r==='Today'?'today':r==='Tomorrow'?'tomorrow':DAY[d.getDay()]}</span>`
+#95e2b4	`<span class="kr-l">Back on</span><b class="kr-n">${tm(d)}</b><span class="kr-u">${r==='Today'?'today':r==='Tomorrow'?'tomorrow':r}</span>`
+#866a87	'Dough resting'
+#7fdf34	`${wt}Then: ${A[0].t}, ${rr} ${tm(d)}.`
+#f46b12	`Oven on at ${tm(x.s.ovenAt)}. Then: bake.`
+#be6b4b	`<span class="kr-l">Break</span><b class="kr-n" id="krCd"></b><span class="kr-u">until ${tm(d)}</span>`
+#2457d4	`${x.s.id==='bake'||!x.s.wait||/^Dough rest/.test(x.s.wait)?'':x.s.wait+'. '}Then: ${A[0].t} at ${tm(d)}.`
+#8f07e0	`${ovenP().ut} to ${ovenP().t}. Then: bake at ${tm(d)}.`
+#da8a90	'Continue early'
+#c724df	`Water, ${R.pf.w}`
+#0eb7e7	'Dissolve the yeast in the cold water.'
+#1e96d9	'Flour into a bowl, add the yeast water.'
+#ff7b45	'Mix briefly with your fingers until everything is moist and crumbly. Don’t knead.'
+#b0faea	`Cover and leave to ripen for ${dur(sc.pfH)} ${R.pf.where}.`
+#787505	'Dissolve the yeast in the lukewarm water.'
+#22c1b6	'Stir in the flour until you have a smooth, thick batter.'
+#4f374e	'crumbly, no dry flour'
+#0507d4	'stirred smooth'
+#8e4404	'The biga should stay crumbly. Later it smells slightly of yoghurt, that’s exactly right.'
+#7616c8	'The poolish is ripe when it’s full of bubbles and just starting to sink in the middle.'
+#31fda7	'Salt'
+#c30ae6	`${R.pf.n} into the mixer bowl${R.pf.k==='biga'?', torn into pieces':''}.`
+#bade64	`Add <b>${g(R.wA)} g</b> cold water and stir briefly. You’ll need the remaining <b>${g(R.wY)} g</b> later for the yeast.`
+#cb765f	'Add all the flours.'
+#157ec2	'Add the flour.'
+#276606	'2–3 minutes on speed 1, until no dry flour is left. No longer.'
+#4c6197	'Cover the mixer bowl and rest for 30 minutes.'
+#703fe1	'no dry flour left'
+#e7301d	`The ${R.pf.n} already brings yeast. That’s why the main dough only gets a little more.`
+#4def61	'All the flours into the mixer bowl.'
+#21d5b2	'The flour into the mixer bowl.'
+#6d5df2	`Add <b>${g(R.wA)} g</b> cold water. You’ll need the remaining <b>${g(R.wY)} g</b> later for the yeast.`
+#4b3943	'Put the water in the fridge 2 hours ahead. Cold water keeps the dough below 25 °C while kneading.'
+#da216e	`Tiny amount of yeast: if your scale only weighs whole grams, dissolve 1 g of yeast in 100 g of water and use <b>${g(yAmtM(R)*100)} g</b> of it.`
+#daffeb	`Dissolve the yeast in <b>${g(R.wY)} g</b> cold water.`
+#5ff52a	`Add the yeast water in 3 portions of <b>${part} g</b>, the next only once the last is absorbed.`
+#8c0469	'Knead until the dough comes away from the mixer bowl (3–4 min).'
+#b72b4a	`Sprinkle in <b>${g(R.salt)} g</b> salt, knead for 3 minutes.`
+#e82d97	'Windowpane test: stretch the dough thin. If it tears, knead a minute more at a time, 4 minutes at most.'
+#79ba1e	'Check the dough temperature. 23–25 °C is good.'
+#e55f24	'comes away cleanly from the mixer bowl'
+#f1338b	'dough at 23–25 °C'
+#68db1d	'Salt only once the dough comes away from the mixer bowl. Too early and it slows the gluten, the dough stays rough.'
+#210cb8	'Dough onto the counter.'
+#e4e320	'Fold from four sides to the middle.'
+#e039b2	'Turn it over, smooth side up, leave covered.'
+#5e71c4	'surface tight and smooth'
+#29ad5d	'Still rough? Fold a second time after 15 minutes.'
+#60a968	'Fold the dough from four sides to the middle, turn over.'
+#e4fc2a	'Back and bottom of the fridge, that’s where it’s most evenly cold.'
+#c1e284	'box oiled, lid on'
+#174fd5	'Mark the fill level with a strip of tape. Later you’ll see how much it has risen.'
+#a329b2	'Cold dough out of the box onto the counter.'
+#92391b	`Use the scale to divide into <b>${p.n} pieces of ${p.w} g</b>.`
+#06b254	'Shape each piece into a tight ball, seam down.'
+#a17dc4	'Into boxes with a little oil or semola, lid on, back into the fridge.'
+#4bd694	'Don’t stack the boxes, or the middle ones cool more slowly.'
+#e201e9	'Take the boxes out of the fridge, keep the lids on.'
+#d7f6b3	`Leave at room temperature for about <b>${dur(sc.A)}</b>.`
+#f64a8c	'Cold dough tears when you stretch it. Only at room temperature does it shape well.'
+#22e854	`Heat the ${o.n.toLowerCase()} to ${o.t}, about ${o.pre} minutes.`
+#ac757d	`Oven on the highest setting, heat the ${o.ut.split(',')[0]} with it, about ${o.pre} minutes.`
+#86f3a2	'Dust the counter and the peel with semola.'
+#9b7e93	'Put toppings and sauce within reach.'
+#125fd5	'oven at full heat'
+#e91439	'semola on counter and peel'
+#106a2b	'Measure on the stone with an infrared thermometer, not in the air.'
+#a1e743	'Put the tray or stone on the top shelf, that’s where it’s hottest.'
+#5f8837	'Poke test: press in gently. If the dent springs back slowly, the dough is ready.'
+#75d231	'Loosen the dough ball with a dough scraper, top side down onto the semola.'
+#42db3c	'Never roll: press from the centre outwards, leave the rim alone.'
+#5e1246	`Top, slide in, bake for about ${bsTxt()}.${S.oven==='home'?'':' Turn the flame or heat down while baking.'}`
+#ef7f8e	'From the centre outwards'
+#6f0d6b	'base browned underneath'
+#2940c3	'Go easy on the toppings. Too much sauce makes the middle soggy.'
+#6d584b	'You say when you want to eat.'
+#01b16a	'Tempasto tells you when to do what: from mixing the dough to the oven.'
+#5154ad	'When are you baking?'
+#f5b805	'Pick a day and time. The app works backwards to when you mix the dough.'
+#dc2059	'Choose pizzas'
+#d04d6d	'Pick your toppings. The shopping list writes itself.'
+#ef5b14	'How do you knead?'
+#98d716	'This sets the steps in bake mode. You can change it under More → Recipe & oven.'
+#328534	'Which oven?'
+#cf8c38	'This sets temperature, baking time and heating up. You can change it under More → Recipe.'
+#366b85	'Only once you start does Tempasto remind you: about the water, mixing the dough and every step after that.'
+#12aa7a	`<div class="chips intro-ov">${Object.entries(OVENS).map(([k,o])=>`<button class="chip" data-ov="${k}" aria-pressed="${(S.oven||'gas')===k}">${{gas:'Gas pizza oven',holz:'Wood-fired oven',elek:'Electric pizza oven',home:'Oven + stone',blech:'Oven + tray'}[k]||o.n}</button>`).join('')}</div>`
+#c662c5	'Next'
+#e023b2	'Spiral mixer with a fixed bowl. Kneads slowly and cool, just right for high hydration and long rises.'
+#dada25	'For Neapolitan pizza the stone needs 450–480 °C. Gas is easier to control than wood.'
+#5993d3	'A perforated aluminium peel for launching: excess semola falls through and the pizza slides better.'
+#ba5411	'Small round peel for turning in the oven. A quarter turn every 20–30 seconds so the rim browns evenly.'
+#6303a2	'Flour'
+#290b83	'Cuoco for the long rise, Nuvola for airy rims, semola for elasticity and dusting.'
+#64e184	'Cheese'
+#73fd61	'Tear into pieces the day before and drain in a sieve in the fridge, so the pizza won’t get watery.'
+#acabe7	'Just a little salt, don’t cook it. Pass through a food mill, don’t blend.'
+#b7f159	`<article class="rec"><span class="rec-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${RICON[r.ic]}</svg></span><div class="rec-t"><span class="rec-k">${r.cat}</span>${r.name?`<b>${r.name}</b>`:''}${r.tip?`<p>${r.tip}</p>`:''}<div class="rec-a">${r.url?`<a class="rec-go" href="${r.url}" target="_blank" rel="noopener">View →</a>`:''}${r.help?`<button class="rec-help" data-help="${r.help}">Recipe in the app</button>`:''}</div></div></article>`
+#f56e9d	'75 g tomato sauce'
+#7eba81	'<br><b>After baking:</b> '
+#d99bc6	'Our pizza menu 🍕'
+#7cad3f	'Image saved – now share it on WhatsApp'
+#563be6	'Oven & toppings'
+#c84821	'All baked'
+#7d9101	`<div class="ots" id="ovTimer" ${OTS.length?'':'hidden'}></div><p class="hw-p">Tap a pizza when it goes into the oven. The timer runs ${bsTxt().replace(' s',' seconds').replace(' min',' minutes')} and tells you when to turn it.</p><div class="ov-list">${list.map(p=>{const n=S.pz[p.id],d=Math.min(S.cook.oven[p.id]||0,n);return `<button class="ov-row${d>=n?' full':''}" data-ov="${p.id}"><span class="ov-pz">${pizzaSVG(p)}</span><span class="ov-n"><b>${p.n}</b><span class="ov-dots">${Array.from({length:n},(_,j)=>`<i class="${j<d?'d':''}"></i>`).join('')}</span><small class="ov-b">${belagOf(p,1)}</small></span><span class="ov-c">${d?`<i class="ov-m" data-ovm="${p.id}" role="button" aria-label="One back">−</i>`:''}${d}/${n}</span></button>`;}).join('')}</div>${got?'<button class="ov-reset" id="ovReset">Reset</button>':''}`
+#9e93c4	`${p.n} is in. ${bsTxt().replace(' s',' seconds').replace(' min',' minutes')}.`
+#9b440f	'in the oven'
+#5ad057	'minutes'
+#288a0d	`<div class="hw-note">You’re starting ${dur(delta)} later than planned. Dinner time stays, the time in the fridge gets a little shorter. Up to about 3 h that’s no problem.</div>`
+#06a57e	`<div class="hw-note">You’re starting ${dur(-delta)} earlier than planned. Watch the poke test when baking.</div>`
+#be125c	`<div class="hw-sec"><span class="hw-k">You need</span><div class="hw-need">${h.need.map(r=>`<div><span>${r[2]?`<i style="background:${r[2]}"></i>`:''}${r[0]}</span><b>${r[1]}</b></div>`).join('')}</div></div>`
+#9e16bc	`<div class="hw-sec"><span class="hw-k">Step by step</span><ol class="hw-how">${h.how.map(t=>`<li><span>${t}</span></li>`).join('')}</ol></div>`
+#c8c6a1	'Dough'
+#48ab9c	'Cancel the dough?'
+#0898e5	`<p class="hw-p">The plan and all reminders will stop. Your pizzas, the shopping list and your settings stay.</p><div class="hw-btns"><button class="cta" id="endYes">Yes, cancel</button><button class="btn ghost" id="endNo">Keep going</button></div>`
+#abb98d	'Dough cancelled'
+#9bab5b	' in the dough (g)'
+#527b77	`the dough will be about ripe (after ${Math.round(rh)} h). Planned: ${at(B)}.`
+#dbec36	`<div class="alert"><span>The baking time is before the kneading time.</span></div>`
+#d6238d	`<div class="alert good"><b>All good</b><span>Carry on with the plan and do the poke test before baking.</span></div>`
+#906df8	`<div class="alert bad"><b>Too much yeast</b><span>Ripe about ${Math.round(diff)} h too early.</span></div><ol class="acts"><li><b>Bake earlier:</b> ${at(ready)}.</li><li><b>Fridge to ${colder} °C</b> and divide the dough right away: ripe after about ${Math.round(rC)} h, with only 1–2 h warming up after about ${Math.round(rCA)} h.</li>${target-rCA>4?`<li><b>Freeze</b> by ${at(fz)} at the latest. On baking day move to the fridge 6–8 h ahead, then 2–3 h at room temperature.</li>`:''}</ol>`
+#25b1e2	`<div class="alert"><b>Too little yeast</b><span>Ripe about ${Math.round(-diff)} h later. Bake later, or take the dough balls out of the fridge 5–6 h ahead instead of ${dur(acclFor(target))}.</span></div>`
+#3f58e7	'for Laurenz & Julius'
+#1fa3b9	'The classic: tomato, fior di latte, basil.'
+#24475c	'Basil'
+#4faea0	'leaves'
+#d7a7a3	'The classic salami pizza: tomato, fior di latte and plenty of mild salami.'
+#28aacb	'No cheese: tomato, garlic, oregano and good olive oil.'
+#672f6b	'Garlic'
+#7abcda	'Olive oil'
+#f8a2ab	'Tomato, spicy salami, fior di latte, a hint of chili oil.'
+#8b2cb8	'Spicy'
+#a2fa90	'Chili oil'
+#45c707	'Tomato, spicy nduja and honey. Sweet, hot, creamy.'
+#35326d	'Tomato and fior di latte, after baking prosciutto crudo, rocket, parmigiano.'
+#caef6f	'Tomato, after baking mortadella, burrata and chopped pistachios.'
+#b075af	'Tomato, wafer-thin potatoes, rosemary and pecorino.'
+#e6727b	'Tomato, salsiccia and bitter broccoli rabe. Naples’ favourite.'
+#968d6a	'Friarielli or broccoli'
+#5be525	'Tomato, fior di latte, plenty of mushrooms, garlic and parmigiano. If you like, add a dab of truffle cream after baking.'
+#857a2b	'Tomato, cherry tomatoes, rocket and a burrata after baking.'
+#416e83	'Tomato, fior di latte, gorgonzola, provola and parmigiano.'
+#55e032	'Tomato, broccoli florets, dollops of ricotta, lemon zest and a little chili.'
+#e0f18f	'pcs'
+#80ea6c	'Vegetable garden: tomato, zucchini, bell pepper, eggplant and fior di latte.'
+#7aa443	'For dessert: bake the dough without toppings, then Nutella, strawberries, hazelnuts and powdered sugar.'
+#0dbeb1	'Hazelnuts, chopped'
+#65eb1e	'Truffle cream'
+#0acfea	'Hazelnuts'
+#3c8e56	'Red onion'
+#7c1207	'Onion'
+#9f8b11	'Show all ingredients'
+#20fd59	' pcs'
+#e3a390	' leaves'
+#b27e1b	`${dust} g of it for dusting`
+#bdf370	'Durum semolina for dusting'
+#ffe1e1	'1 sachet is plenty'
+#805053	'1 cube is plenty, freeze the rest'
+#9e2117	`${g(sf.tom/100)} g of it for the sauce`
+#e03f52	'for the sauce'
+#553f4c	'Basil|leaves'
+#683b92	'Olive oil|g'
+#b64fae	'for drizzling'
+#f0e5fa	'Still need a name and at least one topping.'
+#a7757f	'Still need a name for your pizza.'
+#8b4bb0	'Pick at least one topping.'
+#8ec17d	`${n} is on the menu`
+#edee61	'All'
+#c354e3	'Classic'
+#4b5dca	`<div class="tk-emptyart"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="26" fill="none" stroke="#D9CDB4" stroke-width="3" stroke-dasharray="6 6"/><circle cx="32" cy="32" r="17" fill="#F6EFE2"/><path d="M32 25v14M25 32h14" stroke="#C2281B" stroke-width="3" stroke-linecap="round"/></svg><b>No pizzas chosen yet</b><span>Toppings go on the list automatically.</span><button data-go="pizzen">Choose pizzas</button></div>`
+#e41ef9	`${tot} chosen · ${tot-n} more than dough balls`
+#935627	`All ${n} dough balls planned`
+#6081e3	' · dough balls fixed'
+#69a822	`<div class="card${c?' on':''}${openTops.has(p.id)?' allt':''}" data-id="${p.id}">${pizzaSVG(p)}<div class="tagrow"><span class="tag ${tagCls[p.tag]||''}">${p.tag}${p.dessert?' · no sauce':''}</span>${p.by?`<span class="by">${p.by}</span>`:''}</div><h3>${p.n}</h3>${topChips(p)}<div class="pzst"><button data-pz="${p.id}" data-d="-1" aria-label="${p.n} one less">−</button><output>${c}</output><button data-pz="${p.id}" data-d="1" aria-label="${p.n} one more"${pzTotal()>=S.n?' class="full"':''}>+</button></div>${p.own?`<button class="own-del" data-owndel="${p.id}" aria-label="Delete custom pizza">Delete</button>`:''}</div>`
+#bfef5e	`<button class="card own-add" id="ownAdd"><span class="oa-plus">+</span><b>Your own pizza</b><span>Choose your own toppings</span></button>`
+#e05621	`<p class="pan-h">Tap what you always have at home. It drops off the list.</p>`
+#5515ec	'Sauce'
+#b97e56	'Toppings'
+#775674	`<details class="tk-done"${shopDoneOpen?' open':''}><summary>In the basket (${done.length})</summary>${done.map(row).join('')}<div class="tk-meta in"><button data-act="reset">Put all back</button></div></details>`
+#9c0243	`<div class="tk-meta"><button data-act="pan">Pantry (${D.pan.length}) · edit</button></div>`
+#718a4f	`for ${sf.rossa||S.n} pizzas`
+#771f27	'a few leaves'
+#8afcb6	`🍕 ${some?'Still to get':'Ingredients'} for ${n} ${n>1?'pizzas':'pizza'}`
+#4a3611	'Copying not possible'
+#e90de3	`<span>${m}</span><button class="t-undo">Undo</button>`
+#52d522	'A liquid preferment of equal parts flour and water with very little yeast. It ripens the day before and brings more flavour and an open crumb.'
+#b14355	'A stiff preferment with about half as much water as flour. It stays crumbly, ripens cool the day before and gives the dough strength and a slightly nutty flavour.'
+#3fa495	'During this window Tempasto plans no tasks for you. If dividing the dough falls in the night, the app moves it to the evening before or the morning after, and the time in the fridge adjusts. If even mixing the dough would fall in the night, you’ll see a note and can move dinner. It isn’t a do-not-disturb mode: since no step is due at night, no reminder comes either.'
+#94236a	'Flour and water rest for 30 minutes without yeast and salt. The flour soaks up the water, and the dough is smoother and easier to knead later.'
+#e5cec6	'The dough rises in one piece, before it’s divided into balls.'
+#610e53	'The single dough balls keep rising after dividing, usually in the fridge.'
+#11c74a	'The weighed balls of dough, each one becomes a pizza.'
+#4c8e9d	'Dough ball'
+#8b204f	'A weighed ball of dough that becomes one pizza.'
+#0e2486	'How far the dough has risen. 100 % means ready to bake. You can check it with the poke test.'
+#47d8ae	'The dough balls come out of the fridge and get warm and soft at room temperature, so they shape well.'
+#df21d2	'Stretch a piece of dough thin between your fingers. If it gets almost see-through without tearing, it’s kneaded enough.'
+#74113d	'Press a finger lightly into the dough ball. If the dent springs back slowly, it’s ripe. If it springs back at once: wait a bit longer.'
+#7e5e15	'Drag the dough ball towards you on the counter with both hands, turning it, until the surface is tight.'
+#832f77	'Coarsely ground durum wheat. In the dough for bite, on the counter and the peel so nothing sticks.'
+#e26750	'20 dough balls at most'
+#ebf3ac	`Moved dinner to ${at(new Date(S.bake))} so ${S.h} h fit`
+#470ac6	`Too tight for a ${S.h} h rise. Pick a shorter rise.`
+#5e1e18	'That early, the rise isn’t long enough'
+#65a4b8	`Pizza dough for ${p.n} × ${p.w} g, ${p.h} h rise`
+#5e0b89	`Dinner: ${DL[B.getDay()]}, ${B.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][B.getMonth()]}, ${tm(B)}`
+#489398	`Water, cold ${g(R.water)} g`
+#eac784	`Salt ${g(R.salt)} g`
+#c1cd0a	'Planned with Tempasto'
+#17d14c	'Plan copied'
+#a9b705	'Copying didn’t work'
+#9a4cab	'Time is the best ingredient.'
+#b5fc26	'Nice cold water.'
+#d18439	'Let it get really hot.'
+#7da69b	'A note for you'
+#141e9c	'<ul class="nz-lines"><li>I live above the pizzeria.</li><li>At every step I tuck a note</li><li>behind the button for you.</li><li>Tap it when you’re unsure.</li></ul>'
+#ce1ed2	'now'
+#a3de8b	'Preferment in '
+#164483	'Dough in '
+#bea3dc	`Share menu with ${n} ${n===1?'pizza':'pizzas'}`
+#d946ae	'Choose at least one pizza'
+#85e70b	'All pizzas reset'
+#b11615	'Pizza deleted'
+#12b62c	'Really delete?'
+#202a2b	`All ${S.n} dough balls are planned`
+#aa4fb4	`Tempasto-Backup-${isoDate(d)}.json`
+#5593c8	'Backup saved'
+#19100a	'Make the dough'
+#f68624	'Dough balls into the fridge'
+#416aab	'Dough balls out of the fridge'
+#b99a69	'Divide the dough'
+#65ef47	`Then ${r.wait.ph} ${r.wait.txt.replace(' cold',' in the fridge').replace(' room temperature',' at room temperature')}.`
+#90a844	'Calendar file saved – open it to add'
+#03c47d	'Backup from '
+#4ce29b	'That’s not a Tempasto backup'
+#16809c	'All put back'
+#bdbbfb	'like the device'
+#9edbe9	'Kitchen scale'
+#a66c48	`ideally a precision scale for ${nf(ya,1)} g of yeast`
+#8d14ef	'accurate to the gram'
+#ca0443	'Large bowl'
+#afec52	'with dough hook'
+#e8d061	'for kneading by hand'
+#c17cc6	'Box with lid'
+#97a3d5	`for ${nf(R.total/1000,1)} kg of dough, a good twice as big`
+#d3e0a2	'Boxes for the dough balls'
+#5904b0	`${S.n} pieces or one flat box, plus a dough scraper`
+#abb41a	'Pizza stone or steel'
+#c6c4b1	'and semola for dusting'
+#6ce5bd	'“Next” recognised'
+#a6e2f9	'Microphone isn’t allowed here'
+#ad0b43	'Say “Next” to tick off'
+#01324e	'Voice commands don’t work on this device'
+#066c34	'Read aloud is on.'
+#419fda	`<div class="tpl-r"><button class="tpl-go" data-tpl="${i}"><b>${t.name}</b><span>${DAYL[t.wd]} ${String(t.hh).padStart(2,'0')}:${String(t.mm).padStart(2,'0')} · ${t.n} pizzas · ${t.h} h</span><small>${nx?'next date: '+at(nx):'no matching date in 2 weeks'}</small></button><button class="tpl-x" data-tdel="${i}" aria-label="Delete template">✕</button></div>`
+#1910da	'<p class="small muted">No templates yet. Set up a plan, enter a name, save.</p>'
+#483e63	`Saved: ${DAYL[b.getDay()]} ${tm(b)} · ${S.n} dough balls · ${S.h} h · pizzas and recipe.`
+#991d99	`Template “${n}” saved`
+#97fe60	`${t.name} applied, please pick a date`
+#372b2d	'Tempasto mix'
+#4c654c	'Classic'
+#bf8385	'100 % wheat flour Tipo 00'
+#92c7b1	'Wheat flour Tipo 00'
+#445926	'e.g. Caputo Pizzeria'
+#3aabb4	'With wholemeal'
+#45a5e2	'80 % Tipo 00, 20 % wholemeal wheat flour'
+#43d806	'Wholemeal wheat flour'
+#f0468b	'pizza stone'
+#5bb28c	'by hand'
+#92eb64	'Dry yeast'
+#ceae82	'Fresh yeast'
+#c6ba53	'en-GB'
+#2e8ed8	'Sun'
+#be092d	'Mon'
+#1611a3	'Tue'
+#69ec61	'Wed'
+#7306fc	'Thu'
+#a926fb	'Fri'
+#2c2be5	'Sat'
+#483621	'Sunday'
+#086433	'Monday'
+#b4d783	'Tuesday'
+#5b8063	'Wednesday'
+#bf5875	'Thursday'
+#22af5f	'Friday'
+#f236a1	'Saturday'
+#ae83e3	'Today'
+#3635d2	'Tomorrow'
+#b10614	`in ${Math.round(m/1440)} days`
+#386dc0	'Yesterday'
+#00db73	`${d} d ${hh} h`
+#bca854	`Start the ${pf.n}`
+#8a9c0f	`${pf.n} ripening`
+#d8d5ad	'By hand'
+#20dffb	'Machine'
+#d09187	'Speed 1'
+#20bed8	'Fold'
+#0681fa	'Fold to the middle, turn over, leave covered.'
+#0fa1f0	'Divide'
+#531bd5	'Leave the boxes closed.'
+#384d40	'per pizza'
+#144cac	`<button class="shift-o" data-sh="${v}" aria-pressed="${v===cur}"${ok(v)?'':' disabled'}><b>${v===0?'as planned':(v>0?'+':'−')+Math.abs(v)+' h'}</b><span>Dinner ${DAY[B.getDay()]} ${tm(B)}</span></button>`
+#74a7e4	`<button class="shift-o" data-late="${v}" aria-pressed="${Math.abs(late-v*H)<60000}"><b>+${v<1?'30 min':v+' h'}</b><span>Start ${tm(new Date(+base.sc.start+cur*H+v*H))}</span></button>`
+#bf5630	'New time: '
+#ebe7eb	'Midday'
+#61c797	'Afternoon'
+#cb27bd	'Evening'
+#18ff3d	'May'
+#dade20	'Oct'
+#d7598e	'Dec'
+#acb612	`${DAY[bk.getDay()]} ${bk.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][bk.getMonth()]} · ${tm(bk)} <em>›</em>`
+#48bb56	`${DAY[bk.getDay()]} ${bk.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][bk.getMonth()]} · ${tm(bk)}`
+#14938b	`approx. Ø ${DIA[S.w]||30} cm`
+#6ffc63	'Fresh'
+#c42b86	'Dry'
+#e4151c	'None'
+#4e6e19	'Custom'
+#3fd1dc	'Wheat flour Tipo 0'
+#c5613b	'Total 100 %.'
+#951b3b	`Rise approx. ${pc} % · ripe ${DAY[B.getDay()]} ${tm(B)}`
+#aee53f	`${B.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][B.getMonth()]}`
+#a7604b	`${day} at ${hr}`
+#fc74c9	`Start the ${c.P.R.pf.n}`
+#ee8a11	'all steps done'
+#629cbc	'Done'
+#a2a625	'View'
+#6f4425	'Your turn'
+#99e75e	`Start the ${P.R.pf.n}`
+#af692c	'Take out'
+#899ac1	'BAKE'
+#771323	'JANUARY'
+#5b1096	'FEBRUARY'
+#65fe8f	'APRIL'
+#dd7894	'MAY'
+#57541a	'JUNE'
+#aa6743	'JULY'
+#69bc21	'AUGUST'
+#cbb3b2	'SEPTEMBER'
+#a81e3e	'OCTOBER'
+#b95f81	'NOVEMBER'
+#d30e9f	'DECEMBER'
+#73cde1	'Bulk ferment'
+#bf4b38	'Jan'
+#97a7e5	'Feb'
+#ee6483	'Apr'
+#8e3ef7	'Jun'
+#ac2bc1	'Jul'
+#c45a9e	'Aug'
+#51526e	'Sep'
+#1bdaa9	'Oct'
+#2c88c0	'Nov'
+#64918b	'Dec'
+#d1c563	`<div class="pd pk-d"><div class="pk-it">${DAYS[wd]}<small>${r.d.getDate()} ${MS[r.d.getMonth()]}${['Today','Tomorrow'].includes(rl)?' · '+rl.toLowerCase():''}</small></div>`
+#838d41	' room temperature</span></div>'
+#2112a1	`${nDone} of ${nAll} done`
+#397f0b	`${nAll} steps`
+#58d05a	'Now: '
+#fad74b	'Break over: '
+#d93327	`Then: ${A[0].t}`
+#ab3119	`${x.s.wait||'Break'} · then ${A[0].t}`
+#1727fa	`<span class="kr-l">${a.l||'Now'}</span><b class="kr-n${a.a.length>6?' sm':''}${a.a.length>9?' xs':''}">${a.a}</b><span class="kr-u">${a.u||''}</span>`
+#76ec2a	'Let’s go'
+#aaa88c	'Pronto! Now: '
+#426bc1	'Start now'
+#b1cc5c	`Only ${got} of ${tot}. Finish anyway?`
+#b7d42f	'Sure? Tap again'
+#4708e1	'mixer bowl covered'
+#fec5f8	'Rough, smooth, windowpane test'
+#f21d6e	'windowpane test passes'
+#902fc5	'Back, bottom'
+#373e13	`${p.n} balls of ${p.w} g`
+#5f502d	'skin slightly taut'
+#bf09a6	'no open seam underneath'
+#f25562	'This is how they should look'
+#371219	'Poke test'
+#e53468	'rim risen, dark spots'
+#c543c7	`<div class="chips intro-ov">${[['m','With a mixer'],['h','By hand']].map(([k,l])=>`<button class="chip" data-km="${k}" aria-pressed="${(S.km||'m')===k}">${l}</button>`).join('')}</div>`
+#33df23	'Dough mixer'
+#102942	'Pizza oven'
+#8d1451	'Pizza peel'
+#66478a	'Turning peel'
+#208947	'Pizza stamp'
+#20fc18	'Tomatoes'
+#e0b4b0	'San Marzano tomatoes, DOP'
+#5e3ad7	`${u==='g'?v+' g':u==='pinch'?'some':v+' '+u} ${shortName(n)}`
+#cf728b	'lots of amore'
+#305368	'Tomato'
+#f5df15	`${got} of ${tot} baked`
+#97dfb5	': take it out!'
+#d57e92	'Take it out!'
+#1d8020	'Turn!'
+#431fa7	'Nonna’s tips'
+#e1270c	'Classic'
+#829f80	'Salami, mild'
+#288fe5	'clove'
+#a743a9	'Oregano, dried'
+#acdcc3	'pinch'
+#53870f	'Nduja e Miele'
+#e72bb9	'Honey'
+#92cf5d	'Rocket'
+#378bea	'Fine'
+#7842da	'Pistachios, chopped'
+#4739db	'Hearty'
+#be840f	'Potatoes, waxy'
+#d286ca	'Rosemary'
+#0b2e11	'sprig'
+#9e3055	'Vegetarian'
+#b59159	'Mushrooms'
+#fae6ae	'Cherry tomatoes'
+#d359d9	'Broccoli'
+#9b692f	'Organic lemon'
+#b9c077	'Chili flakes'
+#bee0e0	'Bell pepper, yellow'
+#789826	'Eggplant'
+#214dab	'Strawberries'
+#13a209	'Powdered sugar'
+#9bada9	'ball'
+#25a719	'balls'
+#987a41	'Parsley'
+#c0c74e	'Red'
+#177be4	'Potatoes'
+#314ffe	'Bell pepper, red'
+#59437d	'Pistachios'
+#88aacf	'Bell pepper'
+#704e28	'Lemon'
+#463cac	' cloves'
+#5ac19d	' clove'
+#0b5c57	' sprigs'
+#d8d21c	' sprig'
+#67f60c	' tsp'
+#4990f1	'Fine sea salt'
+#4e7a4f	'San Marzano tomatoes'
+#c1f9e6	'1 pot'
+#656e67	`${DAY[V.getDay()]} ${V.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][V.getMonth()]}`
+#d67a1e	'Your own creation.'
+#9e7a7d	'Your own pizza'
+#7b677e	`<button class="oc${ownSel.has(n)?' on':''}" data-oc="${n}">${TOPI(n)}${n.startsWith('Bell pepper')?n.replace(',',''):shortName(n)}</button>`
+#dfc198	`${tot} planned · ${n-tot} free`
+#fe8318	'<div class="tk-meta"><button data-act="pan">Done</button></div>'
+#bc09d3	'Pantry'
+#44b0a4	'NOW'
+#a109ca	`BUY FRESH · ${String(freshWhen).toUpperCase()}`
+#bca363	`${c} can${c>1?'s':''} of 400 g`
+#5a65a6	'Shopping list copied'
+#229ea7	'Night rest'
+#0774a3	'Autolyse'
+#1333e0	'Proof'
+#751332	'Windowpane test'
+#1a58b5	'Ingredients'
+#f716dc	'Schedule'
+#0ca1d7	`${DAY[r.d.getDay()]} ${r.d.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][r.d.getMonth()]} ${tm(r.d)}  ${r.t}`
+#5c2357	'Smooth first, then done.'
+#d3df16	'Fold gently, done.'
+#b991f2	'Cold dough divides more easily.'
+#d3362d	'Keep the lid on.'
+#644d81	'Never roll it!'
+#d749ad	'Ciao, I’m Nonna!'
+#b9fed1	'Tap me.'
+#5dec2c	'Clear'
+#6e0e55	'Sure?'
+#81bcdb	'Tempasto-Bake-Plan.ics'
+#982642	'Calendar file saved'
+#b02fdc	`${n.trim()}: always have it`
+#27410f	', thermometer optional'
+#60cf03	'Baking tray'
+#0c53a9	'Peel'
+#555caf	'Donation link coming soon'
+#9bf216	`${t.name}: ${at(nx)}`
+#cadf06	`${x.s.t}: done`
+'akklimatisieren'	'warm up'
+'rund schleifen'	'shape into a tight ball'
+'lauwarm'	'lukewarm'
+'reift'	'ripens'
+'abgedeckt'	'covered'
+'steht hinten unten'	'sits at the back, bottom'
+'etwas'	'some'
+'fein gemahlen'	'finely ground'
+' geladen'	' loaded'
+' drehen'	', turn it'
+#d70ca9	`${DAY[B.getDay()].toUpperCase()} ${B.getDate()} ${MON[B.getMonth()]}`
+#135236	`<button class="al-card" data-al-open="recSheet"><span class="al-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span><span class="al-t"><b>Mixing at ${tm(sc.start)} falls in your night rest</b><span>${nw[0]}:00–${nw[1]}:00, set under Recipe &amp; oven <em>›</em></span></span></button>`
+#625490	`<div class="tk-emptyart"><span class="ebox" aria-hidden="true"><span class="ebox-w"><span class="ebox-b"><span class="ebox-base"><i class="st"></i><i class="cr" style="left:28%;top:62%"></i><i class="cr" style="left:64%;top:30%"></i><i class="cr" style="left:56%;top:72%"></i></span><span class="ebox-lid"></span></span></span></span><b>The box is still empty</b><span>Choose your pizzas and the toppings go on the list by themselves.</span><button data-go="pizzen">Choose pizzas</button></div>`
