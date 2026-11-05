@@ -1,0 +1,9 @@
+node_modules/
+android/app/build/
+android/build/
+android/.gradle/
+*.apk
+
+# Signier-Schlüssel nie ins Repository
+*.keystore
+*.jks

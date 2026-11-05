@@ -1,15 +1,15 @@
 # Tempasto · fatto a mano
 
-**Der Teigplaner für neapolitanische Pizza.** Du sagst, wann gebacken wird, und Tempasto sagt dir, wann du was tun musst: vom Wasser-Kaltstellen bis zur letzten Pizza aus dem Ofen.
+**Der Teigplaner für neapolitanische Pizza.** Du sagst, wann gegessen wird, und Tempasto sagt dir, wann du was tun musst: vom Wasser-Kaltstellen bis zur letzten Pizza aus dem Ofen.
 
-Kostenlos, ohne Werbung, ohne Konto. Deine Daten bleiben auf dem Handy.
+Kostenlos, ohne Werbung, ohne Konto. Deine Daten bleiben auf dem Handy. Auf Deutsch und Englisch.
 
 <p>
   <img src="docs/start.png" width="180" alt="Startseite">
   <img src="docs/pizzen.png" width="180" alt="Pizzen auswählen">
   <img src="docs/einkauf.png" width="180" alt="Einkaufsliste">
-  <img src="docs/programma.png" width="180" alt="Backplan">
-  <img src="docs/backmodus.png" width="180" alt="Backmodus">
+  <img src="docs/programma.png" width="180" alt="Zeitplan">
+  <img src="docs/backmodus.png" width="180" alt="Backmodus mit Nonnas Zettel">
   <img src="docs/pause.png" width="180" alt="Pause im Backmodus">
 </p>
 
@@ -19,65 +19,70 @@ Kostenlos, ohne Werbung, ohne Konto. Deine Daten bleiben auf dem Handy.
 
 Der Name verbindet *tempo* und *impasto*, die Zeit und den Teig. Mehr braucht guter Pizzateig nicht, aber die Zeit muss stimmen.
 
-Guter Pizzateig braucht Zeit, meist 24 bis 72 Stunden. Die Frage ist nie *wie*, sondern *wann*: Wann muss der Teig angesetzt werden, damit am Donnerstag um 19 Uhr die erste Pizza aus dem Ofen kommt? Wann portionieren, wann aus dem Kühlschrank, wann den Ofen an?
+Neapolitanischer Teig braucht 24 bis 72 Stunden. Die Frage ist nie *wie*, sondern *wann*: Wann muss der Teig angesetzt werden, damit am Donnerstag um 19 Uhr gegessen wird? Wann portionieren, wann aus dem Kühlschrank, wann den Ofen an?
 
 Tempasto rechnet das rückwärts aus und begleitet dich dann Schritt für Schritt durch den ganzen Teig.
+
+Tempasto macht genau eine Sache: neapolitanische Pizza. Keine Pinsa, kein Blech-Focaccia, kein New-York-Style.
 
 ## Was die App kann
 
 **Planen**
-- Backtermin, Anzahl der Teiglinge (bis 20) und Gehzeit (24, 48 oder 72 h) wählen
-- Die App rechnet rückwärts aus, wann du den Teig ansetzt, und passt die Hefemenge an Gehzeit und Kühlschranktemperatur an
-- Vorlagen wie „Freitagspizza“ speichern und mit einem Tipp für den nächsten passenden Termin übernehmen
-- Läuft etwas anders als geplant: „Später dran?“ verschiebt den restlichen Plan samt Erinnerungen
-- Du sagst, wann gegessen wird. Die App rechnet die Backzeit aller Pizzen mit ein
-- Plan starten: Erst dann erinnert die App ans Wasser, ans Teigansetzen und an jeden Schritt
-- Vor dem Start eine Liste „Bevor es losgeht“ mit allem, was du brauchst
-- Raumtemperatur, Kneten mit Maschine oder von Hand, Ofentemperatur und Backzeit einstellbar
-- Mehl: Tempasto-Mix, klassisch Tipo 00, mit Vollkorn oder eine eigene Mischung aus bis zu drei Mehlen
-- Nachtruhe einstellbar: In diese Zeit legt die App keine Handgriffe
-- Zuschlag von 3 oder 5 % für den Teig, der an Schüssel und Händen hängen bleibt
-- Zeitplan und Mengen als Text teilen, zum Beispiel per WhatsApp
+- Auf der Startseite steht dein Plan als Satz: *Wir essen am Donnerstag um 19 Uhr 6 Pizzen. Der Teig geht 48 Stunden.* Jeder unterstrichene Teil lässt sich antippen und ändern
+- Darunter die drei wichtigsten Schritte mit Uhrzeit und der Knopf *Plan starten* mit Countdown bis zum Teigansetzen
+- Die App rechnet rückwärts, auch die Backzeit aller Pizzen, und passt die Hefe an Gehzeit und Kühlschranktemperatur an
+- Erst *Plan starten* schaltet die Erinnerungen ein: ans Wasser, ans Teigansetzen und an jeden weiteren Schritt
+- Beim ersten Start eine Liste *Bevor es losgeht* mit allem, was du brauchst
+- Läuft etwas anders: *Später dran?* verschiebt den restlichen Plan samt Erinnerungen
+- Vorlagen wie „Freitagspizza“ speichern und für den nächsten passenden Termin übernehmen
+- Der Zeitplan zeigt alle Schritte mit Ruhezeiten im Kühlschrank ❄ und bei Raumtemperatur ⌂ und lässt sich teilen oder in den Kalender übernehmen
+
+**Rezept und Ofen**
+- Im normalen Modus: Ofen, Teigling-Größe, Hefe, Hydration als Schieberegler, Kneten mit Maschine oder von Hand, Nachtruhe
+- Im Expertenmodus zusätzlich: Vorteig (ohne, Poolish oder Biga), Mehlmischung (auch eine eigene aus bis zu drei Mehlen), Kühlschranktemperatur, Raumtemperatur, Zuschlag für Teigreste, Ofenhitze und Backzeit
+- Nachtruhe: In diesem Zeitfenster plant die App keine Handgriffe für dich
 
 **Pizzen und Einkauf**
-- Pizzen von der Karte wählen oder eigene zusammenstellen
-- Die Einkaufsliste schreibt sich selbst, in Gramm
-- Mit Ersatz aus dem Supermarkt, falls es die Caputo-Mehle nicht gibt
+- Pizzen von der Karte wählen, gefiltert nach Klassik, Scharf, Veggie und Dessert, oder eigene zusammenstellen
+- Menü als Bild teilen. Du legst fest, welche Pizzen deine Gäste zur Auswahl sehen
+- Die Einkaufsliste schreibt sich selbst, in Gramm, mit Ersatz aus dem Supermarkt
 - Getrennt nach „Jetzt“ und „Frisch kaufen“, damit Mozzarella und Basilikum nicht zu früh im Kühlschrank liegen
-- Liste kopieren oder direkt per WhatsApp teilen
 
 **Backen**
-- Das *Programma* zeigt den ganzen Ablauf auf einen Blick, mit Kühlschrank- und Raumtemperatur-Phasen. Es öffnet sich mit einem Tipp auf den Zeitstrahl
-- Der Backmodus läuft direkt auf der Startseite, die anderen Reiter bleiben erreichbar. Er führt durch jeden Schritt: Mengen, Handgriffe, „Fertig, wenn …“-Kriterien und eine ausführliche Anleitung
-- Pausen laufen mit Countdown, lange Gare mit wachsendem Teigling und Gare in Prozent
+- Der Backmodus führt durch jeden Schritt: Mengen, Handgriffe und „Fertig, wenn …“
+- Die Knöpfe unten stehen auf jeder Seite an derselben Stelle
+- Hinter *Erledigt* steckt bei jedem Schritt ein Zettel von Nonna. Antippen, und sie erklärt den Schritt ausführlich: was du brauchst, Schritt für Schritt, ihr Tipp
+- Pausen laufen mit Countdown, lange Gare mit wachsendem Teigling
 - Die Farbe zeigt die Phase: kühles Blau im Kühlschrank, warmes Beige bei Raumtemperatur
-- Ofenprofil für Gas-, Holz- und Elektro-Pizzaofen oder den Backofen mit Stein. Temperatur, Backzeit und Anheizzeit richten sich danach
+- Ofenprofil für Gas-, Holz- und Elektro-Pizzaofen, Backofen mit Stein oder Blech
 - Ofen-Timer für mehrere Pizzen gleichzeitig, mit Hinweis zum Drehen
+- Fachbegriffe wie Autolyse oder Stückgare lassen sich antippen und werden erklärt
+- Ellbogen-Modus: lange irgendwo drücken heißt *Erledigt*, wenn die Hände voller Teig sind
 
 **Android-App**
-- Erinnerungen auch bei geschlossener App, mit „Erledigt“ und „+10 Min“ direkt in der Benachrichtigung
-- Antippen der Erinnerung öffnet direkt den aktuellen Schritt
+- Erinnerungen auch bei geschlossener App, mit *Erledigt* und *+10 Min* direkt in der Benachrichtigung
+- Antippen der Erinnerung öffnet den aktuellen Schritt
 - Bildschirm bleibt im Backmodus an
-- Fachbegriffe wie Autolyse oder Stockgare lassen sich antippen und werden erklärt
-- Versehentlich abgebrochen? 10 Sekunden lang lässt sich das rückgängig machen
-- Ellbogen-Modus: lange irgendwo drücken heißt *Erledigt*, wenn die Hände voller Teig sind
-- Passt sich an Handy und Tablet an
-- Läuft komplett offline
+- Teig versehentlich abgebrochen? 10 Sekunden lang lässt sich das rückgängig machen
+- Passt sich an Handy und Tablet an, läuft komplett offline
+- Deutsch oder Englisch: richtet sich nach der Gerätesprache, umschaltbar oben unter *Mehr*
 
 ## Das Rezept
 
-Tempasto arbeitet mit einem festen Grundrezept:
+Tempasto arbeitet mit einem festen neapolitanischen Grundrezept:
 
 | | |
 |---|---|
 | Mehl | Tempasto-Mix (Caputo Cuoco, Nuvola, Semola 1.000 : 1.000 : 300), klassisch Tipo 00, mit Vollkorn oder eigene Mischung |
+| Hydration | 58 bis 70 % |
 | Salz | 2,8 % aufs Mehl |
 | Öl | keins im Teig, wie in Neapel |
-| Wasser | 58 bis 70 % |
 | Hefe | frisch oder trocken, von der App berechnet |
 | Teiglinge | 250, 280 oder 300 g |
+| Gehzeit | 24, 48 oder 72 Stunden |
+| Vorteig | optional: Poolish (30 % des Mehls, gleich viel Wasser, 12–20 h bei 18–20 °C) oder Biga (40 % des Mehls, 50 % Wasser, 14–22 h bei 16–18 °C) |
 
-Ablauf: Mehl und Wasser mischen, Autolyse, Kneten, Falten und ab in den Kühlschrank, Portionieren, Akklimatisieren, Backen.
+Ablauf: Teig ansetzen, Autolyse, Kneten, Falten und ab in den Kühlschrank, Portionieren, Aus dem Kühlschrank, Ofen an, Backen.
 
 ## Installieren
 
@@ -87,11 +92,14 @@ Tempasto gibt es (noch) nicht im Play Store. Die fertige APK liegt unter **[Rele
 2. Beim ersten Mal erlauben, dass der Browser Apps installieren darf
 3. Installieren und Benachrichtigungen zulassen
 
-Updates werden einfach über die alte Version installiert, die Daten bleiben erhalten.
+Updates werden über die installierte Version gespielt, die Daten bleiben erhalten.
+
+**Umstieg von der alten Impasto-App:** Die App heißt jetzt `de.tempasto.app` und wird neben der alten installiert. In der alten App unter *Mehr → Daten sichern* eine Sicherung machen, in Tempasto unter *Mehr → Sicherung laden* einspielen, dann die alte App löschen.
 
 ## Technik
 
-- Die App ist eine einzelne HTML-Datei (`www/index.html`) ohne Framework und ohne externe Abhängigkeiten
+- Die App ist eine einzelne HTML-Datei ohne Framework: `www/index.html` auf Deutsch, `www/en.html` auf Englisch
+- Die englische Fassung wird aus der deutschen erzeugt (`tools/i18n/build_en.py`), die Übersetzungen stehen in `tools/i18n/`
 - Für Android wird sie mit [Capacitor](https://capacitorjs.com) verpackt
 - Native Funktionen: Benachrichtigungen, Teilen, Dateien, Bildschirm-an, Zurück-Taste
 - Die Verbindung zwischen App und Android steckt in `www/bridge.js`
@@ -100,7 +108,7 @@ Updates werden einfach über die alte Version installiert, die Daten bleiben erh
 ```
 www/            Die App (HTML, Brücke zu Android, Schriften)
 android/        Android-Projekt (Capacitor)
-tools/          Hilfsskripte zum Bauen von www/ und der App-Symbole
+tools/          Hilfsskripte zum Bauen von www/, der englischen Fassung und der App-Symbole
 .github/        Bauanleitung für GitHub Actions
 docs/           Screenshots
 ```
