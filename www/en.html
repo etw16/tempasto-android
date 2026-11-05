@@ -23,12 +23,12 @@ window.TP_LANG='en';
  function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
  if(L==='de'&&!P)ls('tpHome',location.href);
  function url(w){if(P)return P[w];if(w==='en')return new URL('en.html',location.href).href;return ls('tpHome');}
- window.tpLangGo=function(w){ls('tempasto-lang',w);if(w===L)return;var u=url(w);if(u)location.replace(u);};
+ window.tpLangGo=function(w){ls('tempasto-lang',w);if(w===L)return;var u=url(w);if(u){window.tpLeaving=1;location.replace(u);}};
  p=ls('tempasto-lang');var want=p||((navigator.language||'de').slice(0,2).toLowerCase()==='de'?'de':'en');
  if(want===L)return;
- if(P){if(P[want])location.replace(P[want]);return;}
- if(want==='en'){try{var x=new XMLHttpRequest();x.open('HEAD','en.html',false);x.send();if(x.status===200)location.replace('en.html');}catch(e){}}
- else{var h=ls('tpHome');if(h&&h!==location.href)location.replace(h);}
+ if(P){if(P[want]){window.tpLeaving=1;location.replace(P[want]);}return;}
+ if(want==='en'){try{var x=new XMLHttpRequest();x.open('HEAD','en.html',false);x.send();if(x.status===200){window.tpLeaving=1;location.replace('en.html');}}catch(e){}}
+ else{var h=ls('tpHome');if(h&&h!==location.href){window.tpLeaving=1;location.replace(h);}}
 })();
 </script>
 <meta name="theme-color" content="#F3F4EF">
@@ -3350,10 +3350,7 @@ function nzOpen(c){const o=$('nzo'),card=$('nzCard'),red=matchMedia('(prefers-re
     :f?[{transform:f},{transform:'translateY(-24px) scale(1.03) rotate(-6deg)',offset:.6},{transform:'rotate(-1.5deg)'}]:[{transform:'scale(.92) rotate(-4deg)',opacity:0},{transform:'rotate(-1.5deg)',opacity:1}];
   const a=card.animate(fr,{duration:red?1:(c.greet?1300:760),easing:c.greet?'ease-out':'cubic-bezier(.3,.7,.3,1)',fill:'forwards'});
   a.onfinish=()=>card.classList.add('show');}
-function nzClose(){if(!nzOpenNow)return;nzOpenNow=false;const o=$('nzo'),card=$('nzCard'),red=matchMedia('(prefers-reduced-motion: reduce)').matches;card.classList.remove('show');
-  const f=nzFrom(),cur=getComputedStyle(card).transform;
-  const a=card.animate([{transform:cur==='none'?'rotate(-1.5deg)':cur},f?{transform:f}:{transform:'scale(.92) rotate(-4deg)',opacity:0}],{duration:red?1:480,easing:'cubic-bezier(.5,0,.3,1)',fill:'forwards'});
-  a.onfinish=()=>{o.hidden=true;card.getAnimations().forEach(x=>x.cancel());$('nzWrap').style.visibility='';if(!cookOpen)document.body.classList.remove('lock');};}
+function nzClose(){if(!nzOpenNow)return;nzOpenNow=false;const o=$('nzo'),card=$('nzCard');card.classList.remove('show');card.getAnimations().forEach(x=>x.cancel());o.hidden=true;$('nzWrap').style.visibility='';if(!cookOpen)document.body.classList.remove('lock');}
 $('nz').onclick=openInfo;$('nzX').onclick=nzClose;$('nzOk').onclick=nzClose;$('nzDim').onclick=nzClose;
 $('nzMeet').onclick=()=>nzOpen(NZ_HI);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&nzOpenNow)nzClose();});
@@ -3558,7 +3555,8 @@ renderTpl();
   if(red||!tg||$('v-rezept').hidden||cookOpen){sp.classList.add('out');setTimeout(fin,300);return;}
   sp.addEventListener('click',()=>{sp.classList.add('out');setTimeout(fin,250);});
   const T=(f,ms)=>setTimeout(()=>{if(!done)f();},ms);
-  let full=!S.splashSeen;try{if(sessionStorage.getItem('tpSplash')){full=true;sessionStorage.removeItem('tpSplash');}}catch(e){}
+  // Volle Animation beim ersten Start und nach jedem kompletten Schließen der App (neue Sitzung)
+  let full=!S.splashSeen;try{if(!window.tpLeaving){if(!sessionStorage.getItem('tpRun'))full=true;sessionStorage.setItem('tpRun','1');}if(sessionStorage.getItem('tpSplash')){full=true;sessionStorage.removeItem('tpSplash');}}catch(e){}
   if(!S.splashSeen){S.splashSeen=1;save();}
   // Das echte Logo liegt über dem Splash. Animiert werden nur seine Buchstaben und die Pizza.
   [...tg.childNodes].forEach(n=>{if(n.nodeType===3&&n.textContent.trim()){const f=document.createDocumentFragment();[...n.textContent].forEach(ch=>{const x=document.createElement('span');x.className='lch';x.textContent=ch;f.appendChild(x);});n.replaceWith(f);}});
