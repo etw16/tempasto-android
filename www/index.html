@@ -2632,7 +2632,7 @@ function fitSatz(){const e=$('stSatz');if(!e||!e.offsetParent)return;const W=e.p
  for(let i=0;i<9;i++){const m=(lo+hi)/2;e.style.fontSize=m+'px';const lines=Math.round(e.getBoundingClientRect().height/(m*1.3));
   const R=e.parentElement.getBoundingClientRect().right-10,over=[...e.querySelectorAll('a,span')].some(x=>x.getBoundingClientRect().right>R),pl=document.querySelector('#startBtn .sp-pill'),sm=$('stMore'),low=pl&&sm&&pl.offsetParent&&sm.getBoundingClientRect().bottom>pl.getBoundingClientRect().top-10&&m>22;
   if(lines<=4&&!over&&!low&&w.getClientRects().length===1){best=m;lo=m;}else hi=m;}
- e.style.fontSize=best.toFixed(1)+'px';}
+ e.style.fontSize=(best*.93).toFixed(1)+'px';}
 addEventListener('resize',()=>requestAnimationFrame(fitSatz));
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>fitSatz());
 function setView(v){setTimeout(fitSatz,0);{const t=document.querySelector('.toast');if(t&&!t.querySelector('.t-undo'))t.hidden=true;}if(v==='hilfe')try{renderSauce();}catch(e){}if(v!=='rezept'&&cookOpen)closeCook(true);const pv=prevV;setTimeout(abNextUI,0);setTimeout(()=>dropDot(v),30);prevV=v;setTimeout(()=>glideBrand(v,pv),0);if(v!=='hilfe')lastView=v;S.view=v;const tab=v==='ablauf'?'rezept':['consigli','anleitung','impressum','storia','hilfe'].includes(v)?'mehr':v;document.querySelectorAll('.nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===tab));VIEWS.forEach(x=>$('v-'+x).hidden=x!==v);window.scrollTo(0,0);if(v==='pizzen')setTimeout(()=>{try{railUpd();clampTops();}catch(e){}},30);if(v==='ablauf')setTimeout(fitPlan,20);save();if(v==='rezept'&&S.cook&&!cookOpen&&booted)openCook();}
@@ -2666,17 +2666,17 @@ function renderWhen(){
   if(!S.cook&&!feasible(b)){b=autoPick();S.bake=isoLocal(b);}
   const t0=new Date();t0.setHours(0,0,0,0);
   let html='';
-  for(let i=0;i<8;i++){
+  for(let i=0;i<12;i++){
     const d=new Date(+t0+i*864e5);d.setHours(12);
     const ok=SLOTS.filter(([,h])=>feasible(withTime(d,h,0)));
     const any=ok.length||lateFeasible(d);
     const sel=isoDate(d)===isoDate(b);
-    const sub=!any?'zu früh':ok.length===SLOTS.length?(i===0?'heute':i===1?'morgen':['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'][d.getMonth()]):ok.length?`ab ${ok[0][1]} Uhr`:'spät abends';
+    const sub=!any?'zu früh':ok.length===SLOTS.length?(i===0?'heute':i===1?'morgen':['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'][d.getMonth()]):ok.length?`ab ${ok[0][1]} Uhr`:`ab ${lateFeasible(d).getHours()} Uhr`;
     html+=`<button class="day" data-t="${+d}" aria-pressed="${sel}"${any?'':' aria-disabled="true"'}><span class="wd">${DAY[d.getDay()]}</span><span class="dn">${d.getDate()}.</span><span class="sub">${sub}</span></button>`;
   }
   $('days').innerHTML=html;
   // Gesperrte Tage erklären und eine kürzere Gehzeit anbieten
-  {const blocked=[];for(let i=0;i<8;i++){const d=new Date(+t0+i*864e5);d.setHours(12);if(!(SLOTS.some(([,h])=>feasible(withTime(d,h,0)))||lateFeasible(d)))blocked.push(d);}
+  {const blocked=[];for(let i=0;i<12;i++){const d=new Date(+t0+i*864e5);d.setHours(12);if(!(SLOTS.some(([,h])=>feasible(withTime(d,h,0)))||lateFeasible(d)))blocked.push(d);}
    let alt=null;if(blocked.length&&!S.cook){const h0=S.h;for(const h of [48,24].filter(x=>x<h0)){S.h=h;const n=blocked.filter(d=>SLOTS.some(([,hh])=>feasible(withTime(d,hh,0)))).length;S.h=h0;if(n){alt=h;break;}}}
    const el=$('whenTip');el.hidden=!alt;if(alt){const dn=blocked.slice(-2).map(d=>DAYL[d.getDay()]).join(' und ');el.innerHTML=`<span>Für ${dn} reichen ${S.h} h Gehzeit nicht mehr.</span><button data-alt-h="${alt}">Auf ${alt} h umstellen</button>`;}}
   const hm=b.getHours()*60+b.getMinutes(), match=SLOTS.find(([,h])=>h*60===hm);

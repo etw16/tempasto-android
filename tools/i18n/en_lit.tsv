@@ -669,3 +669,4 @@
 'ohne'	'none'
 'Fingerprobe machen. Nicht ausrollen, von innen nach außen drücken. Unter „Ofen & Belag“ startest du für jede Pizza den Timer.'	'Do the poke test. Never roll: press from the center outwards. Use “Oven & toppings” to start each pizza’s timer.'
 `${d} ${d>1?'Tagen':'Tag'} ${h} h`	`${d} ${d>1?'days':'day'} ${h} h`
+`ab ${lateFeasible(d).getHours()} Uhr`	`from ${lateFeasible(d).getHours()%12||12} PM`
