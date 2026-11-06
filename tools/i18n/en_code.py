@@ -31,7 +31,7 @@ P=[
 ("${bsTxt(o)} pro Pizza</small>","${bsTxt(o)} per pizza</small>",1),
 ("hrTxt=bk.getMinutes()?tm(bk)+' Uhr':bk.getHours()+' Uhr';","hrTxt=tm(bk);",1),
 ("hr=B.getMinutes()?tm(B)+' Uhr':B.getHours()+' Uhr';","hr=tm(B);",1),
-("$('stAm').textContent=dd===0||dd===1?'':dd>=7&&dd<14?'am nächsten':'am';","$('stAm').textContent=dd===0||dd===1?'':dd>=7&&dd<14?'next':'on';",1),
+("$('stAm').textContent=dd===0||dd===1?'':dd>=7&&dd<14?'am nächsten':'am';","$('stAm').textContent=dd===0||dd===1?'':dd>=7&&dd<14?'next':'on';{const vb=$('stAm').previousSibling;if(vb&&vb.nodeType===3)vb.nodeValue=B.getHours()<17?'Lunch is ':'Dinner is ';}",1),
 ("MON=['1.','2.','3.','4.','5.','6.','7.','8.','9.','10.','11.','12.'];","MON=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];",1),
 ("const tm=d=>pad(d.getHours())+':'+pad(d.getMinutes());","const tm=d=>{const h=d.getHours();return (h%12||12)+':'+pad(d.getMinutes())+' '+(h<12?'AM':'PM');};",1),
 ("[['22','22–7'],['23','23–8'],['0','0–9'],['off','aus']]","[['22','10–7'],['23','11–8'],['0','12–9'],['off','off']]",1),

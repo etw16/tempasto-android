@@ -1,4 +1,4 @@
-name: APK bauen
+name: APK und AAB bauen
 
 on:
   workflow_dispatch:
@@ -37,7 +37,7 @@ jobs:
           if [ -z "$KEYSTORE_BASE64" ]; then echo "::error::Secret KEYSTORE_BASE64 fehlt (Settings → Secrets and variables → Actions)"; exit 1; fi
           echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/tempasto.keystore"
 
-      - name: APK bauen
+      - name: APK und AAB bauen
         working-directory: android
         env:
           TEMPASTO_KEYSTORE: ${{ runner.temp }}/tempasto.keystore
@@ -46,16 +46,24 @@ jobs:
           TEMPASTO_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: |
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon --stacktrace
+          ./gradlew assembleRelease bundleRelease --no-daemon --stacktrace
 
-      - name: APK umbenennen
-        run: cp android/app/build/outputs/apk/release/app-release.apk Tempasto-${{ github.run_number }}.apk
+      - name: Dateien umbenennen
+        run: |
+          cp android/app/build/outputs/apk/release/app-release.apk Tempasto-${{ github.run_number }}.apk
+          cp android/app/build/outputs/bundle/release/app-release.aab Tempasto-${{ github.run_number }}.aab
 
       - name: APK als Download ablegen
         uses: actions/upload-artifact@v4
         with:
           name: Tempasto-APK-${{ github.run_number }}
           path: Tempasto-${{ github.run_number }}.apk
+
+      - name: AAB für Google Play als Download ablegen
+        uses: actions/upload-artifact@v4
+        with:
+          name: Tempasto-AAB-${{ github.run_number }}
+          path: Tempasto-${{ github.run_number }}.aab
 
       - name: Release mit APK anlegen
         uses: softprops/action-gh-release@v2

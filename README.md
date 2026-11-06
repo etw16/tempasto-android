@@ -98,8 +98,8 @@ Updates werden über die installierte Version gespielt, die Daten bleiben erhalt
 
 ## Technik
 
-- Die App ist eine einzelne HTML-Datei ohne Framework: `www/index.html` auf Deutsch, `www/en.html` auf Englisch
-- Die englische Fassung wird aus der deutschen erzeugt (`tools/i18n/build_en.py`), die Übersetzungen stehen in `tools/i18n/`
+- Die App ist eine einzelne HTML-Datei ohne Framework: `www/index.html` auf Deutsch, dazu `www/en.html`, `www/it.html`, `www/fr.html` und `www/es.html`
+- Die Sprachfassungen werden aus der deutschen erzeugt (`tools/i18n/build_lang.py`), die Übersetzungen stehen in `tools/i18n/`
 - Für Android wird sie mit [Capacitor](https://capacitorjs.com) verpackt
 - Native Funktionen: Benachrichtigungen, Teilen, Dateien, Bildschirm-an, Zurück-Taste
 - Die Verbindung zwischen App und Android steckt in `www/bridge.js`

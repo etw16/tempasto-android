@@ -1,0 +1,680 @@
+#4afc84	'Refroidir l’eau'
+#2ca3d3	`Mets ${g(c.P.R.water)} g d’eau au frigo. Tu lanceras la pâte à ${tm(new Date(st))}.`
+#4c39c0	'Chauffer le four'
+#2b6bc2	`${ovenP().ut} à ${ovenP().t}. On enfourne dans ${ovenP().pre} minutes.`
+#92770b	'À toi de jouer. Touche pour ouvrir le mode cuisson.'
+#5db08b	'Caputo Cuoco, Nuvola et Semola 1 000 : 1 000 : 300'
+#32e365	'ou farine de blé type 00'
+#20ced8	'ou farine de blé type 0'
+#0cf57c	'dans un endroit frais, 18–20 °C'
+#6f618a	'froide'
+#3b8f06	'au frais, à 16–18 °C'
+#d224e8	'Four à pizza au gaz'
+#7d9efd	'Gaz'
+#360151	'Four à bois'
+#68594f	'Bois'
+#cd5246	'Four à pizza électrique'
+#cb4489	'Électrique'
+#d257da	'Four ménager avec pierre ou acier'
+#79f06a	'Pierre'
+#617e51	'pierre/acier, position maximale'
+#dfd156	'Four ménager avec plaque'
+#5da16e	'Plaque'
+#3a22c7	'plaque, position maximale'
+#952790	'aujourd’hui'
+#411140	'demain'
+#806939	`${r==='Aujourd’hui'?'aujourd’hui':r==='Demain'?'demain':r==='Hier'?'hier':DAY[d.getDay()]} à ${tm(d)}`
+#7a1899	'Préferment'
+#3d69df	`Eau, ${pf.w}`
+#0081cb	'Dissous la levure dans l’eau, puis ajoute la farine et mélange juste assez pour obtenir des grumeaux. Ne pétris pas. Couvre.'
+#b8a65e	'Dissous la levure dans l’eau, puis incorpore la farine jusqu’à obtenir une pâte lisse. Couvre.'
+#189647	'Lancer la pâte'
+#e81512	'2–3 minutes'
+#d6e9ed	'Eau, froide'
+#723030	`${pf.k==='biga'?'Émiette la '+pf.n+' et dissous-la':'Dissous le '+pf.n} dans l’eau, ajoute la farine, mélange, couvre. Garde ${g(R.wY)} g d’eau pour la levure.`
+#405647	`Mélange farine et eau, couvre. Garde ${g(R.wY)} g d’eau pour la levure.`
+#3c71dd	'Pétrir'
+#6f9b17	'Autolyse en cours'
+#5b71ca	'environ 10 minutes'
+#ad843e	`Levure dans ${g(R.wY)} g d’eau`
+#091122	'puis le sel'
+#a6bf54	'La pâte repose, couverte'
+#e7b3e2	'Direction le frigo'
+#8f85c5	'Pointage à température ambiante'
+#561a10	'Au frigo'
+#7520c6	'Toute la pâte dans la boîte huilée, couvercle fermé.'
+#684989	'Rabattre, puis au frigo'
+#5676b3	'Rabats les bords vers le centre, mets la pâte dans la boîte huilée, puis au frigo.'
+#26b67c	'Pointage au frigo'
+#023728	'Pâtons'
+#1e6fb1	'Divise la pâte bien froide, façonne des boules serrées, remets-les au frigo en boîtes.'
+#1c1e09	'Sortir du frigo'
+#4801c4	'Pâtons au frigo'
+#a9fbe3	'Allumer le four'
+#2e596e	'Laisser tempérer les pâtons'
+#f90381	'Semoule sur le plan et la pelle, garnitures prêtes.'
+#e3a280	'Enfourner'
+#f982f2	'Le four chauffe'
+#63c6fe	'<div class="sh-k">Manger plus tard</div><div class="shift-l">'
+#d9972d	'<div class="sh-k">Commencer plus tard, dîner à la même heure</div><div class="shift-l">'
+#954b0e	'<div class="sh-k">Manger plus tôt</div><div class="shift-l">'
+#a2f508	'« Manger plus tard » décale tout. « Commencer plus tard » garde le dîner à sa place, la pâte a donc un peu moins de temps : fais le test du doigt avant d’enfourner.'
+#05e771	'Les pâtons sont déjà sortis. À température ambiante, ils tiennent encore 1 à 2 heures au plus, après ils lèvent trop. Fais d’abord le test du doigt.'
+#d7fc54	'Lancer la pâte à '
+#e9e7cb	', le dîner ne bouge pas'
+#64aa54	'trop tôt'
+#6d1507	'mars'
+#4c1a8d	`dès ${ok[0][1]} h`
+#36d1cd	`<button class="slot" data-h="${h}" aria-pressed="${!!match&&match[1]===h}"${ok?'':' disabled'}><b>${n}</b><span>${h}:00</span></button>`
+#63e847	`<button class="slot other" data-h="x" aria-pressed="${!match}"><b>Autre heure</b><span>${match?'choisir une heure':tm(b)}</span></button>`
+#fd035e	`${S.n} ${S.n>1?'pizzas':'pizza'} <em>›</em>`
+#42c859	`${dw}, ${hrTxt} · ${S.n} pâtons · ${S.h} h`
+#626683	`${S.h} h de fermentation <em>›</em>`
+#54ab99	`Pour ${S.h} h de fermentation, tu lances la pâte ${(r=>r==='Aujourd’hui'?'aujourd’hui':r==='Demain'?'demain':DAYL[sc.start.getDay()])(rel(sc.start))} à ${tm(sc.start)}.`
+#7fd600	`${DAY[d.getDay()]} ${d.getDate()} ${['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'][d.getMonth()]}`
+#a53b15	`<div class="mo-r"><input data-mon="${i}" value="${(x.n||'').replace(/"/g,'')}" placeholder="Farine ${i+1}" maxlength="28"><input data-mop="${i}" type="number" inputmode="numeric" min="0" max="100" value="${+x.p||''}" placeholder="%"><span>%</span></div>`
+#5aa467	`Total ${sum} %. L’appli le ramène à 100 %.`
+#8dde80	`${mx==='own'?'Mélange perso':(MIXES[mx]||MIXES.tp).d} · 2,8 % de sel sur la farine. Pas d’huile dans la pâte, comme à Naples. L’appli calcule la levure ; la levure sèche, c’est un tiers de la fraîche.`
+#5f113d	' Biga : 40 % de la farine avec 50 % d’eau, 14–22 h au frais.'
+#bcd450	' Poolish : 30 % de la farine avec le même poids d’eau, 12–20 h à 18–20 °C.'
+#f7310b	'Le plan est déjà lancé. Tu peux encore changer ces réglages jusqu’à ce que tu lances la pâte.'
+#d3a40b	`S’applique à la prochaine pâte. Celle en cours reste à ${q.n} × ${q.w} g.`
+#4414ca	'non'
+#baaa52	`Actuel : ${S.w} g par pâton · ${S.hy} % d’eau · frigo ${S.k} °C`
+#4fa6e2	'Un peu juste pour refroidir l’eau : ajoute quelques glaçons, et la pâte sera à la bonne température.'
+#d0bb93	`<div class="alert bad"><b>Trop tard</b><span>Choisis une fermentation plus courte ou une heure plus tardive.</span></div>`
+#e7986c	`<div class="alert"><b>${nf(R.total/1000,1)} kg de pâte</b><span>Pétris en deux fois.</span></div>`
+#b307f0	'Lancer le plan'
+#7c5b9f	`${p.n} ${p.n>1?'pizzas':'pizza'} · pâte ${p.h} h`
+#2347b6	`${p.n} ${p.n===1?'pizza':'pizzas'}`
+#6639c9	`${p.h} heures`
+#731440	`Pâte lancée à ${tm(new Date(S.cook.start))}`
+#a3f9b2	`Ensuite · étape ${idx+1} sur ${tl.length}`
+#55eeeb	`<span class="st-r ${n.st}${late?' late':''}"><i></i><span><b>${n.l}</b><span class="mono">${late&&!on?'maintenant':dShort(n.d)}</span></span></span>`
+#81b4f0	`Pâte lancée ${at(new Date(S.cook.start))}. Si tu coches une étape plus tôt ou plus tard, les horaires suivent.`
+#cb7aff	`Aperçu pour ${S.n} pizzas avec ${S.h} h de fermentation. « Lancer la pâte » ouvre le mode cuisson.`
+#11febb	`${gapH>=3?Math.round(gapH)+' h':dur(gapH)} ${x.s.cold?'au frigo':'à température ambiante'}`
+#63edf6	'Rabattre, au frigo'
+#1333a6	'Frigo'
+#c7f8f3	'MARS'
+#dc3668	'Apprêt'
+#352291	'mars'
+#40d5d1	'warm'
+#f44950	`<em class="${r.wait.cold?'cold':'warm'}">${r.wait.cold?IC_SNOW:IC_HOUSE} ${hrs}</em>`
+#4128f0	`<div class="pk-r${r.done?' done':''}${r.cur?' cur':''}${r.hl?' hl':''}"><span class="bn">${r.t==='Sortir'?(sub?'Sortir':'Sortir du frigo'):r.t==='Rabattre, au frigo'?'Rabattre':(NAME[r.t]||r.t)} ${sub}</span><i></i><span class="bt">${tm(r.d)}</span></div>`
+#ceebbd	' frigo</span><span class="warm">'
+#7a8c61	`${p0.n} pizzas · pâte ${p0.h} h · cuisson ${DAY[B0.getDay()]} ${tm(B0)}`
+#63fe5f	'Pâte prête'
+#5900ff	`Étape ${c.tl.indexOf(x)+1} sur ${c.tl.length} · touche`
+#ea2978	'Touche et c’est parti'
+#bb7122	`Plan en cours · encore ${cdLong(d-now)}`
+#a87601	`${x.s.wait||'Pause'} · encore ${cdLong(d-now)}`
+#a60eb7	`Reprise : ${r==='Aujourd’hui'?'aujourd’hui':r==='Demain'?'demain':r} ${tm(d)}`
+#aa6964	`<span class="pb" aria-hidden="true">${tl.map((_,j)=>`<i class="${!x||j<idx?'d':j===idx?'c':''}"></i>`).join('')}</span><span class="pl">${x?'Planning':'Terminé'}</span>`
+#ea4cbd	`Voir le planning, étape ${idx+1} sur ${tl.length}`
+#c28208	'Voir le planning'
+#207656	`Ta pâte : lancée ${lw(at(new Date(Math.min(+new Date(S.cook.start),...c.tl.map(t=>t.doneAt?+new Date(t.doneAt):Infinity)))))}, cuite ${lw(at(c.tl[c.tl.length-1].doneAt))}.`
+#bed65a	`<br><button class="sup-link" data-sheet-open="supSheet">Ça t’a plu ? Soutiens Tempasto ♥</button>`
+#8b95e8	'Planifier une nouvelle pâte'
+#e6756b	`<b>C’est bon quand :</b> `
+#c0bec5	'Fait'
+#7dead3	`${a.t}. ${a.a?a.a+' '+(a.u||'')+'. ':''}${a.li?a.li.map(r=>r[0]+' '+r[1]).join('. ')+'. ':''}${a.d||''}${(()=>{const hw=howOf(x.s,c.P);return hw.crit&&i===A.length-1?' C’est bon quand : '+hw.crit.join(', ')+'.':''})()}`
+#9627fc	`${cdLong(late)} de retard. Pas grave.`
+#b1f9ca	'À toi de jouer.'
+#5cee37	'Me le rappeler dans 10 min'
+#713253	`<span class="kr-l">Début</span><b class="kr-n">${tm(d)}</b><span class="kr-u">${rr}</span>`
+#1dafbd	`<span class="kr-l">Commence dans</span><b class="kr-n" id="krCd"></b><span class="kr-u">à ${tm(d)}</span>`
+#846615	'Plan en cours'
+#7ba419	`${x.s.t} ${rr} à ${tm(d)}.`
+#e97362	`Mets ${g(c.P.R.water)} g d’eau au frigo avant ${tm(wc)}. `
+#03c3b1	`Lance la pâte ${rr} à ${tm(d)}.`
+#0313e0	'Retour'
+#358755	`<span class="kr-dough">${doughSVG(fr)}</span><b class="kr-n sm">${tm(d)}</b><span class="kr-u">${r==='Aujourd’hui'?'aujourd’hui':r==='Demain'?'demain':DAY[d.getDay()]}</span>`
+#95e2b4	`<span class="kr-l">Reprise</span><b class="kr-n">${tm(d)}</b><span class="kr-u">${r==='Aujourd’hui'?'aujourd’hui':r==='Demain'?'demain':r}</span>`
+#866a87	'La pâte repose'
+#7fdf34	`${wt}Ensuite : ${A[0].t}, ${rr} ${tm(d)}.`
+#f46b12	`Four allumé à ${tm(x.s.ovenAt)}. Ensuite : enfourner.`
+#be6b4b	`<span class="kr-l">Pause</span><b class="kr-n" id="krCd"></b><span class="kr-u">jusqu’à ${tm(d)}</span>`
+#2457d4	`${x.s.id==='bake'||!x.s.wait||/^La pâte repose/.test(x.s.wait)?'':x.s.wait+'. '}Ensuite : ${A[0].t} à ${tm(d)}.`
+#8f07e0	`${ovenP().ut} à ${ovenP().t}. Ensuite : enfourner à ${tm(d)}.`
+#da8a90	'Continuer plus tôt'
+#c724df	`Eau, ${R.pf.w}`
+#1e96d9	'Mets la farine dans un saladier, ajoute l’eau avec la levure.'
+#ff7b45	'Mélange brièvement du bout des doigts jusqu’à ce que tout soit humide et grumeleux. Ne pétris pas.'
+#b0faea	`Couvre et laisse mûrir ${dur(sc.pfH)} ${R.pf.where}.`
+#22c1b6	'Incorpore la farine jusqu’à obtenir une pâte lisse et épaisse.'
+#4f374e	'grumeleux, sans farine sèche'
+#0507d4	'mélangé et lisse'
+#8e4404	'La biga doit rester grumeleuse. Plus tard, elle sent un peu le yaourt : c’est bon signe.'
+#7616c8	'Le poolish est mûr quand il est plein de bulles et commence tout juste à retomber au centre.'
+#31fda7	'Sel'
+#c30ae6	`${R.pf.k==='biga'?'La '+R.pf.n+' dans la cuve du pétrin, émiettée':'Le '+R.pf.n+' dans la cuve du pétrin'}.`
+#bade64	`Ajoute <b>${g(R.wA)} g</b> d’eau froide et mélange brièvement. Les <b>${g(R.wY)} g</b> restants serviront plus tard pour la levure.`
+#cb765f	'Ajoute toutes les farines.'
+#157ec2	'Ajoute la farine.'
+#276606	'2–3 minutes en vitesse 1, jusqu’à ce qu’il ne reste plus de farine sèche. Pas plus.'
+#4c6197	'Couvre la cuve du pétrin et laisse reposer 30 minutes.'
+#703fe1	'aucune farine sèche'
+#4def61	'Toutes les farines dans la cuve du pétrin.'
+#21d5b2	'La farine dans la cuve du pétrin.'
+#6d5df2	`Ajoute <b>${g(R.wA)} g</b> d’eau froide. Les <b>${g(R.wY)} g</b> restants serviront plus tard pour la levure.`
+#21f5f6	'à la cuillère'
+#72393a	''
+#95a343	'du saladier'
+#d8ba8e	'dans le saladier'
+#6d01aa	'saladier'
+#12e6a1	'colle à peine aux mains'
+'Zucchini'	'Courgettes'
+#4b3943	'Mets l’eau au frigo 2 heures avant. Froide, elle garde la pâte sous 25 °C pendant le pétrissage.'
+#daffeb	`Dissous la levure dans <b>${g(R.wY)} g</b> d’eau froide.`
+#5ff52a	`Verse l’eau à la levure en 3 fois <b>${part} g</b>, chaque ajout seulement quand le précédent est absorbé.`
+#8c0469	'Pétris jusqu’à ce que la pâte se détache de la cuve du pétrin (3–4 min).'
+#b72b4a	`Ajoute <b>${g(R.salt)} g</b> de sel en pluie, pétris 3 minutes.`
+#e82d97	'Test du voile : étire la pâte finement. Si elle se déchire, pétris encore une minute et recommence, 4 minutes au plus.'
+#79ba1e	'Vérifie la température de la pâte. Entre 23 et 25 °C, c’est parfait.'
+#e55f24	'se détache bien de la cuve du pétrin'
+#f1338b	'pâte à 23–25 °C'
+#68db1d	'Le sel seulement quand la pâte se détache de la cuve du pétrin. Trop tôt, il freine le gluten et la pâte reste rugueuse.'
+#210cb8	'Pose la pâte sur le plan de travail.'
+#e4e320	'Rabats les quatre côtés vers le centre.'
+#e039b2	'Retourne-la, côté lisse dessus, et couvre-la.'
+#5e71c4	'surface tendue et lisse'
+#29ad5d	'Encore rugueuse ? Rabats une deuxième fois après 15 minutes.'
+#60a968	'Rabats la pâte des quatre côtés vers le centre, retourne-la.'
+#e4fc2a	'Au fond et en bas du frigo : c’est là que le froid est le plus régulier.'
+#c1e284	'boîte huilée, couvercle fermé'
+#174fd5	'Marque le niveau avec un bout de ruban adhésif : tu verras plus tard de combien elle a levé.'
+#a329b2	'Sors la pâte froide de la boîte et pose-la sur le plan.'
+#92391b	`Avec la balance, divise en <b>${p.n} morceaux de ${p.w} g</b>.`
+#06b254	'Façonne chaque morceau en boule bien serrée, soudure en dessous.'
+#a17dc4	'Dans des boîtes avec un peu d’huile ou de semoule, couvercle fermé, retour au frigo.'
+#4bd694	'N’empile pas les boîtes, sinon celles du milieu refroidissent plus lentement.'
+#e201e9	'Sors les boîtes du frigo, laisse les couvercles fermés.'
+#d7f6b3	`Laisse-les environ <b>${dur(sc.A)}</b> à température ambiante.`
+#f64a8c	'Froide, la pâte se déchire à l’étirage. Il faut qu’elle soit à température ambiante pour bien se façonner.'
+#22e854	`Chauffe le ${o.n.toLowerCase()} à ${o.t}, environ ${o.pre} minutes.`
+#ac757d	`Four au maximum, ${o.ut.split(',')[0]} à l’intérieur, préchauffe environ ${o.pre} minutes.`
+#86f3a2	'Saupoudre le plan et la pelle de semoule.'
+#9b7e93	'Garde garnitures et sauce à portée de main.'
+#e91439	'semoule sur plan et pelle'
+#106a2b	'Mesure sur la pierre avec un thermomètre infrarouge, pas dans l’air.'
+#5f8837	'Test du doigt : appuie doucement. Si le creux remonte lentement, la pâte est prête.'
+#75d231	'Décolle le pâton avec une corne et pose-le dans la semoule, face du dessus en bas.'
+#42db3c	'Jamais de rouleau : appuie du centre vers l’extérieur, ne touche pas au bord.'
+#ef7f8e	'Du centre vers l’extérieur'
+#6f0d6b	'dessous bien doré'
+#2940c3	'Garnis léger : trop de sauce, et le centre devient mou.'
+#6d584b	'Tu dis quand on mange.'
+#01b16a	'Tempasto te dit quoi faire, et quand, de la pâte jusqu’au four.'
+#f5b805	'Choisis le jour et l’heure. L’appli compte à rebours et te dit quand lancer la pâte.'
+#dc2059	'Choisir les pizzas'
+#d04d6d	'Choisis ce qui va dessus. La liste de courses se fait toute seule.'
+#ef5b14	'Comment pétris-tu ?'
+#8f335b	'Les gestes du mode cuisson en dépendent. Modifiable dans Plus → Réglages.'
+#328534	'Quel four ?'
+#612d45	'Température, temps de cuisson et préchauffage en dépendent. Modifiable dans Plus → Réglages.'
+#366b85	'Tant que le plan n’est pas lancé, aucun rappel. Ensuite, Tempasto pense à tout : l’eau, la pâte, chaque étape.'
+#12aa7a	`<div class="chips intro-ov">${Object.entries(OVENS).map(([k,o])=>`<button class="chip" data-ov="${k}" aria-pressed="${(S.oven||'gas')===k}">${{gas:'Four au gaz',holz:'Four à bois',elek:'Four électrique',home:'Four + pierre',blech:'Four + plaque'}[k]||o.n}</button>`).join('')}</div>`
+#c662c5	'Suivant'
+#e023b2	'Pétrin à spirale à cuve fixe. Il pétrit lentement sans chauffer la pâte, idéal pour les hydratations élevées et les longues fermentations.'
+#dada25	'Pour la pizza napolitaine, la pierre doit atteindre 450–480 °C. Le gaz se règle plus facilement que le bois.'
+#5993d3	'Une pelle perforée en aluminium pour enfourner : l’excès de semoule tombe et la pizza glisse mieux.'
+#ba5411	'Petite pelle ronde pour tourner la pizza dans le four. Un quart de tour toutes les 20–30 secondes pour que le bord dore uniformément.'
+#6303a2	'Farine'
+#64e184	'Fromage'
+#73fd61	'La veille, déchire-la en morceaux et laisse-la égoutter dans une passoire au frigo, pour que la pizza ne soit pas détrempée.'
+#acabe7	'Juste un peu de sel, sans cuisson. Passe-la au moulin à légumes, ne la mixe pas.'
+#6be9c7	`<article class="rec"><span class="rec-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${RICON[r.ic]}</svg></span><div class="rec-t"><span class="rec-k">${r.cat}</span>${r.name?`<b>${r.name}</b>`:''}${r.tip?`<p>${r.tip}</p>`:''}<div class="rec-a">${r.url?`<a class="rec-go" href="${r.url}" target="_blank" rel="noopener">Voir →</a>`:''}${r.help?`<button class="rec-help" data-help="${r.help}"><small>${REC_K}</small>${REC_HELP} ›</button>`:''}</div></div></article>`
+#f56e9d	'75 g de sauce tomate'
+#7eba81	'<br><b>Après cuisson :</b> '
+#d99bc6	'Notre carte des pizzas 🍕'
+#7cad3f	'Image enregistrée – partage-la maintenant sur WhatsApp'
+#563be6	'Four et garnitures'
+#c84821	'Tout est cuit'
+#7d9101	`<div class="ots" id="ovTimer" ${OTS.length?'':'hidden'}></div><p class="hw-p">Touche une pizza quand elle entre au four. Le minuteur compte ${bsTxt().replace(' s',' secondes').replace(' min',' minutes')} et te dit quand la tourner.</p><div class="ov-list">${list.map(p=>{const n=S.pz[p.id],d=Math.min(S.cook.oven[p.id]||0,n);return `<button class="ov-row${d>=n?' full':''}" data-ov="${p.id}"><span class="ov-pz">${pizzaSVG(p)}</span><span class="ov-n"><b>${p.n}</b><span class="ov-dots">${Array.from({length:n},(_,j)=>`<i class="${j<d?'d':''}"></i>`).join('')}</span><small class="ov-b">${belagOf(p,1)}</small></span><span class="ov-c">${d?`<i class="ov-m" data-ovm="${p.id}" role="button" aria-label="Une de moins">−</i>`:''}${d}/${n}</span></button>`;}).join('')}</div>${got?'<button class="ov-reset" id="ovReset">Réinitialiser</button>':''}`
+#9e93c4	`${p.n} est au four. ${bsTxt().replace(' s',' secondes').replace(' min',' minutes')}.`
+#9b440f	'au four'
+#5ad057	'minutes'
+#288a0d	`<div class="hw-note">Tu commences ${dur(delta)} plus tard que prévu. L’heure du dîner ne bouge pas, le temps au frigo raccourcit un peu. Jusqu’à 3 h environ, pas de problème.</div>`
+#06a57e	`<div class="hw-note">Tu commences ${dur(-delta)} plus tôt que prévu. Fais bien le test du doigt avant d’enfourner.</div>`
+#be125c	`<div class="hw-sec"><span class="hw-k">Il te faut</span><div class="hw-need">${h.need.map(r=>`<div><span>${r[2]?`<i style="background:${r[2]}"></i>`:''}${r[0]}</span><b>${r[1]}</b></div>`).join('')}</div></div>`
+#9e16bc	`<div class="hw-sec"><span class="hw-k">Pas à pas</span><ol class="hw-how">${h.how.map(t=>`<li><span>${t}</span></li>`).join('')}</ol></div>`
+#c8c6a1	'Pâte'
+#48ab9c	'Arrêter la pâte ?'
+#0898e5	`<p class="hw-p">Le plan et tous les rappels s’arrêtent. Tes pizzas, la liste de courses et tes réglages restent.</p><div class="hw-btns"><button class="cta" id="endYes">Oui, arrêter</button><button class="btn ghost" id="endNo">Continuer</button></div>`
+#abb98d	'Pâte arrêtée'
+#9bab5b	' dans la pâte (g)'
+#527b77	`la pâte sera à peu près prête (après ${Math.round(rh)} h). Prévu : ${at(B)}.`
+#dbec36	`<div class="alert"><span>L’heure de cuisson tombe avant celle du pétrissage.</span></div>`
+#d6238d	`<div class="alert good"><b>Tout va bien</b><span>Suis le plan et fais le test du doigt avant d’enfourner.</span></div>`
+#1fa3b9	'La classique : tomate, fior di latte, basilic.'
+#24475c	'Basilic'
+#4faea0	'feuilles'
+#d7a7a3	'La classique au salami : tomate, fior di latte et beaucoup de salami doux.'
+#28aacb	'Sans fromage : tomate, ail, origan et une bonne huile d’olive.'
+#672f6b	'Ail'
+#7abcda	'Huile d’olive'
+#f8a2ab	'Tomate, salami piquant, fior di latte, une pointe d’huile pimentée.'
+#8b2cb8	'Épicée'
+#a2fa90	'Huile pimentée'
+#45c707	'Tomate, nduja piquante et miel. Sucré, piquant, crémeux.'
+#35326d	'Tomate et fior di latte, après cuisson prosciutto crudo, roquette, parmigiano.'
+#caef6f	'Tomate, après cuisson mortadelle, burrata et pistaches concassées.'
+#b075af	'Tomate, pommes de terre en lamelles très fines, romarin et pecorino.'
+#e6727b	'Tomate, salsiccia et friarielli amers. La préférée des Napolitains.'
+#968d6a	'Friarielli ou brocoli'
+#5be525	'Tomate, fior di latte, plein de champignons, ail et parmigiano. Si tu veux, une touche de crème de truffe après cuisson.'
+#857a2b	'Tomate, tomates cerises, roquette et une burrata après cuisson.'
+#416e83	'Tomate, fior di latte, gorgonzola, provola et parmigiano.'
+#55e032	'Tomate, fleurettes de brocoli, cuillerées de ricotta, zeste de citron et un peu de piment.'
+#e0f18f	'pc'
+#80ea6c	'Potager : tomate, courgette, poivron, aubergine et fior di latte.'
+#7aa443	'En dessert : cuis la pâte sans garniture, puis Nutella, fraises, noisettes et sucre glace.'
+#0dbeb1	'Noisettes concassées'
+#65eb1e	'Crème de truffe'
+#0acfea	'Noisettes'
+#3c8e56	'Oignon rouge'
+#7c1207	'Oignon'
+#9f8b11	'Voir tous les ingrédients'
+#20fd59	' pc'
+#e3a390	' feuilles'
+#bdf370	'Semoule de blé dur pour fleurer'
+#ffe1e1	'1 sachet suffit'
+#805053	'1 cube suffit, congèle le reste'
+#9e2117	`dont ${g(sf.tom/100)} g pour la sauce`
+#e03f52	'pour la sauce'
+#553f4c	'Basilic|feuilles'
+#683b92	'Huile d’olive|g'
+#b64fae	'pour arroser'
+#f0e5fa	'Il manque encore un nom et au moins une garniture.'
+#a7757f	'Il manque encore un nom pour ta pizza.'
+#8b4bb0	'Choisis au moins une garniture.'
+#8ec17d	`${n} est à la carte`
+#edee61	'Toutes'
+#c354e3	'Classiques'
+#e41ef9	`${tot} choisies · ${tot-n} de plus que de pâtons`
+#935627	`Les ${n} pâtons sont attribués`
+#6081e3	' · pâtons fixés'
+#69a822	`<div class="card${c?' on':''}${openTops.has(p.id)?' allt':''}" data-id="${p.id}">${pizzaSVG(p)}<div class="tagrow"><span class="tag ${tagCls[p.tag]||''}">${p.tag}${p.dessert?' · sans sauce':''}</span>${p.by?`<span class="by">${p.by}</span>`:''}</div><h3>${p.n}</h3>${topChips(p)}<div class="pzst"><button data-pz="${p.id}" data-d="-1" aria-label="${p.n} une de moins">−</button><output>${c}</output><button data-pz="${p.id}" data-d="1" aria-label="${p.n} une de plus"${pzTotal()>=S.n?' class="full"':''}>+</button></div>${p.own?`<button class="own-del" data-owndel="${p.id}" aria-label="Supprimer la pizza perso">Supprimer</button>`:''}</div>`
+#bfef5e	`<button class="card own-add" id="ownAdd"><span class="oa-plus">+</span><b>Ta propre pizza</b><span>Choisis tes garnitures</span></button>`
+#e05621	`<p class="pan-h">Touche ce que tu as toujours à la maison. Ça disparaît de la liste.</p>`
+#5515ec	'Sauce'
+#b97e56	'Garnitures'
+#9c0243	`<div class="tk-meta"><button data-act="pan">Placard (${D.pan.length}) · modifier</button></div>`
+#718a4f	`pour ${sf.rossa||S.n} pizzas`
+#771f27	'quelques feuilles'
+#8afcb6	`🍕 ${some?'Encore à acheter':'Ingrédients'} pour ${n} ${n>1?'pizzas':'pizza'}`
+#4a3611	'Copie impossible'
+#e90de3	`<span>${m}</span><button class="t-undo">Annuler</button>`
+#52d522	'Préferment liquide à parts égales de farine et d’eau avec très peu de levure. Il mûrit la veille et apporte plus d’arômes et une mie aérée.'
+#b14355	'Préferment ferme avec environ moitié moins d’eau que de farine. Il reste grumeleux, mûrit au frais la veille et donne de la force à la pâte et un léger goût de noisette.'
+#3fa495	'Pendant cette plage horaire, Tempasto ne te prévoit aucune étape. Si le boulage tombe la nuit, l’appli le place la veille au soir ou le lendemain matin, et le temps au frigo s’ajuste. Si c’est le lancement de la pâte qui tombe la nuit, tu vois un message et tu peux décaler le dîner. Ce n’est pas un mode Ne pas déranger : comme aucune étape n’est prévue la nuit, aucun rappel n’arrive non plus.'
+#94236a	'Farine et eau reposent 30 minutes sans levure ni sel. La farine s’imbibe, et la pâte devient ensuite plus lisse et plus facile à pétrir.'
+#e5cec6	'La pâte lève en un seul morceau, avant d’être divisée en pâtons.'
+#610e53	'Les pâtons continuent de lever après la division, en général au frigo.'
+#11c74a	'Les boules de pâte pesées : chacune deviendra une pizza.'
+#4c8e9d	'Pâton'
+#8b204f	'Une boule de pâte pesée qui devient une pizza.'
+#0e2486	'Jusqu’où la pâte a levé. À 100 %, elle est prête à enfourner. Tu le vérifies avec le test du doigt.'
+#47d8ae	'Les pâtons sortent du frigo et reviennent à température ambiante. Ils deviennent souples et se façonnent bien.'
+#df21d2	'Étire un morceau de pâte finement entre tes doigts. S’il devient presque transparent sans se déchirer, c’est assez pétri.'
+#7e5e15	'Tire le pâton vers toi sur le plan avec les deux mains en le tournant, jusqu’à ce que la surface soit tendue.'
+#ebf3ac	`Dîner déplacé : ${at(new Date(S.bake))}, pour garder ${S.h} h de fermentation`
+#470ac6	`Trop juste pour ${S.h} h de fermentation. Choisis une fermentation plus courte.`
+#5e1e18	'Trop tôt pour cette fermentation'
+#65a4b8	`Pâte à pizza pour ${p.n} × ${p.w} g, ${p.h} h de fermentation`
+#5e0b89	`Dîner : ${DL[B.getDay()]} ${B.getDate()} ${['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'][B.getMonth()]}, ${tm(B)}`
+#489398	`Eau froide ${g(R.water)} g`
+#eac784	`Sel ${g(R.salt)} g`
+#c1cd0a	'Planifié avec Tempasto'
+#17d14c	'Plan copié'
+#a9b705	'La copie n’a pas marché'
+#9a4cab	'Le temps fait tout.'
+#b5fc26	'De l’eau bien froide.'
+#d18439	'Qu’il soit brûlant !'
+#7da69b	'Un petit mot pour toi'
+#141e9c	'<ul class="nz-lines"><li>J’habite au-dessus de la pizzeria.</li><li>À chaque étape, je te glisse</li><li>un petit mot derrière le bouton.</li><li>Un doute ? Touche-le.</li></ul>'
+#ce1ed2	'maintenant'
+#a3de8b	'Préferment dans '
+#164483	'Pâte dans '
+#bea3dc	`Partager la carte avec ${n} ${n===1?'pizza':'pizzas'}`
+#d946ae	'Choisis au moins une pizza'
+#85e70b	'Toutes les pizzas remises à zéro'
+#b11615	'Pizza supprimée'
+#12b62c	'Vraiment supprimer ?'
+#202a2b	`Les ${S.n} pâtons sont attribués`
+#aa4fb4	`Tempasto-Sauvegarde-${isoDate(d)}.json`
+#5593c8	'Sauvegarde enregistrée'
+#19100a	'Faire la pâte'
+#f68624	'Pâtons au frigo'
+#416aab	'Pâtons hors du frigo'
+#b99a69	'Diviser la pâte'
+#65ef47	`Ensuite ${r.wait.ph} ${r.wait.txt}.`
+#90a844	'Fichier calendrier enregistré – ouvre-le pour l’ajouter'
+#4ce29b	'Ce n’est pas une sauvegarde Tempasto'
+#bdbbfb	'comme l’appareil'
+#9edbe9	'Balance de cuisine'
+#a66c48	`idéalement une balance de précision pour ${nf(ya,1)} g de levure`
+#8d14ef	'précise au gramme'
+#ca0443	'Grand saladier'
+#afec52	'avec crochet pétrisseur'
+#e8d061	'pour pétrir à la main'
+#c17cc6	'Boîte avec couvercle'
+#97a3d5	`pour ${nf(R.total/1000,1)} kg de pâte, au moins deux fois plus grande`
+#d3e0a2	'Boîtes pour les pâtons'
+#5904b0	`${S.n} boîtes ou un grand bac plat, plus une corne`
+#abb41a	'Pierre ou acier à pizza'
+#c6c4b1	'et semoule pour fleurer'
+#6ce5bd	'« Suivant » reconnu'
+#a6e2f9	'Le micro n’est pas autorisé ici'
+#ad0b43	'Dis « Suivant » pour cocher'
+#01324e	'Les commandes vocales ne marchent pas sur cet appareil'
+#066c34	'Lecture à voix haute activée.'
+#1910da	'<p class="small muted">Pas encore de modèles. Prépare un plan, donne-lui un nom, enregistre-le.</p>'
+#483e63	`Sera enregistré : ${DAYL[b.getDay()]} ${tm(b)} · ${S.n} pâtons · ${S.h} h · pizzas et recette.`
+#991d99	`Modèle « ${n} » enregistré`
+#97fe60	`${t.name} appliqué, choisis une date`
+#372b2d	'Mélange Tempasto'
+#4c654c	'Classique'
+#bf8385	'100 % farine de blé type 00'
+#92c7b1	'Farine de blé type 00'
+#445926	'p. ex. Caputo Pizzeria'
+#3aabb4	'Avec complète'
+#45a5e2	'80 % type 00, 20 % farine de blé complète'
+#43d806	'Farine de blé complète'
+#f0468b	'pierre à pizza'
+#5bb28c	'à la main'
+#92eb64	'Levure sèche'
+#ceae82	'Levure fraîche'
+#c6ba53	'fr-FR'
+#2e8ed8	'Dim'
+#be092d	'Lun'
+#1611a3	'Mar'
+#69ec61	'Mer'
+#7306fc	'Jeu'
+#a926fb	'Ven'
+#2c2be5	'Sam'
+#483621	'dimanche'
+#086433	'lundi'
+#b4d783	'mardi'
+#5b8063	'mercredi'
+#bf5875	'jeudi'
+#22af5f	'vendredi'
+#f236a1	'samedi'
+#ae83e3	'Aujourd’hui'
+#3635d2	'Demain'
+#386dc0	'Hier'
+#bca854	`Lancer ${pf.k==='biga'?'la':'le'} ${pf.n}`
+#8a9c0f	`${pf.n} en maturation`
+#d8d5ad	'À la main'
+#20dffb	'Pétrin'
+#d09187	'Vitesse 1'
+#20bed8	'Rabattre'
+#0681fa	'Rabats vers le centre, retourne, laisse couvert.'
+#0fa1f0	'Diviser'
+#531bd5	'Laisse les boîtes fermées.'
+#384d40	'par pizza'
+#144cac	`<button class="shift-o" data-sh="${v}" aria-pressed="${v===cur}"${ok(v)?'':' disabled'}><b>${v===0?'comme prévu':(v>0?'+':'−')+Math.abs(v)+' h'}</b><span>Dîner ${DAY[B.getDay()]} ${tm(B)}</span></button>`
+#74a7e4	`<button class="shift-o" data-late="${v}" aria-pressed="${Math.abs(late-v*H)<60000}"><b>+${v<1?'30 min':v+' h'}</b><span>Début ${tm(new Date(+base.sc.start+cur*H+v*H))}</span></button>`
+#bf5630	'Nouvelle heure : '
+#ebe7eb	'Midi'
+#61c797	'Après-midi'
+#cb27bd	'Soir'
+#18ff3d	'mai'
+#dade20	'oct.'
+#d7598e	'déc.'
+#acb612	`${DAY[bk.getDay()]} ${bk.getDate()} ${['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'][bk.getMonth()]} · ${tm(bk)} <em>›</em>`
+#48bb56	`${DAY[bk.getDay()]} ${bk.getDate()} ${['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'][bk.getMonth()]} · ${tm(bk)}`
+#14938b	`env. Ø ${DIA[S.w]||30} cm`
+#6ffc63	'Fraîche'
+#c42b86	'Sèche'
+#e4151c	'Aucun'
+#4e6e19	'Perso'
+#3fd1dc	'Farine de blé type 0'
+#c5613b	'Total 100 %.'
+#951b3b	`Pousse env. ${pc} % · prête ${DAY[B.getDay()]} ${tm(B)}`
+#aee53f	`${B.getDate()} ${['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'][B.getMonth()]}`
+#a7604b	`${day} à ${hr}`
+#fc74c9	`Lancer ${c.P.R.pf.k==='biga'?'la':'le'} ${c.P.R.pf.n}`
+#ee8a11	'toutes les étapes faites'
+#629cbc	'Terminé'
+#a2a625	'Voir'
+#6f4425	'À toi'
+#99e75e	`Lancer ${P.R.pf.k==='biga'?'la':'le'} ${P.R.pf.n}`
+#af692c	'Sortir'
+#899ac1	'ENFOURNER'
+#771323	'JANVIER'
+#5b1096	'FÉVRIER'
+#65fe8f	'AVRIL'
+#dd7894	'MAI'
+#57541a	'JUIN'
+#aa6743	'JUILLET'
+#69bc21	'AOÛT'
+#cbb3b2	'SEPTEMBRE'
+#a81e3e	'OCTOBRE'
+#b95f81	'NOVEMBRE'
+#d30e9f	'DÉCEMBRE'
+#73cde1	'Pointage'
+#bf4b38	'janv.'
+#97a7e5	'févr.'
+#ee6483	'avr.'
+#8e3ef7	'juin'
+#ac2bc1	'juil.'
+#c45a9e	'août'
+#51526e	'sept.'
+#1bdaa9	'oct.'
+#2c88c0	'nov.'
+#64918b	'déc.'
+#d1c563	`<div class="pd pk-d"><div class="pk-it">${DAYS[wd]}<small>${r.d.getDate()} ${MS[r.d.getMonth()]}${['Aujourd’hui','Demain'].includes(rl)?' · '+rl.toLowerCase():''}</small></div>`
+#838d41	' température ambiante</span></div>'
+#2112a1	`${nDone} sur ${nAll} faites`
+#397f0b	`${nAll} étapes`
+#58d05a	'Maintenant : '
+#fad74b	'Fin de la pause : '
+#d93327	`Ensuite : ${A[0].t}`
+#ab3119	`${x.s.wait||'Pause'} · ensuite ${A[0].t}`
+#1727fa	`<span class="kr-l">${a.l||'Maintenant'}</span><b class="kr-n${a.a.length>6?' sm':''}${a.a.length>9?' xs':''}">${a.a}</b><span class="kr-u">${a.u||''}</span>`
+#76ec2a	'C’est parti'
+#aaa88c	'Pronto ! Maintenant : '
+#426bc1	'Commencer maintenant'
+#b1cc5c	`Seulement ${got} sur ${tot}. Terminer quand même ?`
+#b7d42f	'Sûr ? Touche encore'
+#4708e1	'cuve du pétrin couverte'
+#fec5f8	'Rugueuse, lisse, test du voile'
+#f21d6e	'le test du voile réussit'
+#902fc5	'Au fond, en bas'
+#373e13	`${p.n} pâtons de ${p.w} g`
+#5f502d	'peau légèrement tendue'
+#bf09a6	'pas de soudure ouverte dessous'
+#f25562	'Voilà à quoi ils doivent ressembler'
+#371219	'Test du doigt'
+#e53468	'bord gonflé, taches sombres'
+#c543c7	`<div class="chips intro-ov">${[['m','Au pétrin'],['h','À la main']].map(([k,l])=>`<button class="chip" data-km="${k}" aria-pressed="${(S.km||'m')===k}">${l}</button>`).join('')}</div>`
+#33df23	'Pétrin'
+#102942	'Four à pizza'
+#8d1451	'Pelle à pizza'
+#66478a	'Pelle à tourner'
+#208947	'Tampon à pizza'
+#20fc18	'Tomates'
+#e0b4b0	'Tomates San Marzano AOP'
+#5e3ad7	`${u==='g'?v+' g':u==='pincée'?'un peu de':v+' '+u} ${shortName(n)}`
+#cf728b	'beaucoup d’amore'
+#305368	'Tomate'
+#f5df15	`${got} sur ${tot} cuites`
+#97dfb5	' : sors-la !'
+#d57e92	'Sors-la !'
+#1d8020	'Tourne-la !'
+#431fa7	'Les astuces de Nonna'
+#e1270c	'Classique'
+#829f80	'Salami doux'
+#288fe5	'gousse'
+#a743a9	'Origan séché'
+#acdcc3	'pincée'
+#53870f	'Nduja e Miele'
+#e72bb9	'Miel'
+#92cf5d	'Roquette'
+#378bea	'Raffinée'
+#7842da	'Pistaches concassées'
+#4739db	'Généreuse'
+#be840f	'Pommes de terre à chair ferme'
+#d286ca	'Romarin'
+#0b2e11	'brin'
+#9e3055	'Végétarienne'
+#b59159	'Champignons'
+#fae6ae	'Tomates cerises'
+#d359d9	'Brocoli'
+#9b692f	'Citron bio'
+#b9c077	'Piment en flocons'
+#bee0e0	'Poivron, jaune'
+#789826	'Aubergine'
+#214dab	'Fraises'
+#13a209	'Sucre glace'
+#9bada9	'boule'
+#25a719	'boules'
+#987a41	'Persil'
+#c0c74e	'Rouge'
+#177be4	'Pommes de terre'
+#314ffe	'Poivron, rouge'
+#59437d	'Pistaches'
+#88aacf	'Poivron'
+#704e28	'Citron'
+#463cac	' gousses'
+#5ac19d	' gousse'
+#0b5c57	' brins'
+#d8d21c	' brin'
+#67f60c	' c. à café'
+#4990f1	'Sel de mer fin'
+#4e7a4f	'Tomates San Marzano'
+#c1f9e6	'1 pot'
+#656e67	`${DAY[V.getDay()]} ${V.getDate()} ${['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'][V.getMonth()]}`
+#d67a1e	'Ta propre création.'
+#9e7a7d	'Ta propre pizza'
+#7b677e	`<button class="oc${ownSel.has(n)?' on':''}" data-oc="${n}">${TOPI(n)}${n.startsWith('Poivron')?n.replace(',',''):shortName(n)}</button>`
+#dfc198	`${tot} attribuées · ${n-tot} libres`
+#fe8318	'<div class="tk-meta"><button data-act="pan">Terminé</button></div>'
+#bc09d3	'Placard'
+#44b0a4	'MAINTENANT'
+#a109ca	`FRAIS · ${String(freshWhen).toUpperCase()}`
+#bca363	`${c} ${c>1?'boîtes':'boîte'} de 400 g`
+#5a65a6	'Liste de courses copiée'
+#229ea7	'Repos nocturne'
+#0774a3	'Autolyse'
+#1333e0	'Pousse'
+#751332	'Test du voile'
+#1a58b5	'Ingrédients'
+#f716dc	'Planning'
+#0ca1d7	`${DAY[r.d.getDay()]} ${r.d.getDate()} ${['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'][r.d.getMonth()]} ${tm(r.d)}  ${r.t}`
+#5c2357	'Lisse d’abord, hein !'
+#d3df16	'Rabats en douceur.'
+#b991f2	'Divise-la bien froide.'
+#d3362d	'Garde le couvercle.'
+#644d81	'Jamais de rouleau !'
+#d749ad	'Ciao, moi c’est Nonna !'
+#b9fed1	'Touche ici.'
+#5dec2c	'Vider'
+#6e0e55	'Sûr ?'
+#81bcdb	'Tempasto-Plan.ics'
+#982642	'Fichier calendrier enregistré'
+#b02fdc	`${n.trim()} : toujours là`
+#27410f	', thermomètre facultatif'
+#60cf03	'Plaque de cuisson'
+#0c53a9	'Pelle'
+#555caf	'Le lien de don arrive bientôt'
+#9bf216	`${t.name} : ${at(nx)}`
+#cadf06	`${x.s.t} : fait`
+#056ce4	'tempérer'
+#3613f2	'bouler'
+#a84910	'tiède'
+#93f98d	'mûrit'
+#9f626c	'couvert'
+#75bc80	'reste au fond, en bas'
+#bb380c	'un peu'
+#47208b	'finement moulue'
+#81eeab	' chargée'
+#59c062	', tourne-la'
+#d70ca9	`${DAY[B.getDay()].toUpperCase()} ${B.getDate()} ${MON[B.getMonth()]}`
+#2534f4	'Encore un petit mot'
+#73d3a1	'<ul class="nz-lines"><li>À Naples, on paie parfois</li><li>une pizza de plus qu’on n’en mange.</li><li>On l’appelle pizza sospesa,</li><li>la pizza « suspendue ».</li><li>Elle attend</li><li>celui qui viendra après toi.</li><li>Tempasto ne te coûte rien.</li><li>Si ça t’a plu,</li><li>laisse un paquet de farine à pizza.</li></ul><div class="nz-sig">– Nonna</div><div class="nz-sup"><button class="cta" data-nz-don>Offrir la farine · 3 €</button><button class="nz-later" data-nz-close>Peut-être plus tard</button><button class="nz-later nz-never" data-nz-never>Ne plus afficher</button></div>'
+#ea4c16	'Nonna n’en reparlera plus. Tu la retrouves quand même dans Plus.'
+#06b6c0	'Le reste du plan et tous les rappels suivent ; la pâte reste un peu plus ou un peu moins longtemps au frigo. Les options grisées tombent trop tôt ou trop tard dans la journée, ou en demandent trop à la pâte.'
+#192f19	`<span>${S.h} h de fermentation ne suffisent plus pour ${dn}.</span><button data-alt-h="${alt}">Passer à ${alt} h</button>`
+#b52edd	`<button class="al-card" data-al-open="recSheet"><span class="al-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span><span class="al-t"><b>${nl} à ${tm(nt)} tombe pendant ton repos nocturne</b><span>de ${nw[0]} h à ${nw[1]} h, réglable dans Réglages <em>›</em></span></span></button>`
+#d37f42	`Dissous la levure dans l’eau ${t}. Si ta balance ne pèse que des grammes entiers : dissous ${tk.G} g de levure dans <b>${tk.D} g</b> d’eau, prends-en <b>${tk.w} g</b> et jette le reste.`
+#4742c7	`Dissous la levure dans <b>${g(R.wY)} g</b> d’eau froide. Si ta balance ne pèse que des grammes entiers : dissous ${tk.G} g de levure dans <b>${tk.D} g</b> d’eau froide, prends-en <b>${tk.w} g</b> et jette le reste.`
+#ddd535	`Avec autant de pizzas, sors la moitié des boîtes environ <b>${dur(Math.round(bakeDur(p)/H*2)/4)}</b> plus tard.`
+#f4e26c	`Garnis, enfourne, cuis environ ${bsTxt()}.${(S.oven||'gas')==='gas'?' Baisse un peu la flamme pendant la cuisson.':''}`
+#f0ebfe	`<div class="alert bad"><b>Trop de levure</b><span>Prête environ ${Math.round(diff)} h trop tôt.</span></div><ol class="acts"><li><b>Enfourner plus tôt :</b> ${at(ready)}.</li><li><b>Frigo à ${colder} °C</b> et diviser la pâte tout de suite : prête après environ ${Math.round(rC)} h, avec seulement 1–2 h pour tempérer après environ ${Math.round(rCA)} h.</li>${target-rCA>4?`<li><b>Congeler</b> au plus tard ${at(fz)}. La veille, passer au frigo (12–24 h), puis 2–3 h à température ambiante.</li>`:''}</ol>`
+#d5d637	`<div class="tpl-r"><button class="tpl-go" data-tpl="${i}"><b>${escH(t.name)}</b><span>${DAYL[t.wd]} ${String(t.hh).padStart(2,'0')}:${String(t.mm).padStart(2,'0')} · ${t.n} pizzas · ${t.h} h</span><small>${nx?'prochaine date : '+at(nx):'aucune date possible dans les 2 semaines'}</small></button><button class="tpl-x" data-tdel="${i}" aria-label="Supprimer le modèle">✕</button></div>`
+#6926ad	'ou semoule fine de blé dur'
+#5d42d0	`dans ${d} ${d>1?'jours':'jour'}${h?' '+h+' h':''}`
+#15704b	`${d} ${d>1?'jours':'jour'} ${h} h`
+#7da8cf	`Fermentation ${S.h} h`
+#c2a94c	' et '
+#b7a464	`${cdLong(late)} de retard. La pâte a maintenant moins de temps. « En retard ? » décale le plan.`
+#fe3a8d	`${cdLong(late)} de retard. Le mieux, c’est de le faire tout de suite.`
+#896c11	`${cdLong(late)} de retard. La pâte a continué de lever, fais le test du doigt avant d’enfourner.`
+#1a592a	`Dissous la levure dans l’eau ${t}.`
+#c6cde5	`${R.pf.k==='biga'?'La':'Le'} ${R.pf.n} apporte déjà de la levure. La pâte principale n’en demande donc que très peu.`
+#a653b6	'le four est allumé et chauffe'
+#c53932	'Mets la plaque tout en bas du four : le dessous sera croustillant.'
+#d5a029	'Mets la pierre tout en haut du four : c’est là qu’il fait le plus chaud.'
+#718a2c	'On mange quand ?'
+#9d040b	'Cuoco pour la longue fermentation, Nuvola pour des bords aérés, semola pour le croquant et pour fleurer.'
+#4cb41b	`dont ${dust} g pour fleurer`
+#101408	'Enfonce légèrement un doigt dans le pâton. Si le creux remonte lentement, il est prêt. S’il remonte tout de suite : attends encore. S’il reste marqué : enfourne tout de suite.'
+#b9c104	'Blé dur moulu finement (semola rimacinata). Dans la pâte pour le croquant, sur le plan et la pelle pour que rien ne colle.'
+#0d634b	'18 pâtons au maximum'
+#f83aed	'Tout au fond, en bas.'
+#7222a6	'Sauvegarde'
+#eb540a	' du '
+#01a781	'Pétrissage'
+#416479	'1 c. à soupe'
+#85574d	'c. à café'
+#169624	'aucun'
+#100dfb	'Fais le test du doigt. Jamais de rouleau : appuie du centre vers l’extérieur. Avec « Four et garnitures », tu lances le minuteur de chaque pizza.'
+#9b1555	`${d} ${d>1?'jours':'jour'} ${h} h`
+#82a627	`dès ${lateFeasible(d).getHours()} h`
+#225d03	`<div class="tk-emptyart"><span class="ebox" aria-hidden="true"><span class="ebox-w"><span class="ebox-b"><span class="ebox-base"><i class="st"></i><i class="cr" style="left:28%;top:62%"></i><i class="cr" style="left:64%;top:30%"></i><i class="cr" style="left:56%;top:72%"></i></span><span class="ebox-lid"></span></span></span></span><b>Le panier est encore vide</b><span>La pâte et la sauce sont déjà sur la liste. Choisis tes pizzas et les garnitures s’ajoutent.</span><button data-go="pizzen">Choisir les pizzas</button></div>`
+#e23478	'Cube du rayon frais'
+#718f6d	'Sachet, un tiers de la quantité'
+#db3cd7	'Pétrin à spirale ou robot'
+#5819a7	'À la main sur le plan de travail'
+#2f5062	'Aucune étape de 22 h à 7 h'
+#023015	'Aucune étape de 23 h à 8 h'
+#b10997	'Aucune étape de minuit à 9 h'
+#21f8a7	'Étapes à toute heure'
+#cea4c6	'Pâte directe'
+#100a59	'Préferment liquide, mûrit la veille'
+#20014b	'Préferment ferme, mûrit la veille'
+#1d2a62	'Exactement la quantité calculée'
+#8ad82c	'Un peu de pâte en plus'
+#ca7dc0	'Réserve généreuse'
+#d75c1a	'Cuisine fraîche'
+#37e5da	'Température ambiante normale'
+#228645	'Cuisine chaude'
+#2de593	'Cuisine très chaude, en été'
+#ad0e3c	'Grammes et centimètres'
+#a7ce5a	'Onces et pouces'
+#8f737d	'Jusqu’à trois farines, mélange perso'
+#9f87bf	'auto'
+#749dc5	`Pizza d’environ ${DIA[[250,280,300][i]]||30} cm de diamètre`
+#e0b425	`<div class="alert"><b>Pas assez de levure</b><span>Prête environ ${Math.round(-diff)} h plus tard. Sors les pâtons du frigo environ ${dur(aN)} au lieu de ${dur(Math.round(acclFor(target)*4)/4)} avant la cuisson, ou mange plus tard.</span></div>`
+#0201ab	`<div class="alert"><b>Pas assez de levure</b><span>Prête environ ${Math.round(-diff)} h plus tard. Mieux vaut manger plus tard, pas avant ${at(ready)}. Fais le test du doigt avant d’enfourner.</span></div>`
+#f13655	'Tout est décoché'
+#0b081f	`<div class="tk-fin"><span class="tk-stamp${renderShop.fin?'':' hit'}">ACHETÉ</span></div>`
+#35c28e	`<div class="tk-meta tk-tools"><button class="tk-hide" data-act="hide" aria-pressed="${hideD}"><span class="hb" aria-hidden="true"></span>Masquer ce qui est coché</button><button data-act="reset">Tout décocher</button></div>`
+#ef7d65	'Tout effacer ? Retouche pour confirmer'
+
+#af9c27	`${d}<small>j</small>${hh}<small>h</small>`
+#f3b12c	`Des pâtons de ${S.w} g donnent des pizzas de Ø ${DIA[S.w]||30} cm.`
+#5682e4	'Corne'
+#4f0cf6	'Corne souple en plastique : elle décolle les pâtons de la boîte et divise la pâte sans la déchirer.'
+#b28cdf	'Boîtes à pâtons'
+#d96421	'Boîtes avec couvercle pour l’apprêt au frigo. Les pâtons ont de la place et ne sèchent pas.'
+'Ein Zettel von Nonna'	'Un mot de Nonna'
+'Nonnas Tomatensoße'	'La sauce tomate de Nonna'
+'No, no, no! Lies die Geschichte nochmal, da steht’s.'	'Non, non, non. Relis « Pourquoi Tempasto ? », tout y est.'
+'Mamma mia! Zeit und Teig. Mehr verrat ich nicht.'	'Mamma mia ! Petit indice : c’est une histoire de temps et de pâte.'
+'Perfetto! Aber nicht weitersagen.'	'Perfetto ! Mais motus et bouche cousue.'
+'Die Zeit und der Teig.'	'Le temps et la pâte.'
+'Direktteig'	'Pâte directe'

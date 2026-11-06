@@ -77,14 +77,12 @@
 #d6b471	'late evening'
 #36d1cd	`<button class="slot" data-h="${h}" aria-pressed="${!!match&&match[1]===h}"${ok?'':' disabled'}><b>${n}</b><span>${h%12||12}:00 ${h<12?'AM':'PM'}</span></button>`
 #63e847	`<button class="slot other" data-h="x" aria-pressed="${!match}"><b>Other time</b><span>${match?'pick a time':tm(b)}</span></button>`
-#fa025e	`${S.n}<small>dough balls of ${S.w} g</small>`
 #72393a	''
 #fd035e	`${S.n} ${S.n>1?'pizzas':'pizza'} <em>›</em>`
 #42c859	`${dw}, ${hrTxt} · ${S.n} dough balls · ${S.h} h`
 #626683	`${S.h} h rise <em>›</em>`
-#7fbafe	`Baking starts at ${tm(sc.B)} so all ${S.n} pizzas are ready. For a ${S.h} h rise you mix the dough ${(r=>r==='Today'?'today':r==='Tomorrow'?'tomorrow':'on '+DAYL[sc.start.getDay()])(rel(sc.start))} at ${tm(sc.start)}.`
+#54ab99	`For a ${S.h} h rise you mix the dough ${(r=>r==='Today'?'today':r==='Tomorrow'?'tomorrow':'on '+DAYL[sc.start.getDay()])(rel(sc.start))} at ${tm(sc.start)}.`
 #7fd600	`${DAY[d.getDay()]} ${d.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()]}`
-#60a40a	`Dough balls of ${S.w} g make pizzas about ${DIA[S.w]||30} cm across.`
 #a53b15	`<div class="mo-r"><input data-mon="${i}" value="${(x.n||'').replace(/"/g,'')}" placeholder="Flour ${i+1}" maxlength="28"><input data-mop="${i}" type="number" inputmode="numeric" min="0" max="100" value="${+x.p||''}" placeholder="%"><span>%</span></div>`
 #5aa467	`Total ${sum} %. The app scales it to 100 %.`
 #8dde80	`${mx==='own'?'Custom blend':(MIXES[mx]||MIXES.tp).d} · 2.8 % salt on the flour. No oil in the dough, as in Naples. The app works out the yeast; dry yeast is a third of the fresh amount.`
@@ -94,7 +92,6 @@
 #d3a40b	`Applies to your next dough. The current one stays at ${q.n} × ${q.w} g.`
 #4414ca	'off'
 #baaa52	`Current: ${S.w} g per dough ball · ${S.hy} % water · fridge ${S.k} °C`
-#8606dd	`Put the water in the fridge by ${tm(wc)}.`
 #4fa6e2	'Cutting it close for cold water: add a few ice cubes and the dough temperature will be right.'
 #d0bb93	`<div class="alert bad"><b>Too late</b><span>Pick a shorter rise or a later time.</span></div>`
 #ca7d7d	`<div class="alert"><b>At night</b><span>The start falls in the night. Move the baking time.</span></div>`
@@ -226,9 +223,9 @@
 #dc2059	'Choose pizzas'
 #d04d6d	'Pick your toppings. The shopping list writes itself.'
 #ef5b14	'How do you knead?'
-#98d716	'This sets the steps in bake mode. You can change it under More → Recipe & oven.'
+'Danach richten sich die Handgriffe im Backmodus. Änderbar unter Mehr → Einstellungen.'	'This sets the steps in bake mode. You can change it under More → Settings.'
 #328534	'Which oven?'
-#cf8c38	'This sets temperature, baking time and heating up. You can change it under More → Recipe.'
+'Danach richten sich Temperatur, Backzeit und Anheizen. Änderbar unter Mehr → Einstellungen.'	'This sets temperature, baking time and heating up. You can change it under More → Settings.'
 #366b85	'Only once you start does Tempasto remind you: about the water, mixing the dough and every step after that.'
 #12aa7a	`<div class="chips intro-ov">${Object.entries(OVENS).map(([k,o])=>`<button class="chip" data-ov="${k}" aria-pressed="${(S.oven||'gas')===k}">${{gas:'Gas pizza oven',holz:'Wood-fired oven',elek:'Electric pizza oven',home:'Oven + stone',blech:'Oven + tray'}[k]||o.n}</button>`).join('')}</div>`
 #c662c5	'Next'
@@ -241,7 +238,7 @@
 #64e184	'Cheese'
 #73fd61	'Tear into pieces the day before and drain in a sieve in the fridge, so the pizza won’t get watery.'
 #acabe7	'Just a little salt, don’t cook it. Pass through a food mill, don’t blend.'
-#b7f159	`<article class="rec"><span class="rec-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${RICON[r.ic]}</svg></span><div class="rec-t"><span class="rec-k">${r.cat}</span>${r.name?`<b>${r.name}</b>`:''}${r.tip?`<p>${r.tip}</p>`:''}<div class="rec-a">${r.url?`<a class="rec-go" href="${r.url}" target="_blank" rel="noopener">View →</a>`:''}${r.help?`<button class="rec-help" data-help="${r.help}">Recipe in the app</button>`:''}</div></div></article>`
+#6be9c7	`<article class="rec"><span class="rec-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${RICON[r.ic]}</svg></span><div class="rec-t"><span class="rec-k">${r.cat}</span>${r.name?`<b>${r.name}</b>`:''}${r.tip?`<p>${r.tip}</p>`:''}<div class="rec-a">${r.url?`<a class="rec-go" href="${r.url}" target="_blank" rel="noopener">View →</a>`:''}${r.help?`<button class="rec-help" data-help="${r.help}"><small>${REC_K}</small>${REC_HELP} ›</button>`:''}</div></div></article>`
 #f56e9d	'75 g tomato sauce'
 #7eba81	'<br><b>After baking:</b> '
 #d99bc6	'Our pizza menu 🍕'
@@ -322,7 +319,6 @@
 #e05621	`<p class="pan-h">Tap what you always have at home. It drops off the list.</p>`
 #5515ec	'Sauce'
 #b97e56	'Toppings'
-#775674	`<details class="tk-done"${shopDoneOpen?' open':''}><summary>In the basket (${done.length})</summary>${done.map(row).join('')}<div class="tk-meta in"><button data-act="reset">Put all back</button></div></details>`
 #9c0243	`<div class="tk-meta"><button data-act="pan">Pantry (${D.pan.length}) · edit</button></div>`
 #718a4f	`for ${sf.rossa||S.n} pizzas`
 #771f27	'a few leaves'
@@ -379,7 +375,6 @@
 #90a844	'Calendar file saved – open it to add'
 #03c47d	'Backup from '
 #4ce29b	'That’s not a Tempasto backup'
-#16809c	'All put back'
 #bdbbfb	'like the device'
 #9edbe9	'Kitchen scale'
 #a66c48	`ideally a precision scale for ${nf(ya,1)} g of yeast`
@@ -434,7 +429,6 @@
 #3635d2	'Tomorrow'
 #b10614	`in ${Math.round(m/1440)} days`
 #386dc0	'Yesterday'
-#00db73	`${d} d ${hh} h`
 #bca854	`Start the ${pf.n}`
 #8a9c0f	`${pf.n} ripening`
 #d8d5ad	'By hand'
@@ -456,7 +450,7 @@
 #d7598e	'Dec'
 #acb612	`${DAY[bk.getDay()]} ${bk.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][bk.getMonth()]} · ${tm(bk)} <em>›</em>`
 #48bb56	`${DAY[bk.getDay()]} ${bk.getDate()} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][bk.getMonth()]} · ${tm(bk)}`
-#14938b	`approx. Ø ${DIA[S.w]||30} cm`
+#14938b	`about ${DIA[S.w]||30} cm across`
 #6ffc63	'Fresh'
 #c42b86	'Dry'
 #e4151c	'None'
@@ -627,11 +621,11 @@
 #135236	`<button class="al-card" data-al-open="recSheet"><span class="al-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span><span class="al-t"><b>Mixing at ${tm(sc.start)} falls in your night rest</b><span>${nw[0]}:00–${nw[1]}:00, set under Recipe &amp; oven <em>›</em></span></span></button>`
 #625490	`<div class="tk-emptyart"><span class="ebox" aria-hidden="true"><span class="ebox-w"><span class="ebox-b"><span class="ebox-base"><i class="st"></i><i class="cr" style="left:28%;top:62%"></i><i class="cr" style="left:64%;top:30%"></i><i class="cr" style="left:56%;top:72%"></i></span><span class="ebox-lid"></span></span></span></span><b>The box is still empty</b><span>Choose your pizzas and the toppings go on the list by themselves.</span><button data-go="pizzen">Choose pizzas</button></div>`
 #2534f4	'One more note'
-#f7ea8b	'<ul class="nz-lines"><li>In Naples you sometimes pay</li><li>for one pizza more than you eat.</li><li>The pizza sospesa waits</li><li>for whoever comes next.</li><li>Tempasto costs you nothing.</li><li>If you enjoyed it,</li><li>leave a bag of Caputo behind.</li></ul><div class="nz-sig">– Nonna</div><div class="nz-sup"><button class="cta" data-nz-don>Buy a bag of Caputo</button><button class="nz-later" data-nz-close>Maybe later</button><button class="nz-later nz-never" data-nz-never>Don’t show again</button></div>'
+#73d3a1	'<ul class="nz-lines"><li>In Naples you sometimes pay</li><li>for one more pizza than you eat.</li><li>It’s called pizza sospesa,</li><li>the “suspended” pizza,</li><li>and it waits</li><li>for whoever comes next.</li><li>Tempasto costs you nothing.</li><li>If you liked it,</li><li>leave a bag of pizza flour behind.</li></ul><div class="nz-sig">– Nonna</div><div class="nz-sup"><button class="cta" data-nz-don>Chip in for flour · €3</button><button class="nz-later" data-nz-close>Maybe later</button><button class="nz-later nz-never" data-nz-never>Don’t show again</button></div>'
 #ea4c16	'Nonna won’t ask again. You’ll still find her under More.'
 #06b6c0	'The rest of the plan and all reminders move with it; the dough stays in the fridge a little shorter or longer. Grayed-out options are too early or too late in the day, or too much for the dough.'
 #192f19	`<span>${S.h} h rise is no longer enough for ${dn}.</span><button data-alt-h="${alt}">Switch to ${alt} h</button>`
-#f3a428	`<button class="al-card" data-al-open="recSheet"><span class="al-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span><span class="al-t"><b>${nl} at ${tm(nt)} falls in your night rest</b><span>${nw[0]%12||12} ${nw[0]<12?'AM':'PM'}–${nw[1]%12||12} ${nw[1]<12?'AM':'PM'}, set under Recipe &amp; oven <em>›</em></span></span></button>`
+`<button class="al-card" data-al-open="recSheet"><span class="al-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span><span class="al-t"><b>${nl} um ${tm(nt)} fällt in deine Nachtruhe</b><span>${nw[0]}–${nw[1]} Uhr, eingestellt unter Einstellungen <em>›</em></span></span></button>`	`<button class="al-card" data-al-open="recSheet"><span class="al-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span><span class="al-t"><b>${nl} at ${tm(nt)} falls in your night rest</b><span>${nw[0]%12||12} ${nw[0]<12?'AM':'PM'}–${nw[1]%12||12} ${nw[1]<12?'AM':'PM'}, set under Settings <em>›</em></span></span></button>`
 #d37f42	`Dissolve the yeast in the ${t} water. If your scale only weighs whole grams: dissolve ${tk.G} g yeast in <b>${tk.D} g</b> water, use <b>${tk.w} g</b> of it and pour away the rest.`
 #4742c7	`Dissolve the yeast in <b>${g(R.wY)} g</b> cold water. If your scale only weighs whole grams: dissolve ${tk.G} g yeast in <b>${tk.D} g</b> cold water, use <b>${tk.w} g</b> of it and pour away the rest.`
 #ddd535	`With this many pizzas, take half of the boxes out about <b>${dur(Math.round(bakeDur(p)/H*2)/4)}</b> later.`
@@ -670,3 +664,47 @@
 'Fingerprobe machen. Nicht ausrollen, von innen nach außen drücken. Unter „Ofen & Belag“ startest du für jede Pizza den Timer.'	'Do the poke test. Never roll: press from the center outwards. Use “Oven & toppings” to start each pizza’s timer.'
 `${d} ${d>1?'Tagen':'Tag'} ${h} h`	`${d} ${d>1?'days':'day'} ${h} h`
 `ab ${lateFeasible(d).getHours()} Uhr`	`from ${lateFeasible(d).getHours()%12||12} PM`
+#225d03	`<div class="tk-emptyart"><span class="ebox" aria-hidden="true"><span class="ebox-w"><span class="ebox-b"><span class="ebox-base"><i class="st"></i><i class="cr" style="left:28%;top:62%"></i><i class="cr" style="left:64%;top:30%"></i><i class="cr" style="left:56%;top:72%"></i></span><span class="ebox-lid"></span></span></span></span><b>The box is still empty</b><span>Dough and sauce are already on the list. Choose your pizzas and the toppings get added.</span><button data-go="pizzen">Choose pizzas</button></div>`
+'Würfel aus dem Kühlregal'	'Cube from the dairy aisle'
+'Päckchen, ein Drittel der Menge'	'Packet, use a third as much'
+'Spiralkneter oder Küchenmaschine'	'Spiral mixer or stand mixer'
+'Mit den Händen auf der Arbeitsfläche'	'By hand on the counter'
+'Keine Handgriffe von 22 bis 7 Uhr'	'No steps from 10 PM to 7 AM'
+'Keine Handgriffe von 23 bis 8 Uhr'	'No steps from 11 PM to 8 AM'
+'Keine Handgriffe von 0 bis 9 Uhr'	'No steps from midnight to 9 AM'
+'Handgriffe zu jeder Zeit'	'Steps at any time'
+'Teig direkt ansetzen'	'Straight dough, no preferment'
+'Flüssiger Vorteig, reift am Vortag'	'Liquid preferment, made the day before'
+'Fester Vorteig, reift am Vortag'	'Stiff preferment, made the day before'
+'Genau die berechnete Menge'	'Exactly what you need'
+'Etwas mehr Teig als Reserve'	'A little extra dough'
+'Großzügige Reserve'	'Plenty of extra'
+'Kühle Küche'	'Cool kitchen'
+'Normale Raumtemperatur'	'Normal room temperature'
+'Warme Küche'	'Warm kitchen'
+'Heiße Sommerküche'	'Hot summer kitchen'
+'Gramm und Zentimeter'	'Grams and centimeters'
+'Unzen und Zoll'	'Ounces and inches'
+'Bis zu drei Mehle, frei gemischt'	'Up to three flours, your own mix'
+'automatisch'	'auto'
+`Pizza mit ca. Ø ${DIA[[250,280,300][i]]||30} cm`	`Pizza about ${DIA[[250,280,300][i]]||30} cm across`
+`<div class="alert"><b>Zu wenig Hefe</b><span>Etwa ${Math.round(-diff)} h später reif. Nimm die Teiglinge etwa ${dur(aN)} statt ${dur(Math.round(acclFor(target)*4)/4)} vor dem Backen aus dem Kühlschrank, oder iss später.</span></div>`	`<div class="alert"><b>Not enough yeast</b><span>Ready about ${Math.round(-diff)} h later. Take the dough balls out of the fridge about ${dur(aN)} instead of ${dur(Math.round(acclFor(target)*4)/4)} before baking, or eat later.</span></div>`
+`<div class="alert"><b>Zu wenig Hefe</b><span>Etwa ${Math.round(-diff)} h später reif. Am besten später essen, frühestens ${at(ready)}. Vor dem Backen die Fingerprobe machen.</span></div>`	`<div class="alert"><b>Not enough yeast</b><span>Ready about ${Math.round(-diff)} h later. Best to eat later, ${at(ready)} at the earliest. Do the poke test before baking.</span></div>`
+'Alle Haken entfernt'	'All checks cleared'
+`<div class="tk-fin"><span class="tk-stamp${renderShop.fin?'':' hit'}">GEKAUFT</span></div>`	`<div class="tk-fin"><span class="tk-stamp${renderShop.fin?'':' hit'}">BOUGHT</span></div>`
+`<div class="tk-meta tk-tools"><button class="tk-hide" data-act="hide" aria-pressed="${hideD}"><span class="hb" aria-hidden="true"></span>Erledigte ausblenden</button><button data-act="reset">Alle Haken entfernen</button></div>`	`<div class="tk-meta tk-tools"><button class="tk-hide" data-act="hide" aria-pressed="${hideD}"><span class="hb" aria-hidden="true"></span>Hide checked</button><button data-act="reset">Clear all checks</button></div>`
+'Alles löschen? Nochmal tippen'	'Reset everything? Tap again'
+
+#af9c27	`${d}<small>d</small>${hh}<small>h</small>`
+#f3b12c	`${S.w} g dough balls make pizzas about ${DIA[S.w]||30} cm across.`
+#5682e4	'Dough scraper'
+#4f0cf6	'Flexible plastic scraper. Gets the dough balls out of the box and divides the dough without tearing it.'
+#b28cdf	'Dough boxes'
+#d96421	'Lidded boxes for the final proof in the fridge. The dough balls have room to spread and don’t dry out.'
+'Ein Zettel von Nonna'	'A note from Nonna'
+'Nonnas Tomatensoße'	'Nonna’s tomato sauce'
+'No, no, no! Lies die Geschichte nochmal, da steht’s.'	'No, no, no. Go read “Why Tempasto?”. It’s all in there.'
+'Mamma mia! Zeit und Teig. Mehr verrat ich nicht.'	'Mamma mia! Here’s a hint: it’s about time and dough.'
+'Perfetto! Aber nicht weitersagen.'	'Perfetto! Now, not a word to anyone.'
+'Die Zeit und der Teig.'	'Time and dough.'
+'Direktteig'	'Straight dough'

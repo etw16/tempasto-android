@@ -1,0 +1,681 @@
+#4afc84	'Raffredda l’acqua'
+#2ca3d3	`Metti ${g(c.P.R.water)} g d’acqua in frigo. Impasterai alle ${tm(new Date(st))}.`
+#4c39c0	'Scalda il forno'
+#2b6bc2	`${ovenP().ut} a ${ovenP().t}. Si inforna tra ${ovenP().pre} minuti.`
+#92770b	'È il momento. Tocca qui e apri la modalità guidata.'
+#5db08b	'Caputo Cuoco, Nuvola e Semola 1.000 : 1.000 : 300'
+#32e365	'o farina di grano tenero tipo 00'
+#20ced8	'o farina di grano tenero tipo 0'
+#0cf57c	'in un posto fresco, 18–20 °C'
+#6f618a	'fredda'
+#3b8f06	'al fresco, a 16–18 °C'
+#d224e8	'Forno per pizza a gas'
+#7d9efd	'Gas'
+#360151	'Forno a legna'
+#68594f	'Legna'
+#cd5246	'Forno per pizza elettrico'
+#cb4489	'Elettrico'
+#d257da	'Forno di casa con pietra o acciaio'
+#79f06a	'Pietra'
+#617e51	'pietra/acciaio, temperatura massima'
+#dfd156	'Forno di casa con teglia'
+#5da16e	'Teglia'
+#3a22c7	'teglia, temperatura massima'
+#952790	'oggi'
+#411140	'domani'
+#806939	`${r==='Oggi'?'oggi':r==='Domani'?'domani':r==='Ieri'?'ieri':DAY[d.getDay()]} ${tm(d)}`
+#7a1899	'Prefermento'
+#3d69df	`Acqua, ${pf.w}`
+#0081cb	'Sciogli il lievito nell’acqua, poi mescola appena con la farina: deve restare grumosa. Non impastare. Copri.'
+#b8a65e	'Sciogli il lievito nell’acqua, poi incorpora la farina fino a una pastella liscia. Copri.'
+#189647	'Prepara l’impasto'
+#e81512	'2–3 minuti'
+#d6e9ed	'Acqua, fredda'
+#723030	`${pf.k==='biga'?'Spezzetta la '+pf.n+' e scioglila':'Sciogli il '+pf.n} nell’acqua, aggiungi la farina, mescola e copri. Tieni da parte ${g(R.wY)} g d’acqua per il lievito.`
+#405647	`Mescola farina e acqua e copri. Tieni da parte ${g(R.wY)} g d’acqua per il lievito.`
+#3c71dd	'Impasta'
+#6f9b17	'Autolisi in corso'
+#5b71ca	'circa 10 minuti'
+#ad843e	`Lievito in ${g(R.wY)} g d’acqua`
+#091122	'poi il sale'
+#a6bf54	'L’impasto riposa, coperto'
+#e7b3e2	'Via in frigo'
+#8f85c5	'Puntata a temperatura ambiente'
+#561a10	'In frigo'
+#7520c6	'In un unico pezzo nel contenitore unto, chiudi il coperchio.'
+#684989	'Piega e in frigo'
+#5676b3	'Piega verso il centro, metti nel contenitore unto e in frigo.'
+#26b67c	'Puntata in frigo'
+#023728	'Panetti'
+#1e6fb1	'Dividi l’impasto ancora freddo, forma panetti tesi e rimettili in frigo nei contenitori.'
+#1c1e09	'Fuori dal frigo'
+#4801c4	'Panetti in frigo'
+#a9fbe3	'Accendi il forno'
+#2e596e	'I panetti si acclimatano'
+#f90381	'Semola sul piano e sulla pala, condimenti pronti.'
+#e3a280	'Infornare'
+#f982f2	'Il forno si scalda'
+#63c6fe	'<div class="sh-k">Mangiare più tardi</div><div class="shift-l">'
+#d9972d	'<div class="sh-k">Iniziare più tardi, cena alla stessa ora</div><div class="shift-l">'
+#954b0e	'<div class="sh-k">Mangiare prima</div><div class="shift-l">'
+#a2f508	'“Mangiare più tardi” sposta tutto. “Iniziare più tardi” lascia la cena dov’è, quindi l’impasto ha un po’ meno tempo: fai la prova del dito prima di infornare.'
+#05e771	'I panetti sono già fuori. A temperatura ambiente reggono al massimo 1–2 ore in più, poi lievitano troppo. Prima fai la prova del dito.'
+#d7fc54	'Impasta alle '
+#e9e7cb	', la cena resta'
+#64aa54	'troppo presto'
+#6d1507	'mar'
+#4c1a8d	`dalle ${ok[0][1]}`
+#36d1cd	`<button class="slot" data-h="${h}" aria-pressed="${!!match&&match[1]===h}"${ok?'':' disabled'}><b>${n}</b><span>${h}:00</span></button>`
+#63e847	`<button class="slot other" data-h="x" aria-pressed="${!match}"><b>Altro orario</b><span>${match?'scegli un orario':tm(b)}</span></button>`
+#fd035e	`${S.n} ${S.n>1?'pizze':'pizza'} <em>›</em>`
+#42c859	`${dw}, ${hrTxt} · ${S.n} panetti · ${S.h} h`
+#626683	`${S.h} h di lievitazione <em>›</em>`
+#54ab99	`Per avere ${S.h} h di lievitazione impasti ${(r=>r==='Oggi'?'oggi':r==='Domani'?'domani':DAYL[sc.start.getDay()])(rel(sc.start))} alle ${tm(sc.start)}.`
+#7fd600	`${DAY[d.getDay()]} ${d.getDate()} ${['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'][d.getMonth()]}`
+#a53b15	`<div class="mo-r"><input data-mon="${i}" value="${(x.n||'').replace(/"/g,'')}" placeholder="Farina ${i+1}" maxlength="28"><input data-mop="${i}" type="number" inputmode="numeric" min="0" max="100" value="${+x.p||''}" placeholder="%"><span>%</span></div>`
+#5aa467	`In totale fa ${sum} %. L’app ricalcola tutto su 100 %.`
+#8dde80	`${mx==='own'?'Miscela personale':(MIXES[mx]||MIXES.tp).d} · 2,8 % di sale sulla farina. Niente olio nell’impasto, come a Napoli. Il lievito lo calcola l’app; il lievito secco è un terzo del fresco.`
+#5f113d	' Biga: 40 % della farina con il 50 % d’acqua, matura 14–22 h al fresco.'
+#bcd450	' Poolish: 30 % della farina con lo stesso peso d’acqua, matura 12–20 h a 18–20 °C.'
+#f7310b	'Il piano è già partito. Le modifiche valgono finché non impasti.'
+#d3a40b	`Vale per il prossimo impasto. Quello in corso resta a ${q.n} × ${q.w} g.`
+#4414ca	'no'
+#baaa52	`Attuale: ${S.w} g a panetto · ${S.hy} % d’acqua · frigo ${S.k} °C`
+#4fa6e2	'L’acqua non fa in tempo a raffreddarsi: aggiungi qualche cubetto di ghiaccio e l’impasto resta alla temperatura giusta.'
+#d0bb93	`<div class="alert bad"><b>Troppo tardi</b><span>Scegli una lievitazione più corta o un orario più tardi.</span></div>`
+#e7986c	`<div class="alert"><b>${nf(R.total/1000,1)} kg di impasto</b><span>Impasta in due volte.</span></div>`
+#b307f0	'Avvia il piano'
+#7c5b9f	`${p.n} ${p.n>1?'pizze':'pizza'} · impasto ${p.h} h`
+#2347b6	`${p.n} ${p.n===1?'pizza':'pizze'}`
+#6639c9	`${p.h} ore`
+#731440	`Impasto in corso dalle ${tm(new Date(S.cook.start))}`
+#a3f9b2	`Prossimo · passo ${idx+1} di ${tl.length}`
+#55eeeb	`<span class="st-r ${n.st}${late?' late':''}"><i></i><span><b>${n.l}</b><span class="mono">${late&&!on?'ora':dShort(n.d)}</span></span></span>`
+#81b4f0	`Il tuo impasto è in corso da ${at(new Date(S.cook.start))}. Gli orari si adattano se spunti i passi prima o dopo.`
+#cb7aff	`Anteprima per ${S.n} pizze con ${S.h} h di lievitazione. “Prepara l’impasto” apre la modalità guidata.`
+#11febb	`${gapH>=3?Math.round(gapH)+' h':dur(gapH)} ${x.s.cold?'in frigo':'a temperatura ambiente'}`
+#63edf6	'Piega, in frigo'
+#1333a6	'Frigo'
+#c7f8f3	'MARZO'
+#dc3668	'Appretto'
+#352291	'mar'
+#f44950	`<em class="${r.wait.cold?'cold':'warm'}">${r.wait.cold?IC_SNOW:IC_HOUSE} ${hrs}</em>`
+#4128f0	`<div class="pk-r${r.done?' done':''}${r.cur?' cur':''}${r.hl?' hl':''}"><span class="bn">${r.t==='Tira fuori'?(sub?'Tira fuori':'Fuori dal frigo'):r.t==='Piega, in frigo'?'Piega':(NAME[r.t]||r.t)} ${sub}</span><i></i><span class="bt">${tm(r.d)}</span></div>`
+#ceebbd	' frigo</span><span class="warm">'
+#7a8c61	`${p0.n} pizze · impasto ${p0.h} h · in forno ${DAY[B0.getDay()]} ${tm(B0)}`
+#63fe5f	'Impasto pronto'
+#5900ff	`Passo ${c.tl.indexOf(x)+1} di ${c.tl.length} · tocca`
+#ea2978	'Tocca e si parte'
+#bb7122	`Piano in corso · mancano ${cdLong(d-now)}`
+#a87601	`${x.s.wait||'Pausa'} · mancano ${cdLong(d-now)}`
+#a60eb7	`Si riprende: ${r==='Oggi'?'oggi':r==='Domani'?'domani':r} ${tm(d)}`
+#aa6964	`<span class="pb" aria-hidden="true">${tl.map((_,j)=>`<i class="${!x||j<idx?'d':j===idx?'c':''}"></i>`).join('')}</span><span class="pl">${x?'Programma':'Fatto'}</span>`
+#ea4cbd	`Vedi il programma, passo ${idx+1} di ${tl.length}`
+#c28208	'Vedi il programma'
+#40d5d1	'warm'
+#207656	`Il tuo impasto è durato da ${lw(at(new Date(Math.min(+new Date(S.cook.start),...c.tl.map(t=>t.doneAt?+new Date(t.doneAt):Infinity)))))} a ${lw(at(c.tl[c.tl.length-1].doneAt))}.`
+#bed65a	`<br><button class="sup-link" data-sheet-open="supSheet">Era buona? Sostieni Tempasto ♥</button>`
+#8b95e8	'Pianifica un nuovo impasto'
+#e6756b	`<b>Pronto quando:</b> `
+#c0bec5	'Fatto'
+#7dead3	`${a.t}. ${a.a?a.a+' '+(a.u||'')+'. ':''}${a.li?a.li.map(r=>r[0]+' '+r[1]).join('. ')+'. ':''}${a.d||''}${(()=>{const hw=howOf(x.s,c.P);return hw.crit&&i===A.length-1?' Pronto quando: '+hw.crit.join(', ')+'.':''})()}`
+#9627fc	`In ritardo di ${cdLong(late)}. Nessun problema.`
+#b1f9ca	'Ora tocca a te.'
+#5cee37	'Ricordamelo tra 10 min'
+#713253	`<span class="kr-l">Inizio</span><b class="kr-n">${tm(d)}</b><span class="kr-u">${rr}</span>`
+#1dafbd	`<span class="kr-l">Inizia tra</span><b class="kr-n" id="krCd"></b><span class="kr-u">alle ${tm(d)}</span>`
+#846615	'Piano in corso'
+#7ba419	`${x.s.t} ${rr} alle ${tm(d)}.`
+#e97362	`Raffredda ${g(c.P.R.water)} g d’acqua entro le ${tm(wc)}. `
+#03c3b1	`Impasta ${rr} alle ${tm(d)}.`
+#0313e0	'Indietro'
+#358755	`<span class="kr-dough">${doughSVG(fr)}</span><b class="kr-n sm">${tm(d)}</b><span class="kr-u">${r==='Oggi'?'oggi':r==='Domani'?'domani':DAY[d.getDay()]}</span>`
+#95e2b4	`<span class="kr-l">Si riprende</span><b class="kr-n">${tm(d)}</b><span class="kr-u">${r==='Oggi'?'oggi':r==='Domani'?'domani':r}</span>`
+#866a87	'L’impasto riposa'
+#7fdf34	`${wt}Poi: ${A[0].t}, ${rr} alle ${tm(d)}.`
+#f46b12	`Forno acceso alle ${tm(x.s.ovenAt)}. Poi: infornare.`
+#be6b4b	`<span class="kr-l">Pausa</span><b class="kr-n" id="krCd"></b><span class="kr-u">fino alle ${tm(d)}</span>`
+#2457d4	`${x.s.id==='bake'||!x.s.wait||/^L’impasto riposa/.test(x.s.wait)?'':x.s.wait+'. '}Poi: ${A[0].t} alle ${tm(d)}.`
+#8f07e0	`${ovenP().ut} a ${ovenP().t}. Poi: inforna alle ${tm(d)}.`
+#da8a90	'Avanti subito'
+#c724df	`Acqua, ${R.pf.w}`
+#1e96d9	'La farina in una ciotola, aggiungi l’acqua con il lievito.'
+#ff7b45	'Mescola appena con le dita, finché è tutto umido e grumoso. Non impastare.'
+#b0faea	`Copri e lascia maturare ${dur(sc.pfH)} ${R.pf.where}.`
+#22c1b6	'Incorpora la farina fino a ottenere una pastella liscia e densa.'
+#4f374e	'grumosa, niente farina asciutta'
+#0507d4	'liscio e omogeneo'
+#8e4404	'La biga deve restare grumosa. Più tardi profuma un po’ di yogurt, ed è giusto così.'
+#7616c8	'Il poolish è maturo quando è pieno di bolle e al centro comincia appena a scendere.'
+#31fda7	'Sale'
+#c30ae6	`${R.pf.k==='biga'?'La':'Il'} ${R.pf.n} nella ciotola dell’impastatrice${R.pf.k==='biga'?', spezzettata':''}.`
+#bade64	`Aggiungi <b>${g(R.wA)} g</b> d’acqua fredda e mescola brevemente. I restanti <b>${g(R.wY)} g</b> ti servono dopo per il lievito.`
+#cb765f	'Aggiungi tutte le farine.'
+#157ec2	'Aggiungi la farina.'
+#276606	'2–3 minuti a velocità 1, finché non resta farina asciutta. Non di più.'
+#4c6197	'Copri la ciotola dell’impastatrice e lascia riposare 30 minuti.'
+#703fe1	'niente farina asciutta'
+#4def61	'Tutte le farine nella ciotola dell’impastatrice.'
+#21d5b2	'La farina nella ciotola dell’impastatrice.'
+#6d5df2	`Aggiungi <b>${g(R.wA)} g</b> d’acqua fredda. I restanti <b>${g(R.wY)} g</b> ti servono dopo per il lievito.`
+#4b3943	'Metti l’acqua in frigo 2 ore prima. L’acqua fredda tiene l’impasto sotto i 25 °C mentre impasti.'
+#daffeb	`Sciogli il lievito in <b>${g(R.wY)} g</b> d’acqua fredda.`
+#5ff52a	`Aggiungi l’acqua con il lievito in 3 parti da <b>${part} g</b>, la successiva solo quando la precedente è assorbita.`
+#8c0469	'Impasta finché l’impasto si stacca dalla ciotola dell’impastatrice (3–4 min).'
+#b72b4a	`Aggiungi <b>${g(R.salt)} g</b> di sale a pioggia, impasta 3 minuti.`
+#e82d97	'Prova del velo: tira sottile un pezzetto d’impasto. Se si strappa, impasta ancora un minuto alla volta, al massimo 4 minuti.'
+#79ba1e	'Misura la temperatura dell’impasto: 23–25 °C va bene.'
+#e55f24	'si stacca bene dalla ciotola dell’impastatrice'
+#f1338b	'impasto a 23–25 °C'
+#68db1d	'Il sale va messo solo quando l’impasto si stacca dalla ciotola dell’impastatrice. Se lo metti troppo presto frena il glutine e l’impasto resta ruvido.'
+#210cb8	'L’impasto sul piano di lavoro.'
+#e4e320	'Piega dai quattro lati verso il centro.'
+#e039b2	'Giralo con il lato liscio verso l’alto e lascialo riposare coperto.'
+#5e71c4	'superficie tesa e liscia'
+#29ad5d	'Ancora ruvido? Piega una seconda volta dopo 15 minuti.'
+#60a968	'Piega l’impasto dai quattro lati verso il centro, giralo.'
+#e4fc2a	'In fondo, in basso nel frigo: lì il freddo è più uniforme.'
+#c1e284	'contenitore unto, coperchio chiuso'
+#174fd5	'Segna il livello con una striscia di nastro adesivo. Dopo vedrai quanto è cresciuto.'
+#a329b2	'Rovescia l’impasto freddo dal contenitore sul piano.'
+#92391b	`Con la bilancia dividi in <b>${p.n} pezzi da ${p.w} g</b>.`
+#06b254	'Pirla ogni pezzo in un panetto teso, chiusura sotto.'
+#a17dc4	'Nei contenitori con un filo d’olio o un po’ di semola, chiudi e rimetti in frigo.'
+#4bd694	'Non impilare i contenitori, altrimenti quelli in mezzo si raffreddano più lentamente.'
+#e201e9	'Tira fuori i contenitori dal frigo, lascia i coperchi chiusi.'
+#d7f6b3	`Lascia a temperatura ambiente per circa <b>${dur(sc.A)}</b>.`
+#f64a8c	'L’impasto freddo si strappa quando lo stendi. Solo a temperatura ambiente si lavora bene.'
+#22e854	`Scalda il ${o.n.toLowerCase()} a ${o.t}, circa ${o.pre} minuti.`
+#ac757d	`Forno alla temperatura massima, scalda insieme ${o.ut.split(',')[0]}, circa ${o.pre} minuti.`
+#86f3a2	'Spolvera il piano e la pala con la semola.'
+#9b7e93	'Tieni condimenti e salsa a portata di mano.'
+#e91439	'semola su piano e pala'
+#106a2b	'Misura sulla pietra con un termometro a infrarossi, non nell’aria.'
+#5f8837	'Prova del dito: premi piano. Se l’impronta torna su lentamente, l’impasto è pronto.'
+#75d231	'Stacca il panetto con il tarocco e capovolgilo sulla semola.'
+#42db3c	'Mai il mattarello: premi dal centro verso l’esterno, lascia stare il cornicione.'
+#ef7f8e	'Dal centro verso l’esterno'
+#6f0d6b	'fondo ben dorato'
+#2940c3	'Condisci con parsimonia: troppa salsa e il centro diventa molle.'
+#6d584b	'Tu dici quando si mangia.'
+#01b16a	'Tempasto ti dice quando fare cosa: dall’impasto al forno.'
+#f5b805	'Scegli giorno e ora della cena. Tempasto fa i conti all’indietro e ti dice quando impastare.'
+#dc2059	'Scegli le pizze'
+#d04d6d	'Scegli i condimenti. La lista della spesa si scrive da sola.'
+#ef5b14	'Come impasti?'
+#8f335b	'Così la modalità guidata ti dà i passi giusti. Puoi cambiarlo in Altro → Impostazioni.'
+#328534	'Che forno hai?'
+#612d45	'Così Tempasto sa temperatura, tempo di cottura e preriscaldamento. Puoi cambiarlo in Altro → Impostazioni.'
+#366b85	'I promemoria partono solo quando avvii il piano: per l’acqua, per l’impasto e per ogni passo dopo.'
+#12aa7a	`<div class="chips intro-ov">${Object.entries(OVENS).map(([k,o])=>`<button class="chip" data-ov="${k}" aria-pressed="${(S.oven||'gas')===k}">${{gas:'Forno a gas',holz:'Forno a legna',elek:'Forno elettrico',home:'Forno + pietra',blech:'Forno + teglia'}[k]||o.n}</button>`).join('')}</div>`
+#c662c5	'Avanti'
+#e023b2	'Impastatrice a spirale con vasca fissa. Impasta piano senza scaldare l’impasto, perfetta per alte idratazioni e lunghe lievitazioni.'
+#dada25	'Per la pizza napoletana la pietra deve arrivare a 450–480 °C. Il gas si controlla più facilmente della legna.'
+#5993d3	'Una pala forata in alluminio per infornare: la semola in eccesso cade e la pizza scivola meglio.'
+#ba5411	'Piccola pala tonda per girare la pizza nel forno. Un quarto di giro ogni 20–30 secondi, così il cornicione si colora in modo uniforme.'
+#6303a2	'Farina'
+#64e184	'Formaggio'
+#73fd61	'Il giorno prima spezzettalo e fallo sgocciolare in un colino in frigo, così la pizza non si bagna.'
+#acabe7	'Solo un pizzico di sale, non cuocerla. Passala al passaverdure, non frullarla.'
+#6be9c7	`<article class="rec"><span class="rec-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${RICON[r.ic]}</svg></span><div class="rec-t"><span class="rec-k">${r.cat}</span>${r.name?`<b>${r.name}</b>`:''}${r.tip?`<p>${r.tip}</p>`:''}<div class="rec-a">${r.url?`<a class="rec-go" href="${r.url}" target="_blank" rel="noopener">Vedi →</a>`:''}${r.help?`<button class="rec-help" data-help="${r.help}"><small>${REC_K}</small>${REC_HELP} ›</button>`:''}</div></div></article>`
+#f56e9d	'75 g di salsa di pomodoro'
+#7eba81	'<br><b>Dopo la cottura:</b> '
+#d99bc6	'Il nostro menù pizza 🍕'
+#7cad3f	'Immagine salvata – ora condividila su WhatsApp'
+#563be6	'Forno e condimenti'
+#c84821	'Tutte sfornate'
+#7d9101	`<div class="ots" id="ovTimer" ${OTS.length?'':'hidden'}></div><p class="hw-p">Tocca una pizza quando va in forno. Il timer conta ${bsTxt().replace(' s',' secondi').replace(' min',' minuti')} e ti dice quando girarla.</p><div class="ov-list">${list.map(p=>{const n=S.pz[p.id],d=Math.min(S.cook.oven[p.id]||0,n);return `<button class="ov-row${d>=n?' full':''}" data-ov="${p.id}"><span class="ov-pz">${pizzaSVG(p)}</span><span class="ov-n"><b>${p.n}</b><span class="ov-dots">${Array.from({length:n},(_,j)=>`<i class="${j<d?'d':''}"></i>`).join('')}</span><small class="ov-b">${belagOf(p,1)}</small></span><span class="ov-c">${d?`<i class="ov-m" data-ovm="${p.id}" role="button" aria-label="Una indietro">−</i>`:''}${d}/${n}</span></button>`;}).join('')}</div>${got?'<button class="ov-reset" id="ovReset">Azzera</button>':''}`
+#9e93c4	`${p.n} è in forno. ${bsTxt().replace(' s',' secondi').replace(' min',' minuti')}.`
+#9b440f	'in forno'
+#5ad057	'minuti'
+#288a0d	`<div class="hw-note">Inizi ${dur(delta)} più tardi del previsto. L’ora di cena resta, il tempo in frigo si accorcia un po’. Fino a circa 3 h non è un problema.</div>`
+#06a57e	`<div class="hw-note">Inizi ${dur(-delta)} prima del previsto. Prima di infornare fai bene la prova del dito.</div>`
+#be125c	`<div class="hw-sec"><span class="hw-k">Ti serve</span><div class="hw-need">${h.need.map(r=>`<div><span>${r[2]?`<i style="background:${r[2]}"></i>`:''}${r[0]}</span><b>${r[1]}</b></div>`).join('')}</div></div>`
+#9e16bc	`<div class="hw-sec"><span class="hw-k">Passo per passo</span><ol class="hw-how">${h.how.map(t=>`<li><span>${t}</span></li>`).join('')}</ol></div>`
+#c8c6a1	'Impasto'
+#48ab9c	'Interrompere l’impasto?'
+#0898e5	`<p class="hw-p">Il piano e tutti i promemoria si fermano. Pizze, lista della spesa e impostazioni restano.</p><div class="hw-btns"><button class="cta" id="endYes">Sì, interrompi</button><button class="btn ghost" id="endNo">Continua</button></div>`
+#abb98d	'Impasto interrotto'
+#9bab5b	' nell’impasto (g)'
+#527b77	`l’impasto sarà più o meno pronto (dopo ${Math.round(rh)} h). Previsto: ${at(B)}.`
+#dbec36	`<div class="alert"><span>L’ora della cottura viene prima di quella dell’impasto.</span></div>`
+#d6238d	`<div class="alert good"><b>Tutto a posto</b><span>Segui il piano e fai la prova del dito prima di infornare.</span></div>`
+#1fa3b9	'La classica: pomodoro, fior di latte, basilico.'
+#24475c	'Basilico'
+#4faea0	'foglie'
+#d7a7a3	'La classica con il salame: pomodoro, fior di latte e tanto salame dolce.'
+#28aacb	'Senza formaggio: pomodoro, aglio, origano e un buon olio d’oliva.'
+#672f6b	'Aglio'
+#7abcda	'Olio d’oliva'
+#f8a2ab	'Pomodoro, salame piccante, fior di latte, un tocco di olio al peperoncino.'
+#8b2cb8	'Piccante'
+#a2fa90	'Olio al peperoncino'
+#45c707	'Pomodoro, ’nduja piccante e miele. Dolce, piccante, cremosa.'
+#35326d	'Pomodoro e fior di latte, dopo la cottura prosciutto crudo, rucola, parmigiano.'
+#caef6f	'Pomodoro, dopo la cottura mortadella, burrata e granella di pistacchi.'
+#b075af	'Pomodoro, patate sottilissime, rosmarino e pecorino.'
+#e6727b	'Pomodoro, salsiccia e friarielli amarognoli. La preferita dei napoletani.'
+#968d6a	'Friarielli o broccoli'
+#5be525	'Pomodoro, fior di latte, tanti funghi, aglio e parmigiano. Se ti va, dopo la cottura un po’ di crema al tartufo.'
+#857a2b	'Pomodoro, pomodorini, rucola e una burrata dopo la cottura.'
+#416e83	'Pomodoro, fior di latte, gorgonzola, provola e parmigiano.'
+#55e032	'Pomodoro, cimette di broccoli, ciuffi di ricotta, scorza di limone e un po’ di peperoncino.'
+#e0f18f	'pz'
+#80ea6c	'Dall’orto: pomodoro, zucchine, peperoni, melanzane e fior di latte.'
+#7aa443	'Per il dolce: cuoci l’impasto senza condimento, poi Nutella, fragole, nocciole e zucchero a velo.'
+#0dbeb1	'Nocciole, tritate'
+#65eb1e	'Crema al tartufo'
+#0acfea	'Nocciole'
+#3c8e56	'Cipolla rossa'
+#7c1207	'Cipolla'
+#9f8b11	'Mostra tutti gli ingredienti'
+#20fd59	' pz'
+#e3a390	' foglie'
+#bdf370	'Semola di grano duro per spolverare'
+#ffe1e1	'1 bustina basta'
+#805053	'1 cubetto basta, congela il resto'
+#9e2117	`di cui ${g(sf.tom/100)} g per la salsa`
+#e03f52	'per la salsa'
+#553f4c	'Basilico|foglie'
+#683b92	'Olio d’oliva|g'
+#b64fae	'a filo'
+#f0e5fa	'Mancano ancora un nome e almeno un condimento.'
+#a7757f	'Manca ancora un nome per la tua pizza.'
+#8b4bb0	'Scegli almeno un condimento.'
+#8ec17d	`${n} è nel menù`
+#edee61	'Tutte'
+#c354e3	'Classiche'
+#e41ef9	`${tot} scelte · ${tot-n} in più dei panetti`
+#935627	`Tutti i ${n} panetti assegnati`
+#6081e3	' · panetti fissati'
+#69a822	`<div class="card${c?' on':''}${openTops.has(p.id)?' allt':''}" data-id="${p.id}">${pizzaSVG(p)}<div class="tagrow"><span class="tag ${tagCls[p.tag]||''}">${p.tag}${p.dessert?' · senza salsa':''}</span>${p.by?`<span class="by">${p.by}</span>`:''}</div><h3>${p.n}</h3>${topChips(p)}<div class="pzst"><button data-pz="${p.id}" data-d="-1" aria-label="${p.n} una in meno">−</button><output>${c}</output><button data-pz="${p.id}" data-d="1" aria-label="${p.n} una in più"${pzTotal()>=S.n?' class="full"':''}>+</button></div>${p.own?`<button class="own-del" data-owndel="${p.id}" aria-label="Elimina la pizza personale">Elimina</button>`:''}</div>`
+#bfef5e	`<button class="card own-add" id="ownAdd"><span class="oa-plus">+</span><b>La tua pizza</b><span>Scegli tu i condimenti</span></button>`
+#e05621	`<p class="pan-h">Tocca quello che hai sempre in casa: sparisce dalla lista.</p>`
+#5515ec	'Salsa'
+#b97e56	'Condimenti'
+#9c0243	`<div class="tk-meta"><button data-act="pan">Dispensa (${D.pan.length}) · modifica</button></div>`
+#718a4f	`per ${sf.rossa||S.n} pizze`
+#771f27	'qualche foglia'
+#8afcb6	`🍕 ${some?'Ancora da comprare':'Ingredienti'} per ${n} ${n>1?'pizze':'pizza'}`
+#4a3611	'Impossibile copiare'
+#e90de3	`<span>${m}</span><button class="t-undo">Annulla</button>`
+#52d522	'Prefermento liquido con farina e acqua in parti uguali e pochissimo lievito. Matura il giorno prima e dà più aroma e una mollica alveolata.'
+#b14355	'Prefermento solido con circa metà acqua rispetto alla farina. Resta grumoso, matura al fresco il giorno prima e dà forza all’impasto e un aroma leggermente di nocciola.'
+#3fa495	'In questa fascia oraria Tempasto non ti fa fare niente. Se lo staglio capita di notte, l’app lo anticipa alla sera prima o lo rimanda alla mattina dopo, e il tempo in frigo si adatta. Se già l’impasto cadesse di notte, vedi un avviso e puoi spostare la cena. Non è un “non disturbare”: di notte non c’è niente da fare, quindi non arriva nessun promemoria.'
+#94236a	'Farina e acqua riposano 30 minuti senza lievito e sale. La farina si idrata e poi l’impasto viene più liscio e più facile da lavorare.'
+#e5cec6	'L’impasto lievita in un unico pezzo, prima di essere diviso in panetti.'
+#610e53	'I singoli panetti continuano a lievitare dopo lo staglio, di solito in frigo.'
+#11c74a	'Le palline d’impasto già pesate: da ognuna viene una pizza.'
+#4c8e9d	'Panetto'
+#8b204f	'Una pallina d’impasto pesata, da cui viene una pizza.'
+#0e2486	'Quanto è lievitato l’impasto. 100 % vuol dire pronto da infornare. Lo controlli con la prova del dito.'
+#47d8ae	'I panetti escono dal frigo e a temperatura ambiente si scaldano e si ammorbidiscono, così si stendono bene.'
+#df21d2	'Tira un pezzo di impasto sottile tra le dita. Se diventa quasi trasparente senza strapparsi, è impastato abbastanza.'
+#7e5e15	'Tira il panetto verso di te sul piano con entrambe le mani, ruotandolo, finché la superficie è tesa.'
+#ebf3ac	`Cena spostata a ${at(new Date(S.bake))}, così ci stanno ${S.h} h`
+#470ac6	`Troppo poco tempo per ${S.h} h di lievitazione. Scegline una più corta.`
+#5e1e18	'Così presto la lievitazione non basta'
+#65a4b8	`Impasto per pizza per ${p.n} × ${p.w} g, ${p.h} h di lievitazione`
+#5e0b89	`Cena: ${DL[B.getDay()]} ${B.getDate()} ${['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'][B.getMonth()]}, ${tm(B)}`
+#489398	`Acqua fredda ${g(R.water)} g`
+#eac784	`Sale ${g(R.salt)} g`
+#c1cd0a	'Pianificato con Tempasto'
+#17d14c	'Piano copiato'
+#a9b705	'Copia non riuscita'
+#9a4cab	'Il tempo è l’ingrediente migliore.'
+#b5fc26	'Acqua gelata, eh!'
+#d18439	'Forno rovente, mi raccomando.'
+#7da69b	'Un biglietto per te'
+#141e9c	'<ul class="nz-lines"><li>Abito sopra la pizzeria.</li><li>A ogni passo ti infilo un biglietto</li><li>dietro al bottone.</li><li>Hai un dubbio? Toccalo.</li></ul>'
+#ce1ed2	'ora'
+#a3de8b	'Prefermento tra '
+#164483	'Impasto tra '
+#bea3dc	`Condividi il menù con ${n} ${n===1?'pizza':'pizze'}`
+#d946ae	'Scegli almeno una pizza'
+#85e70b	'Tutte le pizze azzerate'
+#b11615	'Pizza eliminata'
+#12b62c	'Eliminare davvero?'
+#202a2b	`Tutti i ${S.n} panetti sono assegnati`
+#aa4fb4	`Tempasto-Backup-${isoDate(d)}.json`
+#5593c8	'Backup salvato'
+#19100a	'Fai l’impasto'
+#f68624	'Panetti in frigo'
+#416aab	'Panetti fuori dal frigo'
+#b99a69	'Fai lo staglio'
+#65ef47	`Poi ${r.wait.ph} ${r.wait.txt}.`
+#90a844	'File calendario salvato – aprilo per aggiungerlo'
+#4ce29b	'Questo non è un backup di Tempasto'
+#bdbbfb	'come il dispositivo'
+#9edbe9	'Bilancia da cucina'
+#a66c48	`meglio una bilancia di precisione per ${nf(ya,1)} g di lievito`
+#8d14ef	'precisa al grammo'
+#ca0443	'Ciotola grande'
+#afec52	'con gancio impastatore'
+#e8d061	'per impastare a mano'
+#c17cc6	'Contenitore con coperchio'
+#97a3d5	`per ${nf(R.total/1000,1)} kg di impasto, grande almeno il doppio`
+#d3e0a2	'Contenitori per i panetti'
+#5904b0	`${S.n} pezzi o una cassetta per panetti, più un tarocco`
+#abb98d	'Impasto interrotto'
+#abb41a	'Pietra o acciaio per pizza'
+#c6c4b1	'e semola per spolverare'
+#6ce5bd	'“Avanti” riconosciuto'
+#a6e2f9	'Il microfono qui non è consentito'
+#ad0b43	'Di’ “Avanti” per spuntare'
+#01324e	'I comandi vocali non funzionano su questo dispositivo'
+#066c34	'Lettura ad alta voce attiva.'
+#1910da	'<p class="small muted">Ancora nessun modello. Imposta un piano, scrivi un nome, salva.</p>'
+#483e63	`Verrà salvato: ${DAYL[b.getDay()]} ${tm(b)} · ${S.n} panetti · ${S.h} h · pizze e ricetta.`
+#991d99	`Modello “${n}” salvato`
+#97fe60	`${t.name} applicato, scegli una data`
+#372b2d	'Mix Tempasto'
+#4c654c	'Classica'
+#bf8385	'100 % farina di grano tenero tipo 00'
+#92c7b1	'Farina di grano tenero tipo 00'
+#445926	'es. Caputo Pizzeria'
+#3aabb4	'Con integrale'
+#45a5e2	'80 % tipo 00, 20 % farina integrale di grano tenero'
+#43d806	'Farina integrale di grano tenero'
+#f0468b	'pietra refrattaria'
+#5bb28c	'a mano'
+#92eb64	'Lievito secco'
+#ceae82	'Lievito fresco'
+#c6ba53	'it-IT'
+#2e8ed8	'Dom'
+#be092d	'Lun'
+#1611a3	'Mar'
+#69ec61	'Mer'
+#7306fc	'Gio'
+#a926fb	'Ven'
+#2c2be5	'Sab'
+#483621	'domenica'
+#086433	'lunedì'
+#b4d783	'martedì'
+#5b8063	'mercoledì'
+#bf5875	'giovedì'
+#22af5f	'venerdì'
+#f236a1	'sabato'
+#ae83e3	'Oggi'
+#3635d2	'Domani'
+#386dc0	'Ieri'
+#bca854	`Prepara ${pf.k==='biga'?'la':'il'} ${pf.n}`
+#8a9c0f	`${pf.n} in maturazione`
+#d8d5ad	'A mano'
+#20dffb	'Impastatrice'
+#d09187	'Velocità 1'
+#20bed8	'Pieghe'
+#0681fa	'Piega verso il centro, gira, lascia coperto.'
+#0fa1f0	'Staglio'
+#531bd5	'Lascia chiusi i contenitori.'
+#384d40	'a pizza'
+#144cac	`<button class="shift-o" data-sh="${v}" aria-pressed="${v===cur}"${ok(v)?'':' disabled'}><b>${v===0?'come previsto':(v>0?'+':'−')+Math.abs(v)+' h'}</b><span>Cena ${DAY[B.getDay()]} ${tm(B)}</span></button>`
+#74a7e4	`<button class="shift-o" data-late="${v}" aria-pressed="${Math.abs(late-v*H)<60000}"><b>+${v<1?'30 min':v+' h'}</b><span>Inizio ${tm(new Date(+base.sc.start+cur*H+v*H))}</span></button>`
+#bf5630	'Nuovo orario: '
+#ebe7eb	'Pranzo'
+#61c797	'Pomeriggio'
+#cb27bd	'Sera'
+#18ff3d	'mag'
+#dade20	'ott'
+#d7598e	'dic'
+#acb612	`${DAY[bk.getDay()]} ${bk.getDate()} ${['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'][bk.getMonth()]} · ${tm(bk)} <em>›</em>`
+#48bb56	`${DAY[bk.getDay()]} ${bk.getDate()} ${['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'][bk.getMonth()]} · ${tm(bk)}`
+#14938b	`Ø circa ${DIA[S.w]||30} cm`
+#6ffc63	'Fresco'
+#c42b86	'Secco'
+#e4151c	'Nessuno'
+#4e6e19	'Personale'
+#3fd1dc	'Farina di grano tenero tipo 0'
+#c5613b	'In totale 100 %.'
+#951b3b	`Lievitazione circa ${pc} % · pronto ${DAY[B.getDay()]} ${tm(B)}`
+#aee53f	`${B.getDate()} ${['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'][B.getMonth()]}`
+#a7604b	`${day} alle ${hr}`
+#fc74c9	`Prepara ${c.P.R.pf.k==='biga'?'la':'il'} ${c.P.R.pf.n}`
+#ee8a11	'tutti i passi fatti'
+#629cbc	'Fatto'
+#a2a625	'Vedi'
+#6f4425	'Tocca a te'
+#99e75e	`Prepara ${P.R.pf.k==='biga'?'la':'il'} ${P.R.pf.n}`
+#af692c	'Tira fuori'
+#899ac1	'INFORNARE'
+#771323	'GENNAIO'
+#5b1096	'FEBBRAIO'
+#65fe8f	'APRILE'
+#dd7894	'MAGGIO'
+#57541a	'GIUGNO'
+#aa6743	'LUGLIO'
+#69bc21	'AGOSTO'
+#cbb3b2	'SETTEMBRE'
+#a81e3e	'OTTOBRE'
+#b95f81	'NOVEMBRE'
+#d30e9f	'DICEMBRE'
+#73cde1	'Puntata'
+#bf4b38	'gen'
+#97a7e5	'feb'
+#ee6483	'apr'
+#8e3ef7	'giu'
+#ac2bc1	'lug'
+#c45a9e	'ago'
+#51526e	'set'
+#1bdaa9	'ott'
+#2c88c0	'nov'
+#64918b	'dic'
+#d1c563	`<div class="pd pk-d"><div class="pk-it">${DAYS[wd]}<small>${r.d.getDate()} ${MS[r.d.getMonth()]}${['Oggi','Domani'].includes(rl)?' · '+rl.toLowerCase():''}</small></div>`
+#838d41	' temperatura ambiente</span></div>'
+#2112a1	`${nDone} di ${nAll} fatti`
+#397f0b	`${nAll} passi`
+#58d05a	'Ora: '
+#fad74b	'Fine pausa: '
+#d93327	`Poi: ${A[0].t}`
+#ab3119	`${x.s.wait||'Pausa'} · poi ${A[0].t}`
+#1727fa	`<span class="kr-l">${a.l||'Ora'}</span><b class="kr-n${a.a.length>6?' sm':''}${a.a.length>9?' xs':''}">${a.a}</b><span class="kr-u">${a.u||''}</span>`
+#76ec2a	'Si parte'
+#aaa88c	'Pronto! Ora: '
+#426bc1	'Inizia ora'
+#b1cc5c	`Solo ${got} di ${tot}. Finire comunque?`
+#b7d42f	'Sicuro? Tocca di nuovo'
+#4708e1	'ciotola dell’impastatrice coperta'
+#fec5f8	'Ruvido, liscio, prova del velo'
+#f21d6e	'la prova del velo riesce'
+#902fc5	'In fondo, in basso'
+#373e13	`${p.n} panetti da ${p.w} g`
+#5f502d	'pelle leggermente tesa'
+#bf09a6	'nessuna chiusura aperta sotto'
+#f25562	'Ecco come devono essere'
+#371219	'Prova del dito'
+#e53468	'cornicione gonfio e leopardato'
+#c543c7	`<div class="chips intro-ov">${[['m','Con l’impastatrice'],['h','A mano']].map(([k,l])=>`<button class="chip" data-km="${k}" aria-pressed="${(S.km||'m')===k}">${l}</button>`).join('')}</div>`
+#33df23	'Impastatrice'
+#102942	'Forno per pizza'
+#8d1451	'Pala per pizza'
+#66478a	'Palino'
+#208947	'Timbro per pizza'
+#20fc18	'Pomodori'
+#e0b4b0	'Pomodori San Marzano DOP'
+#5e3ad7	`${u==='g'?v+' g':u==='pizzico'?'un po’ di':v+' '+u} ${shortName(n)}`
+#cf728b	'tanto amore'
+#305368	'Pomodoro'
+#f5df15	`${got} di ${tot} sfornate`
+#97dfb5	': sfornala!'
+#d57e92	'Sfornala!'
+#1d8020	'Gira!'
+#431fa7	'I consigli della Nonna'
+#e1270c	'Classica'
+#829f80	'Salame dolce'
+#288fe5	'spicchio'
+#a743a9	'Origano secco'
+#acdcc3	'pizzico'
+#53870f	'Nduja e Miele'
+#e72bb9	'Miele'
+#92cf5d	'Rucola'
+#378bea	'Raffinata'
+#7842da	'Pistacchi, tritati'
+#4739db	'Saporita'
+#be840f	'Patate a pasta soda'
+#d286ca	'Rosmarino'
+#0b2e11	'rametto'
+#9e3055	'Vegetariana'
+#b59159	'Funghi'
+#fae6ae	'Pomodorini'
+#d359d9	'Broccoli'
+#9b692f	'Limone bio'
+#b9c077	'Peperoncino in fiocchi'
+#bee0e0	'Peperone, giallo'
+#789826	'Melanzana'
+#214dab	'Fragole'
+#13a209	'Zucchero a velo'
+#9bada9	'palla'
+#25a719	'palle'
+#987a41	'Prezzemolo'
+#c0c74e	'Rossa'
+#177be4	'Patate'
+#314ffe	'Peperone, rosso'
+#59437d	'Pistacchi'
+#88aacf	'Peperone'
+#704e28	'Limone'
+#463cac	' spicchi'
+#5ac19d	' spicchio'
+#0b5c57	' rametti'
+#d8d21c	' rametto'
+#67f60c	' cucchiaini'
+#4990f1	'Sale marino fino'
+#4e7a4f	'Pomodori San Marzano'
+#c1f9e6	'1 vasetto'
+#656e67	`${DAY[V.getDay()]} ${V.getDate()} ${['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'][V.getMonth()]}`
+#d67a1e	'La tua creazione.'
+#9e7a7d	'La tua pizza'
+#7b677e	`<button class="oc${ownSel.has(n)?' on':''}" data-oc="${n}">${TOPI(n)}${n.startsWith('Peperone')?n.replace(',',''):shortName(n)}</button>`
+#dfc198	`${tot} assegnate · ${n-tot} libere`
+#fe8318	'<div class="tk-meta"><button data-act="pan">Fatto</button></div>'
+#bc09d3	'Dispensa'
+#44b0a4	'ORA'
+#a109ca	`COMPRA FRESCO · ${String(freshWhen).toUpperCase()}`
+#bca363	`${c} ${c>1?'barattoli':'barattolo'} da 400 g`
+#5a65a6	'Lista della spesa copiata'
+#229ea7	'Pausa notturna'
+#0774a3	'Autolisi'
+#1333e0	'Lievitazione'
+#751332	'Prova del velo'
+#1a58b5	'Ingredienti'
+#f716dc	'Programma'
+#0ca1d7	`${DAY[r.d.getDay()]} ${r.d.getDate()} ${['gen','feb','mar','apr','mag','giu','lug','ago','set','ott','nov','dic'][r.d.getMonth()]} ${tm(r.d)}  ${r.t}`
+#5c2357	'Quando è liscio, basta.'
+#d3df16	'Piega piano, poi lascialo stare.'
+#b991f2	'Da freddo si divide meglio.'
+#d3362d	'Coperchio chiuso, eh!'
+#644d81	'Mai il mattarello!'
+#d749ad	'Ciao, sono la Nonna!'
+#b9fed1	'Tocca qui.'
+#5dec2c	'Svuota'
+#6e0e55	'Sicuro?'
+#81bcdb	'Tempasto-Piano.ics'
+#982642	'File calendario salvato'
+#b02fdc	`${n.trim()}: ce l’ho sempre`
+#27410f	', termometro facoltativo'
+#60cf03	'Teglia'
+#0c53a9	'Pala'
+#555caf	'Il link per le donazioni arriva presto'
+#9bf216	`${t.name}: ${at(nx)}`
+#cadf06	`${x.s.t}: fatto`
+#056ce4	'acclimatare'
+#3613f2	'pirlare'
+#a84910	'tiepida'
+#93f98d	'matura'
+#9f626c	'coperto'
+#75bc80	'sta in fondo, in basso'
+#bb380c	'un po’'
+#47208b	'rimacinata'
+#81eeab	' caricato'
+#59c062	', girala'
+#d70ca9	`${DAY[B.getDay()].toUpperCase()} ${B.getDate()} ${MON[B.getMonth()]}`
+#2534f4	'Un altro biglietto'
+#73d3a1	'<ul class="nz-lines"><li>A Napoli, a volte,</li><li>si paga una pizza in più.</li><li>Si chiama pizza sospesa</li><li>e aspetta lì</li><li>chi viene</li><li>dopo di te.</li><li>Tempasto non ti costa niente.</li><li>Se la pizza ti è piaciuta,</li><li>lascia un pacco di farina sospeso.</li></ul><div class="nz-sig">– Nonna</div><div class="nz-sup"><button class="cta" data-nz-don>Offri la farina · 3 €</button><button class="nz-later" data-nz-close>Magari più tardi</button><button class="nz-later nz-never" data-nz-never>Non chiedermelo più</button></div>'
+#ea4c16	'La Nonna non te lo chiede più. Se vuoi, la trovi in Altro.'
+#06b6c0	'Il resto del piano e tutti i promemoria si spostano; l’impasto resta in frigo un po’ meno o un po’ di più. In grigio vedi gli orari troppo presto o troppo tardi nella giornata, o che chiederebbero troppo all’impasto.'
+#192f19	`<span>${S.h} h di lievitazione non bastano più per ${dn}.</span><button data-alt-h="${alt}">Passa a ${alt} h</button>`
+#b52edd	`<button class="al-card" data-al-open="recSheet"><span class="al-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></span><span class="al-t"><b>${nl} alle ${tm(nt)} cade nella tua pausa notturna</b><span>dalle ${nw[0]} alle ${nw[1]}, impostabile in Impostazioni <em>›</em></span></span></button>`
+#d37f42	`Sciogli il lievito nell’acqua ${t}. Se la tua bilancia pesa solo grammi interi: sciogli ${tk.G} g di lievito in <b>${tk.D} g</b> d’acqua, usane <b>${tk.w} g</b> e butta il resto.`
+#4742c7	`Sciogli il lievito in <b>${g(R.wY)} g</b> d’acqua fredda. Se la tua bilancia pesa solo grammi interi: sciogli ${tk.G} g di lievito in <b>${tk.D} g</b> d’acqua fredda, usane <b>${tk.w} g</b> e butta il resto.`
+#ddd535	`Con così tante pizze, tira fuori metà dei contenitori circa <b>${dur(Math.round(bakeDur(p)/H*2)/4)}</b> più tardi.`
+#f4e26c	`Condisci, inforna, cuoci per circa ${bsTxt()}.${(S.oven||'gas')==='gas'?' Durante la cottura abbassa un po’ la fiamma.':''}`
+#f0ebfe	`<div class="alert bad"><b>Troppo lievito</b><span>Pronto circa ${Math.round(diff)} h troppo presto.</span></div><ol class="acts"><li><b>Inforna prima:</b> ${at(ready)}.</li><li><b>Frigo a ${colder} °C</b> e fai subito lo staglio: pronto dopo circa ${Math.round(rC)} h, con solo 1–2 h di acclimatazione dopo circa ${Math.round(rCA)} h.</li>${target-rCA>4?`<li><b>Congela</b> entro ${at(fz)}. Il giorno prima passa in frigo (12–24 h), poi 2–3 h a temperatura ambiente.</li>`:''}</ol>`
+#d5d637	`<div class="tpl-r"><button class="tpl-go" data-tpl="${i}"><b>${escH(t.name)}</b><span>${DAYL[t.wd]} ${String(t.hh).padStart(2,'0')}:${String(t.mm).padStart(2,'0')} · ${t.n} pizze · ${t.h} h</span><small>${nx?'prossima data: '+at(nx):'nessuna data adatta in 2 settimane'}</small></button><button class="tpl-x" data-tdel="${i}" aria-label="Elimina il modello">✕</button></div>`
+#6926ad	'o semola fine di grano duro'
+#5d42d0	`tra ${d} ${d>1?'giorni':'giorno'}${h?' '+h+' h':''}`
+#15704b	`${d} ${d>1?'giorni':'giorno'} ${h} h`
+#7da8cf	`Lievitazione ${S.h} h`
+#c2a94c	' e '
+#b7a464	`In ritardo di ${cdLong(late)}. Ora l’impasto ha meno tempo. “In ritardo?” sposta il piano.`
+#fe3a8d	`In ritardo di ${cdLong(late)}. Meglio farlo subito.`
+#896c11	`In ritardo di ${cdLong(late)}. L’impasto ha continuato a lievitare: fai la prova del dito prima di infornare.`
+#1a592a	`Sciogli il lievito nell’acqua ${t}.`
+#c6cde5	`${R.pf.k==='biga'?'La':'Il'} ${R.pf.n} contiene già lievito, quindi nell’impasto ne va solo un po’.`
+#a653b6	'il forno è acceso e si scalda'
+#c53932	'Metti la teglia sul ripiano più basso, così il fondo diventa croccante.'
+#d5a029	'Metti la pietra sul ripiano più alto, lì fa più caldo.'
+#718a2c	'Quando si mangia?'
+#9d040b	'Cuoco per le lunghe lievitazioni, Nuvola per cornicioni ariosi, semola per la croccantezza e per spolverare.'
+#4cb41b	`di cui ${dust} g per spolverare`
+#101408	'Premi leggermente un dito nel panetto. Se l’impronta torna su lentamente, è pronto. Se torna subito: aspetta ancora. Se resta: inforna subito.'
+#b9c104	'Grano duro macinato finemente (semola rimacinata). Nell’impasto dà croccantezza; sul piano e sulla pala evita che si attacchi.'
+#0d634b	'Al massimo 18 panetti'
+#f83aed	'In fondo e in basso fa più freddo.'
+#7222a6	'Backup'
+#eb540a	' del '
+#01a781	'Impasto'
+#416479	'1 cucchiaio'
+#85574d	'cucchiaino'
+#169624	'nessuno'
+#100dfb	'Fai la prova del dito. Mai il mattarello: premi dal centro verso l’esterno. Con “Forno e condimenti” avvii il timer di ogni pizza.'
+#9b1555	`${d} ${d>1?'giorni':'giorno'} ${h} h`
+#82a627	`dalle ${lateFeasible(d).getHours()}`
+#225d03	`<div class="tk-emptyart"><span class="ebox" aria-hidden="true"><span class="ebox-w"><span class="ebox-b"><span class="ebox-base"><i class="st"></i><i class="cr" style="left:28%;top:62%"></i><i class="cr" style="left:64%;top:30%"></i><i class="cr" style="left:56%;top:72%"></i></span><span class="ebox-lid"></span></span></span></span><b>Il cartone è ancora vuoto</b><span>Impasto e salsa sono già in lista. Scegli le pizze e si aggiungono i condimenti.</span><button data-go="pizzen">Scegli le pizze</button></div>`
+#e23478	'Cubetto dal banco frigo'
+#718f6d	'Bustina, un terzo della quantità'
+#db3cd7	'Impastatrice a spirale o planetaria'
+#5819a7	'A mano sul piano di lavoro'
+#2f5062	'Nessun passaggio dalle 22 alle 7'
+#023015	'Nessun passaggio dalle 23 alle 8'
+#b10997	'Nessun passaggio da mezzanotte alle 9'
+#21f8a7	'Passaggi a qualsiasi ora'
+#cea4c6	'Impasto diretto'
+#100a59	'Prefermento liquido, matura il giorno prima'
+#20014b	'Prefermento solido, matura il giorno prima'
+#1d2a62	'Esattamente la quantità calcolata'
+#8ad82c	'Un po’ di impasto in più'
+#ca7dc0	'Riserva abbondante'
+#d75c1a	'Cucina fresca'
+#37e5da	'Temperatura ambiente normale'
+#228645	'Cucina calda'
+#2de593	'Cucina estiva molto calda'
+#ad0e3c	'Grammi e centimetri'
+#a7ce5a	'Once e pollici'
+#8f737d	'Fino a tre farine, mix personale'
+#9f87bf	'automatico'
+#749dc5	`Pizza da circa ${DIA[[250,280,300][i]]||30} cm`
+#e0b425	`<div class="alert"><b>Poco lievito</b><span>Pronto circa ${Math.round(-diff)} h più tardi. Tira fuori i panetti dal frigo circa ${dur(aN)} invece di ${dur(Math.round(acclFor(target)*4)/4)} prima di infornare, oppure mangia più tardi.</span></div>`
+#0201ab	`<div class="alert"><b>Poco lievito</b><span>Pronto circa ${Math.round(-diff)} h più tardi. Meglio mangiare più tardi, non prima di ${at(ready)}. Fai la prova del dito prima di infornare.</span></div>`
+#f13655	'Tolte tutte le spunte'
+#0b081f	`<div class="tk-fin"><span class="tk-stamp${renderShop.fin?'':' hit'}" style="font-size:1.55rem">SPESA FATTA!</span></div>`
+#35c28e	`<div class="tk-meta tk-tools"><button class="tk-hide" data-act="hide" aria-pressed="${hideD}"><span class="hb" aria-hidden="true"></span>Nascondi le spuntate</button><button data-act="reset">Togli tutte le spunte</button></div>`
+#ef7d65	'Cancellare tutto? Tocca di nuovo'
+'Zucchini'	'Zucchine'
+#21f5f6	'con un cucchiaio'
+#72393a	''
+#95a343	'dalla ciotola'
+#d8ba8e	'nella ciotola'
+#6d01aa	'ciotola'
+#12e6a1	'si attacca appena alle mani'
+
+#af9c27	`${d}<small>gg</small>${hh}<small>h</small>`
+#f3b12c	`Panetti da ${S.w} g fanno pizze da Ø ${DIA[S.w]||30} cm.`
+#5682e4	'Tarocco'
+#4f0cf6	'Tarocco di plastica flessibile: stacca i panetti dal contenitore e porziona l’impasto senza strapparlo.'
+#b28cdf	'Contenitori per panetti'
+#d96421	'Contenitori con coperchio per l’appretto in frigo. I panetti hanno spazio e non si seccano.'
+'Ein Zettel von Nonna'	'Un biglietto della Nonna'
+'Nonnas Tomatensoße'	'La salsa della Nonna'
+'No, no, no! Lies die Geschichte nochmal, da steht’s.'	'No, no, no! Vatti a leggere «Perché Tempasto?», sta tutto lì.'
+'Mamma mia! Zeit und Teig. Mehr verrat ich nicht.'	'Mamma mia! Un aiutino: guarda bene come si chiama l’app.'
+'Perfetto! Aber nicht weitersagen.'	'Perfetto! Ma acqua in bocca, eh.'
+'Die Zeit und der Teig.'	''
+'Direktteig'	'Impasto diretto'

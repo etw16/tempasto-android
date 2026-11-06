@@ -1,13 +1,14 @@
-# Baut www/ aus der Web-Version: python3 tools/make_www.py tempasto.html [tempasto-en.html]
-# Ohne zweite Datei wird die englische Version mit tools/i18n/build_en.py erzeugt.
-# Ergebnis: www/index.html (Deutsch) und www/en.html (Englisch). Die App wählt die Sprache selbst.
+# Baut www/ aus der Web-Version: python3 tools/make_www.py tempasto.html
+# Die Sprachversionen (en, it, fr, es) entstehen mit tools/i18n/build_lang.py.
+# Ergebnis: www/index.html (Deutsch) und www/<sprache>.html. Die App wählt die Sprache selbst.
 import sys, os, re, shutil, subprocess, tempfile
 root=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC_DE=sys.argv[1] if len(sys.argv)>1 else os.path.join(root,'..','tempasto','tempasto.html')
-SRC_EN=sys.argv[2] if len(sys.argv)>2 else None
-if not SRC_EN:
-    SRC_EN=os.path.join(tempfile.gettempdir(),'tempasto-en.html')
-    subprocess.run([sys.executable,os.path.join(root,'tools','i18n','build_en.py'),SRC_DE,SRC_EN],check=True,stdout=subprocess.DEVNULL)
+LANGS=['en','it','fr','es']
+SRCS={}
+for L in LANGS:
+    SRCS[L]=os.path.join(tempfile.gettempdir(),f'tempasto-{L}.html')
+    subprocess.run([sys.executable,os.path.join(root,'tools','i18n','build_lang.py'),L,SRC_DE,SRCS[L]],check=True,stdout=subprocess.DEVNULL)
 www=os.path.join(root,'www'); os.makedirs(os.path.join(www,'fonts'),exist_ok=True)
 F=[('Bricolage Grotesque','bricolage-grotesque',[600,800]),('Figtree','figtree',[400,500,600,700]),('IBM Plex Mono','ibm-plex-mono',[500,600])]
 css=''
@@ -31,7 +32,7 @@ def page(srcfile,out,lang):
 <meta name="color-scheme" content="light">
 {title}
 <style>{css}html,body{{background:#F3F4EF}}</style>
-<script>window.TEMPASTO_PAGES={{de:'index.html',en:'en.html'}};</script>
+<script>window.TEMPASTO_PAGES={{de:'index.html',en:'en.html',it:'it.html',fr:'fr.html',es:'es.html'}};</script>
 <script src="capacitor.js"></script>
 <script src="bridge.js"></script>
 </head><body>
@@ -40,4 +41,4 @@ def page(srcfile,out,lang):
     open(os.path.join(www,out),'w',encoding='utf-8').write(html)
     print('www/'+out, len(html)//1024, 'KB')
 page(SRC_DE,'index.html','de')
-page(SRC_EN,'en.html','en')
+for L in LANGS:page(SRCS[L],L+'.html',L)
