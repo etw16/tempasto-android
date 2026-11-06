@@ -65,9 +65,11 @@ jobs:
           name: Tempasto-AAB-${{ github.run_number }}
           path: Tempasto-${{ github.run_number }}.aab
 
-      - name: Release mit APK anlegen
+      - name: Release mit APK und AAB anlegen
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ github.run_number }}
           name: Tempasto ${{ github.run_number }}
-          files: Tempasto-${{ github.run_number }}.apk
+          files: |
+            Tempasto-${{ github.run_number }}.apk
+            Tempasto-${{ github.run_number }}.aab
