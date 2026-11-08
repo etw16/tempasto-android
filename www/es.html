@@ -2018,7 +2018,7 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
 :root:root:root #v-einkauf div.tk-sec>span{font-size:12px!important}
 :root:root:root #v-einkauf span.n{font-size:16px!important}
 :root:root:root #v-einkauf span.n>small{font-size:12px!important}
-:root:root:root #v-einkauf button.tk-link.tk-sauce{font-size:18px!important}
+:root:root:root #v-einkauf button.tk-link.tk-sauce{font-size:14px!important}
 :root:root:root #v-einkauf #copy{font-size:14px!important}
 :root:root:root #v-einkauf #waShare{font-size:14px!important}
 :root:root:root #v-mehr h2.bandh.ptitle{font-size:32px!important}
@@ -2038,7 +2038,7 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
 :root:root:root #v-anleitung h2.bandh.ptitle{font-size:32px!important}
 :root:root:root #v-anleitung i.drop{font-size:32px!important}
 :root:root:root #v-anleitung button.iconbtn.xbtn{font-size:16px!important}
-:root:root:root #v-anleitung p.g-lead{font-size:20px!important}
+:root:root:root #v-anleitung p.g-lead{font:600 16px/1.45 var(--f-body)!important;letter-spacing:0!important}
 :root:root:root #v-anleitung span.g-n{font-size:14px!important}
 :root:root:root #v-anleitung div.gd-demo.gd-satz{font-size:20px!important}
 :root:root:root #v-anleitung div.gd-demo.gd-satz>u{font-size:20px!important}
@@ -2059,7 +2059,10 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
 :root:root:root #v-hilfe i.drop{font-size:32px!important}
 :root:root:root #v-hilfe #helpBack{font-size:16px!important}
 :root:root:root #v-hilfe span.k{font-size:12px!important}
-:root:root:root #v-hilfe div.fn-note>p{font-size:18px!important}
+:root:root:root #v-hilfe div.fn-note>p{font-size:16px!important;line-height:1.75em!important;background:repeating-linear-gradient(transparent 0 calc(1.75em - 1px),#E8DCC4 calc(1.75em - 1px) 1.75em)!important}
+@supports (height:1lh){:root:root:root #v-hilfe div.fn-note>p{background:repeating-linear-gradient(transparent 0 calc(1lh - 1px),#E8DCC4 calc(1lh - 1px) 1lh)!important}}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+#recFoot{display:none!important}
 :root:root:root #v-hilfe p.fn-ps{font-size:18px!important}
 :root:root:root #v-hilfe span.fn-sig{font-size:18px!important}
 :root:root:root #v-hilfe div.mgrp-h{font-size:12px!important}
@@ -2186,6 +2189,55 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
 :root:root:root #cook div>span{font-size:16px!important}
 :root:root:root #cook #ckCrit{font-size:14px!important}
 :root:root:root #langSheet span>b,:root:root:root #v-anleitung span>b,:root:root:root #v-anleitung div.gd-h>b{font-size:16px!important}
+
+html.tp-meas *{transform:none!important;rotate:none!important;scale:none!important;translate:none!important}
+:root:root:root .mehr-in .sig:not(.sig-off),:root:root:root #v-mehr .sig:not(.sig-off){display:grid!important}
+:root:root:root #v-mehr .sig.sig-off{display:none!important}
+
+/* Nonna hilft: Tipps enger, Geheimnis als Fenster */
+#v-hilfe .fn .box{margin-bottom:-4px!important}#v-hilfe .fn .box:last-of-type{margin-bottom:0!important}
+.fn-secret{display:flex;align-items:center;gap:14px;width:100%;margin-top:18px;padding:14px 16px;border:1px dashed #CDB68C;border-radius:18px;background:#F6EBD6;cursor:pointer;text-align:left;color:var(--ink)}
+.fn-seal2{flex:0 0 40px;height:40px;border-radius:50%;background:#B3241A;color:#F6E3C8;display:grid;place-items:center;font:italic 20px Georgia,'Times New Roman',serif;box-shadow:0 2px 4px rgba(0,0,0,.25)}
+.fn-st{flex:1;display:grid;gap:2px}.fn-st b{font:600 16px var(--f-body)}.fn-st small{font:400 14px var(--f-body);color:var(--muted)}
+.fn-chev{color:var(--muted);font-size:20px}
+#sauceSheet .sh-in{padding-bottom:20px}#sauceSheet .fn-rec{margin-bottom:0}
+:root:root:root #sauceSheet div.fn-note>p{font-size:16px!important;line-height:1.75em!important;background:repeating-linear-gradient(transparent 0 calc(1.75em - 1px),#E8DCC4 calc(1.75em - 1px) 1.75em)!important}
+:root:root:root #sauceSheet div.fn-note>p{background:repeating-linear-gradient(transparent 0 calc(1lh - 1px),#E8DCC4 calc(1lh - 1px) 1lh)!important}
+:root:root:root #sauceSheet p.fn-ps{font-size:18px!important}
+:root:root:root #sauceSheet span.fn-sig{font-size:18px!important}
+:root:root:root #sauceSheet ul.tips>li{font-size:16px!important}
+:root:root:root #sauceSheet ul.tips.prob>li{font-size:16px!important}
+:root:root:root #sauceSheet div.fn-rt{font-size:24px!important}
+:root:root:root #sauceSheet p.fn-psst{font-size:18px!important}
+:root:root:root #sauceSheet #sauceSum{font-size:12px!important}
+:root:root:root #sauceSheet li>span{font-size:16px!important}
+:root:root:root #sauceSheet ol.fn-steps>li{font-size:14px!important}
+:root:root:root #sauceSheet p.fn-tip{font-size:12px!important}
+:root:root:root #sauceSheet details.fn-tin>summary{font-size:14px!important}
+:root:root:root #sauceSheet div.fn-note>p,:root:root:root #sauceSheet p.fn-ps{font-size:16px!important;line-height:1.75!important;padding-bottom:4px!important}
+:root:root:root #sauceSheet p.fn-psst,:root:root:root #v-consigli button.rec-help,:root:root:root #v-anleitung span.gd-note,:root:root:root #cook #nzT{font-size:16px!important}
+:root:root:root #sauceSheet span.fn-sig,:root:root:root #nzCard div.nz-sig{font-size:16px!important}
+/* Nonna hilft kompakt: passt ohne Scrollen */
+:root:root #v-hilfe .pad.fn{gap:12px!important}
+:root:root #v-hilfe .fn .mgrp-h{margin:6px 0 -4px!important}
+:root:root #v-hilfe .fn-note{padding:12px 16px 8px!important}
+:root:root #v-hilfe details.box>summary{padding:11px 0!important;min-height:0!important}
+:root:root #v-hilfe .fn-secret{margin-top:2px!important;padding:10px 14px!important;gap:12px!important}
+:root:root #v-hilfe .fn-seal2{flex-basis:34px!important;height:34px!important;font-size:17px!important}
+:root:root #v-hilfe .fn-st small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-height:820px){:root:root #v-hilfe .fn>.mgrp-h{display:none!important}:root:root:root:root #v-hilfe div.fn-note>p,:root:root:root:root #v-hilfe p.fn-ps{line-height:1.55!important}:root:root #v-hilfe details.box>summary{padding:9px 0!important}:root:root #v-hilfe .ptitle{margin-bottom:0}}
+/* QA-Feinschliff */
+:root:root:root:root .topline .ptitle{font-size:min(32px,7.4vw)!important;white-space:normal!important;min-width:0;overflow-wrap:anywhere}
+.topline{min-width:0}.topline>.xbtn{flex:0 0 auto}
+.nz-card::after{content:"";position:sticky;bottom:-22px;display:block;height:30px;margin:-30px -22px -22px;background:linear-gradient(rgba(255,253,246,0),#FFFDF6 85%);pointer-events:none}
+.mtiles.m3 .mtile{justify-content:flex-start!important}
+:root:root:root .nz-b .hw-tip p{font-size:16px!important;line-height:1.55!important}
+/* Nonnas Zettel: einheitlich 16 px, Linien per JS an den echten Zeilen ausgerichtet */
+:root:root:root #v-hilfe div.fn-note>p,:root:root:root #v-hilfe p.fn-ps{font-size:16px!important;line-height:1.75!important;padding-bottom:4px!important}
+:root:root:root #v-hilfe p.fn-psst,:root:root:root #v-consigli button.rec-help,:root:root:root #v-anleitung span.gd-note,:root:root:root #cook #nzT{font-size:16px!important}
+:root:root:root #v-hilfe span.fn-sig,:root:root:root #nzCard div.nz-sig{font-size:16px!important}
+:root:root:root .nz-b .hw-how,:root:root:root .nz-lines{font-size:16px!important;padding-bottom:4px}
+:root:root:root .nz-b .hw-how li,:root:root:root .nz-lines li,:root:root:root #nzCard ul.nz-lines>li{font-size:inherit!important;line-height:inherit!important}
 </style>
 
 <div class="splash" id="splash" aria-hidden="true"><div class="sp-q"><div class="sp-it"><span class="w x">Il</span> <span class="w"><span class="lt" data-to="0">t</span><span class="lt" data-to="1">e</span><span class="lt" data-to="2">m</span><span class="lt" data-to="3">p</span><span class="lt dr">o</span></span> <span class="w x">e</span> <span class="w x">l’</span><span class="w"><span class="lt dr">i</span><span class="lt dr">m</span><span class="lt dr">p</span><span class="lt" data-to="4">a</span><span class="lt" data-to="5">s</span><span class="lt" data-to="6">t</span><span class="lt" data-to="pz">o</span></span><span class="w x">.</span></div><div class="sp-de">El tiempo y la masa.</div></div><div class="sp-in"><div class="brand"><span class="logo" role="img" aria-label="Tempasto"><span class="ch">T</span><span class="ch">e</span><span class="ch">m</span><span class="ch">p</span><span class="ch">a</span><span class="ch">s</span><span class="ch">t</span><svg class="pz-o" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.6" fill="#D9A963"/><circle cx="12" cy="12" r="10.6" fill="#E8BE7C"/><g class="sauce"><circle cx="12" cy="12" r="8.2" fill="#C2281B"/><circle cx="12" cy="12" r="8.2" fill="none" stroke="#9E1E14" stroke-width=".6"/></g><ellipse cx="9" cy="9.4" rx="2.3" ry="2" fill="#FFF8EA"/><ellipse cx="15" cy="14.2" rx="2.1" ry="1.9" fill="#FFF8EA"/><circle cx="14.6" cy="8.2" r="1.4" fill="#FFF8EA"/><circle cx="9.2" cy="15.4" r="1.2" fill="#FFF8EA"/><ellipse cx="11.6" cy="12.2" rx="2.1" ry="1" transform="rotate(-35 11.6 12.2)" fill="#3E8A47"/><ellipse cx="16.6" cy="10.8" rx="1.5" ry=".75" transform="rotate(50 16.6 10.8)" fill="#3E8A47"/><circle cx="3.4" cy="9" r=".75" fill="#3B2A1F" opacity=".55"/><circle cx="19.6" cy="17" r=".65" fill="#3B2A1F" opacity=".55"/><circle cx="17" cy="3.6" r=".55" fill="#3B2A1F" opacity=".55"/></svg><i>.</i></span><span class="brand-sub script sp-fm">fatto a mano</span></div></div></div>
@@ -2230,7 +2282,7 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
       <div class="pzdots" id="pzDots" aria-hidden="true"></div>
       <div class="pzrow"><span class="bandsub mono" id="pzCount"></span><span class="pz-acts"><button class="pzreset" id="pzReset" hidden>Vaciar</button></span></div>
     </header>
-    <div class="chips filt" id="pzFilter" role="group" aria-label="Filter"></div>
+    <div class="chips filt" id="pzFilter" role="group" aria-label="Filtrar"></div>
     <div class="railwrap"><button class="railbtn prev" id="railPrev" aria-label="Pizza anterior">‹</button><div class="rail" id="pzRail"></div><button class="railbtn next" id="railNext" aria-label="Pizza siguiente">›</button></div>
     <div class="raildots" id="railDots" aria-hidden="true"></div>
     <div class="pz-foot"><button class="pzreset" id="pzMenu" hidden>Compartir la carta</button></div>
@@ -2294,7 +2346,7 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
 <p><a href="mailto:tempasto@mail.de">tempasto@mail.de</a></p>
 <p>Tempasto es un proyecto privado y sin ánimo de lucro. La app es gratuita y no tiene publicidad.</p>
 <h3>Responsabilidad por enlaces</h3>
-<p>La app contiene enlaces a tiendas externas. Su contenido es responsabilidad exclusiva de sus respectivos titulares.</p>
+<p>La app contiene enlaces a servicios externos como PayPal y WhatsApp. Su contenido es responsabilidad exclusiva de sus respectivos titulares.</p>
 <h3>Privacidad</h3>
 <p>Tempasto guarda tu plan, tus pizzas y tus ajustes solo en tu dispositivo. No se envía ningún dato, ni a mí ni a nadie.</p>
 <p class="imp-sig">Tempasto · fatto a mano</p>
@@ -2381,31 +2433,7 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
         <li><b>La masa apenas sube</b>La levadura era vieja o la nevera está muy fría. Deja los bollos más tiempo a temperatura ambiente y espera a la prueba del dedo.</li>
       </ul></div>
     </details>
-    <div class="mgrp-h">La receta secreta de la Nonna</div>
-    <div class="fn-rec sealed" id="h-sosse">
-      <div class="fn-env" id="sauceEnv"><div class="fn-flap" aria-hidden="true"></div><span class="fn-seal" aria-hidden="true">N</span><span class="fn-sk">Secreto</span><div class="fn-et">La salsa de la Nonna</div><p class="fn-eq">No tan deprisa. Primero una pregunta: ¿qué responde el pizzaiolo cuando le preguntas por su secreto?</p><div class="fn-ans"><button data-a="0">«Fuoco e pazienza»</button><button data-a="1">«Il tempo e l’impasto»</button><button data-a="0">«La farina giusta»</button></div><p class="fn-eh" id="sauceHint" aria-live="polite"></p><button class="fn-elink" id="sauceStory" hidden>Ir a la historia ›</button></div>
-      <div class="fn-rt">Mi salsa de tomate</div>
-      <p class="fn-psst">Psst. Ni al pizzaiolo de abajo se la he contado. Es tan sencilla que todos creen que le falta algo.</p>
-      <div class="fn-for" id="sauceSum"></div>
-      <ul class="list" id="sauce" style="padding:0"></ul>
-      <ol class="fn-steps"><li>Pasa los tomates por el pasapurés o aplástalos a mano. <b>Nada de batidora,</b> o la salsa se vuelve amarga y de un rojo pálido.</li><li>Añade la sal, rompe la albahaca con las manos, no la cortes.</li><li><b>El aceite, al final.</b> No la cocines, la salsa se hace en el horno.</li></ol>
-      <p class="fn-tip">¿Demasiado aguada? Escurre un poco de líquido antes de pasar los tomates.</p>
-      <details class="fn-tin"><summary>Cómo reconocer un buen tomate de lata</summary>
-        <svg class="fig" viewBox="0 0 300 120" style="max-width:340px" role="img" aria-label="Lata de tomate con código de origen, código de envasado y sello DOP">
-          <rect x="30" y="18" width="90" height="88" class="s-steel"/><ellipse cx="75" cy="106" rx="45" ry="9" class="s-steel"/>
-          <rect x="30" y="34" width="90" height="56" class="s-tom"/><circle cx="75" cy="62" r="17" class="s-mozz"/>
-          <text x="75" y="66" text-anchor="middle" font-size="9" font-weight="800" style="fill:var(--accent)">D.O.P.</text>
-          <ellipse cx="75" cy="18" rx="45" ry="9" class="s-sunk"/><ellipse cx="75" cy="18" rx="45" ry="9" fill="none" class="st-muted" stroke-width="1.5"/>
-          <text x="75" y="22" text-anchor="middle" font-size="10" font-weight="700" class="s-ink" style="font-family:var(--f-mono)">SA S220</text>
-          <path d="M120 18h40M95 62h65" class="st-muted" stroke-width="1.5"/>
-          <text x="166" y="15" font-size="11" font-weight="700" class="s-ink">SA = Salerno</text>
-          <text x="166" y="29" font-size="11" class="s-muted">día 220 = principios de ago.</text>
-          <text x="166" y="43" font-size="11" class="s-muted">bien: de 190 a 250</text>
-          <text x="166" y="66" font-size="11" font-weight="700" class="s-ink">Sello D.O.P.</text>
-        </svg>
-        <p class="small muted">La lata debe decir «100 % tomate italiano». «Elaborado en Italia» solo dice dónde se envasó. Buenas marcas DOP son, por ejemplo, Solania y Strianese.</p>
-      </details>
-    </div>
+    <button class="fn-secret" data-sheet="sauceSheet"><span class="fn-seal2" aria-hidden="true">N</span><span class="fn-st"><b>El secreto de la Nonna</b><small>Un acertijo sellado</small></span><span class="fn-chev" aria-hidden="true">›</span></button>
   
     </div>
   </section>
@@ -2481,6 +2509,38 @@ body:has(#cook:not([hidden])) .toast{bottom:auto!important}
       <div class="tpl-l" id="tplL"></div>
       <div class="tpl-new"><input type="text" id="tplName" maxlength="24" placeholder="Nombre, p. ej. Pizza del viernes"><button class="btn" id="tplAdd">Guardar el plan actual</button></div>
       <p class="small muted" id="tplHint"></p>
+    </div>
+  </div>
+</div>
+<div class="sheet" id="sauceSheet" hidden>
+  <div class="sh-bg" data-close></div>
+  <div class="sh-pan" role="dialog" aria-modal="true" aria-label="El secreto de la Nonna">
+    <div class="sh-hd"><h2>El secreto de la Nonna</h2><button class="sh-x" data-close aria-label="Cerrar">✕</button></div>
+    <div class="sh-in fn">
+    <div class="fn-rec sealed" id="h-sosse">
+      <div class="fn-env" id="sauceEnv"><div class="fn-flap" aria-hidden="true"></div><span class="fn-seal" aria-hidden="true">N</span><span class="fn-sk">Secreto</span><div class="fn-et">La salsa de la Nonna</div><p class="fn-eq">No tan deprisa. Primero una pregunta: ¿qué responde el pizzaiolo cuando le preguntas por su secreto?</p><div class="fn-ans"><button data-a="0">«Fuoco e pazienza»</button><button data-a="1">«Il tempo e l’impasto»</button><button data-a="0">«La farina giusta»</button></div><p class="fn-eh" id="sauceHint" aria-live="polite"></p><button class="fn-elink" id="sauceStory" hidden>Ir a la historia ›</button></div>
+      <div class="fn-rt">Mi salsa de tomate</div>
+      <p class="fn-psst">Psst. Ni al pizzaiolo de abajo se la he contado. Es tan sencilla que todos creen que le falta algo.</p>
+      <div class="fn-for" id="sauceSum"></div>
+      <ul class="list" id="sauce" style="padding:0"></ul>
+      <ol class="fn-steps"><li>Pasa los tomates por el pasapurés o aplástalos a mano. <b>Nada de batidora,</b> o la salsa se vuelve amarga y de un rojo pálido.</li><li>Añade la sal, rompe la albahaca con las manos, no la cortes.</li><li><b>El aceite, al final.</b> No la cocines, la salsa se hace en el horno.</li></ol>
+      <p class="fn-tip">¿Demasiado aguada? Escurre un poco de líquido antes de pasar los tomates.</p>
+      <details class="fn-tin"><summary>Cómo reconocer un buen tomate de lata</summary>
+        <svg class="fig" viewBox="0 0 300 120" style="max-width:340px" role="img" aria-label="Lata de tomate con código de origen, código de envasado y sello DOP">
+          <rect x="30" y="18" width="90" height="88" class="s-steel"/><ellipse cx="75" cy="106" rx="45" ry="9" class="s-steel"/>
+          <rect x="30" y="34" width="90" height="56" class="s-tom"/><circle cx="75" cy="62" r="17" class="s-mozz"/>
+          <text x="75" y="66" text-anchor="middle" font-size="9" font-weight="800" style="fill:var(--accent)">D.O.P.</text>
+          <ellipse cx="75" cy="18" rx="45" ry="9" class="s-sunk"/><ellipse cx="75" cy="18" rx="45" ry="9" fill="none" class="st-muted" stroke-width="1.5"/>
+          <text x="75" y="22" text-anchor="middle" font-size="10" font-weight="700" class="s-ink" style="font-family:var(--f-mono)">SA S220</text>
+          <path d="M120 18h40M95 62h65" class="st-muted" stroke-width="1.5"/>
+          <text x="166" y="15" font-size="11" font-weight="700" class="s-ink">SA = Salerno</text>
+          <text x="166" y="29" font-size="11" class="s-muted">día 220 = principios de ago.</text>
+          <text x="166" y="43" font-size="11" class="s-muted">bien: de 190 a 250</text>
+          <text x="166" y="66" font-size="11" font-weight="700" class="s-ink">Sello D.O.P.</text>
+        </svg>
+        <p class="small muted">La lata debe decir «100 % tomate italiano». «Elaborado en Italia» solo dice dónde se envasó. Buenas marcas DOP son, por ejemplo, Solania y Strianese.</p>
+      </details>
+    </div>
     </div>
   </div>
 </div>
@@ -2773,7 +2833,7 @@ const PFS={poolish:{n:'Poolish',share:.3,hy:1,y:.001,h:16,lo:12,hi:20,w:'tibia',
 function recipe(p,yPct){
   const total=p.n*p.w*(1+(p.wz||0)/100), F=total/(1+p.hy/100+SALT/100+OIL/100+yPct/100);
   const fl=flours(p).map(f=>Object.assign({},f,{g:F*f.p}));
-  const R={total,F,fl,cuoco:F*MIX.cuoco,nuvola:F*MIX.nuvola,sem:F*MIX.sem,water:F*p.hy/100,wA:F*p.hy/100*0.9,wY:F*p.hy/100*0.1,yeast:F*yPct/100,salt:F*SALT/100,oil:F*OIL/100};
+  const R={total,F,fl,cuoco:F*MIX.cuoco,nuvola:F*MIX.nuvola,sem:F*MIX.sem,water:F*p.hy/100,wA:Math.round(F*p.hy/100*0.9),wY:Math.round(F*p.hy/100)-Math.round(F*p.hy/100*0.9),yeast:F*yPct/100,salt:F*SALT/100,oil:F*OIL/100};
   R.mfl=fl;R.yMain=R.yeast;
   const q=PFS[p.pf];if(q){const pF=F*q.share;R.pf={k:p.pf,n:q.n,w:q.w,where:q.where,F:pF,W:pF*q.hy,Y:pF*q.y,fl:fl.map(f=>({n:f.n,c:f.c,g:f.g*q.share}))};
     R.mfl=fl.map(f=>Object.assign({},f,{g:f.g*(1-q.share)}));R.yMain=R.yeast*(1-q.share)*(p.pf==='biga'?.25:.5);R.yeast=R.yMain+R.pf.Y;R.wA=R.water-R.pf.W-R.wY;}
@@ -2978,7 +3038,7 @@ function fitSatz(){const e=$('stSatz');if(!e||!e.offsetParent)return;const W=e.p
  e.style.fontSize=(best*.93).toFixed(1)+'px';}
 addEventListener('resize',()=>requestAnimationFrame(fitSatz));
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>fitSatz());
-function setView(v){setTimeout(fitSatz,0);if(v==='storia'&&typeof stShow==='function')stShow(0);if(v==='mehr'&&!window.__sigSeen&&typeof sigPlay==='function'){window.__sigSeen=1;requestAnimationFrame(sigPlay);}{const t=document.querySelector('.toast');if(t&&!t.querySelector('.t-undo'))t.hidden=true;}if(v==='hilfe')try{renderSauce();}catch(e){}if(v!=='rezept'&&cookOpen)closeCook(true);const pv=prevV;setTimeout(abNextUI,0);setTimeout(()=>dropDot(v),30);prevV=v;setTimeout(()=>glideBrand(v,pv),0);if(v!=='hilfe')lastView=v;S.view=v;const tab=v==='ablauf'?'rezept':['consigli','anleitung','impressum','storia','hilfe'].includes(v)?'mehr':v;document.querySelectorAll('.nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===tab));VIEWS.forEach(x=>$('v-'+x).hidden=x!==v);window.scrollTo(0,0);if(v==='pizzen')setTimeout(()=>{try{railUpd();clampTops();}catch(e){}},30);if(v==='ablauf')setTimeout(fitPlan,20);save();if(v==='rezept'&&S.cook&&!cookOpen&&booted)openCook();}
+function setView(v){setTimeout(fitSatz,0);if(v==='storia'&&typeof stShow==='function')stShow(0);if(v==='hilfe'&&typeof ruleNotes==='function')requestAnimationFrame(ruleNotes);if(v==='mehr'&&typeof fitSig==='function'){const first=!window.__sigSeen;window.__sigSeen=1;requestAnimationFrame(()=>{fitSig();if(first)sigPlay();});}{const t=document.querySelector('.toast');if(t&&!t.querySelector('.t-undo'))t.hidden=true;}if(v==='hilfe')try{renderSauce();}catch(e){}if(v!=='rezept'&&cookOpen)closeCook(true);const pv=prevV;setTimeout(abNextUI,0);setTimeout(()=>dropDot(v),30);prevV=v;setTimeout(()=>glideBrand(v,pv),0);if(v!=='hilfe')lastView=v;S.view=v;const tab=v==='ablauf'?'rezept':['consigli','anleitung','impressum','storia','hilfe'].includes(v)?'mehr':v;document.querySelectorAll('.nav button').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===tab));VIEWS.forEach(x=>$('v-'+x).hidden=x!==v);window.scrollTo(0,0);if(v==='pizzen')setTimeout(()=>{try{railUpd();clampTops();}catch(e){}},30);if(v==='ablauf')setTimeout(fitPlan,20);save();if(v==='rezept'&&S.cook&&!cookOpen&&booted)openCook();}
 function slicesSVG(N,done,cur,size,R,r,top){
   const c=size/2;let h=`<svg viewBox="0 0 ${size} ${size}" aria-hidden="true"><circle cx="${c}" cy="${c}" r="${R+4}" fill="${top?'#1F1C19':'rgba(0,0,0,.25)'}"/>`;
   const gap=N>1?0.035:0;
@@ -3509,9 +3569,9 @@ function renderCheck(){
 const PIZZAS=[
  {id:'marg',dot:'#C2281B',veg:1,n:'Margherita',love:1,d:'La clásica: tomate, fior di latte, albahaca.',tag:'Clásica',rossa:1,ing:[['Fior di Latte',90,'g'],['Albahaca',4,'hojas'],['Parmigiano',5,'g']],top:[['#FFF8EA',6,9],['#3E8A47',4,4,1]]},
  {id:'salame',dot:'#9E2A1E',veg:0,n:'Salame Classico',d:'La clásica de salami: tomate, fior di latte y mucho salami suave.',tag:'Clásica',rossa:1,ing:[['Fior di Latte',90,'g'],['Salami suave',45,'g']],top:[['#FFF8EA',5,8],['#9E2A1E',9,6.5]]},
- {id:'mari',dot:'#D9542F',veg:1,n:'Marinara',d:'Sin queso: tomate, ajo, orégano y un buen aceite de oliva.',tag:'Vegan',rossa:1,ing:[['Ajo',1,'diente'],['Orégano seco',1,'pizca'],['Aceite de oliva',5,'g']],top:[['#F2E6C9',8,3],['#6B7F3A',16,1.4]]},
- {id:'diav',dot:'#8E1F17',veg:0,n:'Diavola',d:'Tomate, salami picante, fior di latte, un toque de aceite de guindilla.',tag:'Picante',rossa:1,ing:[['Fior di Latte',90,'g'],['Salame piccante',40,'g'],['Aceite de guindilla',1,'cdta.']],top:[['#FFF8EA',5,8],['#8E1F17',8,6.5]]},
- {id:'nduja',dot:'#B33A1E',veg:0,n:'Nduja e Miele',d:'Tomate, nduja picante y miel. Dulce, picante, cremosa.',tag:'Picante',rossa:1,ing:[['Fior di Latte',80,'g'],['Nduja',25,'g'],['Miel',1,'cdta.'],['Albahaca',3,'hojas']],top:[['#FFF8EA',5,8],['#B33A1E',7,5],['#E8B23A',7,2],['#3E8A47',3,4,1]]},
+ {id:'mari',dot:'#D9542F',veg:1,n:'Marinara',d:'Sin queso: tomate, ajo, orégano y un buen aceite de oliva.',tag:'Vegana',rossa:1,ing:[['Ajo',1,'diente'],['Orégano seco',1,'pizca'],['Aceite de oliva',5,'g']],top:[['#F2E6C9',8,3],['#6B7F3A',16,1.4]]},
+ {id:'diav',dot:'#8E1F17',veg:0,n:'Diavola',d:'Tomate, salami picante, fior di latte, un toque de aceite de guindilla.',tag:'Picantes',rossa:1,ing:[['Fior di Latte',90,'g'],['Salame piccante',40,'g'],['Aceite de guindilla',1,'cdta.']],top:[['#FFF8EA',5,8],['#8E1F17',8,6.5]]},
+ {id:'nduja',dot:'#B33A1E',veg:0,n:'Nduja e Miele',d:'Tomate, nduja picante y miel. Dulce, picante, cremosa.',tag:'Picantes',rossa:1,ing:[['Fior di Latte',80,'g'],['Nduja',25,'g'],['Miel',1,'cdta.'],['Albahaca',3,'hojas']],top:[['#FFF8EA',5,8],['#B33A1E',7,5],['#E8B23A',7,2],['#3E8A47',3,4,1]]},
  {id:'crudo',dot:'#E9A3A0',veg:0,n:'Crudo e Rucola',d:'Tomate y fior di latte; al salir del horno, prosciutto crudo, rúcula y parmigiano.',tag:'Clásica',rossa:1,ing:[['Fior di Latte',80,'g'],['Prosciutto crudo',40,'g'],['Rúcula',10,'g'],['Parmigiano',10,'g']],top:[['#FFF8EA',4,8],['#E9A3A0',6,9],['#5E8C3A',12,3,1],['#F4E6B8',6,2]]},
  {id:'mort',dot:'#F2B8B5',veg:0,n:'Mortadella e Pistacchio',d:'Tomate; al salir del horno, mortadela, burrata y pistachos picados.',tag:'Fina',rossa:1,ing:[['Fior di Latte',60,'g'],['Mortadella',60,'g'],['Burrata',50,'g'],['Pistachos picados',15,'g']],top:[['#F2B8B5',6,9],['#FFFDF6',2,10],['#7FA650',18,1.6]]},
  {id:'patate',dot:'#F1D48A',veg:1,n:'Patate e Rosmarino',d:'Tomate, patatas finísimas, romero y pecorino.',tag:'Sabrosa',rossa:1,ing:[['Fior di Latte',70,'g'],['Patatas de carne firme',80,'g'],['Romero',1,'ramita'],['Pecorino',10,'g']],top:[['#F1D48A',10,7],['#4F7A3A',12,1.6,1]]},
@@ -3521,7 +3581,7 @@ const PIZZAS=[
  {id:'quattro',dot:'#E7C27A',veg:1,n:'Quattro Formaggi',d:'Tomate, fior di latte, gorgonzola, provola y parmigiano.',tag:'Queso',rossa:1,ing:[['Fior di Latte',50,'g'],['Gorgonzola',25,'g'],['Provola',30,'g'],['Parmigiano',10,'g']],top:[['#FFF8EA',5,7],['#D9D3A8',5,5],['#E7C27A',5,5]]},
  {id:'broccoli',dot:'#3E6B2E',veg:1,n:'Broccoli e Ricotta',d:'Tomate, ramilletes de brócoli, cucharadas de ricotta, ralladura de limón y un poco de guindilla.',tag:'Vegetariana',rossa:1,ing:[['Fior di Latte',60,'g'],['Brócoli',80,'g'],['Ricotta',50,'g'],['Limón ecológico',0.25,'ud.'],['Copos de guindilla',1,'pizca']],top:[['#FFF8EA',3,7],['#3E6B2E',10,5.5],['#FFFDF6',6,5]]},
  {id:'ortolana',dot:'#7FA650',veg:1,n:'Ortolana',d:'Huerta: tomate, calabacín, pimiento, berenjena y fior di latte.',tag:'Vegetariana',rossa:1,ing:[['Fior di Latte',70,'g'],['Calabacín',50,'g'],['Pimiento, amarillo',40,'g'],['Berenjena',40,'g']],top:[['#FFF8EA',4,7],['#7FA650',8,5],['#E2B227',6,4.5],['#4A2D4F',6,5]]},
- {id:'nutella',dot:'#5A3A28',veg:1,dessert:1,n:'Pizza Nutella',d:'De postre: hornea la masa sin nada, luego Nutella, fresas, avellanas y azúcar glas.',tag:'Dessert',rossa:0,base:'#5A3A28',ing:[['Nutella',60,'g'],['Fresas',50,'g'],['Avellanas picadas',10,'g'],['Azúcar glas',1,'pizca']],top:[['#E04A36',6,5],['#C9A06A',14,1.5],['#FFFDF6',22,0.9]]}
+ {id:'nutella',dot:'#5A3A28',veg:1,dessert:1,n:'Pizza Nutella',d:'De postre: hornea la masa sin nada, luego Nutella, fresas, avellanas y azúcar glas.',tag:'Postres',rossa:0,base:'#5A3A28',ing:[['Nutella',60,'g'],['Fresas',50,'g'],['Avellanas picadas',10,'g'],['Azúcar glas',1,'pizca']],top:[['#E04A36',6,5],['#C9A06A',14,1.5],['#FFFDF6',22,0.9]]}
 ];
 setTimeout(()=>{syncOwn();try{renderShop();}catch(e){}},0);
 const PACK={'Fior di Latte':[125,'bola','bolas'],'Burrata':[125,'Burrata','Burrata']};
@@ -3546,12 +3606,12 @@ const TOPI=(()=>{
  const sugar=c('<circle cx="5" cy="6" r="1.2" fill="#D8D2C6"/><circle cx="10" cy="5" r="1.2" fill="#D8D2C6"/><circle cx="8" cy="9.5" r="1.2" fill="#D8D2C6"/><circle cx="11.5" cy="10.5" r="1" fill="#D8D2C6"/><circle cx="4.5" cy="11" r="1" fill="#D8D2C6"/>');
  const T={'Fior di Latte':cheese,'Burrata':cheese,'Provola':cheese,'Ricotta':cheese,'Gorgonzola':c('<path d="M3 9.5c0-3 2.2-5.5 5-5.5s5 2.5 5 5.2c0 2-1.6 3-5 3s-5-.7-5-2.7z" fill="#F4EFDF" stroke="#D2C9AE"/><circle cx="6.5" cy="8" r=".9" fill="#5E7A7A"/><circle cx="9.6" cy="9.6" r=".8" fill="#5E7A7A"/>'),
   'Parmigiano':hard,'Pecorino':hard,'Salami':sal('#B33A2B'),'Salame':sal('#8E1F17'),'Salsiccia':sal('#8A4A32'),'Nduja':drop('#A3241A'),
-  'Prosciutto':ham('#E39A8E'),'Mortadella':ham('#F2B8B5'),'Albahaca':leaf('#3E8A47'),'Rúcula':leaf('#5B8F3A'),'Perejil':leaf('#4E9A47'),'Romero':leaf('#4F7A3A'),'Oregano':leaf('#6E8A4A'),'Friarielli':leaf('#3E6A35'),
+  'Prosciutto':ham('#E39A8E'),'Mortadella':ham('#F2B8B5'),'Albahaca':leaf('#3E8A47'),'Rúcula':leaf('#5B8F3A'),'Perejil':leaf('#4E9A47'),'Romero':leaf('#4F7A3A'),'Orégano':leaf('#6E8A4A'),'Friarielli':leaf('#3E6A35'),
   'Copos de guindilla':chili,'Aceite de guindilla':chili,'Setas':mush,'Crema de trufa':drop('#4A3628'),'Brócoli':broc,'Roja':onion,'Calabacín':dot('#7FA65A'),'Berenjena':pep('#5B2E5E'),'Tomates cherry':dot('#D9372A',4.6),
   'Patatas':slices,'Ajo':garlic,'Pimiento, rojo':pep('#D3302A'),'Pimiento, amarillo':pep('#E9B92A'),'Nutella':drop('#5A3A28'),'Fresas':pep('#D9372A'),'Pistachos':nut('#8BAA4A'),'Avellanas':nut('#A9784A'),'Miel':drop('#E2A531'),'Azúcar glas':sugar,'Limón ecológico':dot('#F2D24A'),'Tomate':dot('#C2281B',5.4)};
  return n=>T[n]||T[n.split(/[ ,]/)[0]]||dot('#CFC6B4',4);
 })();
-const shortName=n=>({'Fior di Latte':'Fior di Latte','Prosciutto crudo':'Crudo','Friarielli o brócoli':'Friarielli','Patatas de carne firme':'Patatas','Orégano seco':'Oregano','Avellanas picadas':'Avellanas','Pistachos picados':'Pistachos','Salami suave':'Salami','Salame piccante':'Salame piccante','Cebolla roja':'Cebolla','Pimiento, rojo':'Pimiento','Pimiento, amarillo':'Pimiento','Limón ecológico':'Limón'})[n]||n;
+const shortName=n=>({'Fior di Latte':'Fior di Latte','Prosciutto crudo':'Crudo','Friarielli o brócoli':'Friarielli','Patatas de carne firme':'Patatas','Orégano seco':'Orégano','Avellanas picadas':'Avellanas','Pistachos picados':'Pistachos','Salami suave':'Salami','Salame piccante':'Salame piccante','Cebolla roja':'Cebolla','Pimiento, rojo':'Pimiento','Pimiento, amarillo':'Pimiento','Limón ecológico':'Limón'})[n]||n;
 function topChips(p){
   const L=[...(p.rossa?['Tomate']:[]),...p.ing.map(x=>x[0])], seen=new Set(), u=L.filter(n=>{const k=shortName(n);if(seen.has(k))return false;seen.add(k);return true;});
   return `<div class="tops">${p.love?'<span class="top amore"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 3 5 6.6 5c2.1 0 3.6 1.2 5.4 3.2C13.8 6.2 15.3 5 17.4 5 21 5 23 8.6 21.6 11.8 19.5 16.4 12 21 12 21z" fill="#C2281B"/></svg>Amore</span>':''}${u.map(n=>`<span class="top">${TOPI(n)}${shortName(n)}</span>`).join('')}</div>`;
@@ -3654,8 +3714,8 @@ let ownFree=[];function drawOwn(){const cat=ownCatalog().concat(ownFree);$('ownC
 const escH=t=>String(t==null?'':t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const cleanName=t=>String(t||'').replace(/[<>&"`]/g,'').replace(/\s+/g,' ').trim().slice(0,28);
 function saveOwn(){const cat=ownCatalog().concat(ownFree),n=cleanName($('ownName').value);if(!n||!ownSel.size)return;S.own=S.own||[];const o={id:'own'+Date.now().toString(36),n,rossa:$('ownSauce').checked,ing:cat.filter(x=>ownSel.has(x[0]))};S.own.push(o);syncOwn();if(pzTotal()<S.n)S.pz[o.id]=1;save();$('ownSheet').hidden=true;document.body.classList.remove('lock');S.pzf='alle';renderShop();toast(`${n} está en la carta`);setTimeout(()=>{const c=document.querySelector(`.card[data-id="${o.id}"]`);c&&c.scrollIntoView({inline:'center',block:'nearest',behavior:'smooth'});},60);}
-const FILTERS=[['alle','Todas'],['klassiker','Clásicas'],['scharf','Picante'],['veg','Veggie'],['dessert','Dessert']];
-function pzMatch(p,f){return f==='alle'||(f==='klassiker'&&p.tag==='Clásica')||(f==='scharf'&&p.tag==='Picante')||(f==='veg'&&p.veg&&!p.dessert)||(f==='dessert'&&p.dessert);}
+const FILTERS=[['alle','Todas'],['klassiker','Clásicas'],['scharf','Picantes'],['veg','Veggie'],['dessert','Postres']];
+function pzMatch(p,f){return f==='alle'||(f==='klassiker'&&p.tag==='Clásica')||(f==='scharf'&&p.tag==='Picantes')||(f==='veg'&&p.veg&&!p.dessert)||(f==='dessert'&&p.dessert);}
 let panEdit=false,shopDoneOpen=false,freshWhen='';const EMPTY_TOP=`<div class="tk-emptyart"><span class="ebox" aria-hidden="true"><span class="ebox-w"><span class="ebox-b"><span class="ebox-base"><i class="st"></i><i class="cr" style="left:28%;top:62%"></i><i class="cr" style="left:64%;top:30%"></i><i class="cr" style="left:56%;top:72%"></i></span><span class="ebox-lid"></span></span></span></span><b>La caja aún está vacía</b><span>La masa y la salsa ya están en la lista. Elige tus pizzas y se añaden los ingredientes.</span><button data-go="pizzen">Elegir pizzas</button></div>`;const openTops=new Set();
 function renderShop(){
   const D=shopData(), tot=pzTotal(), n=S.n;
@@ -3809,7 +3869,7 @@ $('pzReset').onclick=e=>{const r=e.currentTarget;if(r.dataset.sure){S.pz={};dele
 $('v-pizzen').addEventListener('click',e=>{const mb=e.target.closest('[data-more]');if(mb){const cd=mb.closest('.card');cd.classList.add('allt');openTops.add(cd.dataset.id);clampTops();return;}if(e.target.closest('#ownAdd')){openOwn();return;}const od=e.target.closest('[data-owndel]');if(od){if(od.dataset.sure){S.own=(S.own||[]).filter(x=>x.id!==od.dataset.owndel);delete S.pz[od.dataset.owndel];syncOwn();save();renderShop();renderSauce();toast('Pizza borrada');}else{od.dataset.sure='1';od.textContent='¿Borrar de verdad?';}return;}const pb=e.target.closest('[data-pz]');if(!pb)return;const id=pb.dataset.pz;if(+pb.dataset.d>0&&pzTotal()>=S.n){toast(`Los ${S.n} bollos están asignados`);try{navigator.vibrate&&navigator.vibrate([30,40,30]);}catch(_){}return;}S.pz[id]=Math.max(0,(S.pz[id]||0)+(+pb.dataset.d));if(!S.pz[id])delete S.pz[id];const cs=pb.closest('.card').querySelector(':scope>svg'),fr=cs?cs.getBoundingClientRect():null;const sl=$('pzRail').scrollLeft;renderShop();renderSauce();$('pzRail').scrollLeft=sl;save();if(+pb.dataset.d>0)flyToSlot(id,fr);});
 $('tilePz').onclick=()=>setView('pizzen');$('tileShop').onclick=()=>setView('einkauf');
 document.querySelectorAll('.helpbtn').forEach(b=>b.onclick=()=>setView('hilfe'));
-function openHelp(id){setView('hilfe');const d=$(id);if(d){d.open=true;setTimeout(()=>d.scrollIntoView({block:'start',behavior:'smooth'}),30);}}
+function openHelp(id){if(id==='h-sosse'){const sh=$('sauceSheet');if(sh){sh.hidden=false;document.body.classList.add('lock');if(typeof sauceSeal==='function')sauceSeal();}return;}setView('hilfe');const d=$(id);if(d){d.open=true;setTimeout(()=>d.scrollIntoView({block:'start',behavior:'smooth'}),30);}}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-help]');if(b){e.preventDefault();e.stopPropagation();openHelp(b.dataset.help);}},true);
 document.addEventListener('click',e=>{if(e.target.closest('a.st-ed'))e.preventDefault();},true);
 document.querySelectorAll('[data-sheet]').forEach(b=>b.onclick=()=>{const ps=b.closest('.sheet');if(ps&&ps.id!==b.dataset.sheet){ps.hidden=true;$(b.dataset.sheet).dataset.back=ps.id;}else delete $(b.dataset.sheet).dataset.back;$(b.dataset.sheet).hidden=false;document.body.classList.add('lock');if(b.dataset.sheet==='whenSheet'){renderWhen.scrolled=0;renderWhen();}});
@@ -3884,7 +3944,7 @@ $('startBtn').onclick=()=>{unlockAudio();if(S.cook)openCook();else if(S.goSeen)s
 $('abBtn').onclick=()=>{unlockAudio();if(S.cook)openCook();else startCook();};
 $('ckClose').onclick=closeCook;
 $('mini').onclick=()=>{unlockAudio();openCook();};
-$('ckNext').onclick=cookNext;
+$('ckNext').onclick=e=>{const n=Date.now();if(n-(window.__ckT||0)<700)return;window.__ckT=n;cookNext(e);};
 $('ckBack').onclick=cookBack;
 
 // Ellbogen-Modus: lange irgendwo drücken = Erledigt
@@ -3958,7 +4018,7 @@ if($('sauceEnv'))$('sauceEnv').addEventListener('click',e=>{const b=e.target.clo
   if(b.dataset.a==='1'){S.sauceOpen=1;save();b.classList.add('ok');$('sauceStory').hidden=true;$('sauceHint').textContent=SAUCE_OK;$('sauceEnv').querySelectorAll('[data-a]').forEach(x=>x.disabled=true);
     setTimeout(()=>{r.classList.add('opening');setTimeout(()=>{r.classList.remove('opening');sauceSeal();r.scrollIntoView({block:'start',behavior:'smooth'});},450);},1100);}
   else{b.classList.add('no');b.disabled=true;$('sauceHint').textContent=SAUCE_NO[Math.min(sauceTries++,SAUCE_NO.length-1)];$('sauceStory').hidden=false;}});
-if($('sauceStory'))$('sauceStory').onclick=()=>setView('storia');
+if($('sauceStory'))$('sauceStory').onclick=()=>{const sh=$('sauceSheet');if(sh&&!sh.hidden){sh.hidden=true;document.body.classList.remove('lock');}setView('storia');};
 const SIG_TR='El tiempo y la masa.';let sigBusy=0;
 function sigPlay(){const sig=document.querySelector('#v-mehr .sig');if(!sig||sigBusy||!sig.getClientRects().length)return;
   if(matchMedia('(prefers-reduced-motion: reduce)').matches||!Element.prototype.animate)return;
@@ -3988,6 +4048,19 @@ function sigPlay(){const sig=document.querySelector('#v-mehr .sig');if(!sig||sig
     A(svg,[{transform:'translateY(.05em) rotate(-300deg) scale(.4)'},{transform:'translateY(.05em) rotate(12deg) scale(1.12)',offset:.75},{transform:'translateY(.05em)'}],{duration:620,fill:'none'});},T1+640);
   setTimeout(()=>{logo.style.opacity='';logo.getAnimations().forEach(a=>a.cancel());if(sub){sub.style.opacity='';sub.animate([{opacity:0,transform:'translateY(4px)'},{opacity:1,transform:'none'}],{duration:400,easing:'ease-out'});}ov.remove();if(tr)tr.remove();sigBusy=0;},T1+1150);}
 document.addEventListener('click',e=>{if(e.target.closest('#v-mehr .sig'))sigPlay();});
+// Nonnas Zettel: Linien an den tatsächlichen Zeilen ausrichten (unabhängig von Schrift und Systemvergrößerung)
+function ruleNotes(){document.querySelectorAll('#v-hilfe .fn-note p,.nz-lines,.nz-b .hw-how,.nz-b .hw-tip p').forEach(p=>{if(!p.getClientRects().length)return;
+  document.documentElement.classList.add('tp-meas');
+  const box=p.getBoundingClientRect(),r=document.createRange(),W=document.createTreeWalker(p,NodeFilter.SHOW_TEXT);let tn,RR=[];while(tn=W.nextNode()){if(!tn.nodeValue.trim())continue;r.selectNodeContents(tn);RR.push(...r.getClientRects());}
+  const R=RR.filter(x=>x.width>1&&x.height>4).map(x=>({m:(x.top+x.bottom)/2,b:x.bottom,h:x.height})).sort((x,y)=>x.m-y.m);
+  document.documentElement.classList.remove('tp-meas');if(!R.length)return;
+  const fs=parseFloat(getComputedStyle(p).fontSize)||16,G=[];R.forEach(x=>{const g=G[G.length-1];if(g&&x.m-g.m<fs*.6){g.b=Math.max(g.b,x.b);}else G.push({m:x.m,b:x.b});});
+  p.style.setProperty('background',G.map(g=>`linear-gradient(#E8DCC4,#E8DCC4) 0 ${(g.b-box.top+2).toFixed(1)}px/100% 1px no-repeat`).join(','),'important');p.dataset.ruled=1;});}
+['animationend','transitionend'].forEach(t=>document.addEventListener(t,e=>{if(e.target.closest&&e.target.closest('#nzCard,.nz-card,#v-hilfe,.sheet,#cook'))requestAnimationFrame(ruleNotes);},true));
+try{new MutationObserver(()=>requestAnimationFrame(ruleNotes)).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden']});}catch(_){}
+addEventListener('resize',()=>requestAnimationFrame(ruleNotes));if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>ruleNotes());
+function fitSig(){const s=document.querySelector('#v-mehr .sig'),v=document.getElementById('v-mehr');if(!s||!v||v.hidden)return;s.classList.remove('sig-off');if(document.scrollingElement.scrollHeight>innerHeight+1)s.classList.add('sig-off');}
+addEventListener('resize',()=>requestAnimationFrame(fitSig));
 if($('splashRow'))$('splashRow').onclick=()=>{try{sessionStorage.setItem('tpSplash','1');}catch(e){}S.view='rezept';save();location.reload();};
 if(SUPPORT_URL){$('supGo').href=SUPPORT_URL;}else{$('supGo').removeAttribute('href');$('supGo').classList.add('off');$('supGo').textContent='Pronto habrá un enlace para donar';$('supGo').setAttribute('aria-disabled','true');}
 
