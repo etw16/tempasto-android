@@ -2232,6 +2232,11 @@ html.tp-meas *{transform:none!important;rotate:none!important;scale:none!importa
 .nz-card::after{content:"";position:sticky;bottom:-22px;display:block;height:30px;margin:-30px -22px -22px;background:linear-gradient(rgba(255,253,246,0),#FFFDF6 85%);pointer-events:none}
 .mtiles.m3 .mtile{justify-content:flex-start!important}
 :root:root:root .nz-b .hw-tip p{font-size:16px!important;line-height:1.55!important}
+#v-anleitung .gd-h{cursor:pointer;-webkit-tap-highlight-color:transparent}
+#v-anleitung .gd-h::after{content:"−";margin-left:auto;font:400 1.4rem var(--f-mono);color:var(--muted);line-height:1}
+#v-anleitung .gd-card.gd-col .gd-h::after{content:"+"}
+#v-anleitung .gd-card.gd-col>:not(.gd-h){display:none!important}
+#v-anleitung .gd-card{margin-bottom:0!important}#v-anleitung .gd-card+.gd-card{margin-top:-8px}#v-anleitung .gd-card.gd-col{padding-block:11px}
 /* Nonnas Zettel: einheitlich 16 px, Linien per JS an den echten Zeilen ausgerichtet */
 :root:root:root #v-hilfe div.fn-note>p,:root:root:root #v-hilfe p.fn-ps{font-size:16px!important;line-height:1.75!important;padding-bottom:4px!important}
 :root:root:root #v-hilfe p.fn-psst,:root:root:root #v-consigli button.rec-help,:root:root:root #v-anleitung span.gd-note,:root:root:root #cook #nzT{font-size:16px!important}
@@ -4061,6 +4066,10 @@ try{new MutationObserver(()=>requestAnimationFrame(ruleNotes)).observe(document.
 addEventListener('resize',()=>requestAnimationFrame(ruleNotes));if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>ruleNotes());
 function fitSig(){const s=document.querySelector('#v-mehr .sig'),v=document.getElementById('v-mehr');if(!s||!v||v.hidden)return;s.classList.remove('sig-off');if(document.scrollingElement.scrollHeight>innerHeight+1)s.classList.add('sig-off');}
 addEventListener('resize',()=>requestAnimationFrame(fitSig));
+// So geht's: Schritte als Akkordeon, nur einer offen
+document.querySelectorAll('#v-anleitung .gd-card').forEach(c=>{c.classList.add('gd-col');const h=c.querySelector('.gd-h');if(!h)return;h.setAttribute('role','button');h.tabIndex=0;h.setAttribute('aria-expanded','false');
+  const tog=()=>{const wasCol=c.classList.contains('gd-col');document.querySelectorAll('#v-anleitung .gd-card').forEach(x=>{x.classList.add('gd-col');const y=x.querySelector('.gd-h');if(y)y.setAttribute('aria-expanded','false');});if(wasCol){c.classList.remove('gd-col');h.setAttribute('aria-expanded','true');}};
+  h.addEventListener('click',tog);h.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tog();}});});
 if($('splashRow'))$('splashRow').onclick=()=>{try{sessionStorage.setItem('tpSplash','1');}catch(e){}S.view='rezept';save();location.reload();};
 if(SUPPORT_URL){$('supGo').href=SUPPORT_URL;}else{$('supGo').removeAttribute('href');$('supGo').classList.add('off');$('supGo').textContent='Pronto habrá un enlace para donar';$('supGo').setAttribute('aria-disabled','true');}
 
@@ -4133,7 +4142,8 @@ renderTpl();
     tg.classList.add('lo1');sp.classList.add('up','fly','lg');void sp.offsetWidth;
     requestAnimationFrame(()=>ls.forEach((l,i)=>{if(tr[i])l.style.transform=tr[i];}));},3100);
   T(()=>tg.classList.add('lo2'),4000);
-  T(()=>{sp.classList.add('go');document.body.classList.add('sp-land');T(fin,800);},4900);
+  T(()=>{sp.classList.add('go');document.body.classList.add('sp-land');},3700);
+  T(fin,4700);
   }else{
   T(()=>tg.classList.add('lo1','ls'),60);
   T(()=>{sp.classList.add('go');document.body.classList.add('sp-land');T(fin,700);},700);
