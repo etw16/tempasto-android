@@ -2229,7 +2229,7 @@ html.tp-meas *{transform:none!important;rotate:none!important;scale:none!importa
 /* QA-Feinschliff */
 :root:root:root:root .topline .ptitle{font-size:min(32px,7.4vw)!important;white-space:normal!important;min-width:0;overflow-wrap:anywhere}
 .topline{min-width:0}.topline>.xbtn{flex:0 0 auto}
-.nz-card::after{content:"";position:sticky;bottom:-22px;display:block;height:30px;margin:-30px -22px -22px;background:linear-gradient(rgba(255,253,246,0),#FFFDF6 85%);pointer-events:none}
+.nz-card.more::after{content:"";position:sticky;bottom:-22px;display:block;height:30px;margin:-30px -22px 0;background:linear-gradient(rgba(255,253,246,0),#FFFDF6 85%);pointer-events:none}
 .mtiles.m3 .mtile{justify-content:flex-start!important}
 :root:root:root .nz-b .hw-tip p{font-size:16px!important;line-height:1.55!important}
 #v-anleitung .gd-h{cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -4060,7 +4060,7 @@ function ruleNotes(){document.querySelectorAll('#v-hilfe .fn-note p,.nz-lines,.n
   const R=RR.filter(x=>x.width>1&&x.height>4).map(x=>({m:(x.top+x.bottom)/2,b:x.bottom,h:x.height})).sort((x,y)=>x.m-y.m);
   document.documentElement.classList.remove('tp-meas');if(!R.length)return;
   const fs=parseFloat(getComputedStyle(p).fontSize)||16,G=[];R.forEach(x=>{const g=G[G.length-1];if(g&&x.m-g.m<fs*.6){g.b=Math.max(g.b,x.b);}else G.push({m:x.m,b:x.b});});
-  p.style.setProperty('background',G.map(g=>`linear-gradient(#E8DCC4,#E8DCC4) 0 ${(g.b-box.top+2).toFixed(1)}px/100% 1px no-repeat`).join(','),'important');p.dataset.ruled=1;});}
+  p.style.setProperty('background',G.map(g=>`linear-gradient(#E8DCC4,#E8DCC4) 0 ${(g.b-box.top+2).toFixed(1)}px/100% 1px no-repeat`).join(','),'important');p.dataset.ruled=1;});if(typeof nzMore==='function')nzMore();}
 ['animationend','transitionend'].forEach(t=>document.addEventListener(t,e=>{if(e.target.closest&&e.target.closest('#nzCard,.nz-card,#v-hilfe,.sheet,#cook'))requestAnimationFrame(ruleNotes);},true));
 try{new MutationObserver(()=>requestAnimationFrame(ruleNotes)).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden']});}catch(_){}
 addEventListener('resize',()=>requestAnimationFrame(ruleNotes));if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>ruleNotes());
@@ -4070,6 +4070,8 @@ addEventListener('resize',()=>requestAnimationFrame(fitSig));
 document.querySelectorAll('#v-anleitung .gd-card').forEach(c=>{c.classList.add('gd-col');const h=c.querySelector('.gd-h');if(!h)return;h.setAttribute('role','button');h.tabIndex=0;h.setAttribute('aria-expanded','false');
   const tog=()=>{const wasCol=c.classList.contains('gd-col');document.querySelectorAll('#v-anleitung .gd-card').forEach(x=>{x.classList.add('gd-col');const y=x.querySelector('.gd-h');if(y)y.setAttribute('aria-expanded','false');});if(wasCol){c.classList.remove('gd-col');h.setAttribute('aria-expanded','true');}};
   h.addEventListener('click',tog);h.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tog();}});});
+function nzMore(){document.querySelectorAll('.nz-card').forEach(c=>c.classList.toggle('more',c.getClientRects().length>0&&c.scrollHeight-c.clientHeight-c.scrollTop>6));}
+document.addEventListener('scroll',e=>{if(e.target.classList&&e.target.classList.contains('nz-card'))nzMore();},true);
 if($('splashRow'))$('splashRow').onclick=()=>{try{sessionStorage.setItem('tpSplash','1');}catch(e){}S.view='rezept';save();location.reload();};
 if(SUPPORT_URL){$('supGo').href=SUPPORT_URL;}else{$('supGo').removeAttribute('href');$('supGo').classList.add('off');$('supGo').textContent='Le lien de don arrive bientôt';$('supGo').setAttribute('aria-disabled','true');}
 
