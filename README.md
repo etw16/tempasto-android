@@ -94,7 +94,7 @@ Tempasto gibt es (noch) nicht im Play Store. Die fertige APK liegt unter **[Rele
 
 Updates werden über die installierte Version gespielt, die Daten bleiben erhalten.
 
-**Umstieg von der alten Impasto-App:** Die App heißt jetzt `de.tempasto.app` und wird neben der alten installiert. Plan, eigene Pizzen und Vorlagen legst du in Tempasto neu an, danach kann die alte App weg.
+**Umstieg von der alten Impasto-App:** Die App heißt jetzt `com.tempasto` und wird neben der alten installiert. Plan, eigene Pizzen und Vorlagen legst du in Tempasto neu an, danach kann die alte App weg.
 
 ## Technik
 

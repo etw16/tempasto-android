@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">Tempasto</string>
     <string name="title_activity_main">Tempasto</string>
-    <string name="package_name">de.tempasto.app</string>
-    <string name="custom_url_scheme">de.tempasto.app</string>
+    <string name="package_name">com.tempasto</string>
+    <string name="custom_url_scheme">com.tempasto</string>
 </resources>

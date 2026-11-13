@@ -4,7 +4,7 @@ android {
     namespace = "de.tempasto.app"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "de.tempasto.app"
+        applicationId "com.tempasto"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         // +100, damit Builds aus dem neuen Repository höher zählen als die alten Versionen
