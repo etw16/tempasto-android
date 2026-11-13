@@ -17,16 +17,16 @@
     var sig=JSON.stringify(ev);if(sig===last)return;last=sig;
     try{var pend=await LN.getPending();if(pend.notifications.length)await LN.cancel({notifications:pend.notifications.map(function(n){return {id:n.id};})});}catch(e){}
     if(!ev.length||!(await allowed()))return;
-    var list=ev.slice(0,40).map(function(e,i){var n={id:1000+i,title:e.title,body:e.body,largeBody:e.body,schedule:{at:new Date(e.at),allowWhileIdle:true},channelId:CH,smallIcon:'ic_stat_tempasto',iconColor:'#C2281B',sound:'gong.wav'};if(e.sid){n.actionTypeId='step';n.extra={sid:e.sid};}return n;});
+    var list=ev.slice(0,40).map(function(e,i){var n={id:1000+i,title:e.title,body:e.body,largeBody:e.body,schedule:{at:new Date(e.at),allowWhileIdle:true},channelId:e.sid?CA:CH,smallIcon:'ic_stat_tempasto',iconColor:'#C2281B',sound:e.sid?'wecker.ogg':'gong.wav'};if(e.sid){n.actionTypeId='step';n.extra={sid:e.sid};}return n;});
     try{await LN.schedule({notifications:list});}catch(e){last='';}
   }
   var LG=(document.documentElement.lang||'de').slice(0,2).toLowerCase();
-  var T={de:['Plan teilen','Speichern oder teilen','Das hat nicht geklappt','Backplan','Erinnerungen an die Teigschritte','Erledigt','+10 Min'],
-   en:['Share plan','Save or share','That didn’t work','Bake plan','Reminders for the dough steps','Done','+10 min'],
-   it:['Condividi il piano','Salva o condividi','Non ha funzionato','Piano impasto','Promemoria per i passi dell’impasto','Fatto','+10 min'],
-   fr:['Partager le plan','Enregistrer ou partager','Ça n’a pas marché','Plan de pâte','Rappels pour les étapes de la pâte','Fait','+10 min'],
-   es:['Compartir el plan','Guardar o compartir','No ha funcionado','Plan de masa','Recordatorios de los pasos de la masa','Hecho','+10 min']}[LG]||null;
-  if(!T)T=['Plan teilen','Speichern oder teilen','Das hat nicht geklappt','Backplan','Erinnerungen an die Teigschritte','Erledigt','+10 Min'];
+  var T={de:['Plan teilen','Speichern oder teilen','Das hat nicht geklappt','Backplan','Erinnerungen an die Teigschritte','Erledigt','+10 Min','Wecker','Klingelt, wenn ein Teigschritt dran ist'],
+   en:['Share plan','Save or share','That didn’t work','Bake plan','Reminders for the dough steps','Done','+10 min','Alarm','Rings when a dough step is due'],
+   it:['Condividi il piano','Salva o condividi','Non ha funzionato','Piano impasto','Promemoria per i passi dell’impasto','Fatto','+10 min','Sveglia','Suona quando tocca a un passo dell’impasto'],
+   fr:['Partager le plan','Enregistrer ou partager','Ça n’a pas marché','Plan de pâte','Rappels pour les étapes de la pâte','Fait','+10 min','Réveil','Sonne quand une étape de la pâte arrive'],
+   es:['Compartir el plan','Guardar o compartir','No ha funcionado','Plan de masa','Recordatorios de los pasos de la masa','Hecho','+10 min','Alarma','Suena cuando toca un paso de la masa']}[LG]||null;
+  if(!T)T=['Plan teilen','Speichern oder teilen','Das hat nicht geklappt','Backplan','Erinnerungen an die Teigschritte','Erledigt','+10 Min','Wecker','Klingelt, wenn ein Teigschritt dran ist'];
   window.TEMPASTO_NATIVE={
     shareText:async function(t){if(!SH)return false;try{await SH.share({text:t,dialogTitle:T[0]});}catch(e){if(!/cancel/i.test((e&&e.message)||''))return false;}return true;},
     save:async function(name,blob){
@@ -36,10 +36,16 @@
       return true;
     },
     plan:function(fn){clearTimeout(tmr);tmr=setTimeout(function(){sync(fn);},800);},
+    // Genaue Wecker: ab Android 14 muss der Nutzer das selbst erlauben (Wecker und Erinnerungen)
+    exactOk:async function(){try{await allowed();var r=await LN.checkExactNotificationSetting();return r.exact_alarm!=='denied';}catch(e){return true;}},
+    exactAsk:function(){try{LN.changeExactNotificationSetting().then(function(){last='';if(window.TEMPASTO_APP)TEMPASTO_NATIVE.plan(TEMPASTO_APP.notifEvents);}).catch(function(){});}catch(e){}},
     wake:function(on){try{on?KA.keepAwake():KA.allowSleep();}catch(e){}}
   };
   var CH='tempasto-gong';
   LN.createChannel({id:CH,name:T[3],description:T[4],importance:5,visibility:1,vibration:true,sound:'gong.wav'}).catch(function(){});
+  // Wecker für die Teigschritte: klingelt bis zu einer Minute, bis man ihn wegtippt
+  var CA='tempasto-wecker';
+  LN.createChannel({id:CA,name:T[7],description:T[8],importance:5,visibility:1,vibration:true,sound:'wecker.ogg'}).catch(function(){});
   LN.registerActionTypes({types:[{id:'step',actions:[{id:'done',title:T[5]},{id:'later',title:T[6]}]}]}).catch(function(){});
   window.addEventListener('load',function(){
     if(window.TEMPASTO_APP)TEMPASTO_NATIVE.plan(TEMPASTO_APP.notifEvents);
