@@ -681,3 +681,13 @@
 'Oregano'	'Orégano'
 'Dessert'	'Postres'
 'Vegan'	'Vegana'
+#0d67fd	`Demasiado tarde: para ${S.h} h de fermentación tendrías que haber preparado la masa ${(r=>r==='Hoy'?'hoy':r==='Mañana'?'mañana':'el '+DAYL[sc.start.getDay()])(rel(sc.start))} a las ${tm(sc.start)}. Elige una hora más tarde o menos fermentación.`
+#858142	`<span class="kr-l">¡Vamos!</span><b class="kr-n">${tm(d)}</b><span class="kr-u">${rr}</span>`
+#5c6037	'Mezclar'
+#115805	'A la nevera'
+#d2ab01	'Precalentar'
+#881209	'Empezar ya'
+#e62faa	`<span class="kr-l">Ahora</span><b class="kr-n kr-v">${v}</b><span class="kr-u">${u}</span>`
+#aa9636	`Enfría ${g(c.P.R.water)} g de agua antes de las ${tm(wc)}.`
+#b5f951	'Sigue siendo tu turno. Toca para abrir el modo horneado.'
+#ffefc9	`<span class="kr-l">Empieza en</span><b class="kr-n kr-v" id="krCd" style="--n:5"></b><span class="kr-u">a las ${tm(d)}</span>`

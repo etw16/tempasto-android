@@ -680,3 +680,13 @@
 'Die Zeit und der Teig.'	''
 'Direktteig'	'Impasto diretto'
 'Oregano'	'Origano'
+#0d67fd	`Troppo tardi: per ${S.h} h di lievitazione avresti dovuto impastare ${(r=>r==='Oggi'?'oggi':r==='Domani'?'domani':DAYL[sc.start.getDay()])(rel(sc.start))} alle ${tm(sc.start)}. Scegli un orario più tardo o una lievitazione più breve.`
+#858142	`<span class="kr-l">Si parte</span><b class="kr-n">${tm(d)}</b><span class="kr-u">${rr}</span>`
+#5c6037	'Mescola'
+#115805	'In frigo'
+#d2ab01	'Accendi'
+#881209	'Inizia subito'
+#e62faa	`<span class="kr-l">Ora</span><b class="kr-n kr-v">${v}</b><span class="kr-u">${u}</span>`
+#aa9636	`Raffredda ${g(c.P.R.water)} g d’acqua entro le ${tm(wc)}.`
+#b5f951	'Tocca ancora a te. Tocca qui e apri la modalità guidata.'
+#ffefc9	`<span class="kr-l">Inizio tra</span><b class="kr-n kr-v" id="krCd" style="--n:5"></b><span class="kr-u">alle ${tm(d)}</span>`

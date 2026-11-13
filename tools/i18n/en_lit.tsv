@@ -708,3 +708,13 @@
 'Perfetto! Aber nicht weitersagen.'	'Perfetto! Now, not a word to anyone.'
 'Die Zeit und der Teig.'	'Time and dough.'
 'Direktteig'	'Straight dough'
+#0d67fd	`Too late: for a ${S.h} h rise you’d have needed to mix the dough ${(r=>r==='Today'?'today':r==='Tomorrow'?'tomorrow':'on '+DAYL[sc.start.getDay()])(rel(sc.start))} at ${tm(sc.start)}. Pick a later time or a shorter rise.`
+#858142	`<span class="kr-l">Let’s go</span><b class="kr-n">${tm(d)}</b><span class="kr-u">${rr}</span>`
+#5c6037	'Mix'
+#115805	'Chill'
+#d2ab01	'Heat'
+#881209	'Start now'
+#e62faa	`<span class="kr-l">Now</span><b class="kr-n kr-v">${v}</b><span class="kr-u">${u}</span>`
+#aa9636	`Chill ${g(c.P.R.water)} g of water by ${tm(wc)}.`
+#b5f951	'Still waiting. Tap to open bake mode.'
+#ffefc9	`<span class="kr-l">Starts in</span><b class="kr-n kr-v" id="krCd" style="--n:5"></b><span class="kr-u">at ${tm(d)}</span>`

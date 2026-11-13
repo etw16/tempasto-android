@@ -35,7 +35,7 @@
 #405647	`Mélange farine et eau, couvre. Garde ${g(R.wY)} g d’eau pour la levure.`
 #3c71dd	'Pétrir'
 #6f9b17	'Autolyse en cours'
-#5b71ca	'environ 10 minutes'
+#5b71ca	'env. 10 minutes'
 #ad843e	`Levure dans ${g(R.wY)} g d’eau`
 #091122	'puis le sel'
 #a6bf54	'La pâte repose, couverte'
@@ -679,3 +679,13 @@
 'Die Zeit und der Teig.'	'Le temps et la pâte.'
 'Direktteig'	'Pâte directe'
 'Oregano'	'Origan'
+#0d67fd	`Trop tard : pour ${S.h} h de fermentation, il aurait fallu lancer la pâte ${(r=>r==='Aujourd’hui'?'aujourd’hui':r==='Demain'?'demain':DAYL[sc.start.getDay()])(rel(sc.start))} à ${tm(sc.start)}. Choisis une heure plus tardive ou une fermentation plus courte.`
+#858142	`<span class="kr-l">C’est parti</span><b class="kr-n">${tm(d)}</b><span class="kr-u">${rr}</span>`
+#5c6037	'Mélanger'
+#115805	'Au frais'
+#d2ab01	'Préchauffer'
+#881209	'Commencer maintenant'
+#e62faa	`<span class="kr-l">Maintenant</span><b class="kr-n kr-v">${v}</b><span class="kr-u">${u}</span>`
+#aa9636	`Mets ${g(c.P.R.water)} g d’eau au frigo avant ${tm(wc)}.`
+#b5f951	'C’est toujours à toi. Touche pour ouvrir le mode cuisson.'
+#ffefc9	`<span class="kr-l">Début dans</span><b class="kr-n kr-v" id="krCd" style="--n:5"></b><span class="kr-u">à ${tm(d)}</span>`
